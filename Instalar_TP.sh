@@ -113,5 +113,25 @@ Proceso de instalacion Cancelado"
 }
 
 
+#Paso 5 Aceptacion de terminos
+#Retorna 1 si acepto los terminos, 0 si no
+function AceptaTerminos(){
+
+echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
+echo " A T E N C I O N: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
+
+echo "¿Acepta? Si - NO "
+while ["$var1" != "Si" && "$var1" != "No"]
+do 
+read var1
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var1" = "Si"]
+then
+return 1
+fi
+else return 0
+fi
+}
 
 
