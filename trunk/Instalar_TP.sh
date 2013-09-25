@@ -10,6 +10,8 @@ ruta_usuario="/home/$usuario"
 grupo="./grupo8"#deberia ser el directorio creado para el grupo8 a manopla
 CONFDIR="$grupo/conf"#seteo la variable confdir
 Instlog="$CONFDIR/Instalar_TP.log"#ruta a el .log del script
+estado="COMPLETO"#variable para controlar el estado de la instalacion
+
 
 #Por defecto asumo estos directorios 
 
@@ -58,6 +60,36 @@ echo "Log del comando Instalar_TP:$Instlog"
 echo "DIrectorio de configuracion:$CONFDIR"
 # aca se debe grabar en el log tambien, con la funcion grabar
 }
+
+# Paso 4.1. Muestra el estado del sistema por pantalla y en el log
+function MostrarMensajeInicial(){
+
+echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
+echo "Libreria del Sistema: $CONFDIR /n"
+ls "$CONFDIR"
+echo "Ejecutables:$BINDIR"
+ls "$BINDIR"
+echo "Archivos Maestros: $MAEDIR"
+ls "$MAEDIR"
+echo "Directorio de arribo de archivos externos: $ARRIDIR"
+ls "$ARRIDIR"
+echo "Archivos externos aceptados: $ACEPDIR"
+ls "$ACEPDIR"
+echo "Archivos externos rechazados: $RECHDIR"
+ls "$RECHDIR"
+echo " Reportes de salida:$REPODIR"
+ls "$REPODIR"
+echo "Archivos procesados:$PROCDIR"
+ls "$PROCDIR"
+echo "Logs de aditoria del Sistema:" #falta aca
+#ls
+echo "Estado de la instalacion:$estado"
+echo" Proceso de Instalacion Cancelado"
+
+
+}
+
+
 
 
 
