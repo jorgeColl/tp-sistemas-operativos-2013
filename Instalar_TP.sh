@@ -11,7 +11,7 @@ grupo="./grupo8" #deberia ser el directorio creado para el grupo8 a manopla
 CONFDIR="$grupo/conf" #seteo la variable confdir
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el .log del script
 estado="COMPLETO" #variable para controlar el estado de la instalacion
-
+DATASIZE=100 #variable para el tamaño en MB de el directorio ARRIDIR
 
 #Por defecto asumo estos directorios 
 
@@ -212,7 +212,15 @@ fi
 }
 
 
+# Paso 10. Pedido al usuario  espacio para directorio ARRIDIR
+function EspacioMinimoArribos(){
 
+echo "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes (100):"
+
+read cantidad	#espero la orden del teclado
+DATASIZE=$cantidad	#guardo en la variable datasize la cantidad pasada
+
+}
 
 
 
