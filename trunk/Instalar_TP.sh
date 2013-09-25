@@ -114,7 +114,7 @@ Proceso de instalacion Cancelado"
 
 
 #Paso 5 Aceptacion de terminos
-#Retorna 1 si acepto los terminos, 0 si no
+#Retorna 1 si acepto los terminos, 0 si no.
 function AceptaTerminos(){
 
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
@@ -133,5 +133,32 @@ fi
 else return 0
 fi
 }
+
+#funcion para definir los ejecutables
+
+function DefinirEjecutables (){
+
+echo "Defina el directorio de instalacion de los archivos ejecutables ($grupo/bin"
+echo "Desea conservar el directorio por defecto?: Si - No"
+
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var2" = "Si"]
+then
+BINDIR=$BINDIR
+mkdir "$BINDIR" #creo ese directorio
+fi
+else 
+echo "Proponga su directorio para los ejecutables"
+read direct
+BINDIR="$grupo/$direct"
+mkdir "$BINDIR" #Creo ese directorio
+fi
+
+}
+
 
 
