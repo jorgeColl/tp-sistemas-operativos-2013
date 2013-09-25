@@ -8,7 +8,7 @@
 usuario='whoami'
 ruta_usuario="/home/$usuario"
 grupo="./grupo8" #deberia ser el directorio creado para el grupo8 a manopla
-CONFDIR="$grupo/conf" #seteo la variable confdir
+CONFDIR="$grupo/conf" #seteo la variable confdir. NO CAMBIA
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el .log del script
 estado="COMPLETO" #variable para controlar el estado de la instalacion
 DATASIZE=100 #variable para el tamaño en MB de el directorio ARRIDIR
@@ -18,9 +18,12 @@ DATASIZE=100 #variable para el tamaño en MB de el directorio ARRIDIR
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
 ARRIDIR="$grupo/arribos"
-ACEPDIR="$grupo/acep"
-RECHDIR="$grupo/rech"
-REPODIR="$grupo/repo"
+ACEPDIR="$grupo/aceptados"
+RECHDIR="$grupo/rechazados"
+REPODIR="$grupo/listados"
+PROCDIR="$grupo/procesados"
+LOGDIR="$grupo/log"
+
 
 
 
