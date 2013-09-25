@@ -1,0 +1,19 @@
+BORRADOR PARA EL README
+-----------------------
+
+Jorge y compañeros, por aca vamos a comunicar las ideas de Instalar TP, en realidad para JOrge pero para que todos lo vayan viendo.
+
+Jorge, tengo hecho varias cosas, la idea que se me ocurrio fue , definir variables que se van a usar en el transcurso de la aplicacion, como CONFDIR, BINDIR, grupo ( todos directorios) y dps ir haciendo funciones por seccion tal como esta explicado en el enunciado. LUego llamaremos a cada funcion en el hilo del programa.
+
+Fui haciendo un par de puntos , comentemos en cada funcion a que punto del enunciado corresponde como fui haciendo asi no nos perdemos, igual el nombre de las funciones es bastante claro, o deberia serlo jaja.
+
+En las partes que hize falta grabar en el archivo de log, iba a hacer algo del estilo  >> Archivo.log pero hay que usar el comando copiar creo que tvia no esta hecho, dps cuando este hecho se lo tenemos que ir agregando.
+
+Quiza hay errores de sintaxis, seguramente, pero a grandes rasgos creo que haciendolo asi va bien.
+
+
+saludos.
+
+
+
+
