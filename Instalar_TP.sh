@@ -134,7 +134,7 @@ else return 0
 fi
 }
 
-#funcion para definir los ejecutables
+#funcion para definir los ejecutables PASO 7
 
 function DefinirEjecutables (){
 
@@ -153,10 +153,52 @@ fi
 else 
 echo "Proponga su directorio para los ejecutables"
 read direct
-BINDIR="$grupo/$direct"
+BINDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/bin
 fi
 
 }
+
+
+
+function DefinirMaestros (){
+
+echo "Defina el directorio de instalacion de los archivos maestros ($grupo/mae"
+echo "Desea conservar el directorio por defecto?: Si - No"
+
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var2" = "Si"]
+then
+MAEDIR=$MAEDIR
+fi
+else
+echo "Proponga su directorio para los archivos maestros"
+read direct
+MAEDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/bin
+fi
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
