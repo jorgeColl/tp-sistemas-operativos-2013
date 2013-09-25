@@ -7,10 +7,10 @@
 #Variables globales de mi script
 usuario='whoami'
 ruta_usuario="/home/$usuario"
-grupo="./grupo8"#deberia ser el directorio creado para el grupo8 a manopla
-CONFDIR="$grupo/conf"#seteo la variable confdir
-Instlog="$CONFDIR/Instalar_TP.log"#ruta a el .log del script
-estado="COMPLETO"#variable para controlar el estado de la instalacion
+grupo="./grupo8" #deberia ser el directorio creado para el grupo8 a manopla
+CONFDIR="$grupo/conf" #seteo la variable confdir
+Instlog="$CONFDIR/Instalar_TP.log" #ruta a el .log del script
+estado="COMPLETO" #variable para controlar el estado de la instalacion
 
 
 #Por defecto asumo estos directorios 
@@ -38,7 +38,7 @@ fi
 # Funcion que crear CONFDIR si no esta creada en el sistema
 function crearDir{
 
-if [estaConf = 0]
+if [estaConf=0]
 then
 
 	mkdir "$CONFDIR"
@@ -86,10 +86,31 @@ echo "Logs de aditoria del Sistema:" #falta aca
 echo "Estado de la instalacion:$estado"
 echo" Proceso de Instalacion Cancelado"
 
-
+#FALTA GRABAR EN EL LOG LO MISMO
 }
 
 
+
+
+#Funcion para ver si esta instalado PERL, paso 4.3.3 y 6
+function estaPerl(){
+
+versionmin=5
+versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*.*/1\/p'`
+#busco en la primera linea v(5.14.xx)
+
+	if ["$versioninst" -lt "$versionmin"]
+	then 
+		echo "Para instalar el TP es necesario contar con Perl 5 o superior instaldo. Efectue su instalacion e intentelo nuevamente.
+Proceso de instalacion Cancelado"
+	fi
+	exit 1;
+	else
+	echo "Perl Version:$versioninst"
+	fi
+
+#FALTA GRABAR EN EL LOG LO MISMO
+}
 
 
 
