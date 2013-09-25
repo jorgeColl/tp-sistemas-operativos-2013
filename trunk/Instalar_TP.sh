@@ -275,7 +275,22 @@ fi
 }
 
 
+# Paso 21.1
+#Instalacion de los directorios
 
+function InstalacionDirectorios(){
+echo "Creando Estructuras de directorio ..."
+mkdir "$BINDIR"
+mkdir "$MAEDIR"
+mkdir "$ARRIDIR"
+mkdir "$RECHDIR"
+mkdir "$ACEPDIR"
+mkdir "$REPODIR"
+mkdir "$PROCDIR"
+mkdir "$LOGDIR"
+
+
+}
 
 
 
