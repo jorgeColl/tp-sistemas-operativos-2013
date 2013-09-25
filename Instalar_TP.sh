@@ -17,7 +17,7 @@ estado="COMPLETO" #variable para controlar el estado de la instalacion
 
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
-ARRIDIR="$grupo/arri"
+ARRIDIR="$grupo/arribos"
 ACEPDIR="$grupo/acep"
 RECHDIR="$grupo/rech"
 REPODIR="$grupo/repo"
@@ -36,7 +36,7 @@ fi
 }
 
 # Funcion que crear CONFDIR si no esta creada en el sistema
-function crearDir{
+function crearDir{ 
 
 if [estaConf=0]
 then
@@ -48,7 +48,8 @@ fi
 }
 
 
-# Funcion que inicia el log , paso 1,2 y 3 (debe llamarse si
+# Paso 1, 2 y 3
+# Funcion que inicia el log (debe llamarse si
 # no fue creada la isntalacion de ante mano ( si no existe la carpeta conf)
 
 function InicioLogInstalacion(){
@@ -61,9 +62,11 @@ echo "DIrectorio de configuracion:$CONFDIR"
 # aca se debe grabar en el log tambien, con la funcion grabar
 }
 
-# Paso 4.1. Muestra el estado del sistema por pantalla y en el log
-function MostrarMensajeInicial(){
 
+
+# Paso 4.1
+# Muestra el estado del sistema por pantalla y en el log
+function MostrarMensajeInicial(){
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo "Libreria del Sistema: $CONFDIR /n"
 ls "$CONFDIR"
@@ -91,8 +94,8 @@ echo" Proceso de Instalacion Cancelado"
 
 
 
-
-#Funcion para ver si esta instalado PERL, paso 4.3.3 y 6
+#Paso 4.3.3 y Paso 6
+#Funcion para ver si esta instalado PERL
 function estaPerl(){
 
 versionmin=5
@@ -134,8 +137,9 @@ else return 0
 fi
 }
 
-#funcion para definir los ejecutables PASO 7
 
+# Paso 7
+#funcion para definir los ejecutables 
 function DefinirEjecutables (){
 
 echo "Defina el directorio de instalacion de los archivos ejecutables ($grupo/bin"
@@ -158,7 +162,7 @@ fi
 
 }
 
-
+# Paso 8
 # Funcion para definir el directorio de los maestros
 function DefinirMaestros (){
 
@@ -183,7 +187,29 @@ fi
 }
 
 
+# Paso 9
+# Funcion para definir el directorio de los archivos externos
+function DefinirEternos (){
 
+echo "Defina el directorio de instalacion de los archivos externos ($grupo/arribos)"
+echo "Desea conservar el directorio por defecto?: Si - No"
+
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var2" = "Si"]
+then
+ARRIDIR=$ARRIDIR
+fi
+else
+echo "Proponga su directorio para los archivos maestros"
+read direct
+ARRIDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/arribos
+fi
+
+}
 
 
 
