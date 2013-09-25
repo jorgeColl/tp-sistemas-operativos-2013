@@ -226,9 +226,53 @@ DATASIZE=$cantidad	#guardo en la variable datasize la cantidad pasada
 }
 
 
+# Paso 12
+# Funcion para definir el directorio de los archivos aceptados
+function DefinirAceptados (){
 
+echo "Defina el directorio de instalacion de los archivos maestros ($grupo/aceptados)"
+echo "Desea conservar el directorio por defecto?: Si - No"
 
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
 
+if ["$var2" = "Si"]
+then
+ACEPDIR=$ACEPDIR
+fi
+else
+echo "Proponga su directorio para los archivos maestros"
+read direct
+ACEPDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/aceptados
+fi
+
+}
+
+# Paso 13
+# Funcion para definir el directorio de los archivos rechazados
+function DefinirRechazados (){
+
+echo "Defina el directorio de instalacion de los archivos rechazados ($grupo/rechazados)"
+echo "Desea conservar el directorio por defecto?: Si - No"
+
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var2" = "Si"]
+then
+RECHDIR=$RECHDIR
+fi
+else
+echo "Proponga su directorio para los archivos rechazados"
+read direct
+RECHDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/recha
+fi
+
+}
 
 
 
