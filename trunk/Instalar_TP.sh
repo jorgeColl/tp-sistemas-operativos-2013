@@ -149,13 +149,11 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 BINDIR=$BINDIR
-mkdir "$BINDIR" #creo ese directorio
 fi
 else 
 echo "Proponga su directorio para los ejecutables"
 read direct
 BINDIR="$grupo/$direct"
-mkdir "$BINDIR" #Creo ese directorio
 fi
 
 }
