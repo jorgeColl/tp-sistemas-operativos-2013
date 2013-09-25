@@ -159,10 +159,10 @@ fi
 }
 
 
-
+# Funcion para definir el directorio de los maestros
 function DefinirMaestros (){
 
-echo "Defina el directorio de instalacion de los archivos maestros ($grupo/mae"
+echo "Defina el directorio de instalacion de los archivos maestros ($grupo/mae)"
 echo "Desea conservar el directorio por defecto?: Si - No"
 
 while ["$var2" != "Si" && "$var2" != "No"]
@@ -177,7 +177,7 @@ fi
 else
 echo "Proponga su directorio para los archivos maestros"
 read direct
-MAEDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/bin
+MAEDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/mae
 fi
 
 }
