@@ -2,15 +2,24 @@
 #Script que se encarga de la instalacion del TP.
 # Ver el readme para mas informacion.
 #	COMANDO: Instalar_TP.sh
+#------------------------------------------------------------
 
+#Variables globales de mi script
 usuario='whoami'
 ruta_usuario="/home/$usuario"
-
 grupo="./grupo8"#deberia ser el directorio creado para el grupo8 a manopla
-
-CONFDIR="$grupo/conf"#seteo la variavle confdir
-
+CONFDIR="$grupo/conf"#seteo la variable confdir
 Instlog="$CONFDIR/Instalar_TP.log"#ruta a el .log del script
+
+#Por defecto asumo estos directorios 
+
+BINDIR="$grupo/bin"
+MAEDIR="$grupo/mae"
+ARRIDIR="$grupo/arri"
+ACEPDIR="$grupo/acep"
+RECHDIR="$grupo/rech"
+REPODIR="$grupo/repo"
+
 
 
 ## Funcion que verifica si existe la carpeta grupo8/conf en el sistema
@@ -47,7 +56,7 @@ touch $Instlog
 echo "Inicio de Ejecución" 
 echo "Log del comando Instalar_TP:$Instlog"
 echo "DIrectorio de configuracion:$CONFDIR"
-
+# aca se debe grabar en el log tambien, con la funcion grabar
 }
 
 
