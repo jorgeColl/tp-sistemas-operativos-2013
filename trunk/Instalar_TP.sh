@@ -274,6 +274,31 @@ fi
 
 }
 
+# Paso 14
+# Funcion para definir el directorio de los listados de salida
+function DefinirRechazados (){
+
+echo "Defina el directorio de instalacion de los listados de salida($grupo/listados)"
+echo "Desea conservar el directorio por defecto?: Si - No"
+
+while ["$var2" != "Si" && "$var2" != "No"]
+do
+read var2
+done #Hasta que no contesta si o no sale del bucle
+
+if ["$var2" = "Si"]
+then
+REPODIR=$REPODIR
+fi
+else
+echo "Proponga su directorio para los archivos de salida"
+read direct
+REPODIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
+fi
+
+}
+
+
 
 # Paso 21.1
 #Instalacion de los directorios
