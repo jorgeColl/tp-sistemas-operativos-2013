@@ -9,12 +9,13 @@ usuario='whoami'
 ruta_usuario="/home/$usuario"
 grupo="./grupo8" #deberia ser el directorio creado para el grupo8 a manopla
 CONFDIR="$grupo/conf" #seteo la variable confdir. NO CAMBIA
-Instlog="$CONFDIR/Instalar_TP.log" #ruta a el .log del script
+Instlog="$CONFDIR/Instalar_TP$LOGEXT" #ruta a el log del script
 estado="COMPLETO" #variable para controlar el estado de la instalacion
 DATASIZE=100 #variable para el tamaño en MB de el directorio ARRIDIR
+LOGEXT=".log" #extension por defecto de los archivos de log
+
 
 #Por defecto asumo estos directorios 
-
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
 ARRIDIR="$grupo/arribos"
@@ -295,6 +296,17 @@ echo "Proponga su directorio para los archivos de salida"
 read direct
 REPODIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
 fi
+
+}
+
+# Paso 17
+# Define la extension de los archivos de log
+
+function LogExtension(){
+
+echo "Ingrese la extension para los archivos de log: (.log)"
+read extension
+LOGEXT=$extension
 
 }
 
