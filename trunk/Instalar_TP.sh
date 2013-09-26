@@ -13,6 +13,8 @@ Instlog="$CONFDIR/Instalar_TP$LOGEXT" #ruta a el log del script
 estado="COMPLETO" #variable para controlar el estado de la instalacion
 DATASIZE=100 #variable para el tamaño en MB de el directorio ARRIDIR
 LOGEXT=".log" #extension por defecto de los archivos de log
+COMANDO="Instalar_Tp" #comando de mi script
+
 
 
 #Por defecto asumo estos directorios 
@@ -29,7 +31,6 @@ LOGDIR="$grupo/log"
 
 
 ## Funcion que verifica si existe la carpeta grupo8/conf en el sistema
-
 function estaConf(){
 
 if [ -d $CONFDIR ]
@@ -39,23 +40,20 @@ else return 0
 fi
 }
 
+
 # Funcion que crear CONFDIR si no esta creada en el sistema
 function crearDir{ 
 
-if [estaConf=0]
+if [estaConf == "0"]
 then
-
 	mkdir "$CONFDIR"
-
 fi
-
 }
 
 
 # Paso 1, 2 y 3
 # Funcion que inicia el log (debe llamarse si
 # no fue creada la isntalacion de ante mano ( si no existe la carpeta conf)
-
 function InicioLogInstalacion(){
 
 touch $Instlog
@@ -88,8 +86,8 @@ echo " Reportes de salida:$REPODIR"
 ls "$REPODIR"
 echo "Archivos procesados:$PROCDIR"
 ls "$PROCDIR"
-echo "Logs de aditoria del Sistema:" #falta aca
-#ls
+echo "Logs de aditoria del Sistema:$LOGDIR/<$COMANDO>.$LOGEXT"
+ls "$LOGDIR"
 echo "Estado de la instalacion:$estado"
 echo" Proceso de Instalacion Cancelado"
 
@@ -298,6 +296,8 @@ REPODIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
 fi
 
 }
+
+
 
 # Paso 17
 # Define la extension de los archivos de log
