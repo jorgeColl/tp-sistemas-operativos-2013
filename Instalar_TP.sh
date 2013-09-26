@@ -4,7 +4,7 @@
 #	COMANDO: Instalar_TP.sh
 #------------------------------------------------------------
 
-#Variables globales de mi script
+#Variables de mi script
 usuario='whoami'
 ruta_usuario="/home/$usuario"
 grupo="./grupo8" #deberia ser el directorio creado para el grupo8 a manopla
@@ -330,6 +330,21 @@ mkdir "$LOGDIR"
 }
 
 
+
+function EsportarVariables(){
+
+export BINDIR="$BINDIR"
+export MAEDIR="$MAEDIR"
+export ARRIDIR="$ARRIDIR"
+export RECHDIR="$RECHDIR"
+export ACEPDIR="$ACEPDIR"
+export REPODIR="$REPODIR"
+export PROCDIR="$PROCDIR"
+export LOGDIR="$LOGDIR"
+export DATASIZE="$DATASIZE"
+export LOGEXT="$LOGEXT"
+
+}
 
 
 
