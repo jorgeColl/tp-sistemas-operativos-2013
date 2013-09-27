@@ -34,14 +34,6 @@ LOGDIR="$grupo/log"
 }
 
 
-## Funcion que verifica si existe la carpeta grupo8/conf en el sistema
-function estaConf {
-if [ -d $CONFDIR ]
-then
-return 1
-else return 0
-fi
-}
 
 #Para finalizar mi script
 function FIN {
@@ -49,6 +41,20 @@ exit
 }
 
 
+function InstalacionHecha {
+
+cantcarpetas= ls -1 $grupo | wc -l
+
+if [ "$cantcarpetas" == 1 ]
+then
+echo "Nunca se instalo nada en el sistema"
+else
+echo "Instalacion incompleta"
+fi
+
+}
+
+InstalacionHecha
 
 # Paso 1, 2 y 3
 # Funcion que inicia el log. Lo crea si no estaba.
