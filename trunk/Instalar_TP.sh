@@ -124,6 +124,7 @@ echo "Perl Version=$versioninst"
 fi
 }
 
+estaperl
 
 #Paso 5 Aceptacion de terminos
 #Retorna 1 si acepto los terminos, 0 si no.
