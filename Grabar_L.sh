@@ -15,11 +15,21 @@
 	fi
 	if [ $# -eq 2 ]; then
 		mensaje=$2
-		opcion="I"
+		opcion="-i"
 	else
-		opcion=$2
 		mensaje=$3
+		opcion=$2
 	fi
+	case $opcion in
+	-i ) 
+		opcion="Informativo";;
+	-e )
+		opcion="Error";;
+	-fe )
+		opcion="Fatal Error";;
+	* )
+		opcion="Warning" ;;
+	esac
 	
 	#Ahora debo crear la estructura de directorio
 	archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
