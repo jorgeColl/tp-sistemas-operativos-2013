@@ -11,9 +11,17 @@ En las partes que hize falta grabar en el archivo de log, iba a hacer algo del e
 
 Quiza hay errores de sintaxis, seguramente, pero a grandes rasgos creo que haciendolo asi va bien.
 
-
 saludos.
 
+----------------------
+
+Actualización 27/09 Juancho
+
+El Mover_B, a mi entender, quedó utilizable y bien. Una cosas que hay que tener en cuenta es que recibe una referencia a archivo en un directorio. Si se quiero copiar algo del directorio actual se pasa como parámerto "./archivoActual". El secuenciamiento quedó bien, no genera una carpeta aparte para duplicados y cada serie de archivos tiene su numeración.
+
+El Grabar_L reciber varios parámetros, estan descriptos en la función. Espera que las variables esten disponibles, $LOGDIR $LOGEXT $CONFDIR. Una aclaración es que $LONGEXT  no incluye el punto. Es decir que para lograr la extensión 'unLog.pepito', la varible $LOGEXT debe estar seteada como $LOGEXT="pepito" .
+
+----------------------
 
 
 
