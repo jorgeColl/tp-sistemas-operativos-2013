@@ -20,4 +20,23 @@
 		opcion=$2
 		mensaje=$3
 	fi
+	
+	#Ahora debo crear la estructura de directorio
+	archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
+	
+	#Recorto el mensaje de ser necesario
+	if [ ${#mensaje} -gt 120 ]; then
+		#Debo recortarlo.
+		mensaje=`echo ${mensaje:0:120}`
+	fi
+	
+	#Si es menor, lo pongo tal cual esta.
+	
+	#Calculo el tiempo
+	tiempo=`date | sed 's/ ... [0-9]\{0,4\}$//' | sed "s/ /-/g"`
+	mensajeFinal="$tiempo;$comandoSolicitante;$comandoSolicitante;$opcion;$mensaje;"
+	
+	#Ahora lo agrego al archivo.
+	echo $mensajeFinal >> $archDestino
+	#echo "$mensajeFinal en $archDestino"
 	exit 0
