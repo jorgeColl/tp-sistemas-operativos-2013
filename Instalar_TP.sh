@@ -20,7 +20,7 @@ mkdir -p "$CONFDIR" #creo el directorio ./grupo8/conf
 
 
 #Por defecto asumo estos directorios 
-function DirectoriosDefault(){
+function DirectoriosDefault {
 
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
@@ -35,7 +35,7 @@ LOGDIR="$grupo/log"
 
 
 ## Funcion que verifica si existe la carpeta grupo8/conf en el sistema
-function estaConf(){
+function estaConf {
 if [ -d $CONFDIR ]
 then
 return 1
@@ -44,7 +44,7 @@ fi
 }
 
 #Para finalizar mi script
-function FIN(){
+function FIN {
 exit
 }
 
@@ -53,8 +53,8 @@ exit
 # Paso 1, 2 y 3
 # Funcion que inicia el log. Lo crea si no estaba.
 
-function InicioLogInstalacion(){
-if [-f "$Instlog"];
+function InicioLogInstalacion {
+if [ -f "$Instlog" ];
 then
 echo "Existe "$Instlog""
 else
@@ -76,7 +76,7 @@ echo "DIrectorio de configuracion:$CONFDIR"
 # Paso 4.1
 # Muestra el estado del sistema. Llamar si esta completo el paquete.
 
-function MostrarMensajeInicial(){
+function MostrarMensajeInicial {
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo "Libreria del Sistema: $CONFDIR"
 ls "$CONFDIR"
@@ -106,29 +106,22 @@ echo" Proceso de Instalacion Cancelado"
 
 #Paso 4.3.3 y Paso 6
 #Funcion para ver si esta instalado PERL
-function estaPerl(){
-
-versionmin=5
-versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*.*/1\/p'`
-#busco en la primera linea v(5.14.xx)
-
-	if ["$versioninst" -lt "$versionmin"]
-	then 
-		echo "Para instalar el TP es necesario contar con Perl 5 o superior instaldo. Efectue su instalacion e intentelo nuevamente.
-Proceso de instalacion Cancelado"
-	fi
-	exit 1;
-	else
-	echo "Perl Version:$versioninst"
-	fi
-
-#FALTA GRABAR EN EL LOG LO MISMO
+function estaperl {
+declare versionmin=5
+declare versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p'`
+#busco en la primeri linea v(5.14.xx)
+if [ "$versioninst" -lt "$versionmin" ]
+then 
+echo "Para instalar el TP es necesario contar con Perl 5 o superior instalado. Efectue su instalacion e intentelo nuevamente.Proceso de instalacion Cancelado."
+else
+echo "Perl Version=$versioninst"
+fi
 }
 
 
 #Paso 5 Aceptacion de terminos
 #Retorna 1 si acepto los terminos, 0 si no.
-function AceptaTerminos(){
+function AceptaTerminos {
 
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo " A T E N C I O N: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
@@ -142,7 +135,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var1" = "Si"]
 then
 return 1
-fi
 else return 0
 fi
 }
@@ -150,7 +142,7 @@ fi
 
 # Paso 7
 #funcion para definir los ejecutables 
-function DefinirEjecutables (){
+function DefinirEjecutables {
 
 echo "Defina el directorio de instalacion de los archivos ejecutables ($grupo/bin"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -163,7 +155,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 BINDIR=$BINDIR
-fi
 else 
 echo "Proponga su directorio para los ejecutables"
 read direct
@@ -174,7 +165,7 @@ fi
 
 # Paso 8
 # Funcion para definir el directorio de los maestros
-function DefinirMaestros (){
+function DefinirMaestros {
 
 echo "Defina el directorio de instalacion de los archivos maestros ($grupo/mae)"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -187,7 +178,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 MAEDIR=$MAEDIR
-fi
 else
 echo "Proponga su directorio para los archivos maestros"
 read direct
@@ -199,7 +189,7 @@ fi
 
 # Paso 9
 # Funcion para definir el directorio de los archivos externos
-function DefinirEternos (){
+function DefinirEternos {
 
 echo "Defina el directorio de instalacion de los archivos externos ($grupo/arribos)"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -212,7 +202,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 ARRIDIR=$ARRIDIR
-fi
 else
 echo "Proponga su directorio para los archivos maestros"
 read direct
@@ -223,7 +212,7 @@ fi
 
 
 # Paso 10. Pedido al usuario  espacio para directorio ARRIDIR
-function EspacioMinimoArribos(){
+function EspacioMinimoArribos {
 
 echo "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes (100):"
 
@@ -235,7 +224,7 @@ DATASIZE=$cantidad	#guardo en la variable datasize la cantidad pasada
 
 # Paso 12
 # Funcion para definir el directorio de los archivos aceptados
-function DefinirAceptados (){
+function DefinirAceptados {
 
 echo "Defina el directorio de instalacion de los archivos maestros ($grupo/aceptados)"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -248,7 +237,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 ACEPDIR=$ACEPDIR
-fi
 else
 echo "Proponga su directorio para los archivos maestros"
 read direct
@@ -259,7 +247,7 @@ fi
 
 # Paso 13
 # Funcion para definir el directorio de los archivos rechazados
-function DefinirRechazados (){
+function DefinirRechazados {
 
 echo "Defina el directorio de instalacion de los archivos rechazados ($grupo/rechazados)"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -272,7 +260,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 RECHDIR=$RECHDIR
-fi
 else
 echo "Proponga su directorio para los archivos rechazados"
 read direct
@@ -283,7 +270,7 @@ fi
 
 # Paso 14
 # Funcion para definir el directorio de los listados de salida
-function DefinirRechazados (){
+function DefinirRechazados {
 
 echo "Defina el directorio de instalacion de los listados de salida($grupo/listados)"
 echo "Desea conservar el directorio por defecto?: Si - No"
@@ -296,7 +283,6 @@ done #Hasta que no contesta si o no sale del bucle
 if ["$var2" = "Si"]
 then
 REPODIR=$REPODIR
-fi
 else
 echo "Proponga su directorio para los archivos de salida"
 read direct
@@ -310,7 +296,7 @@ fi
 # Paso 17
 # Define la extension de los archivos de log
 
-function LogExtension(){
+function LogExtension {
 
 echo "Ingrese la extension para los archivos de log: (.log)"
 read extension
@@ -323,7 +309,7 @@ LOGEXT=$extension
 # Paso 21.1
 #Instalacion de los directorios
 
-function InstalacionDirectorios(){
+function InstalacionDirectorios {
 echo "Creando Estructuras de directorio ..."
 mkdir "$BINDIR"
 mkdir "$MAEDIR"
@@ -339,7 +325,7 @@ mkdir "$LOGDIR"
 
 
 
-function EsportarVariables(){
+function EsportarVariables {
 
 export BINDIR="$BINDIR"
 export MAEDIR="$MAEDIR"
