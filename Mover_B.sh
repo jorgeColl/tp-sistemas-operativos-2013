@@ -3,7 +3,7 @@
 #Ejmplo: nombrearchivo.N
 #Parametros de ejecucion: ./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
 
-#Bugs conocidos: Si se quiere mover un archivo cuyo nombre este contenido en otro nombre de archivo se detectara como repeticion.
+#Bugs conocidos: Se puede llegar a pisar una secuencia existente.
 
 # ----------------------------------
 #!/bin/bash
@@ -40,7 +40,7 @@
 	echo $dirDestino
 	echo $repeticiones
 	
-	if [ $repeticiones -eq 0 ]; then
+	if [ ! -f $2 ]; then
 		#El archivo no existe en el destino.
 		`mv ${1} ${2}`
 	else
