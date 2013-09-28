@@ -3,6 +3,7 @@
 #Parametros de ejecucion: ./Grabar_L comandoSolicitante tipoDeMensaje mensaje
 #El tipo de mensaje es opcional, por lo tanto, se puede invocar como: ./Grabar_L comandoSolicitante mensaje
 #Opcion por defecto 'Informativo = I'
+#LOGSIZE debe estar ingresado en Bytes
 #Bugs conocidos:
 
 # ----------------------------------
@@ -27,13 +28,18 @@
 		opcion="Error";;
 	-fe )
 		opcion="Fatal Error";;
+	-ins ) 
+		opcion="-ins" ;;
 	* )
 		opcion="Warning" ;;
 	esac
 	
 	#Ahora debo crear la estructura de directorio
-	archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
-	
+	if [ $opcion = "-ins" ]; then
+		archDestino="$CONFIGDIRinstalacion.log"
+	else
+		archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
+	fi
 	#Recorto el mensaje de ser necesario
 	if [ ${#mensaje} -gt 120 ]; then
 		#Debo recortarlo.
@@ -49,4 +55,16 @@
 	#Ahora lo agrego al archivo.
 	echo $mensajeFinal >> $archDestino
 	#echo "$mensajeFinal en $archDestino"
+	
+	#Obtengo el tamanio del archivo.
+	tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed -E 's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
+	tamanio=`echo $tamanio | sed -E 's/ .*//'` 
+	tamanio=`expr $tamanio`
+	echo $tamanio
+	if [ opcion = "-ins" ]; then
+		exit 0
+	elif [ $tamanio -gt $LOGSIZE ]; then
+		`sed -E "1,50 d" $archDestino > $archDestino`
+		echo "$tiempo;Se ha recortado el archivo de Log;" >> $archDestino
+	fi
 	exit 0
