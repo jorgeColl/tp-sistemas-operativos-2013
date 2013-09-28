@@ -29,14 +29,15 @@
 	-fe )
 		opcion="Fatal Error";;
 	-ins ) 
-		opcion="-ins" ;;
+		;;
 	* )
 		opcion="Warning" ;;
 	esac
 	
 	#Ahora debo crear la estructura de directorio
 	if [ $opcion = "-ins" ]; then
-		archDestino="$CONFIGDIRinstalacion.log"
+		archDestino="${CONFIGDIR}instalacion.log"
+		#echo $archDestino
 	else
 		archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
 	fi
@@ -54,16 +55,16 @@
 	
 	#Ahora lo agrego al archivo.
 	echo $mensajeFinal >> $archDestino
-	#echo "$mensajeFinal en $archDestino"
+	echo "$mensajeFinal en $archDestino"
 	
 	#Obtengo el tamanio del archivo.
-	tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed -E 's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
-	tamanio=`echo $tamanio | sed -E 's/ .*//'` 
-	tamanio=`expr $tamanio`
-	echo $tamanio
-	if [ opcion = "-ins" ]; then
-		exit 0
-	elif [ $tamanio -gt $LOGSIZE ]; then
+	tamanio=0
+	if [ ! opcion = "-ins" ]; then
+		tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed -E 's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
+		tamanio=`echo $tamanio | sed -E 's/ .*//'` 
+		#tamanio=`expr $tamanio + 0`
+	fi
+	if [ ${tamanio:-0} -gt $LOGSIZE ]; then
 		`sed -E "1,50 d" $archDestino > $archDestino`
 		echo "$tiempo;Se ha recortado el archivo de Log;" >> $archDestino
 	fi
