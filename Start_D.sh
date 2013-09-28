@@ -11,4 +11,15 @@
 		#Invocar al Log
 		exit -1
 	fi
+	programaInvocado=`echo ${1##*/}`
+	ejecuciones=`ls -l | grep "$programaInvocado" | wc -l`
+	
+	if [ ${ejecuciones:-0} -eq 0 ]; then
+		#No esta en ejecucion.
+		#Aqui entra toda la logica siguiente.
+		echo $ejecuciones
+	else 
+		#Avisar al Log que no se puede ejecutar nada
+		exit 0
+	fi
 	exit 0
