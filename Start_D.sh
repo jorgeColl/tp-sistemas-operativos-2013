@@ -14,12 +14,23 @@
 	programaInvocado=`echo ${1##*/}`
 	ejecuciones=`ls -l | grep "$programaInvocado" | wc -l`
 	
+	retorno=0
 	if [ ${ejecuciones:-0} -eq 0 ]; then
 		#No esta en ejecucion.
 		#Aqui entra toda la logica siguiente.
-		echo $ejecuciones
+		#echo $ejecuciones
+		$1 & 2> /dev/null > /dev/null
+		retorno=$?
 	else 
 		#Avisar al Log que no se puede ejecutar nada
 		exit 0
+	fi
+	echo $retorno
+	if [ ${retorno:-0} -eq 0 ]; then
+		#Grabar en el log todo salio bien.
+		echo "Se ha ejecutado el comando."
+	else
+		#Grabar en el log algo salio mal.
+		echo "Se ha ejecutado el comando con errores, por favor re-intente."
 	fi
 	exit 0
