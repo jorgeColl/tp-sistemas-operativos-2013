@@ -9,7 +9,7 @@ Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
 
 #Por defecto asumo estos directorios 
-function DirectoriosDefault {
+function ParametrosDefault {
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
 ARRIDIR="$grupo/arribos"
@@ -24,6 +24,7 @@ LOGSIZE='400'
 
 #(Pasos 19 - )Funcion auxiliar que muestra el estado de la instalacion
 function MostrarMensajeEstado {
+clear
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo "Libreria del Sistema: $CONFDIR"
 ls "$CONFDIR"
@@ -299,7 +300,7 @@ mkdir -p "$LOGDIR"
 
 }
 
-#INICIO DE EJECUCION
+#INICIO DE EJECUCION-----------------------------------------------------------
 # Paso 1, 2 y 3
 mkdir -p "$CONFDIR"
 InicioLogInstalacion
@@ -330,9 +331,12 @@ then
 else
 	echo "Perl Si esta instalado"
 fi
-#Cargo a las variables los directorios default
-DirectoriosDefault
 
+#Cargo a las variables los parametros default
+ParametrosDefault
+
+#NOTA: se que queda medio sucio poner esta funcion aca pero creo que se ve mas "secuencial" la instalacion si la dejo aca
+function Definiciones {
 #Paso7: Definir el directorio de instalación de los ejecutables
 DefinirEjecutables
 
@@ -372,14 +376,22 @@ EspacioMaxLogs
 #Paso 19: Mostrar estructura de directorios resultante y valores de parámetros configurados
 MostrarMensajeEstado ' LISTO'
 
-#Paso 19.3: Si el usuario indica Si, Continuar en el paso: “Confirmar Inicio de Instalación”
-#[FALTA HACER]
+echo "Desea continuar con la instalacion?: Si - No"
+if FSiNo;
+then
+	clear
+	Definiciones
+fi
+}
 
-#Paso 19.4: Si el usuario indica No, Limpiar la pantalla y continuar después del chequeo de Perl
-#[FALTA HACER]
+Definiciones
 
 #Paso 20: Confirmar Inicio de Instalación
-#[FALTA HACER]
+echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
+if FSiNo;
+then
+	FIN
+fi
 
 #Paso 21: Instalacion
 InstalacionDirectorios
