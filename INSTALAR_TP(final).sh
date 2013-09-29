@@ -18,6 +18,8 @@ RECHDIR="$grupo/rechazados"
 REPODIR="$grupo/listados"
 PROCDIR="$grupo/procesados"
 LOGDIR="$grupo/log"
+DATASIZE='100'
+LOGSIZE='400'
 }
 
 #(Pasos 19 - )Funcion auxiliar que muestra el estado de la instalacion
@@ -92,14 +94,15 @@ echo 'reinstalando....'
 function AceptaTerminos {
 
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
-echo " A T E N C I O N: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
+echo " ATENCION: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
 echo "¿Acepta? Si - No "
 FSiNo
 
 }
 #(Paso 6) Funcion que Chequea que Perl esté instalado
 function PerlInstalado {
-if [ -x /usr/bin/perl ];
+#-x /usr/bin/perl otra forma de buscar ejecutable de perl
+if [ `which "perl"` ];
 then
 	return "1"
 else
@@ -162,23 +165,29 @@ fi
 #(Paso 10) Funcion que define el espacio mínimo libre para el arribo de archivos externos
 function EspacioMinimoArribos {
 local cantidad
-echo "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes (100):"
-
-while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
-do
-	read cantidad
-done
-DATASIZE="$cantidad"
+echo "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes ($DATASIZE):"
+echo "Desea conservar el Tamaño por defecto?: Si - No"
+if FSiNo;
+then
+	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
+	do
+		read cantidad
+	done
+	DATASIZE="$cantidad"
+fi
 }
 
 #(Paso 11) Funcion que verifica el espacio en disco
 function ComprobarEspacio {
+mkdir -p $ARRIDIR #parche auxiliar !!!!!!!!!!!!!!!
+
 local espa=`df "$ARRIDIR"`
 declare -i local taman=` echo $espa | sed 's#.* \([^ ]*\) [^ ]* [^ ]*$#\1#' `
 
-if [ $taman -lt $DATASIZE ];
+if [ "$taman" -lt "$DATASIZE" ];
 then
-	echo "ESPACIO INSUFICIENTE PORFAVOR LIBERE ESPACIO Y VUELVA A INSTALAR"
+	echo "ESPACIO INSUFICIENTE POR FAVOR LIBERE ESPACIO Y VUELVA A INSTALAR"
+	echo "Se necesitan $DATASIZE y se tiene $taman"
 	FIN
 fi
 }
@@ -186,7 +195,7 @@ fi
 #(Paso 12) Funcion que define el directorio de grabación de los archivos aceptados
 function DefinirAceptados {
 local direct
-echo "Defina el directorio de instalacion de los archivos maestros ($grupo/aceptados)"
+echo "Defina el directorio de instalacion de los archivos maestros ($ACEPDIR)"
 echo "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
@@ -200,7 +209,7 @@ fi
 #(Paso 13) Funcion que define el directorio de grabación de los archivos rechazados
 function DefinirRechazados {
 local direct
-echo "Defina el directorio de instalacion de los archivos rechazados ($grupo/rechazados)"
+echo "Defina el directorio de instalacion de los archivos rechazados ($RECHDIR)"
 echo "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
@@ -211,10 +220,10 @@ then
 fi
 }
 
-#(Paso14) Funcion que define el directorio de grabación de los LISTADOS de salida
+#(Paso 14) Funcion que define el directorio de grabación de los LISTADOS de salida
 function DefinirSalida {
 local direct
-echo "Defina el directorio de instalacion de los listados de salida($grupo/listados)"
+echo "Defina el directorio de instalacion de los listados de salida($REPODIR)"
 echo "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
@@ -225,6 +234,50 @@ then
 fi
 }
 
+#(Paso 15) Funcion que define el directorio de trabajo principal del proceso Reservar_B
+function DefinirProcesados {
+local direct
+echo "Defina el directorio de grabación de los archivos procesados ($PROCDIR):"
+echo "Desea conservar el directorio por defecto?: Si - No"
+if FSiNo;
+then
+	echo "Proponga su directorio para los archivos de salida"
+	read direct
+	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
+	PROCDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
+fi
+}
+
+#(Paso 16) Funcion que define el directorio de logs para los comandos
+function DefinirLogs {
+local direct
+echo "Defina el directorio de logs ($LOGDIR):"
+echo "Desea conservar el directorio por defecto?: Si - No"
+if FSiNo;
+then
+	echo "Proponga su directorio para los archivos de salida"
+	read direct
+	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
+	LOGDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
+fi
+}
+
+#(Paso 18) Funcion que define el tamaño máximo para los archivos de log
+function EspacioMaxLogs {
+local cantidad
+echo "Defina el tamaño máximo para los archivos $LOGEXT en Kbytes ($LOGSIZE):"
+echo "Desea conservar el Tamaño por defecto?: Si - No"
+if FSiNo;
+then
+	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
+	do
+		read cantidad
+	done
+	LOGSIZE="$cantidad"
+fi
+
+}
+
 #(Paso 17) Funcion que define la extension de los archivos de log
 function LogExtension {
 echo "Ingrese la extension para los archivos de log: (.log)"
@@ -232,7 +285,7 @@ read extension
 LOGEXT=$extension
 }
 
-#(Paso 21.1) Instalacion de los directorios
+#(Paso 21.1) Funcion que crea los directorios
 function InstalacionDirectorios {
 echo "Creando Estructuras de directorio ..."
 mkdir -p "$BINDIR"
@@ -305,16 +358,16 @@ DefinirRechazados
 DefinirSalida
 
 #Paso 15: Definir el directorio de trabajo principal del proceso Reservar_B
-#[FALTA HACER]
+DefinirProcesados
 
 #Paso 16: Definir el directorio de logs para los comandos
-#[FALTA HACER]
+DefinirLogs
 
 #Paso 17: Definir la extensión para los archivos de log
 LogExtension
 
 #Paso 18: Definir el tamaño máximo para los archivos de log
-#[FALTA HACER]
+EspacioMaxLogs
 
 #Paso 19: Mostrar estructura de directorios resultante y valores de parámetros configurados
 MostrarMensajeEstado ' LISTO'
