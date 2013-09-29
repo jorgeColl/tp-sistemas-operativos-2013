@@ -1,7 +1,6 @@
 #!/bin/bash
 
-function DirectoriosDefault {
-grupo='./grupo8'
+function ParametrosDefault {
 BINDIR="$grupo/bin"
 MAEDIR="$grupo/mae"
 ARRIDIR="$grupo/arribos"
@@ -10,6 +9,8 @@ RECHDIR="$grupo/rechazados"
 REPODIR="$grupo/listados"
 PROCDIR="$grupo/procesados"
 LOGDIR="$grupo/log"
+DATASIZE='100'
+LOGSIZE='400'
 }
 
 function ExportarVariables {
@@ -23,9 +24,11 @@ export PROCDIR
 export LOGDIR
 export DATASIZE
 export LOGEXT
+export DATASIZE
+export LOGSIZE
 
 }
 
 echo "WARNING: Recordar correr INICIAR.sh de la forma: . ./INICIAR.sh "
-DirectoriosDefault
+ParametrosDefault
 ExportarVariables
