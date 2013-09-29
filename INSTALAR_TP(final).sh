@@ -297,7 +297,30 @@ mkdir -p "$ACEPDIR"
 mkdir -p "$REPODIR"
 mkdir -p "$PROCDIR"
 mkdir -p "$LOGDIR"
+}
 
+#(Paso 21.2) Funcion que mueve los archivos maestros al directorio MAEDIR
+function MoverMaestros {
+echo "Instalando Archivos Maestros"
+#[FALTA HACER]
+}
+
+#(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
+function MoverDisponibilidad {
+echo "Instalando Archivo de Disponibilidad"
+#[FALTA HACER]
+}
+
+#(Paso 21.4) Funcion que mueve los ejecutables y funciones  al directorio BINDIR
+function MoverProgramasFunciones{
+echo "Instalando Programas y Funciones"
+#[FALTA HACER]
+}
+
+#(Paso 21.5) Funcion que Actualiza el archivo de configuración
+function ActualizarArchivos{
+echo "Actualizando la configuración del sistema"
+#[FALTA HACER]
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------
@@ -395,15 +418,16 @@ fi
 
 #Paso 21: Instalacion
 InstalacionDirectorios
-#[FALTA HACER]
-#[FALTA HACER]
-#[FALTA HACER]
+MoverMaestros #[FALTA HACER]
+MoverDisponibilidad #[FALTA HACER]
+MoverProgramasFunciones #[FALTA HACER]
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
-#[FALTA HACER]
+#[FALTA HACER] ?¿
 
 #Paso 23: Mostrar mensaje de fin de instalación
-#[FALTA HACER]
+echo "Instalación CONCLUIDA"
 
 #Paso 24: FIN
 #the fuking end yeahh !!!
+
