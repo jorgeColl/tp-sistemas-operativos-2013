@@ -25,7 +25,7 @@
 		#Avisar al Log que no se puede ejecutar nada
 		exit 0
 	fi
-	echo $retorno
+	#echo $retorno
 	if [ ${retorno:-0} -eq 0 ]; then
 		#Grabar en el log todo salio bien.
 		echo "Se ha ejecutado el comando."
