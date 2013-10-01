@@ -12,17 +12,15 @@
 		exit -1
 	fi
 	programaInvocado=`echo ${1##*/}`
-	ejecuciones=`ls -l | grep "$programaInvocado" | wc -l`
-	
-	retorno=0
+	ejecuciones=`ps | grep "$programaInvocado" | sed '/./!d' | wc -l`
 	if [ ${ejecuciones:-0} -eq 0 ]; then
 		#No esta en ejecucion.
 		#Aqui entra toda la logica siguiente.
 		#echo $ejecuciones
-		$1 & 2> /dev/null > /dev/null
-		retorno=$?
+		$1& 2> /dev/null > /dev/null
 	else 
 		#Avisar al Log que no se puede ejecutar nada
+		echo "El proceso ya se encuentra en ejecución."
 		exit 0
 	fi
 	#echo $retorno
