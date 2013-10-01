@@ -20,6 +20,7 @@ switch ($val) {
 sub generar_disponibilidades {
 	#TODO: Aca deberia buscar en otro directorio.
 	if ( ! (-e "combos.dis") ) {
+		print "No existe el archivo de entrada\n";
 		return;
 	}
 	print "¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala.\n";
@@ -27,20 +28,58 @@ sub generar_disponibilidades {
 	chomp($entrada);
 	
 	if ( ($entrada ne "-o") and ($entrada ne "-s") ) {
-	    print "Opcion incorrecta.. Saliendo.\n"
+	    print "Opcion incorrecta.. Saliendo.\n";
+	    return;
 	}
 	print "Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'\n";
 	$numid= <STDIN>;
 	chomp($numid);
 	$indiceguion=index($numid,"-");
 	$rango=0;
-	if ( $indiceguion ne -1 ) $rango=1;
-	if ( $entrada eq "-o" ) {
-	    print "Eligio obra\n"
+	if ( $indiceguion ne -1 ) { $rango=1; }
+	#Si tengo un rango de valores, rango=-1. Si tengo un sólo valor, rango=0.
+	
+	if ($rango eq 0) { @valores = ( $numid ); }
+	else { 
+	  #Valores inicial y final del rango.
+	  $valorinicial=substr($numid,0,$indiceguion);
+	  $valorfinal=substr($numid,$indiceguion+1);
+	  if ( $valorinicial gt $valorfinal ) { 
+	      print "Error en el rango introducido...\n"; 
+	      return;
+	  }
+	  while ($valorinicial<=$valorfinal) {
+	    push(@valores,$valorinicial);
+	    $valorinicial+=1;
+	  }
 	}
-	elsif ( $entrada eq "-s" ) {
-	    print "Eligio sala\n"
+	$encontro=0;
+	open(IN, "combos.dis");
+	while($linea = <IN>) {
+	  chomp($linea);
+	  @data= split(";", $linea);
+	  
+	  #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
+	  #TODO: Usar expresiones regulares para verificar que este bien formado.
+	  if ($#data ne 6 ) { next; }
+	  
+	  if ( $entrada eq "-o" ) {
+	    $idbus=$data[1];
+	  }
+	  elsif ( $entrada eq "-s" ) {
+	    $idbus=$data[4];
+	  }
+	 
+	  for ($i=0; $i<=$#valores; $i++) {
+	      if ($valores[$i] eq $idbus) {
+		$encontro=1;
+		for ($k=0; $k<5; $k++) { print ( "$data[$k] - "); }
+		print ( "$data[5]\n");
+	      }
+	  }
+	  
 	}
+	close(IN);
 }
 
 sub imprimir_ayuda {
