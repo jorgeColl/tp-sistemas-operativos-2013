@@ -18,6 +18,7 @@ RECHDIR="$grupo/rechazados"
 REPODIR="$grupo/listados"
 PROCDIR="$grupo/procesados"
 LOGDIR="$grupo/log"
+LOGEXT='.log'
 DATASIZE='100'
 LOGSIZE='400'
 }
@@ -281,9 +282,13 @@ fi
 
 #(Paso 17) Funcion que define la extension de los archivos de log
 function LogExtension {
-echo "Ingrese la extension para los archivos de log: (.log)"
-read extension
-LOGEXT=$extension
+echo "Ingrese la extension para los archivos de log: ($LOGEXT)"
+echo "Desea conservar el Tamaño por defecto?: Si - No"
+if FSiNo;
+then
+	read extension
+	LOGEXT=$extension
+fi
 }
 
 #(Paso 21.1) Funcion que crea los directorios
@@ -303,18 +308,32 @@ mkdir -p "$LOGDIR"
 function MoverMaestros {
 echo "Instalando Archivos Maestros"
 #[FALTA HACER]
+#./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
 }
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
 function MoverDisponibilidad {
 echo "Instalando Archivo de Disponibilidad"
 #[FALTA HACER]
+#./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
 }
 
 #(Paso 21.4) Funcion que mueve los ejecutables y funciones  al directorio BINDIR
 function MoverProgramasFunciones {
 echo "Instalando Programas y Funciones"
 #[FALTA HACER]
+./Mover_B.sh ./Iniciar_B.sh $BINDIR
+./Mover_B.sh ./Grabar_L.sh $BINDIR
+./Mover_B.sh ./Reservar_B.sh $BINDIR
+./Mover_B.sh ./Matar_D.sh $BINDIR
+./Mover_B.sh ./Start_D.sh $BINDIR
+./Mover_B.sh ./Imprimir_B.pl $BINDIR
+#muevo readmes
+./Mover_B.sh ./Readme_Instalar $BINDIR
+./Mover_B.sh ./Readme_Start_D $BINDIR
+#muevo mover jeje
+./Mover_B.sh ./Mover_B.sh $BINDIR
+
 }
 
 #(Paso 21.5) Funcion que Actualiza el archivo de configuración
