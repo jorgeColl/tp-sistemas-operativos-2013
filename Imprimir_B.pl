@@ -10,12 +10,30 @@ if ( $#ARGV <0 ) {
 $val=$ARGV[0];
 
 switch ($val) {
+
+	#TODO: Agregar a las funciones que correspondan la opcion de escribir en archivo.
+	$escribir=0;
+	
+	if ( $ARGV[1] eq "-w" ) { $escribir=1; }
 	
 	case "-a" { &imprimir_ayuda; }
 	case "-d" { &generar_disponibilidades; }
+	case "-r" { &generar_ranking; }
+	
+	case "-w" {
+	    $escribir=1;
+	    if ( $ARGV[1] eq "-d" ) { &generar_disponibilidades; }
+	    else { print "Parametros invalidos. -a para visualizar ayuda\n" }
+	}
 	else { print "Parametros invalidos. -a para visualizar ayuda\n" }
 	
 }
+
+
+sub generar_ranking {
+    print "Ranking :D\n";
+}
+
 
 sub generar_disponibilidades {
 	#TODO: Aca deberia buscar en otro directorio.
@@ -25,20 +43,6 @@ sub generar_disponibilidades {
 	}
 	&disponibilidades_pedirdatos;
 	
-	if ($rango eq 0) { @valores = ( $numid ); }
-	else { 
-	  #Valores inicial y final del rango.
-	  $valorinicial=substr($numid,0,$indiceguion);
-	  $valorfinal=substr($numid,$indiceguion+1);
-	  if ( $valorinicial gt $valorfinal ) { 
-	      print "Error en el rango introducido...\n"; 
-	      return;
-	  }
-	  while ($valorinicial<=$valorfinal) {
-	    push(@valores,$valorinicial);
-	    $valorinicial+=1;
-	  }
-	}
 	$encontro=0;
 	open(IN, "combos.dis");
 	while($linea = <IN>) {
@@ -89,6 +93,22 @@ sub disponibilidades_pedirdatos {
 	$rango=0;
 	if ( $indiceguion ne -1 ) { $rango=1; }
 	#Si tengo un rango de valores, rango=-1. Si tengo un sólo valor, rango=0.
+	
+	
+	if ($rango eq 0) { @valores = ( $numid ); }
+	else { 
+	  #Valores inicial y final del rango.
+	  $valorinicial=substr($numid,0,$indiceguion);
+	  $valorfinal=substr($numid,$indiceguion+1);
+	  if ( $valorinicial gt $valorfinal ) { 
+	      print "Error en el rango introducido...\n"; 
+	      return;
+	  }
+	  while ($valorinicial<=$valorfinal) {
+	    push(@valores,$valorinicial);
+	    $valorinicial+=1;
+	  }
+	}
 
 }
 
