@@ -312,13 +312,13 @@ echo "Instalando Archivo de Disponibilidad"
 }
 
 #(Paso 21.4) Funcion que mueve los ejecutables y funciones  al directorio BINDIR
-function MoverProgramasFunciones{
+function MoverProgramasFunciones {
 echo "Instalando Programas y Funciones"
 #[FALTA HACER]
 }
 
 #(Paso 21.5) Funcion que Actualiza el archivo de configuración
-function ActualizarArchivos{
+function ActualizarArchivos {
 echo "Actualizando la configuración del sistema"
 #[FALTA HACER]
 }
