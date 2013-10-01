@@ -29,6 +29,6 @@ export LOGSIZE
 
 }
 
-echo "WARNING: Recordar correr INICIAR.sh de la forma: . ./INICIAR.sh "
+echo "WARNING: Recordar correr INICIAR.sh de la forma: . ./Iniciar_B.sh "
 ParametrosDefault
 ExportarVariables
