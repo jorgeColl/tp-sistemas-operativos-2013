@@ -13,8 +13,10 @@
 		exit -1
 	fi
 	cantidad=`ps | grep -E "$1"`
-	cantidadEncontrada=`echo $cantidad | wc -l`
-	if [ ${cantidad:-0} -eq 0 ]; then
+	#echo ${cantidad:-0}
+	cantidadEncontrada=`echo $cantidad | sed '/./!d' | wc -l`
+	#echo ${cantidadEncontrada:-0}
+	if [ ${cantidadEncontrada:-0} -eq 0 ]; then
 		#No se esta ejecutando ese proceso
 		echo "El proceso: $1 no se esta ejecutando" #Escribir en log
 	else 
@@ -27,6 +29,6 @@
 		#echo $cantidad
 		kill ${cantidad:-0}
 		#Escribir en log
-		ps > /dev/null #Para limpiar la lista de ejecutados en segundo plano
+		echo "El proceso: $1 ha finalizado" #Escribir en log
 	fi
 	exit 0
