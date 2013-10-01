@@ -23,21 +23,7 @@ sub generar_disponibilidades {
 		print "No existe el archivo de entrada\n";
 		return;
 	}
-	print "¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala.\n";
-	$entrada = <STDIN>;
-	chomp($entrada);
-	
-	if ( ($entrada ne "-o") and ($entrada ne "-s") ) {
-	    print "Opcion incorrecta.. Saliendo.\n";
-	    return;
-	}
-	print "Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'\n";
-	$numid= <STDIN>;
-	chomp($numid);
-	$indiceguion=index($numid,"-");
-	$rango=0;
-	if ( $indiceguion ne -1 ) { $rango=1; }
-	#Si tengo un rango de valores, rango=-1. Si tengo un sólo valor, rango=0.
+	&disponibilidades_pedirdatos;
 	
 	if ($rango eq 0) { @valores = ( $numid ); }
 	else { 
@@ -61,7 +47,7 @@ sub generar_disponibilidades {
 	  
 	  #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
 	  #TODO: Usar expresiones regulares para verificar que este bien formado.
-	  if ($#data ne 6 ) { next; }
+	  if ($#data ne 7 ) { next; }
 	  
 	  if ( $entrada eq "-o" ) {
 	    $idbus=$data[1];
@@ -73,13 +59,37 @@ sub generar_disponibilidades {
 	  for ($i=0; $i<=$#valores; $i++) {
 	      if ($valores[$i] eq $idbus) {
 		$encontro=1;
-		for ($k=0; $k<5; $k++) { print ( "$data[$k] - "); }
-		print ( "$data[5]\n");
+		for ($k=0; $k<6; $k++) { print ( "$data[$k] - "); }
+		print ( "$data[6]\n");
 	      }
 	  }
-	  
 	}
 	close(IN);
+	if ($encontro ne 1) {
+	    print "No se encontraron resultados para el o los valores ingresados.\n Vuelva a insertar datos.\n";
+	    &generar_disponibilidades;
+	}
+}
+
+#Funcion auxiliar de generar_disponibilidades para que el usuario ingrese datos.
+sub disponibilidades_pedirdatos {
+
+	print "¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala.\n";
+	$entrada = <STDIN>;
+	chomp($entrada);
+	
+	if ( ($entrada ne "-o") and ($entrada ne "-s") ) {
+	    print "Opcion incorrecta.. \n";
+	    return;
+	}
+	print "Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'\n";
+	$numid= <STDIN>;
+	chomp($numid);
+	$indiceguion=index($numid,"-");
+	$rango=0;
+	if ( $indiceguion ne -1 ) { $rango=1; }
+	#Si tengo un rango de valores, rango=-1. Si tengo un sólo valor, rango=0.
+
 }
 
 sub imprimir_ayuda {
