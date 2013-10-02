@@ -7,9 +7,9 @@
 	cantidadEjecuciones=`ps -e | grep "$1$" | wc -l`
 	if [ $cantidadEjecuciones -gt 1 ]; then
 		echo "Esta corriendo MAS de una vez"
-		exit 1
+		return 1
 	else
 		echo "Esta corriendo una o MENOS veces"
-		exit 0
+		return 0
 	fi
-	exit 0
+	return 0
