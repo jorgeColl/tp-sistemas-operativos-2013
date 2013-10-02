@@ -13,7 +13,7 @@
 		echo "Parametros de ejecucion: ./Matar_B nombreProceso o ./Matar_B idProceso"
 		exit -1
 	fi
-	cantidad=`ps | grep -E "$1"`
+	cantidad=`ps -e | grep -E "$1$"`
 	#echo ${cantidad}
 	cantidadEncontrada=`echo $cantidad | sed '/^$/d' | wc -l`
 	#echo ${cantidadEncontrada:-0}
@@ -22,7 +22,7 @@
 		echo "El proceso: $1 no se esta ejecutando" #Escribir en log
 	else 
 		#Saco el resto de la linea
-		ps | grep -E "$1" | sed '/^$/d' > archivoAuxiliarMatar_D.tmp
+		ps -e | grep -E "$1" | sed '/^$/d' > archivoAuxiliarMatar_D.tmp
 		while read linea
 		do
 			p_id=`echo ${linea% *}`
