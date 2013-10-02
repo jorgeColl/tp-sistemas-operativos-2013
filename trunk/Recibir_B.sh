@@ -9,9 +9,13 @@ ARRIDIR="arribos"
 REPODIR="repodir"
 SLEEP=10
 
-# Parámetros..
+# Parámetros...
 
+# Funciones Auxiliares
 
+function EsObraOSala {
+	return 0
+}
 
 # 1.grabar en el log el numero de ciclo.
 function GrabarLog {
@@ -31,13 +35,16 @@ function ChequearArribos {
 #while true
 #do
 	# archivos de invitados: 
-	for archivo in `ls $ARRIDIR | grep ".*\.inv"`
+	for archivo in `ls "$ARRIDIR"`
 	do
 	# si es un archivo (salteo los directorios)
 	if [ -f "${ARRIDIR}/${archivo}" ]
 	then
 		# caso archivos de invitados termina en .inv
-		if [ `echo $archivo|grep ".*\.inv"` != "" ]
+		# tomo el retorno de la ejecucion de grep con -q
+		# 0 si encontro algo, 1 si no encontro nada, 2 error
+		# uso esto porque daba error cuando no encontraba nada.
+		if `echo $archivo|grep -q ".*\.inv"` 
 		then
 			local origen=$ARRIDIR/$archivo
 			local destino=$REPODIR/$archivo
@@ -49,7 +56,7 @@ function ChequearArribos {
 				LogErrorAlMover origen destino
 			fi
 		# caso archivos obras o salas
-		elif [ `echo $archivo|grep "^[^-]*-[^-]*-*"` != "" ]
+		elif `echo $archivo|grep -q "^[^-]*-[^-]*-*"`
 		then
 			echo "OBRAS O SALAS"
 		fi
