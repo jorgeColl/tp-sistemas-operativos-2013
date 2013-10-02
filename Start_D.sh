@@ -12,7 +12,7 @@
 		exit -1
 	fi
 	programaInvocado=`echo ${1##*/}`
-	ejecuciones=`ps | grep "$programaInvocado" | sed '/./!d' | wc -l`
+	ejecuciones=`ps -e | grep "$programaInvocado$" | sed '/./!d' | wc -l`
 	if [ ${ejecuciones:-0} -eq 0 ]; then
 		#No esta en ejecucion.
 		#Aqui entra toda la logica siguiente.
@@ -22,13 +22,5 @@
 		#Avisar al Log que no se puede ejecutar nada
 		echo "El proceso ya se encuentra en ejecución."
 		exit 0
-	fi
-	#echo $retorno
-	if [ ${retorno:-0} -eq 0 ]; then
-		#Grabar en el log todo salio bien.
-		echo "Se ha ejecutado el comando."
-	else
-		#Grabar en el log algo salio mal.
-		echo "Se ha ejecutado el comando con errores, por favor re-intente."
 	fi
 	exit 0
