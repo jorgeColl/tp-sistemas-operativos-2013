@@ -4,7 +4,8 @@
 
 # --------------------------------------- 
 #!/bin/bash
-	cantidadEjecuciones=`ps -e | grep "$1$" | wc -l`
+	comandoSolicitante=`echo ${1##*/}`
+	cantidadEjecuciones=`ps -e | grep "$comandoSolicitante$" | wc -l`
 	if [ $cantidadEjecuciones -gt 1 ]; then
 		echo "Esta corriendo MAS de una vez"
 		return 1
