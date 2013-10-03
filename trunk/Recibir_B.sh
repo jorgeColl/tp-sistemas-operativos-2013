@@ -3,21 +3,60 @@
 # Detecta la llegada de archivos al directorio ARRIDIR, valida el nombre del mismo
 # y lo mueve al directorio que corresponda.
 
-# uso un directorio auxiliar para probar...
-#BORRAR
+#**************************** MODO DE USO / PARAMETROS ************************
+
+#**********************************BORRAR***************************************
+
 ARRIDIR="arribos"
 REPODIR="repodir"
 ACEPDIR="acepdir"
 RECHDIR="rechdir"
-OBRAS="mae/obras.mae"
-SALAS="mae/salas.mae"
+MAEDIR="mae"
+LOGDIR="log"
+LOGEXT="log"
+
+export LOGDIR
+export LOGEXT
+#*******************************VARIABLES DE AMBIENTE**************************
+
+# tiempo a dormir antes de ejecutar el proximo ciclo en segundos.
 SLEEP=10
 
-# Parámetros...
+# archivo donde se guarda la cuenta de las ejecuciones.
+COUNTFILE=$LOGDIR/count
 
-# Funciones Auxiliares
+# archivos de obras y salas
+OBRAS="$MAEDIR/obras.mae"
+SALAS="$MAEDIR/salas.mae"
 
-# recibe un nombre de archivo y devuelve
+
+#***************************** FUNCIONES **************************************
+
+# 1.grabar en el log el numero de ciclo.
+# Se utilizará un archivo oculto COUNTFILE el archivo solo tendrá
+# una línea donde se guarda una variable que lleva la cuenta del 
+# número de veces que se ha llamado al script.
+function ActualizarCiclo {
+	n=0
+	touch $COUNTFILE # cambia la fecha de la ultima modificacion.
+	# solo esta por si no existe el archivo, para que lo cree.
+	. $COUNTFILE #ejecuta n=<# de ejecucion> 
+	n=$(expr $n + 1)
+	echo "n=$n" > $COUNTFILE
+	./Grabar_L.sh $0 "Ciclo Nro $n"
+}
+
+# 2.chequear si hay archivos en el directorio
+function LogMoverConExito {
+	echo "LOG MOVER CON EXITO FALTA!!!"
+}
+
+function LogErrorAlMover {
+	echo "LOG ERROR AL MOVER FALTA!!"
+}
+
+# $1: nombre de archivo 
+# devuelve: 
 # 0 Si el nombre del archivo corresponde a una obra o sala valida
 # 1 en caso de error.
 function EsObraOSala {
@@ -33,21 +72,6 @@ function EsObraOSala {
 	fi
 	return 1
 }
-
-# 1.grabar en el log el numero de ciclo.
-function GrabarLog {
-	echo "FALTA HACER LOG"
-}
-
-# 2.chequear si hay archivos en el directorio
-function LogMoverConExito {
-	echo "LOG MOVER CON EXITO FALTA!!!"
-}
-
-function LogErrorAlMover {
-	echo "LOG ERROR AL MOVER FALTA!!"
-}
-
 function ChequearArribos {
 #while true
 #do
@@ -103,5 +127,5 @@ function ChequearArribos {
 
 # RECIBIR
 
-GrabarLog
+ActualizarCiclo
 ChequearArribos
