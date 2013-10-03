@@ -9,7 +9,8 @@
 # ----------------------------------
 #!/bin/bash
 #Chequeamos la cantidad de parametros, con este decidimos que es cada uno.
-	comandoSolicitante=$1
+	comandoSolicitante=`echo ${1##*/}`
+	
 	if [ $# -lt 2 -o $# -gt 3 ]; then
 		echo -e "Invocacion incorrecta. Las correctas son: \n./Grabar_L comandoSolicitante tipoDeMensaje mensaje \n./Grabar_L comandoSolicitante mensaje "
 		exit -1
@@ -39,12 +40,12 @@
 		archDestino="${CONFIGDIR}instalacion.log"
 		#echo $archDestino
 	else
-		archDestino="$LOGDIR$comandoSolicitante.$LOGEXT"
+		archDestino="${LOGDIR}${comandoSolicitante}.${LOGEXT}"
 	fi
 	#Recorto el mensaje de ser necesario
 	if [ ${#mensaje} -gt 120 ]; then
 		#Debo recortarlo.
-		mensaje=`echo ${mensaje:0:120}`
+		mensaje=`echo "${mensaje:0:120}"`
 	fi
 	
 	#Si es menor, lo pongo tal cual esta.
@@ -54,7 +55,7 @@
 	mensajeFinal="$tiempo;$comandoSolicitante;$comandoSolicitante;$opcion;$mensaje;"
 	
 	#Ahora lo agrego al archivo.
-	echo $mensajeFinal >> $archDestino
+	echo "$mensajeFinal" >> $archDestino
 	#echo "$mensajeFinal en $archDestino"
 	
 	#Obtengo el tamanio del archivo.
