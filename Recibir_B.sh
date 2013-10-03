@@ -32,7 +32,15 @@ SALAS="$MAEDIR/salas.mae"
 
 #***************************** FUNCIONES **************************************
 
+
+function Log {
+	echo ""
+	#echo $1
+	#./Grabar_L.sh $0 $1	
+}
+
 # 1.grabar en el log el numero de ciclo.
+
 # Se utilizará un archivo oculto COUNTFILE el archivo solo tendrá
 # una línea donde se guarda una variable que lleva la cuenta del 
 # número de veces que se ha llamado al script.
@@ -43,35 +51,107 @@ function ActualizarCiclo {
 	. $COUNTFILE #ejecuta n=<# de ejecucion> 
 	n=$(expr $n + 1)
 	echo "n=$n" > $COUNTFILE
-	./Grabar_L.sh $0 "Ciclo Nro $n"
+	Log "Ciclo Nro $n"
 }
 
 # 2.chequear si hay archivos en el directorio
-function LogMoverConExito {
-	echo "LOG MOVER CON EXITO FALTA!!!"
-}
 
-function LogErrorAlMover {
-	echo "LOG ERROR AL MOVER FALTA!!"
-}
 
-# $1: nombre de archivo 
-# devuelve: 
-# 0 Si el nombre del archivo corresponde a una obra o sala valida
-# 1 en caso de error.
-function EsObraOSala {
-	# el nombre del archivo tiene el formato:
-	# id_obra_o_sala-correo-xxx
-	echo $1
-	IFS=-
-	read -a array <<< "$1"
-	echo "id: ${array[0]}  mail: ${array[1]}"
-	if grep -q "^${array[0]};[^;]*;[^;]*;[^;]*;[^;]*;${array[1]}$" "$SALAS" "$OBRAS"
-	then
+
+
+function EsDeInvitados {
+	# caso archivos de invitados termina en .inv
+	# tomo el retorno de la ejecucion de grep con -q
+	# 0 si encontro algo, 1 si no encontro nada, 2 error
+	# uso esto porque daba error cuando no encontraba nada.
+	if `echo $1|grep -q ".*\.inv"`
+	then 
 		return 0
+
 	fi
 	return 1
 }
+
+function EsObraOSala {
+	if `echo $1|grep -q "^[^-]*-[^-]*-.*"`
+	then
+		# el nombre del archivo tiene el formato:
+		# id_obra_o_sala-correo-xxx
+		IFS=-
+		read -a array <<< "$1"
+		IFS="
+"
+		if [ $(( ${array[0]} % 2 )) -eq 0 ]
+		then 
+			EsSala "${array[0]}" "${array[1]}" $1
+			return $?
+		else
+			EsObra "${array[0]}" "${array[1]}" $1
+			return $?
+		fi 
+	fi
+	return 1
+}
+
+# $1: id
+# $2: mail
+# $3: nombre completo del archivo
+# 0 si existe el id y el mail.
+# != 0 si no se encuentra en el archivo.
+function EsSala {
+	# caso econtre sala y mail.
+	if grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;${2}$" $SALAS
+	then
+		return 0
+	# solo encontre el id, el mail no es correcto.	
+	elif grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;[^;]*$" $SALAS
+	then
+		
+		Log "El archivo $3 contiene un mail inexistente pero se ha encontrado el id."
+		return 1
+	# el id no existe pero si el mail
+	elif grep -q "^[^;]*;[^;]*;[^;]*;[^;]*;[^;]*;${2}$" $SALAS
+	then
+		Log "El archivo $3 contiene un id inexistente pero se ha encontrado el mail."
+		return 2
+	fi
+	return 3
+}
+
+
+# $1: id
+# $2: mail
+# $3: nombre completo del archivo
+# 0 si existe el id y el mail.
+# != 0 si no se encuentra en el archivo.
+function EsObra {
+	# caso encontre obra y mail de produccion general
+	if grep -q "^${1};[^;]*;${2};.*$" $OBRAS 
+	then
+		return 0
+	# caso	encontre obra y mail de produccion ejecutiva
+	elif grep -q "^${1};[^;]*;[^;]*;${2}$" $OBRAS
+	then 
+		return 0
+	# solo encontre el id, el mail no es correcto.	
+	elif grep -q "^${1};[^;]*;[^;]*;[^;]*$" $OBRAS
+	then
+		Log "El archivo $3 contiene un mail inexistente pero se ha encontrado el id."
+		return 1
+	# el id no existe pero si el mail
+	elif grep -q "^[^;]*;[^;]*;[^;]*;${2}$" $OBRAS
+	then
+		Log "El archivo $3 contiene un id inexistente pero se ha encontrado el mail."
+		return 2
+	elif grep -q "^[^;]*;[^;]*;${2};[^;]$" $OBRAS
+	then
+		Log "El archivo $3 contiene un id inexistente pero se ha encontrado el mail."
+		return 2
+	fi
+	return 3
+}
+
+
 function ChequearArribos {
 #while true
 #do
@@ -83,33 +163,23 @@ function ChequearArribos {
 	# si es un archivo (salteo los directorios)	
 	if [ -f "$origen" ]
 	then
-		
-		# caso archivos de invitados termina en .inv
-		# tomo el retorno de la ejecucion de grep con -q
-		# 0 si encontro algo, 1 si no encontro nada, 2 error
-		# uso esto porque daba error cuando no encontraba nada.
-		if `echo $archivo|grep -q ".*\.inv"` 
+		if EsDeInvitados $archivo
 		then
 			destino=$REPODIR/$archivo
 		# caso archivos obras o salas
-		elif `echo $archivo|grep -q "^[^-]*-[^-]*-*"`
+		elif EsObraOSala $archivo
 		then
-			if EsObraOSala $archivo
-			then
-				echo "Sala y Obra: $archivo"
-				destino=$ACEPDIR/$archivo
-			else
-				destino=$RECHDIR/$archivo
-			fi
+			destino=$ACEPDIR/$archivo
 		else
 			destino=$RECHDIR/$archivo
 		fi
+		Log "Se moverá el archivo desde $origen a $destino."
 		./Mover_B.sh "$origen" "$destino" $0
 		if [ $? -eq 0 ]
 		then 
-			LogMoverConExito origen destino
+			Log "Se ha movido exitosamente el archivo $origen a $destino"
 		else
-			LogErrorAlMover origen destino
+			Log "Se ha producido un error al mover $origen a $destino"
 		fi
 
 	fi
