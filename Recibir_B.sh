@@ -14,13 +14,14 @@ RECHDIR="rechdir"
 MAEDIR="mae"
 LOGDIR="log"
 LOGEXT="log"
-
+LOGSIZE=1024
 export LOGDIR
 export LOGEXT
+export LOGSIZE
 #*******************************VARIABLES DE AMBIENTE**************************
 
 # tiempo a dormir antes de ejecutar el proximo ciclo en segundos.
-SLEEP=10
+SLEEP=30
 
 # archivo donde se guarda la cuenta de las ejecuciones.
 COUNTFILE=$LOGDIR/count
@@ -34,9 +35,7 @@ SALAS="$MAEDIR/salas.mae"
 
 
 function Log {
-	echo ""
-	#echo $1
-	#./Grabar_L.sh $0 $1	
+	./Grabar_L.sh $0 "$1"	
 }
 
 # 1.grabar en el log el numero de ciclo.
@@ -153,11 +152,9 @@ function EsObra {
 
 
 function ChequearArribos {
-#while true
-#do
-	# archivos de invitados: 
-	for archivo in `ls "$ARRIDIR"`
-	do
+# recorro cada archivo en arribos
+ls "$ARRIDIR"|while read archivo
+do
 	local origen=$ARRIDIR/$archivo
 	local destino
 	# si es un archivo (salteo los directorios)	
@@ -174,7 +171,7 @@ function ChequearArribos {
 			destino=$RECHDIR/$archivo
 		fi
 		Log "Se moverá el archivo desde $origen a $destino."
-		./Mover_B.sh "$origen" "$destino" $0
+		./Mover_B.sh "$origen" "$destino" "$0"
 		if [ $? -eq 0 ]
 		then 
 			Log "Se ha movido exitosamente el archivo $origen a $destino"
@@ -183,19 +180,32 @@ function ChequearArribos {
 		fi
 
 	fi
-	done
+done
 			
-	#sleep $SLEEP 
-#done
 }
 
 
+# 3 y 4 chequear archivos en ACEPDIR e invocar a aceptar:
 
 
-
-
+function ChequearAceptados {
+	# si hay archivos: 
+	if [ "$(ls $ACEPDIR)" ]
+	then
+		echo "hay aceptados"
+		if [ ! ./EstaCorriendo.sh "Reservar_B.sh" ]
+		then
+			echo "`./Reservar_B.sh &`"
+		fi
+	fi
+}
 
 # RECIBIR
 
 ActualizarCiclo
-ChequearArribos
+while true
+do
+	ChequearArribos
+	ChequearAceptados
+	sleep $SLEEP
+done
