@@ -51,17 +51,21 @@ ComprobarFormato () {
 		RechazarArch "Se rechaza $nombreArchivo por estar duplicado"
 		return 0
 	fi
-	#while read linea
-	#do
-	#	echo $linea
-	#done
+	while read linea
+	do
+		if [ -z $(echo "$linea" | grep "^[^;]*;[0-9/]*;[0-9:]*;[^;]*;[^;]*;[0-9]*;[^;]*$") ]
+		then	
+			RechazarArch "Se rechaza $nombreArchivo por formato interno incorrecto"
+		return 0
+		fi
+	done < "$rutaArchivo"
 	return 	1
 }
 
 #Comprueba que la fecha tenga el formato de fecha correcto
 #Ademas se fija que la reserva no sea de una fecha mala segun especificaction
 #Retorna 0 (true) si se rechazo el archivo y 1 (false) en caso contrario
-#Nota: La funcion toma en cuenta la hora actual para hacer los calculos.
+#Nota: La funcion toma en cuenta la hora actual para hacer los calculos, no las 00:00
 ComprobarFecha () {
 	# Paso al formato mm/dd/aaaa
 	reordenada=$(echo "${camposLinea[1]}" | sed "s_\([0-9]*\)\/\([0-9]*\)\/\([0-9]*\)_\2/\1/\3_g")
@@ -101,16 +105,15 @@ ComprobarHora () {
 
 #Comprueba que el evento pedido efectivamente exista
 #Retorna 0 (true) si se rechazo el archivo y 1 (false) en caso contrario
-#combos.dis ID DEL COMBO	ID DE LA OBRA	FECHA DE FUNCIÓN	 HORA DE FUNCIÓN	ID DE LA SALA	BUTACAS HABILITADAS	BUTACAS DISPONIBLES	REQUISITOS ESPECIALES
 ComprobarEvento () {
 	# Si el ID es par, es 
-	if [ $[ ${camposNombre[0]} % 2] -eq 0 ]
+	if [ $[${camposNombre[0]} % 2] -eq 0 ]
 	then # Numero par, es sala
 		regExp="^[^;]*;[^;]*;${camposLinea[1]};${camposLinea[2]};${camposNombre[0]};[^;]*;[^;]*;[^;]*$"
 	else # Numero impar, es obra
 		regExp="^[^;]*;${camposNombre[0]};${camposLinea[1]};${camposLinea[2]};[^;]*;[^;]*;[^;]*;[^;]*$"
 	fi
-	lineaCombo=$(grep "$regExp" "$PROCDIR/combos.dis")
+	lineaCombo=$(grep "$regExp" "$DISPONIBILIDAD")
 	if [ -z "$lineaCombo" ]
 	then
 		RechazarReserva "No existe el evento solicitado"
@@ -122,6 +125,31 @@ ComprobarEvento () {
 	return 1
 }
 
+#Actualiza la disponibilidad en el archivo $DISPONIBILIDAD
+ActualizarDisponibilidad () {
+	if [ ! -z "$disponibles" ] # Si el string no esta vacio
+	then
+		lineaComboReemplazo=$(echo "$lineaCombo" | sed "s_;[^;]*_;""$disponibles""_6")
+		sed -i "s_""$lineaCombo""_""$lineaComboReemplazo""_" "$DISPONIBILIDAD"
+	fi	
+}
+
+#Comprueba que haya disponibilidad y hace calculos pertinentes
+#Retorna 0 (true) si se rechazo el archivo y 1 (false) en caso contrario
+ComprobarDisponibilidad () {
+	if [ -z "$disponibles" ]
+	then # Si no esta en ram la cargamos del archivo de combos
+		disponibles="${camposCombo[6]}"
+	fi
+	if [ "$disponibles" -lt "${camposLinea[5]}" ] # Falta disponibilidad
+	then
+		RechazarReserva "Falta de disponibilidad"
+		return 0
+	fi
+	disponibles=$[$disponibles-${camposLinea[5]}]
+}
+
+#Main
 Log "Inicio de Reservar_B"
 Log "Cantidad de archivos: $(ls $ACEPDIR/* -1 -d | wc -l)"
 ls "$ACEPDIR"/* -1 -d | while read rutaArchivo
@@ -134,6 +162,7 @@ do
 	IFS="-"
 	read -a camposNombre <<< "$nombreArchivo"
 	IFS=$'\n'
+	disponibles=""
 	while read linea
 	do
 		if [ -z "$linea" ]
@@ -149,8 +178,12 @@ do
 			then continue
 		elif ComprobarEvento
 			then continue
+		elif ComprobarDisponibilidad
+			then continue
 		fi
+		
 	done < "$rutaArchivo"
+	ActualizarDisponibilidad
 done
 #TODO: Cosas varias
 Log "Fin de Reservar_B"
