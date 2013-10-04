@@ -40,7 +40,7 @@
 		archDestino="${CONFIGDIR}instalacion.log"
 		#echo $archDestino
 	else
-		archDestino="${LOGDIR}${comandoSolicitante}.${LOGEXT}"
+		archDestino="${LOGDIR}/${comandoSolicitante}.${LOGEXT}"
 	fi
 	#Recorto el mensaje de ser necesario
 	if [ ${#mensaje} -gt 120 ]; then
