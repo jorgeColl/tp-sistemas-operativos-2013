@@ -10,23 +10,25 @@
 #Chequeamos la cantidad de parametros
 
 	if [ $# -lt 2 ]; then
-		echo "Es necesario introducir, al menos, 2 parámetros: $0 archOrigen archDestino"
-		#Aqui hay que empujar algo al log
+		#echo "Es necesario introducir, al menos, 2 parámetros: $0 archOrigen archDestino"
+		sh "./Grabar_L.sh" "$0" "-e" "Se llamo al mover con parametros erroneos."
 		exit -1
 	fi
 	if [ $# -gt 3 ]; then
-		echo "Demasiados argumentos, el maximo es de 3."
+		#echo "Demasiados argumentos, el maximo es de 3."
+		sh "./Grabar_L.sh" "$0" "-e" "Se llamo al mover con parametros erroneos."
 		exit -1
 	fi
 	if [ $1 = $2 ]; then
-		#Esto puede ir al log.
-		echo "Las rutas origen y destino son iguales, el archivo no se movera"
+		#Esto puede ir al log. (NO)
+		#echo "Las rutas origen y destino son iguales, el archivo no se movera"
 		exit 0
 	fi
 	if [ ! -f $1 ]; then
 		#Si entro es porque NO existe el archivo
 		#Hacer un dump al log
-		echo "No existe el archivo origen"
+		sh "./Grabar_L.sh" "$0" "-e" "Se llamo al mover con un archivo origen inexistente."
+		#echo "No existe el archivo origen"
 		exit -1
 	fi
 	#Separo los parametros en nombre de arhivo y directorio
@@ -36,9 +38,9 @@
 	#Reviso si ya existe el archivo
 	repeticiones=`ls ${dirDestino} | grep ${archDestino} | wc -l`
 	
-	echo $archOrigen $archDestino
-	echo $dirDestino
-	echo $repeticiones
+	#echo $archOrigen $archDestino
+	#echo $dirDestino
+	#echo $repeticiones
 	
 	if [ ! -f $2 ]; then
 		#El archivo no existe en el destino.
@@ -50,10 +52,12 @@
 		`mv ${1} ${archDestino}`
 	fi
 	if [ $? -eq 0 ]; then
+		sh "./Grabar_L.sh" "$0" "-i" "El mover fue ejecutado correctamente: $archOrigen -> $archDestino"
 		#El mover fue ejecutado correctamente. Podemos escribir en el log
 		exit 0
 	fi
 	#El mover presento errores
-	echo "Error en el mover"
+	#echo "Error en el mover"
+	sh "./Grabar_L.sh" "$0" "-e" "El mover tuvo errores! $archOrigen -> $archDestino"
 	#Escribir en el log
 	exit -1
