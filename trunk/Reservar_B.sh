@@ -26,7 +26,6 @@ Log () {
 
 #Logea el rechazo de un archivo y mueve el archivo a la carpeta de rechazados
 #$1 = Texto a logear
-#$2 = Ruta del archivo
 RechazarArch () {
 	Log "$1"
 	sh "./Mover_B.sh" "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
