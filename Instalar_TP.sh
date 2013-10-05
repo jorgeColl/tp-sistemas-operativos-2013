@@ -465,12 +465,12 @@ fi
 
 #Paso 21: Instalacion
 InstalacionDirectorios
-MoverMaestros #[FALTA HACER]
-MoverDisponibilidad #[FALTA HACER]
-MoverProgramasFunciones #[FALTA HACER]
+MoverMaestros 
+MoverDisponibilidad 
+MoverProgramasFunciones 
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
-#[FALTA HACER] ?¿
+#No se usan archivos auxiliares para Instalar por el momento asi que no hay de estos archivos
 
 #Paso 23: Mostrar mensaje de fin de instalación
 echo "Instalación CONCLUIDA"
