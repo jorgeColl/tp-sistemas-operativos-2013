@@ -106,9 +106,20 @@ function PerlInstalado {
 #-x /usr/bin/perl otra forma de buscar ejecutable de perl
 if [ `which "perl"` ];
 then
-	return "1"
+	
+declare versionmin=5
+declare versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p'`
+#busco en la primeri linea v(5.14.xx)
+	if [ "$versioninst" -lt "$versionmin" ]
+	then
+	echo "Para instalar el TP es necesario contar con Perl 5 o superior instalado. Efectue su instalacion e intentelo nuevamente.Proceso de instalacion Cancelado."
+	else
+	echo "Perl Version=$versioninst"
+	fi #se cierra el if de la version
+
 else
-	return "0"
+	echo "No esta instalado en su maquina Perl. Instalacion finalizada."
+	FIN
 fi
 }
 
@@ -364,15 +375,8 @@ else
 fi
 
 #Paso 6
-if PerlInstalado;
-then
-	echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright © Grupo 8"
-	echo "Para instalar el TP es necesario contar con  Perl 5 o superior instalado. Efectúe su instalación e inténtelo nuevamente. "
-	echo "Proceso de Instalación Cancelado "
-	FIN
-else
-	echo "Perl Si esta instalado"
-fi
+PerlInstalado
+
 
 #Cargo a las variables los parametros default
 ParametrosDefault
