@@ -12,6 +12,17 @@ estado= "" #para controlar el estado de la instalacion
 existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
 
 
+
+
+#Funcion para grabar al Log
+function Log() {
+	sh "./Grabar_L.sh" "$0" "$1"
+	echo "$1"
+}
+
+
+
+
 #Funcion que graba al archivo de configuracion $Instconf. Formato: variable = valor = usuario = fecha
 # Parametros: 1:variable,2 su valor ( la misma variable con $ adelante )
 # Ejemplo de llamada :	grabarAlconf GRUPO $grupo
@@ -173,6 +184,7 @@ declare versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p'`
 	fi #se cierra el if de la version
 
 else
+	
 	echo "No esta instalado en su maquina Perl. Instalacion finalizada."
 	FIN
 fi
