@@ -1,21 +1,27 @@
 #!/bin/bash
 
+# Parametros esperados por el comando: Ninguno, solo variables de entorno seteadas
+# Notas: Los calculos de horarios toman la hora actual como referencia, no las 00:00
+
 #temporales, TODO: borrar luego
 ACEPDIR="Acepdir"
 PROCDIR="Procdir"
 RECHDIR="Rechazados"
 MAEDIR="Maestro"
+LOGDIR="Log"
+LOGEXT="txt"
+LOGSIZE="1000"
+#Variables utiles
 SALAS="$MAEDIR/salas.mae"
 OBRAS="$MAEDIR/obras.mae"
 DISPONIBILIDAD="$PROCDIR/combos.dis"
 RESERCONFIRM="$PROCDIR/reservas.ok"
 RESERNOCONFIRM="$PROCDIR/reservas.nok"
-ARCHLOG="$LOGDIR/Reservar_B.$LOGEXT"
 
 #Escribe al log
 #$1 = Texto a logear
 Log () {
-	echo "$1" #TODO: Reemplazar por llamada a funcion correcta
+	sh "./Grabar_L.sh" "$0" "$1"
 }
 
 #Logea el rechazo de un archivo y mueve el archivo a la carpeta de rechazados
@@ -23,14 +29,25 @@ Log () {
 #$2 = Ruta del archivo
 RechazarArch () {
 	Log "$1"
-	#Mover_B a $RECHDIR
+	sh "./Mover_B.sh" "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
 }
 
 #Logea el rechazo de una reserva
 #$1 Motivo de rechazo
-#TODO: Determinar parametros y comportamiento
 RechazarReserva () {
-	echo "$1"
+	aRegIDSala="Falta sala"
+	aRegIDObra="Falta obra"
+	if [ $[${camposNombre[0]} % 2] -eq 0 ]
+	then # Numero par, es sala
+		aRegIDSala="${camposNombre[0]}";
+	else # Numero impar, es obra
+		aRegIDObra="${camposNombre[0]}";
+	fi
+	aRegistrar="${camposLinea[0]};${camposLinea[1]};${camposLinea[2]};${camposLinea[3]};"
+	aRegistrar+="${camposLinea[4]};${camposLinea[5]};${camposLinea[6]};$1;$aRegIDSala;"
+	aRegistrar+="$aRegIDObra;${camposNombre[1]};$(date);$USER"
+	echo "$aRegistrar" >> "$RESERNOCONFIRM"
+	registrosNOK=$[$registrosNOK + 1]
 }
 
 #Comprueba que el archivo a procesar tenga formato valido y devuelve un bool
@@ -53,7 +70,8 @@ ComprobarFormato () {
 	fi
 	while read linea
 	do
-		if [ -z $(echo "$linea" | grep "^[^;]*;[0-9/]*;[0-9:]*;[^;]*;[^;]*;[0-9]*;[^;]*$") ]
+		formato=$(echo "$linea" | grep "^[^;]*;[0-9/]*;[0-9:]*;[^;]*;[^;]*;[0-9]*;[^;]*$")
+		if [ -z "$formato" ]
 		then	
 			RechazarArch "Se rechaza $nombreArchivo por formato interno incorrecto"
 		return 0
@@ -134,6 +152,18 @@ ActualizarDisponibilidad () {
 	fi	
 }
 
+#Registra en el archivo de reservas.ok 
+RegistrarReserva()
+{
+	nombreObra=$(grep "^${camposCombo[1]};" "$OBRAS" | cut -d";" -f"2")
+	nombreSala=$(grep "^${camposCombo[4]};" "$SALAS" | cut -d";" -f"2")
+	aRegistrar="${camposCombo[1]};$nombreObra;${camposLinea[1]};${camposLinea[2]};"
+	aRegistrar+="${camposCombo[4]};$nombreSala;${camposLinea[5]};${camposCombo[0]};"
+	aRegistrar+="${camposLinea[0]};${camposLinea[5]};${camposNombre[1]};$(date);$USER"
+	echo "$aRegistrar" >> "$RESERCONFIRM"
+	registrosOK=$[$registrosOK + 1]
+}
+
 #Comprueba que haya disponibilidad y hace calculos pertinentes
 #Retorna 0 (true) si se rechazo el archivo y 1 (false) en caso contrario
 ComprobarDisponibilidad () {
@@ -146,7 +176,8 @@ ComprobarDisponibilidad () {
 		RechazarReserva "Falta de disponibilidad"
 		return 0
 	fi
-	disponibles=$[$disponibles-${camposLinea[5]}]
+	disponibles="$[$disponibles-${camposLinea[5]}]"
+	return 1
 }
 
 #Main
@@ -162,7 +193,9 @@ do
 	IFS="-"
 	read -a camposNombre <<< "$nombreArchivo"
 	IFS=$'\n'
-	disponibles=""
+	disponibles= #Vacio para chequeos
+	registrosOK=0
+	registrosNOK=0
 	while read linea
 	do
 		if [ -z "$linea" ]
@@ -171,6 +204,7 @@ do
 		IFS=";"
 		read -a camposLinea <<< "$linea"
 		IFS=$'\n'
+		camposCombo= #Vacio para chequeos
 		# Hago comprobaciones varias sobre las lineas
 		if ComprobarFecha
 			then continue
@@ -181,9 +215,12 @@ do
 		elif ComprobarDisponibilidad
 			then continue
 		fi
-		
+		RegistrarReserva
 	done < "$rutaArchivo"
 	ActualizarDisponibilidad
+	Log "Actualización del archivo de disponibilidad"
+	sh "./Mover_B.sh" "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
+	Log "Registros grabados OK: $registrosOK"
+	Log "Registros grabados NOK: $registrosNOK"
 done
-#TODO: Cosas varias
 Log "Fin de Reservar_B"
