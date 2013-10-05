@@ -12,6 +12,17 @@ estado= "" #para controlar el estado de la instalacion
 existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
 
 
+#Funcion que graba al archivo de configuracion $Instconf. Formato: variable = valor = usuario = fecha
+# Parametros: 1:variable,2 su valor ( la misma variable con $ adelante )
+# Ejemplo de llamada :	grabarAlconf GRUPO $grupo
+function grabarAlConf {
+
+echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
+
+}
+
+
+
 #Por defecto asumo estos directorios 
 function ParametrosDefault {
 BINDIR="$grupo/bin"
@@ -406,7 +417,28 @@ echo "Instalando Programas y Funciones"
 #(Paso 21.5) Funcion que Actualiza el archivo de configuración
 function ActualizarArchivos {
 echo "Actualizando la configuración del sistema"
-#[FALTA HACER]
+
+if [ -f "$Instconf" ];
+then
+	echo "Archivo de configuracion ya existente"
+	#actualizar? queda muy negro vaciar el archivo y cargarlo de vuelta? :P
+
+else
+	touch "$Instconf"
+	grabarAlCOnf 'GRUPO' '$grupo'
+	grabarAlCOnf 'CONFDIR' '$CONFDIR'
+	grabarAlCOnf 'BINDIR' '$BINDIR'
+	grabarAlCOnf 'MAEDIR' '$MAEDIR'
+	grabarAlCOnf 'ARRIDIR' '$ARRIDIR'
+	grabarAlCOnf 'ACEPDIR' '$ACEPDIR'
+	grabarAlCOnf 'RECHDIR' '$REPODIR'
+	grabarAlCOnf 'PROCDIR' '$PROCDIR'
+	grabarAlCOnf 'LOGDIR' '$LOGDIR'
+	grabarAlCOnf 'LOGEXT' '$LOGEXT'
+	grabarAlCOnf 'LOGSIZE' '$LOGSIZE'
+	grabarAlCOnf 'DATASIZE' '$DATASIZE'
+fi
+
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------
