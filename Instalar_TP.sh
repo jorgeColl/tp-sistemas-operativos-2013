@@ -545,6 +545,9 @@ MoverMaestros
 MoverDisponibilidad 
 MoverProgramasFunciones 
 
+#Actualizacion del archivo de configuracion
+ActualizarArchivos
+
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
 #No se usan archivos auxiliares para Instalar por el momento asi que no hay de estos archivos
 
