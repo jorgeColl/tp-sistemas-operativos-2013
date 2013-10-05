@@ -129,6 +129,7 @@ else
 	echo "No existen los faltantes en el sistema"
 	FIN
 	fi
+	#HACEN FALTA UN PAR DE FIN POR ACA?
 	fi
 fi	
 		
@@ -414,7 +415,7 @@ mkdir -p "$CONFDIR"
 InicioLogInstalacion
 
 #Paso 4.
-if [ -f $Instconf ];
+if [ -f "$Instconf" ];
 then echo "instalacion incompleta o ya hecha"
 	ReInstalar
 else echo "Instalacion por primera vez"
