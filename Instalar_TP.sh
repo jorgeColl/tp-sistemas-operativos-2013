@@ -421,7 +421,7 @@ echo "Actualizando la configuración del sistema"
 if [ -f "$Instconf" ];
 then
 	echo "Archivo de configuracion ya existente"
-	#actualizar? queda muy negro vaciar el archivo y cargarlo de vuelta? :P
+	#actualizar?
 
 else
 	touch "$Instconf"
