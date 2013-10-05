@@ -7,6 +7,10 @@ grupo="./grupo8"
 CONFDIR="$grupo/conf"
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
+Instconf="$CONFDIR/Instalar_TP.conf" #ruta al conf del script
+estado= "" #para controlar el estado de la instalacion 
+existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
+
 
 #Por defecto asumo estos directorios 
 function ParametrosDefault {
@@ -86,9 +90,48 @@ echo "Directorio de configuracion:$CONFDIR"
 #(Paso 4) Funcion que se encarga de reinstalar/continuar la instalacion
 function ReInstalar {
 
-echo 'reinstalando....'
+echo "Chequeando si la instalacion esta completa o no"
+# CHEQUEAR EL Instalar_Tp.conf, si esta bien, guardar en $estado=completa
+if [$estado = "completa"];
+then
+	MostrarMensajeEstado 'COMPLETA'
+	echo "Proceso de instalacion Cancelado"
+	FIN
+else
+	echo "Instalacion con faltantes"
+	MostrarMensajeEstado 'INCOMPLETA'
+	echo "Componentes faltantes:" #chequear cual falta
+	echo "Desea continuar la instalacion? (SI - No)"
+	if FSiNo;
+	then
+		"Proceso de instalacion cancelado"
+		FIN
+	else
+	echo "Chequeando si se encuentran los faltantes ...."
+	if [ "$existenFaltantes" = "Si" ];
+	then
+		PerlInstalado
+		MostrarMensajeEstado 'LISTA'
+		echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
+			if FSiNo;
+			then
+        		FIN
+			fi
 
-#[FALTA HACER]
+			InstalacionDirectorios
+			MoverMaestros
+			MoverDisponibilidad
+			MoverProgramasFunciones
+			echo "Instalación CONCLUIDA"
+			FIN
+
+	else
+	echo "No existen los faltantes en el sistema"
+	FIN
+	fi
+	fi
+fi	
+		
 
 }
 
@@ -371,10 +414,10 @@ mkdir -p "$CONFDIR"
 InicioLogInstalacion
 
 #Paso 4.
-if [ -f $CONFDIR/Instalar_TP.conf ];
+if [ -f $Instconf ];
 then echo "instalacion incompleta o ya hecha"
 	ReInstalar
-else echo "PRIMERA VEZ"
+else echo "Instalacion por primera vez"
 fi
 
 #Paso 5
@@ -386,7 +429,7 @@ else
 	echo "USUARIO ACEPTO TERMINOS"
 fi
 
-#Paso 6
+#Paso 
 PerlInstalado
 
 
@@ -476,5 +519,6 @@ MoverProgramasFunciones
 echo "Instalación CONCLUIDA"
 
 #Paso 24: FIN
+FIN
 #the fuking end yeahh !!!
 
