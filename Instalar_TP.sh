@@ -318,21 +318,24 @@ mkdir -p "$LOGDIR"
 #(Paso 21.2) Funcion que mueve los archivos maestros al directorio MAEDIR
 function MoverMaestros {
 echo "Instalando Archivos Maestros"
-#[FALTA HACER]
-#./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
+
+./Mover_B.sh ./salas.mae $MAEDIR
+./Mover_B.sh ./obras.mae $MAEDIR
+
 }
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
 function MoverDisponibilidad {
 echo "Instalando Archivo de Disponibilidad"
-#[FALTA HACER]
-#./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
+
+./Mover_B.sh ./combos.dis $PROCDIR
 }
+
 
 #(Paso 21.4) Funcion que mueve los ejecutables y funciones  al directorio BINDIR
 function MoverProgramasFunciones {
 echo "Instalando Programas y Funciones"
-#[FALTA HACER]
+
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
 ./Mover_B.sh ./Grabar_L.sh $BINDIR
 ./Mover_B.sh ./Reservar_B.sh $BINDIR
@@ -342,6 +345,15 @@ echo "Instalando Programas y Funciones"
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
 ./Mover_B.sh ./Readme_Start_D $BINDIR
+./Mover_B.sh ./Readme_Iniciar $BINDIR
+./Mover_B.sh ./Readme_Reservar $BINDIR
+./Mover_B.sh ./Readme_Imprimir $BINDIR
+./Mover_B.sh ./Readme_Recibir $BINDIR
+/Mover_B.sh ./Readme_Grabar_L $BINDIR
+./Mover_B.sh ./Readme_Matar_D $BINDIR
+./Mover_B.sh ./Readme_Iniciar $BINDIR
+
+
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh $BINDIR
 
