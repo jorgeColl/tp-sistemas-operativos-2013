@@ -426,11 +426,23 @@ echo "Desea continuar con la instalacion?: Si - No"
 if FSiNo;
 then
 	clear
-	Definiciones
+	# A la carga Barracas de nuevo
+	DefinirEjecutable
+	DefinirMaestros
+	DefinirExternos
+	EspacioMinimoArribos
+	ComprobarEspacio
+	DefinirAceptados
+	DefinirRechazados
+	DefinirSalida
+	DefinirProcesados
+	DefinirLogs
+	LogExtension
+	EspacioMaxLogs
 fi
 }
 
-Definiciones
+
 
 #Paso 20: Confirmar Inicio de Instalación
 echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
