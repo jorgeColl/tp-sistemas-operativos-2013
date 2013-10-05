@@ -7,8 +7,8 @@
 #!/bin/bash
 #Chequeamos los parametros:
 	if [ $# -lt 1 -o $# -gt 2 ]; then
-		echo -e "Invocacion incorrecta. \n\tLa manera correcta es: \n\tStart_D comandoAEjecutar comandoSolicitante"
-		#Invocar al Log
+		#echo -e "Invocacion incorrecta. \n\tLa manera correcta es: \n\tStart_D comandoAEjecutar comandoSolicitante"
+		sh "./Grabar_L.sh" "$0" "-e" "Invocacion incorrecta. \n\tLa manera correcta es: \n\tStart_D comandoAEjecutar comandoSolicitante"
 		exit -1
 	fi
 	programaInvocado=`echo ${1##*/}`
@@ -18,9 +18,11 @@
 		#Aqui entra toda la logica siguiente.
 		#echo $ejecuciones
 		$1& 2> /dev/null > /dev/null
+		sh "./Grabar_L.sh" "$0" "-i" "Se ejecuto el proceso $programaInvocado"
 	else 
 		#Avisar al Log que no se puede ejecutar nada
-		echo "El proceso ya se encuentra en ejecución."
+		#echo "El proceso ya se encuentra en ejecución."
+		sh "./Grabar_L.sh" "$0" "-i" "El proceso $programaInvocado ya se encuentra en ejecucion."
 		exit 0
 	fi
 	exit 0
