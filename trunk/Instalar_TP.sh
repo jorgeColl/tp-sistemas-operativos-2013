@@ -409,6 +409,9 @@ echo "Instalando Programas y Funciones"
 ./Mover_B.sh ./Matar_D.sh $BINDIR
 ./Mover_B.sh ./Start_D.sh $BINDIR
 ./Mover_B.sh ./Imprimir_B.pl $BINDIR
+./Mover_B.sh ./EstaCorriendo.sh $BINDIR
+./Mover_B.sh ./EstaInicializado.sh $BINDIR
+./Mover_B.sh ./Recibir_B.sh $BINDIR
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
 ./Mover_B.sh ./Readme_Start_D $BINDIR
@@ -474,9 +477,8 @@ else
 	echo "USUARIO ACEPTO TERMINOS"
 fi
 
-#Paso 
+#Paso 6
 PerlInstalado
-
 
 #Cargo a las variables los parametros default
 ParametrosDefault
