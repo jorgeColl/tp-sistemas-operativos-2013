@@ -10,10 +10,10 @@
 function EstaInicializado {
 if [ "$BINDIR" = "" ]||[ "$MAEDIR" = "" ] || [ "$ARRIDIR" = "" ] || [ "$ACEPDIR" = "" ] || [ "$RECHDIR" = "" ] || [ "$REPODIR" = "" ] || [ "$PROCDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$DATASIZE" = "" ] || [ "$LOGSIZE" = "" ];
 then 
-	echo "no esta inicializado"
+	echo "No esta inicializado"
 	return "1"
 else 
-	echo "esta inicializado"
+	echo "Esta inicializado"
 	return "0"
 fi
 }
