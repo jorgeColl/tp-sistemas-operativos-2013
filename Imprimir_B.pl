@@ -37,6 +37,45 @@ sub generar_ranking {
 
 sub generar_invitados {
     &pedir_id_evento;
+    #TODO: Cambiar por PROCDIR/reservas.ok
+    $archivo_reservasok="reservas.ok";
+    #TODO: cambiar por REPODIR (para REPODIR/<Referencia Interna Del Solicitante>.inv)
+    $repodirinv="pruebas";
+    
+    if ( ! (-e $archivo_reservasok ) ) {
+		print "No existe el archivo de entrada\n";
+		return;
+    }
+    
+    open(ARC, $archivo_reservasok);
+    while($linea = <ARC>) {
+      chomp($linea);
+      #TODO: Usar expresiones regulares para verificar que este bien formado.
+      @data= split(";", $linea);
+      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
+      if ($#data ne 12 ) { next; }
+      if ($eleccion==$data[0]) {
+	  print "Evento: $data[7] Obra: $data[0]-$data[1], Fecha y Hora: $data[2]-$data[3] Hs. Sala: $data[4]-$data[5]\n";
+	  $nombrearchivo="$repodirinv/$data[8].inv";
+
+	  if ( ! (-e $nombrearchivo ) ) { print "sin listado de invitados \n"; }
+	  else {
+	      open(ARCINV, $nombrearchivo);
+	      $aux=0;
+	      while($registro = <ARCINV>) {
+		 
+		  chomp($registro);
+		  #TODO: Usar expresiones regulares para verificar que este bien formado.
+		  @datainv= split(";", $registro);
+		  $aux=$aux+$datainv[2]+1;
+		  print "$datainv[0],$datainv[2],$aux\n";
+		  
+	      }
+	      close (ARCINV);
+	  }
+      }
+    }
+    close(ARC);
 }
 
 
