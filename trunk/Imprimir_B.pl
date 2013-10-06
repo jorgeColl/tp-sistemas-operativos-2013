@@ -17,6 +17,7 @@ switch ($val) {
 	if ( $ARGV[1] eq "-w" ) { $escribir=1; }
 	
 	case "-a" { &imprimir_ayuda; }
+	case "-i" { &generar_invitados; }
 	case "-d" { &generar_disponibilidades; }
 	case "-r" { &generar_ranking; }
 	
@@ -34,6 +35,49 @@ sub generar_ranking {
     print "Ranking :D\n";
 }
 
+sub generar_invitados {
+    &pedir_id_evento;
+}
+
+
+# Funcion auxiliar para generar listas de invitados:
+# Accede al archivo maestro de obras y las lista. Al terminar, pide que se elija alguna de ellas
+# el id de la elegida se guarda en $eleccion
+sub pedir_id_evento {
+  print "Lista de obras: \n";
+  
+  #TODO: Cambiar por MAEDIR/obras.mae
+  $directorio_obras="obras.mae";
+  if ( ! (-e $directorio_obras ) ) {
+		print "No existe el archivo de entrada\n";
+		return;
+  }
+  $contador=0;
+  @ids;
+  open(IN, $directorio_obras);
+  while($linea = <IN>) {
+    chomp($linea);
+    #TODO: Usar expresiones regulares para verificar que este bien formado.
+    @info= split(";", $linea);
+    #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
+    if ($#info ne 3 ) { next; }
+    $contador+=1;
+    print "Opcion nro: $contador ID: $info[0], Nombre: $info[1] \n";
+    push(@ids,$info[0]);
+  }
+  close(IN);
+  $numop=0;
+  $eleccion=0;
+  while ( $numop<=0 or $numop>$contador ) {
+    print "Elija NUMERO DE OPCION de la obra elegida\n";
+    $numop= <STDIN>;
+    chomp($numop);
+    if ( ( $numop<=0 or $numop>$contador ) )  { print "Numero incorrecto ... \n"; }
+    else { $eleccion= $ids[$numop-1]; }
+    
+  }
+    
+}
 
 sub generar_disponibilidades {
 	#TODO: Aca deberia buscar en otro directorio.
@@ -47,10 +91,10 @@ sub generar_disponibilidades {
 	open(IN, "combos.dis");
 	while($linea = <IN>) {
 	  chomp($linea);
+	   #TODO: Usar expresiones regulares para verificar que este bien formado.
 	  @data= split(";", $linea);
 	  
 	  #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
-	  #TODO: Usar expresiones regulares para verificar que este bien formado.
 	  if ($#data ne 7 ) { next; }
 	  
 	  if ( $entrada eq "-o" ) {
