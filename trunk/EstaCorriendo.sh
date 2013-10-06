@@ -18,10 +18,7 @@ function EstaCorriendo {
 	return 0
 }
 if [ $# -eq 2 ]; then
-	veces=$2
+	EstaCorriendo $1 $2
 else
-	veces=0
-fi
-if [ $# -ge 1 ]; then
-	EstaCorriendo $1 $veces
+	EstaCorriendo $1 '0'
 fi
