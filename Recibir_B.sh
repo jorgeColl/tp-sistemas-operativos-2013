@@ -5,19 +5,7 @@
 
 #**************************** MODO DE USO / PARAMETROS ************************
 
-#**********************************BORRAR***************************************
 
-ARRIDIR="arribos"
-REPODIR="repodir"
-ACEPDIR="acepdir"
-RECHDIR="rechdir"
-MAEDIR="mae"
-LOGDIR="log"
-LOGEXT="log"
-LOGSIZE=1024
-export LOGDIR
-export LOGEXT
-export LOGSIZE
 #*******************************VARIABLES DE AMBIENTE**************************
 
 # tiempo a dormir antes de ejecutar el proximo ciclo en segundos.
@@ -157,8 +145,8 @@ ls "$ARRIDIR"|while read archivo
 do
 	local origen=$ARRIDIR/$archivo
 	local destino
-	# si es un archivo (salteo los directorios)	
-	if [ -f "$origen" ]
+	# si es un archivo (salteo los directorios y verifico que sea de texto)	
+	if [ "-f "$origen"" -a "file -i $origen|grep -q "^.*text.*"" ] 
 	then
 		if EsDeInvitados $archivo
 		then
@@ -192,15 +180,13 @@ function ChequearAceptados {
 	# si hay archivos: 
 	if [ "$(ls $ACEPDIR)" ]
 	then
-		echo "hay aceptados"
-		if [ ! ./EstaCorriendo.sh "Reservar_B.sh" ]
-		then
-			echo "`./Reservar_B.sh &`"
-		fi
+		# dentro de Start_D se hace el chequeo de 
+		# que el proceso no se esté ejecutando.
+		./Start_D.sh Reservar_B.sh $0
 	fi
 }
 
-# RECIBIR
+# RECIBIR_B
 
 ActualizarCiclo
 while true
