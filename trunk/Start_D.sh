@@ -17,7 +17,7 @@
 		#No esta en ejecucion.
 		#Aqui entra toda la logica siguiente.
 		#echo $ejecuciones
-		$1& 2> /dev/null > /dev/null
+		./"$1"& 2> /dev/null > /dev/null
 		sh "./Grabar_L.sh" "$0" "-i" "Se ejecuto el proceso $programaInvocado"
 	else 
 		#Avisar al Log que no se puede ejecutar nada
