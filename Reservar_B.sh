@@ -4,13 +4,13 @@
 # Notas: Los calculos de horarios toman la hora actual como referencia, no las 00:00
 
 #temporales, TODO: borrar luego
-ACEPDIR="Acepdir"
-PROCDIR="Procdir"
-RECHDIR="Rechazados"
-MAEDIR="Maestro"
-LOGDIR="Log"
-LOGEXT="txt"
-LOGSIZE="1000"
+#ACEPDIR="Acepdir"
+#PROCDIR="Procdir"
+#RECHDIR="Rechazados"
+#MAEDIR="Maestro"
+#LOGDIR="Log"
+#LOGEXT="txt"
+#LOGSIZE="1000"
 #Variables utiles
 SALAS="$MAEDIR/salas.mae"
 OBRAS="$MAEDIR/obras.mae"
@@ -28,7 +28,7 @@ Log () {
 #$1 = Texto a logear
 RechazarArch () {
 	Log "$1"
-	sh "./Mover_B.sh" "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
+	sh "./Mover_B.sh" "$rutaArchivo" "$RECHDIR/$nombreArchivo" "$0"
 }
 
 #Logea el rechazo de una reserva
