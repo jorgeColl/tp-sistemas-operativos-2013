@@ -8,31 +8,19 @@ CONFDIR="$grupo/conf"
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
 Instconf="$CONFDIR/Instalar_TP.conf" #ruta al conf del script
-estado= "" #para controlar el estado de la instalacion 
+estado="" #para controlar el estado de la instalacion 
 existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
 
-
-
-
 #Funcion para grabar al Log
-function Log() {
+function Log {
 	sh "./Grabar_L.sh" "$0" "$1"
 	echo "$1"
 }
 
-
-
-
-#Funcion que graba al archivo de configuracion $Instconf. Formato: variable = valor = usuario = fecha
-# Parametros: 1:variable,2 su valor ( la misma variable con $ adelante )
-# Ejemplo de llamada :	grabarAlconf GRUPO $grupo
-function grabarAlConf {
-
-echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
-
+function grabarAlConf2 {
+echo "$1=$2=`whoami`=`date`" >> $Instconf
+#echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
 }
-
-
 
 #Por defecto asumo estos directorios 
 function ParametrosDefault {
@@ -126,7 +114,7 @@ else
 	echo "Desea continuar la instalacion? (SI - No)"
 	if FSiNo;
 	then
-		"Proceso de instalacion cancelado"
+		echo "Proceso de instalacion cancelado"
 		FIN
 	else
 	echo "Chequeando si se encuentran los faltantes ...."
@@ -135,21 +123,19 @@ else
 		PerlInstalado
 		MostrarMensajeEstado 'LISTA'
 		echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
-			if FSiNo;
-			then
-        		FIN
-			fi
-
-			InstalacionDirectorios
-			MoverMaestros
-			MoverDisponibilidad
-			MoverProgramasFunciones
-			echo "Instalación CONCLUIDA"
+		if FSiNo;
+		then
 			FIN
-
+		fi
+		InstalacionDirectorios
+		MoverMaestros
+		MoverDisponibilidad
+		MoverProgramasFunciones
+		echo "Instalación CONCLUIDA"
+		FIN
 	else
-	echo "No existen los faltantes en el sistema"
-	FIN
+		echo "No existen los faltantes en el sistema"
+		FIN
 	fi
 	#HACEN FALTA UN PAR DE FIN POR ACA?
 	fi
@@ -388,7 +374,6 @@ echo "Instalando Archivos Maestros"
 
 ./Mover_B.sh ./salas.mae $MAEDIR
 ./Mover_B.sh ./obras.mae $MAEDIR
-
 }
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
@@ -412,6 +397,7 @@ echo "Instalando Programas y Funciones"
 ./Mover_B.sh ./EstaCorriendo.sh $BINDIR
 ./Mover_B.sh ./EstaInicializado.sh $BINDIR
 ./Mover_B.sh ./Recibir_B.sh $BINDIR
+
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
 ./Mover_B.sh ./Readme_Start_D $BINDIR
@@ -419,10 +405,9 @@ echo "Instalando Programas y Funciones"
 ./Mover_B.sh ./Readme_Reservar $BINDIR
 ./Mover_B.sh ./Readme_Imprimir $BINDIR
 ./Mover_B.sh ./Readme_Recibir $BINDIR
-/Mover_B.sh ./Readme_Grabar_L $BINDIR
+./Mover_B.sh ./Readme_Grabar_L $BINDIR
 ./Mover_B.sh ./Readme_Matar_D $BINDIR
 ./Mover_B.sh ./Readme_Iniciar $BINDIR
-
 
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh $BINDIR
@@ -437,23 +422,23 @@ if [ -f "$Instconf" ];
 then
 	echo "Archivo de configuracion ya existente"
 	#actualizar?
+	#truncar el archivo viejo y escribir desde 0 mi opinion es (by jorge)
 
 else
 	touch "$Instconf"
-	grabarAlCOnf 'GRUPO' '$grupo'
-	grabarAlCOnf 'CONFDIR' '$CONFDIR'
-	grabarAlCOnf 'BINDIR' '$BINDIR'
-	grabarAlCOnf 'MAEDIR' '$MAEDIR'
-	grabarAlCOnf 'ARRIDIR' '$ARRIDIR'
-	grabarAlCOnf 'ACEPDIR' '$ACEPDIR'
-	grabarAlCOnf 'RECHDIR' '$REPODIR'
-	grabarAlCOnf 'PROCDIR' '$PROCDIR'
-	grabarAlCOnf 'LOGDIR' '$LOGDIR'
-	grabarAlCOnf 'LOGEXT' '$LOGEXT'
-	grabarAlCOnf 'LOGSIZE' '$LOGSIZE'
-	grabarAlCOnf 'DATASIZE' '$DATASIZE'
+	grabarAlConf2 'GRUPO' "$grupo"
+	grabarAlConf2 'CONFDIR' "$CONFDIR"
+	grabarAlConf2 'BINDIR' "$BINDIR"
+	grabarAlConf2 'MAEDIR' "$MAEDIR"
+	grabarAlConf2 'ARRIDIR' "$ARRIDIR"
+	grabarAlConf2 'ACEPDIR' "$ACEPDIR"
+	grabarAlConf2 'RECHDIR' "$RECHDIR"
+	grabarAlConf2 'PROCDIR' "$PROCDIR"
+	grabarAlConf2 'LOGDIR' "$LOGDIR"
+	grabarAlConf2 'LOGEXT' "$LOGEXT"
+	grabarAlConf2 'LOGSIZE' "$LOGSIZE"
+	grabarAlConf2 'DATASIZE' "$DATASIZE"
 fi
-
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------
@@ -529,22 +514,22 @@ if FSiNo;
 then
 	clear
 	# A la carga Barracas de nuevo
-	DefinirEjecutable
-	DefinirMaestros
-	DefinirExternos
-	EspacioMinimoArribos
-	ComprobarEspacio
-	DefinirAceptados
-	DefinirRechazados
-	DefinirSalida
-	DefinirProcesados
-	DefinirLogs
-	LogExtension
-	EspacioMaxLogs
+	#DefinirEjecutable
+	#DefinirMaestros
+	#DefinirExternos
+	#EspacioMinimoArribos
+	#ComprobarEspacio
+	#DefinirAceptados
+	#DefinirRechazados
+	#DefinirSalida
+	#DefinirProcesados
+	#DefinirLogs
+	#LogExtension
+	#EspacioMaxLogs
+	Definiciones	
 fi
 }
-
-
+Definiciones
 
 #Paso 20: Confirmar Inicio de Instalación
 echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
