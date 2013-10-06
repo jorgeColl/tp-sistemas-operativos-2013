@@ -32,7 +32,55 @@ switch ($val) {
 
 
 sub generar_ranking {
-    print "Ranking :D\n";
+    #Utilizar la referencia interna del solicitante para distinguir entre solicitantes.
+    #(Se podría utilizar el mail, pero se supone que una misma persona podria tener
+    # dos mails distintos registrados, mientras que la referencia deberia ser unica).
+    
+    
+    #TODO: Cambiar por PROCDIR/reservas.ok
+    $archivo_reservasok="reservas.ok";
+    if ( ! (-e $archivo_reservasok ) ) {
+		print "No existe el archivo de entrada\n";
+		return;
+    }
+    %hash_ranking=""; #Hash vacio.
+    open(ARC, $archivo_reservasok);
+    while($linea = <ARC>) {
+      chomp($linea);
+      #TODO: Usar expresiones regulares para verificar que este bien formado.
+      @data= split(";", $linea);
+      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
+      if ($#data ne 12 ) { next; }
+      
+      # Usa un hash. Los keys son las referencias internas del solicitante.
+      # Los values son arrays, cuyo primer valor es la sumatoria de reservas
+      # y el segundo es la direccion de mail.
+      if ( exists( $hash_ranking{$data[8]}) ) { 
+	  @laux=$hash_ranking{$data[8]}[0];
+	  @lista_d= ( $laux[0] + $data[9],$data[10]);
+	  $hash_ranking{$data[8]}=[@lista_d];
+      }
+      else {
+	 @lista_d= ($data[9],$data[10]);
+	 $hash_ranking{$data[8]}= [@lista_d];
+      }
+   }
+   close(ARC);
+  
+  #Obtengo dos arrays, uno con los keys y otro con los values.
+  #Estan ordenados segun el criterio que le paso al sort: que valor es mayor comparando
+  # el primer elemento del array que es value de cada key
+  # (Recordar: primer elemento del array=sumatoria de reservas)
+  my @keys = sort { $hash_ranking{$b}[0] <=> $hash_ranking{$a}[0] } keys(%hash_ranking);
+  my @values = @hash_ranking{@keys};
+  
+  $valores_iterar=$#keys;
+  if (  $valores_iterar>10 ) { $valores_iterar=10; }
+  
+  for($i = 1; $i < $valores_iterar; $i++) {
+	print ("$values[$i][1]-$values[$i][0]\n");
+  }
+    
 }
 
 sub generar_invitados {
