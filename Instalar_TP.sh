@@ -3,7 +3,7 @@
 # Ver el readme para mas informacion.
 #	COMANDO: Instalar_TP.sh
 #------------------------------------------------------------
-grupo="./grupo8"
+grupo="`pwd`/grupo8"
 CONFDIR="$grupo/conf"
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
