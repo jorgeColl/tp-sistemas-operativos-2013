@@ -18,6 +18,7 @@ switch ($val) {
 	
 	case "-a" { &imprimir_ayuda; }
 	case "-i" { &generar_invitados; }
+	case "-t" { &generar_tickets; }
 	case "-d" { &generar_disponibilidades; }
 	case "-r" { &generar_ranking; }
 	
@@ -31,6 +32,55 @@ switch ($val) {
 }
 
 
+sub generar_tickets {
+    #TODO: Cambiar por PROCDIR/reservas.ok
+    $archivo_reservasok="reservas.ok";
+    if ( ! (-e $archivo_reservasok ) ) {
+		print "No existe el archivo de entrada\n";
+		return;
+    }
+    $encontrado=0;
+    &tickets_pedirid;
+    if ($idcombo == -1) { return; }
+    open(ARC, $archivo_reservasok);
+    while($linea = <ARC>) {
+      chomp($linea);
+      #TODO: Usar expresiones regulares para verificar que este bien formado.
+      @data= split(";", $linea);
+      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
+      if ($#data ne 12 ) { next; }
+      $comboleido=$data[7];
+      if ($comboleido==$idcombo) {
+	  $encontrado=1;
+	  $numconfirmadas=$data[6];
+	  while($numconfirmadas>0) {
+	      if ($numconfirmadas==1) { print ("Vale por 1 entrada;"); }
+	      if ($numconfirmadas==2) { print ("Vale por 2 entradas;"); }
+	      if ($numconfirmadas!=1 and $numconfirmadas!=2) { 
+		  $numconfirmadas-=2;
+		  print ("Vale por 2 entradas;");
+	      }
+	      else { $numconfirmadas=0 ; }
+	      print ("$data[1];$data[2];$data[3];$data[5];$data[8];$data[10]\n");
+	  }
+      }
+    }
+    close (ARC);
+    if ($encontrado==0) {
+      print "No se encontro ninguna entrada con el id de combo pedido\n";
+      &tickets_pedirid;
+    }
+    
+}
+
+#Funcion auxiliar de generar_tickets para que el usuario ingrese el id del combo.
+sub tickets_pedirid {
+
+	print "Ingrese el id del combo cuyo listado de tickets desea imprimir, o -1 para salir\n";
+	$idcombo = <STDIN>;
+	chomp($idcombo);
+}
+	
 sub generar_ranking {
     #Utilizar la referencia interna del solicitante para distinguir entre solicitantes.
     #(Se podría utilizar el mail, pero se supone que una misma persona podria tener
@@ -85,6 +135,7 @@ sub generar_ranking {
 
 sub generar_invitados {
     &pedir_id_evento;
+    if ($eleccion == -1) { return; }
     #TODO: Cambiar por PROCDIR/reservas.ok
     $archivo_reservasok="reservas.ok";
     #TODO: cambiar por REPODIR (para REPODIR/<Referencia Interna Del Solicitante>.inv)
@@ -156,10 +207,12 @@ sub pedir_id_evento {
   $numop=0;
   $eleccion=0;
   while ( $numop<=0 or $numop>$contador ) {
-    print "Elija NUMERO DE OPCION de la obra elegida\n";
+    print "Elija NUMERO DE OPCION de la obra elegida, o -1 para salir\n";
     $numop= <STDIN>;
     chomp($numop);
-    if ( ( $numop<=0 or $numop>$contador ) )  { print "Numero incorrecto ... \n"; }
+    if ( $numop == -1) { return };
+    if ( ( $numop<=0 or $numop>$contador ) )  { 
+	    print "Numero incorrecto ... \n"; }
     else { $eleccion= $ids[$numop-1]; }
     
   }
