@@ -1,5 +1,7 @@
 #!/bin/bash
 
+grupo=`pwd|grep -o "^.*grupo8"`
+
 function ParametrosDefault {
 readonly BINDIR="$grupo/bin"
 readonly MAEDIR="$grupo/mae"
