@@ -27,30 +27,30 @@ function CargarDelConf {
 miArreglo1=()
 miArreglo2=()
 
-let a=1
+let a=0
 IFS='='
 while read -r -a nombre      
 do
 	miArreglo1[a]=$nombre
 	miArreglo2[a]=${nombre[1]}
 	echo "$nombre <-> ${nombre[1]}"	
-	echo "${miArreglo1[a]}  ====  ${miArreglo2[a]}"
+	#echo "${miArreglo1[a]}  ====  ${miArreglo2[a]}"
 	let a+=1
-done < ./Instalar_TP.conf
+done < $Instconf
+grupo="${miArreglo2[0]}"
+BINDIR="${miArreglo2[1]}"
+MAEDIR="${miArreglo2[2]}"
+ARRIDIR="${miArreglo2[3]}"
+ACEPDIR="${miArreglo2[4]}"
+RECHDIR="${miArreglo2[5]}"
+REPODIR="${miArreglo2[6]}"
+PROCDIR="${miArreglo2[7]}"
+LOGDIR="${miArreglo2[8]}"
+LOGEXT="${miArreglo2[9]}"
+DATASIZE="${miArreglo2[10]}"
+LOGSIZE="${miArreglo2[11]}"
 
-BINDIR=${miArreglo2[0]}
-MAEDIR=${miArreglo2[1]}
-ARRIDIR=${miArreglo2[2]}
-ACEPDIR=${miArreglo2[3]}
-RECHDIR=${miArreglo2[4]}
-REPODIR=${miArreglo2[5]}
-PROCDIR=${miArreglo2[6]}
-LOGDIR=${miArreglo2[7]}
-LOGEXT=${miArreglo2[8]}
-DATASIZE=${miArreglo2[9]}
-LOGSIZE=${miArreglo2[10]}
-
-echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
+#echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
 }
 
 #Por defecto asumo estos directorios 
@@ -131,9 +131,11 @@ echo "Directorio de configuracion:$CONFDIR"
 #(Paso 4) Funcion que se encarga de reinstalar/continuar la instalacion
 function ReInstalar {
 
+CargarDelConf
+
 echo "Chequeando si la instalacion esta completa o no"
 # CHEQUEAR EL Instalar_Tp.conf, si esta bien, guardar en $estado=completa
-if [$estado = "completa"];
+if [ "$estado" = "completa" ];
 then
 	MostrarMensajeEstado 'COMPLETA'
 	echo "Proceso de instalacion Cancelado"
