@@ -457,6 +457,21 @@ then
 	#actualizar?
 	#truncar el archivo viejo y escribir desde 0 mi opinion es (by jorge)
 
+	echo -n "" > $Instconf && touch $Instconf # se trunca 
+
+	grabarAlConf2 'GRUPO' "$grupo"
+        grabarAlConf2 'CONFDIR' "$CONFDIR"
+        grabarAlConf2 'BINDIR' "$BINDIR"
+        grabarAlConf2 'MAEDIR' "$MAEDIR"
+        grabarAlConf2 'ARRIDIR' "$ARRIDIR"
+        grabarAlConf2 'ACEPDIR' "$ACEPDIR"
+        grabarAlConf2 'RECHDIR' "$RECHDIR"
+        grabarAlConf2 'PROCDIR' "$PROCDIR"
+        grabarAlConf2 'LOGDIR' "$LOGDIR"
+        grabarAlConf2 'LOGEXT' "$LOGEXT"
+        grabarAlConf2 'LOGSIZE' "$LOGSIZE"
+        grabarAlConf2 'DATASIZE' "$DATASIZE"	
+
 else
 	touch "$Instconf"
 	grabarAlConf2 'GRUPO' "$grupo"
