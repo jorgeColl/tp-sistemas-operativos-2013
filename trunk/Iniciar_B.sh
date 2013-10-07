@@ -76,7 +76,7 @@ then
 	echo './Start_D.sh ./Recibir_B.sh '
 	return 0
 else
-	if ./EstaCorriendo.sh "Recibir_B.sh" #MALLL ver un script si indica que corre o no corre EstaCorriendo actual no sirve
+	if ./EstaCorriendo.sh "Recibir_B.sh" "1"
 	then
 		echo "iniciando Recibir_B..."
 		./Start_D.sh ./Recibir_B.sh "Iniciar_B.sh"
