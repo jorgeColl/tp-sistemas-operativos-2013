@@ -11,7 +11,6 @@ $val=$ARGV[0];
 
 switch ($val) {
 
-	#TODO: Agregar a las funciones que correspondan la opcion de escribir en archivo.
 	$escribir=0;
 	
 	if ( $ARGV[1] eq "-w" ) { $escribir=1; }
@@ -25,6 +24,9 @@ switch ($val) {
 	case "-w" {
 	    $escribir=1;
 	    if ( $ARGV[1] eq "-d" ) { &generar_disponibilidades; }
+	    if ( $ARGV[1] eq "-r" ) { &generar_ranking; }
+	    if ( $ARGV[1] eq "-i" ) { &generar_invitados; }
+	    if ( $ARGV[1] eq "-t" ) { &generar_tickets; }
 	    else { print "Parametros invalidos. -a para visualizar ayuda\n" }
 	}
 	else { print "Parametros invalidos. -a para visualizar ayuda\n" }
@@ -221,14 +223,18 @@ sub pedir_id_evento {
 
 sub generar_disponibilidades {
 	#TODO: Aca deberia buscar en otro directorio.
-	if ( ! (-e "combos.dis") ) {
+	$directoriocombos="";
+	$archivocombos="$directoriocombos"."combos.dis";
+	if ( ! (-e $archivocombos) ) {
 		print "No existe el archivo de entrada\n";
 		return;
 	}
 	&disponibilidades_pedirdatos;
 	
 	$encontro=0;
-	open(IN, "combos.dis");
+	open(IN, $archivocombos);
+	if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
+	
 	while($linea = <IN>) {
 	  chomp($linea);
 	   #TODO: Usar expresiones regulares para verificar que este bien formado.
@@ -243,15 +249,21 @@ sub generar_disponibilidades {
 	  elsif ( $entrada eq "-s" ) {
 	    $idbus=$data[4];
 	  }
-	 
+	  
 	  for ($i=0; $i<=$#valores; $i++) {
 	      if ($valores[$i] eq $idbus) {
 		$encontro=1;
-		for ($k=0; $k<6; $k++) { print ( "$data[$k] - "); }
+		for ($k=0; $k<6; $k++) { 
+				print ( "$data[$k] - "); 
+				if ($escribir==1) { print FICHERO_DESTINO ( "$data[$k] - "); }
+		}
 		print ( "$data[6]\n");
+		if ($escribir==1) { print FICHERO_DESTINO ( "$data[6]\n"); }
 	      }
+	      
 	  }
 	}
+	close(FICHERO_DESTINO);
 	close(IN);
 	if ($encontro ne 1) {
 	    print "No se encontraron resultados para el o los valores ingresados.\n Vuelva a insertar datos.\n";
@@ -278,7 +290,6 @@ sub disponibilidades_pedirdatos {
 	if ( $indiceguion ne -1 ) { $rango=1; }
 	#Si tengo un rango de valores, rango=-1. Si tengo un sólo valor, rango=0.
 	
-	
 	if ($rango eq 0) { @valores = ( $numid ); }
 	else { 
 	  #Valores inicial y final del rango.
@@ -293,7 +304,20 @@ sub disponibilidades_pedirdatos {
 	    $valorinicial+=1;
 	  }
 	}
+	if ($escribir==1) {
+	  &pedir_nombre_archivo;
+	  while ($nombrearc eq "combos") { 
+		print "El nombre ingresado no puede ser combos.\n";
+		&pedir_nombre_archivo; }
+	  $nombrearc="$directoriocombos"."$nombrearc".".dis";
+	}
+}
 
+#Funcion auxiliar para que el usuario ingrese nombre de archivo
+sub pedir_nombre_archivo {
+    print "Ingrese el nombre que desea para el archivo:\n";
+    $nombrearc= <STDIN>;
+    chomp($nombrearc);
 }
 
 sub imprimir_ayuda {
