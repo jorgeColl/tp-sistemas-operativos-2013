@@ -21,14 +21,14 @@ RESERNOCONFIRM="$PROCDIR/reservas.nok"
 #Escribe al log
 #$1 = Texto a logear
 Log () {
-	sh "./Grabar_L.sh" "$0" "$1"
+	./Grabar_L.sh "$0" "$1"
 }
 
 #Logea el rechazo de un archivo y mueve el archivo a la carpeta de rechazados
 #$1 = Texto a logear
 RechazarArch () {
 	Log "$1"
-	sh "./Mover_B.sh" "$rutaArchivo" "$RECHDIR/$nombreArchivo" "$0"
+	./Mover_B.sh "$rutaArchivo" "$RECHDIR/$nombreArchivo" "$0"
 }
 
 #Logea el rechazo de una reserva
@@ -218,7 +218,7 @@ do
 	done < "$rutaArchivo"
 	ActualizarDisponibilidad
 	Log "Actualización del archivo de disponibilidad"
-	sh "./Mover_B.sh" "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
+	./Mover_B.sh "$rutaArchivo" "$PROCDIR/$nombreArchivo" "$0"
 	Log "Registros grabados OK: $registrosOK"
 	Log "Registros grabados NOK: $registrosNOK"
 done
