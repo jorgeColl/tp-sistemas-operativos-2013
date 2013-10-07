@@ -1,0 +1,7 @@
+Esta funcion procesa los archivos que ecuentre en ACEPDIR y los edita apropiadamanete.
+	- Si el archivo ya fue procesado o es invalido, lo mueve al directorio de rechazados
+ 	- Si sus contenidos son invalidos, se los vuelca procesados en reservas.nok y se mueve el archivo a PROCDIR
+ 	- Si sus contenidos son validos, se los vuelca procesados en reservas.ok y se mueve el archivo a PROCDIR
+	- Al final del proceso se edita el archivo combos.dis con las nuevas disponibilidades
+Se invoca sin parametro alguno.
+Siempre escribe al log.
