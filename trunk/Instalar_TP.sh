@@ -22,6 +22,37 @@ echo "$1=$2=`whoami`=`date`" >> $Instconf
 #echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
 }
 
+#Funcion prototipo para la carga de valores desde el conf
+function CargarDelConf {
+miArreglo1=()
+miArreglo2=()
+
+let a=1
+IFS='='
+while read -r -a nombre      
+do
+	miArreglo1[a]=$nombre
+	miArreglo2[a]=${nombre[1]}
+	echo "$nombre <-> ${nombre[1]}"	
+	echo "${miArreglo1[a]}  ====  ${miArreglo2[a]}"
+	let a+=1
+done < ./Instalar_TP.conf
+
+BINDIR=${miArreglo2[0]}
+MAEDIR=${miArreglo2[1]}
+ARRIDIR=${miArreglo2[2]}
+ACEPDIR=${miArreglo2[3]}
+RECHDIR=${miArreglo2[4]}
+REPODIR=${miArreglo2[5]}
+PROCDIR=${miArreglo2[6]}
+LOGDIR=${miArreglo2[7]}
+LOGEXT=${miArreglo2[8]}
+DATASIZE=${miArreglo2[9]}
+LOGSIZE=${miArreglo2[10]}
+
+echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
+}
+
 #Por defecto asumo estos directorios 
 function ParametrosDefault {
 BINDIR="$grupo/bin"
@@ -448,9 +479,11 @@ InicioLogInstalacion
 
 #Paso 4.
 if [ -f "$Instconf" ];
-then echo "instalacion incompleta o ya hecha"
+then 
+	echo "instalacion incompleta o ya hecha"
 	ReInstalar
-else echo "Instalacion por primera vez"
+else 
+	echo "Instalacion por primera vez"
 fi
 
 #Paso 5
