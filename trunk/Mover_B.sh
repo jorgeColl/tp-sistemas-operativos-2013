@@ -14,16 +14,18 @@
 		./Grabar_L.sh "$0" "-e" "Se llamo al mover con parametros erroneos."
 		exit -1
 	fi
-	if [ $# -gt 3 ]; then
-		#echo "Demasiados argumentos, el maximo es de 3."
+	if [ $# -gt 4 ]; then
+		#echo "Demasiados argumentos, el maximo es de 4."
 		./Grabar_L.sh "$0" "-e" "Se llamo al mover con parametros erroneos."
 		exit -1
 	fi
+	
 	if [ $1 = $2 ]; then
 		#Esto puede ir al log. (NO)
 		#echo "Las rutas origen y destino son iguales, el archivo no se movera"
 		exit 0
 	fi
+	
 	if [ ! -f $1 ]; then
 		#Si entro es porque NO existe el archivo
 		#Hacer un dump al log
@@ -31,6 +33,18 @@
 		#echo "No existe el archivo origen"
 		exit -1
 	fi
+	
+	#Inicializo el modo copia en falso
+	copia=0 
+	for param in "$@"
+	do
+		#Recorro todos los parametros y me fijo si existe la opción de copia.
+		if [ "$param" = "-c" ]; then
+			copia=1
+		fi
+		#echo -e "$param"
+	done
+	
 	#Separo los parametros en nombre de arhivo y directorio
 	archOrigen=`echo ${1##*/}`
 	archDestino=`echo ${2##*/}`
@@ -42,13 +56,17 @@
 	#echo $dirDestino
 	#echo $repeticiones
 	
-	if [ ! -f $2 ]; then
-		#El archivo no existe en el destino.
-		`mv ${1} ${2}`
-	else
+	archDestino="$2"
+	if [ -f $2 ]; then
 		#Hay repeticiones, modifico la ruta destino
 		#let repeticiones=$repeticiones+1
 		archDestino=`echo $2$repeticiones`
+	fi
+	
+	if [ ${copia:-0} -eq 1 ]; then
+		#Debo COPIAR, no mover
+		`cp ${1} ${archDestino}`
+	else
 		`mv ${1} ${archDestino}`
 	fi
 	if [ $? -eq 0 ]; then
