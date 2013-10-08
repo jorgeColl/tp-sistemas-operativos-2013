@@ -20,5 +20,5 @@ function EstaCorriendo {
 if [ $# -eq 2 ]; then
 	EstaCorriendo $1 $2
 else
-	EstaCorriendo $1 '0'
+	EstaCorriendo $1 '1'
 fi
