@@ -164,7 +164,14 @@ function ReInstalar {
 CargarDelConf
 
 echo "Chequeando si la instalacion esta completa o no"
-# CHEQUEAR EL Instalar_Tp.conf, si esta bien, guardar en $estado=completa
+#[ FALTA HACER ]
+#CHEQUEAR EL Instalar_Tp.conf
+#Chequear si los directorios existen
+#Chequear si falta ejecutable
+#Chequear si faltan los archivos maestros
+#Chequear si falta archivo de disponibilidad
+#De acuerdo a lo anterior modificar variable -> estado
+
 if [ "$estado" = "completa" ];
 then
 	MostrarMensajeEstado 'COMPLETA'
@@ -173,38 +180,45 @@ then
 else
 	echo "Instalacion con faltantes"
 	MostrarMensajeEstado 'INCOMPLETA'
-	echo "Componentes faltantes:" #chequear cual falta
+	echo "Componentes faltantes:"
+	#[ FALTA HACER ]
+	#Mostrar componentes faltantes anteriormente chequeados
+
 	echo "Desea continuar la instalacion? (SI - No)"
 	if FSiNo;
 	then
 		echo "Proceso de instalacion cancelado"
 		FIN
 	else
-	echo "Chequeando si se encuentran los faltantes ...."
-	if [ "$existenFaltantes" = "Si" ];
-	then
-		PerlInstalado
-		MostrarMensajeEstado 'LISTA'
-		echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
-		if FSiNo;
+		echo "Chequeando si se encuentran los faltantes ...."
+		#[ FALTA HACER ]
+		#Comprobar si estan TODOS los archivos de backup
+		#Si alguno de los archivos no esta -> existenFaltantes = Si
+		#Si TODOS los archivos de backup estan -> existenFaltantes = No
+
+		if [ "$existenFaltantes" = "Si" ];
 		then
+			PerlInstalado
+			MostrarMensajeEstado 'LISTA'
+			echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
+			if FSiNo;
+			then
+				FIN
+			fi
+			#[ DUDA ]: copiamos los archivos de el dir de backup a el actual directorio de instalar para que esta parte funciones?
+			InstalacionDirectorios
+			MoverMaestros
+			MoverDisponibilidad
+			MoverProgramasFunciones
+			echo "Instalación CONCLUIDA"
+			FIN
+		else
+			echo "No existen los faltantes en el sistema"
 			FIN
 		fi
-		InstalacionDirectorios
-		MoverMaestros
-		MoverDisponibilidad
-		MoverProgramasFunciones
-		echo "Instalación CONCLUIDA"
-		FIN
-	else
-		echo "No existen los faltantes en el sistema"
-		FIN
+		#HACEN FALTA UN PAR DE FIN POR ACA?
 	fi
-	#HACEN FALTA UN PAR DE FIN POR ACA?
-	fi
-fi	
-		
-
+fi
 }
 
 #(Paso 5) (Aceptacion de terminos) Retorna 1 si acepto los terminos, 0 si no.
@@ -460,7 +474,7 @@ echo "Instalando Programas y Funciones"
 ./Mover_B.sh ./EstaCorriendo.sh $BINDIR
 ./Mover_B.sh ./EstaInicializado.sh $BINDIR
 ./Mover_B.sh ./Recibir_B.sh $BINDIR
-./Mover_B.sh ./Eliminar_B.sh $BINDIR '-c'
+./Mover_B.sh ./Eliminar_B.sh $BINDIR
 
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
@@ -618,7 +632,7 @@ MoverProgramasFunciones
 ActualizarArchivos
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
-#No se usan archivos auxiliares para Instalar por el momento asi que no hay de estos archivos
+"$BINDIR/Eliminar_B.sh" './Grabar_L.sh'
 
 #Paso 23: Mostrar mensaje de fin de instalación
 echo "Instalación CONCLUIDA"
