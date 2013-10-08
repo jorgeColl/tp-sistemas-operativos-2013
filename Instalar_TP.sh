@@ -18,7 +18,7 @@ function Log {
 }
 
 function grabarAlConf2 {
-echo "$1=$2=`whoami`=`date`" >> $Instconf
+echo "$1=$2=`whoami`=`date`" >> "$Instconf"
 #echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
 }
 
@@ -422,7 +422,7 @@ function MoverProgramasFunciones {
 echo "Instalando Programas y Funciones"
 
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
-./Mover_B.sh ./Grabar_L.sh $BINDIR
+./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
 ./Mover_B.sh ./Reservar_B.sh $BINDIR
 ./Mover_B.sh ./Matar_D.sh $BINDIR
 ./Mover_B.sh ./Start_D.sh $BINDIR
@@ -430,6 +430,7 @@ echo "Instalando Programas y Funciones"
 ./Mover_B.sh ./EstaCorriendo.sh $BINDIR
 ./Mover_B.sh ./EstaInicializado.sh $BINDIR
 ./Mover_B.sh ./Recibir_B.sh $BINDIR
+./Mover_B.sh ./Eliminar_B.sh $BINDIR '-c'
 
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
