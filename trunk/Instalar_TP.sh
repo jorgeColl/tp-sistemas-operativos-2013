@@ -467,6 +467,7 @@ echo "Instalando Programas y Funciones"
 
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
 ./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
+./Mover_B.sh ./PuedoUsarLog.sh $BINDIR '-c'
 ./Mover_B.sh ./Reservar_B.sh $BINDIR
 ./Mover_B.sh ./Matar_D.sh $BINDIR
 ./Mover_B.sh ./Start_D.sh $BINDIR
