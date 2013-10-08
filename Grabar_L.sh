@@ -56,7 +56,7 @@
 	
 	#Ahora lo agrego al archivo.
 	echo "$mensajeFinal" >> "$archDestino"
-	echo "$mensajeFinal en $archDestino"
+	#echo "$mensajeFinal en $archDestino"
 	
 	#Obtengo el tamanio del archivo.
 	tamanio=0
