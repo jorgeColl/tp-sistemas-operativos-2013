@@ -9,6 +9,10 @@
 # ----------------------------------
 #!/bin/bash
 #Chequeamos la cantidad de parametros, con este decidimos que es cada uno.
+	if ! ./EstaInicializado.sh
+	then
+		exit -1
+	fi
 	comandoSolicitante=`echo ${1##*/}`
 	
 	if [ $# -lt 2 -o $# -gt 3 ]; then
