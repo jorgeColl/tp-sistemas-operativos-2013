@@ -38,17 +38,19 @@ do
 	let a+=1
 done < $Instconf
 grupo="${miArreglo2[0]}"
-BINDIR="${miArreglo2[1]}"
-MAEDIR="${miArreglo2[2]}"
-ARRIDIR="${miArreglo2[3]}"
-ACEPDIR="${miArreglo2[4]}"
-RECHDIR="${miArreglo2[5]}"
-REPODIR="${miArreglo2[6]}"
-PROCDIR="${miArreglo2[7]}"
-LOGDIR="${miArreglo2[8]}"
-LOGEXT="${miArreglo2[9]}"
-DATASIZE="${miArreglo2[10]}"
-LOGSIZE="${miArreglo2[11]}"
+CONFDIR="${miArreglo2[1]}"
+
+BINDIR="${miArreglo2[2]}"
+MAEDIR="${miArreglo2[3]}"
+ARRIDIR="${miArreglo2[4]}"
+ACEPDIR="${miArreglo2[5]}"
+RECHDIR="${miArreglo2[6]}"
+REPODIR="${miArreglo2[7]}"
+PROCDIR="${miArreglo2[8]}"
+LOGDIR="${miArreglo2[9]}"
+LOGEXT="${miArreglo2[10]}"
+DATASIZE="${miArreglo2[11]}"
+LOGSIZE="${miArreglo2[12]}"
 
 #echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
 }
@@ -70,26 +72,54 @@ LOGSIZE='400'
 
 #(Pasos 19 - )Funcion auxiliar que muestra el estado de la instalacion
 function MostrarMensajeEstado {
+declare local salida
 clear
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo "Libreria del Sistema: $CONFDIR"
-ls "$CONFDIR"
+if [ -d "$CONFDIR" ];
+then
+	ls "$CONFDIR"
+fi
 echo "Ejecutables:$BINDIR"
-ls "$BINDIR"
+if [ -d "$BINDIR" ];
+then
+	ls "$BINDIR"
+fi
 echo "Archivos Maestros: $MAEDIR"
-ls "$MAEDIR"
+if [ -d "$MAEDIR" ];
+then
+	ls "$MAEDIR"
+fi
 echo "Directorio de arribo de archivos externos: $ARRIDIR"
-ls "$ARRIDIR"
+if [ -d "$ARRIDIR" ];
+then
+	ls "$ARRIDIR"
+fi
 echo "Archivos externos aceptados: $ACEPDIR"
-ls "$ACEPDIR"
+if [ -d "$ACEPDIR" ];
+then
+	ls "$ACEPDIR"
+fi
 echo "Archivos externos rechazados: $RECHDIR"
-ls "$RECHDIR"
+if [ -d "$RECHDIR" ];
+then
+	ls "$RECHDIR"
+fi
 echo "Reportes de salida:$REPODIR"
-ls "$REPODIR"
+if [ -d "$REPODIR" ];
+then
+	ls "$REPODIR"
+fi
 echo "Archivos procesados:$PROCDIR"
-ls "$PROCDIR"
+if [ -d "$PROCDIR" ];
+then
+	ls "$PROCDIR"
+fi
 echo "Logs de aditoria del Sistema:$LOGDIR/<$COMANDO>.$LOGEXT"
-ls "$LOGDIR"
+if [ -d "$LOGDIR" ];
+then
+	ls "$LOGDIR"
+fi
 echo "Estado de la instalacion:$1"
 
 #FALTA GRABAR EN EL LOG LO MISMO [FALTA HACER]
@@ -467,26 +497,28 @@ then
         grabarAlConf2 'ARRIDIR' "$ARRIDIR"
         grabarAlConf2 'ACEPDIR' "$ACEPDIR"
         grabarAlConf2 'RECHDIR' "$RECHDIR"
-        grabarAlConf2 'PROCDIR' "$PROCDIR"
+	grabarAlConf2 'REPODIR' "$REPODIR"
+	grabarAlConf2 'PROCDIR' "$PROCDIR"
         grabarAlConf2 'LOGDIR' "$LOGDIR"
         grabarAlConf2 'LOGEXT' "$LOGEXT"
+ 	grabarAlConf2 'DATASIZE' "$DATASIZE"
         grabarAlConf2 'LOGSIZE' "$LOGSIZE"
-        grabarAlConf2 'DATASIZE' "$DATASIZE"	
 
 else
 	touch "$Instconf"
 	grabarAlConf2 'GRUPO' "$grupo"
-	grabarAlConf2 'CONFDIR' "$CONFDIR"
-	grabarAlConf2 'BINDIR' "$BINDIR"
-	grabarAlConf2 'MAEDIR' "$MAEDIR"
-	grabarAlConf2 'ARRIDIR' "$ARRIDIR"
-	grabarAlConf2 'ACEPDIR' "$ACEPDIR"
-	grabarAlConf2 'RECHDIR' "$RECHDIR"
+        grabarAlConf2 'CONFDIR' "$CONFDIR"
+        grabarAlConf2 'BINDIR' "$BINDIR"
+        grabarAlConf2 'MAEDIR' "$MAEDIR"
+        grabarAlConf2 'ARRIDIR' "$ARRIDIR"
+        grabarAlConf2 'ACEPDIR' "$ACEPDIR"
+        grabarAlConf2 'RECHDIR' "$RECHDIR"
+	grabarAlConf2 'REPODIR' "$REPODIR"
 	grabarAlConf2 'PROCDIR' "$PROCDIR"
-	grabarAlConf2 'LOGDIR' "$LOGDIR"
-	grabarAlConf2 'LOGEXT' "$LOGEXT"
-	grabarAlConf2 'LOGSIZE' "$LOGSIZE"
-	grabarAlConf2 'DATASIZE' "$DATASIZE"
+        grabarAlConf2 'LOGDIR' "$LOGDIR"
+        grabarAlConf2 'LOGEXT' "$LOGEXT"
+ 	grabarAlConf2 'DATASIZE' "$DATASIZE"
+        grabarAlConf2 'LOGSIZE' "$LOGSIZE"
 fi
 }
 
@@ -564,19 +596,6 @@ echo "Desea continuar con la instalacion?: Si - No"
 if FSiNo;
 then
 	clear
-	# A la carga Barracas de nuevo
-	#DefinirEjecutable
-	#DefinirMaestros
-	#DefinirExternos
-	#EspacioMinimoArribos
-	#ComprobarEspacio
-	#DefinirAceptados
-	#DefinirRechazados
-	#DefinirSalida
-	#DefinirProcesados
-	#DefinirLogs
-	#LogExtension
-	#EspacioMaxLogs
 	Definiciones	
 fi
 }
