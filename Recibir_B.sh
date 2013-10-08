@@ -69,7 +69,7 @@ function EsObraOSala {
 		IFS="
 "
 		if [ $(( ${array[0]} % 2 )) -eq 0 ]
-		then 
+		then
 			EsSala "${array[0]}" "${array[1]}" $1
 			return $?
 		else
@@ -87,7 +87,7 @@ function EsObraOSala {
 # != 0 si no se encuentra en el archivo.
 function EsSala {
 	# caso econtre sala y mail.
-	if grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;${2}$" $SALAS
+	if grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" $SALAS
 	then
 		return 0
 	# solo encontre el id, el mail no es correcto.	
@@ -158,13 +158,13 @@ do
 		else
 			destino=$RECHDIR/$archivo
 		fi
-		Log "Se moverá el archivo desde $origen a $destino."
+		Log "Se moverá el archivo $archivo a $destino."
 		./Mover_B.sh "$origen" "$destino" "$0"
 		if [ $? -eq 0 ]
 		then 
-			Log "Se ha movido exitosamente el archivo $origen a $destino"
+			Log "Se ha movido exitosamente el archivo $archivo a $destino"
 		else
-			Log "Se ha producido un error al mover $origen a $destino"
+			Log "Se ha producido un error al mover $archivo a $destino"
 		fi
 
 	fi

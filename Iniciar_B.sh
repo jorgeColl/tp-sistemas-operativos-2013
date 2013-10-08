@@ -11,6 +11,7 @@ readonly RECHDIR="$grupo/rechazados"
 readonly REPODIR="$grupo/listados"
 readonly PROCDIR="$grupo/procesados"
 readonly LOGDIR="$grupo/log"
+readonly LOGEXT="log"
 readonly DATASIZE='100'
 readonly LOGSIZE='400'
 }

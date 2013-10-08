@@ -181,10 +181,10 @@ ComprobarDisponibilidad () {
 
 #Main
 Log "Inicio de Reservar_B"
-Log "Cantidad de archivos: $(ls $ACEPDIR/* -1 -d | wc -l)"
-ls "$ACEPDIR"/* -1 -d | while read rutaArchivo
+Log "Cantidad de archivos: $(ls $ACEPDIR -1 | wc -l)"
+ls "$ACEPDIR" -1 | while read nombreArchivo
 do
-	nombreArchivo=${rutaArchivo#*/}
+	rutaArchivo="$ACEPDIR/$nombreArchivo"
 	Log "Archivo a procesar: $nombreArchivo"
 	if ComprobarFormato
 		then continue # Me salteo el archivo si fue rechazado
