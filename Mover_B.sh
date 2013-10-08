@@ -1,7 +1,7 @@
 #Procedimiento en bash para el movimiento de archivos.
 #En caso de encontrar archivos duplicados se dejaran en el destino pero con una numeracion final.
 #Ejmplo: nombrearchivo.N
-#Parametros de ejecucion: ./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante
+#Parametros de ejecucion: ./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante -c(opcional)
 
 #Bugs conocidos: Se puede llegar a pisar una secuencia existente.
 
