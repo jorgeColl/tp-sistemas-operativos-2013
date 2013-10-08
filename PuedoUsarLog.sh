@@ -8,8 +8,7 @@
 #fi
 
 function Puedo {
-if [ "$BINDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$CONFDIR" = "" ] || [ "$LOGSIZE" = "" ] || [ "$LOGEXT" = "" ];
-then 
+if [ "$BINDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$CONFDIR" = "" ] || [ "$LOGSIZE" = "" ] || [ "$LOGEXT" = "" ]; then 
 	echo "No esta inicializado"
 	return "1"
 else 
