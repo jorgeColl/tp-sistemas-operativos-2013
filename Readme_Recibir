@@ -1,0 +1,15 @@
+Este Script se encarga de validar el nombre y tipo de los archivos que se encuentren en el directorio ARRIDIR
+Si el archivo tiene el formato correcto se moverá a ACEPDIR  o REPODIR según corresponda.
+Si el archivo no tiene el formato correcto, se moverá a RECHDIR.
+
+
+No recibe parámetros.
+
+Se debe iniciar SIEMPRE con "Start_D" del siguiente modo:
+
+./Start_D.sh Recibir_B.sh
+
+Se debe detener SIEMPRE con "Matar_D" del siguiente modo:
+
+./Matar_D.sh Recibir_B.sh
+
