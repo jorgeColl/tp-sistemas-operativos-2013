@@ -55,8 +55,8 @@
 	mensajeFinal="$tiempo;$comandoSolicitante;$comandoSolicitante;$opcion;$mensaje;"
 	
 	#Ahora lo agrego al archivo.
-	echo "$mensajeFinal" >> $archDestino
-	#echo "$mensajeFinal en $archDestino"
+	echo "$mensajeFinal" >> "$archDestino"
+	echo "$mensajeFinal en $archDestino"
 	
 	#Obtengo el tamanio del archivo.
 	tamanio=0
@@ -65,8 +65,8 @@
 		tamanio=`echo $tamanio | sed -E 's/ .*//'` 
 		#tamanio=`expr $tamanio + 0`
 	fi
-	if [ ${tamanio:-0} -gt $LOGSIZE ]; then
-		`sed -E "1,50 d" $archDestino > $archDestino`
-		echo "$tiempo;Se ha recortado el archivo de Log;" >> $archDestino
+	if [ ${tamanio:-0} -gt "$LOGSIZE" ]; then
+		`sed -E "1,50 d" "$archDestino" > "$archDestino"`
+		echo "$tiempo;Se ha recortado el archivo de Log;" >> "$archDestino"
 	fi
 	exit 0
