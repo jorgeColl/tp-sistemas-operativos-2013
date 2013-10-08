@@ -9,8 +9,13 @@
 # ----------------------------------
 #!/bin/bash
 #Chequeamos la cantidad de parametros, con este decidimos que es cada uno.
-	if ! ./EstaInicializado.sh
+	if [ ! -f ./PuedoUsarLog.sh ]; then
+		#Necesito ver si esta inicializado el ambiente, por lo cual debo encontrar la funcion.
+		exit -1
+	fi
+	if ! ./PuedoUsarLog.sh
 	then
+		#Si no esta inicializado no ejecuto nada.
 		exit -1
 	fi
 	comandoSolicitante=`echo ${1##*/}`
