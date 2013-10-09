@@ -41,10 +41,14 @@ sub generar_tickets {
 		print "No existe el archivo de entrada\n";
 		return;
     }
+    #TODO: Cambiar por REPoDIR/
+    $nombred="";
     $encontrado=0;
     &tickets_pedirid;
     if ($idcombo == -1) { return; }
+    $nombred="$idcombo"."$nombred".".tck";
     open(ARC, $archivo_reservasok);
+    if ($escribir==1) { open FICHERO_DESTINO, ">$nombred" or die "No se puede abrir destino"; }
     while($linea = <ARC>) {
       chomp($linea);
       #TODO: Usar expresiones regulares para verificar que este bien formado.
@@ -56,22 +60,30 @@ sub generar_tickets {
 	  $encontrado=1;
 	  $numconfirmadas=$data[6];
 	  while($numconfirmadas>0) {
-	      if ($numconfirmadas==1) { print ("Vale por 1 entrada;"); }
-	      if ($numconfirmadas==2) { print ("Vale por 2 entradas;"); }
+	      if ($numconfirmadas==1) { print ("Vale por 1 entrada;");
+					if ($escribir==1) { print FICHERO_DESTINO ("Vale por 1 entrada;"); }
+				      }
+	      if ($numconfirmadas==2) { print ("Vale por 2 entradas;"); 
+				      if ($escribir==1) { print FICHERO_DESTINO ("Vale por 2 entradas;"); }
+				      }
 	      if ($numconfirmadas!=1 and $numconfirmadas!=2) { 
 		  $numconfirmadas-=2;
 		  print ("Vale por 2 entradas;");
+		  if ($escribir==1) { print FICHERO_DESTINO ("Vale por 2 entradas;"); }
 	      }
 	      else { $numconfirmadas=0 ; }
 	      print ("$data[1];$data[2];$data[3];$data[5];$data[8];$data[10]\n");
+	      if ($escribir==1) { print FICHERO_DESTINO ("$data[1];$data[2];$data[3];$data[5];$data[8];$data[10]\n"); }
 	  }
       }
     }
     close (ARC);
     if ($encontrado==0) {
       print "No se encontro ninguna entrada con el id de combo pedido\n";
+      if ($escribir==1) {  print FICHERO_DESTINO ("No se encontro ninguna entrada con el id de combo pedido\n" ); }
       &tickets_pedirid;
     }
+    if ($escribir==1) {  close FICHERO_DESTINO }
     
 }
 
