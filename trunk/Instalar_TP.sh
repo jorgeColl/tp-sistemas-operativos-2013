@@ -17,9 +17,9 @@ function Log {
 	echo "$1"
 }
 
+#Funcion para grabar al .conf
 function grabarAlConf2 {
 echo "$1=$2=`whoami`=`date`" >> "$Instconf"
-#echo ""$1"="$2"=`whoami`=`date`" >> $Instconf
 }
 
 #Funcion prototipo para la carga de valores desde el conf
@@ -212,7 +212,7 @@ else
 			Log "No existen los faltantes en el sistema"
 			FIN
 		fi
-		#HACEN FALTA UN PAR DE FIN POR ACA? -1
+	
 	fi
 fi
 }
@@ -251,9 +251,7 @@ fi
 
 #Para finalizar el script , guarda informacion en Instalar_TP.conf y en Instalar_TP.log
 function FIN {
-
-#[FALTA HACER] -1
-# guardar informacion en Instalar_TP.conf y en Instalar_TP.log	
+	
 exit
 
 }
