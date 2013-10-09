@@ -570,15 +570,20 @@ fi
 #Cargo a las variables los parametros default
 ParametrosDefault
 
+
+
+
+# Paso 1, 2 y 3
+mkdir -p "$CONFDIR"
+InicioLogInstalacion
+
 #Se crea el directorio para bakcup
 mkdir -p "$CONFDIR/backup"
 
 #backup
 
 
-# Paso 1, 2 y 3
-mkdir -p "$CONFDIR"
-InicioLogInstalacion
+
 
 #Paso 4.
 if [ -f "$Instconf" ];
