@@ -84,11 +84,7 @@ sub tickets_pedirid {
 }
 	
 sub generar_ranking {
-    #Utilizar la referencia interna del solicitante para distinguir entre solicitantes.
-    #(Se podría utilizar el mail, pero se supone que una misma persona podria tener
-    # dos mails distintos registrados, mientras que la referencia deberia ser unica).
-    
-    
+    #Utiliza la referencia interna del solicitante para distinguir entre solicitantes.
     #TODO: Cambiar por PROCDIR/reservas.ok
     $archivo_reservasok="reservas.ok";
     if ( ! (-e $archivo_reservasok ) ) {
@@ -129,11 +125,41 @@ sub generar_ranking {
   $valores_iterar=$#keys;
   if (  $valores_iterar>10 ) { $valores_iterar=10; }
   
+  if ($escribir==1) { 
+	  &obtenernombrefichero;
+	  open FICHERO_DESTINO, ">$nombred" or die "No se puede abrir destino"; }
   for($i = 1; $i < $valores_iterar; $i++) {
 	print ("$values[$i][1]-$values[$i][0]\n");
+	if ($escribir==1) {  print FICHERO_DESTINO ( "$values[$i][1]-$values[$i][0]\n"); }
   }
-    
+  if ($escribir==1) { close( FICHERO_DESTINO); }   
 }
+
+
+#Funcion auxiliar de ranking para obtener el nombre del archivo a guardar.
+#Busca en el directorio correspondiente ( "repodir" ) los archivos con el nombre ranking,
+#de manera de generar extensiones no repetidas. Por ejemplo: Si
+# no hay archivos con el nombre ranking, la extension sera .000, si existe uno solo,
+#sera .001, etc. Si se excede (es decir, si ya existe .999) creara ranking.1000. 
+# Para numeros inferiores, Siempre se utilizaran 3 digitos.
+sub obtenernombrefichero {
+    #TODO: cambiar a repodir
+    $directorio_a_revisar="";
+    $arch_a_revisar="$directorio_a_revisar"."ranking*";
+    #Para ver cuantos archivos ranking fueron creados en ejecuciones anteriores.
+    my @files = `ls $arch_a_revisar -l`;
+    $numerof=$#files+1;
+    if ("$numerof"<10 and "$numerof">=0)  { $nombred= "$directorio_a_revisar"."ranking.00"."$numerof"; }
+    else {
+      if ("$numerof">9 and "$numerof"<100)  { $nombred= "$directorio_a_revisar"."ranking.0"."$numerof"; }
+      else  { $nombred= "$directorio_a_revisar"."ranking."."$numerof"; }
+    }
+    if ( $numerof == -1 ) {
+       $nombred= "$directorio_a_revisar"."ranking.000";
+    }
+
+}
+
 
 sub generar_invitados {
     &pedir_id_evento;
@@ -222,7 +248,7 @@ sub pedir_id_evento {
 }
 
 sub generar_disponibilidades {
-	#TODO: Aca deberia buscar en otro directorio.
+	#TODO: Aca deberia buscar en otro directorio. (procdir)
 	$directoriocombos="";
 	$archivocombos="$directoriocombos"."combos.dis";
 	if ( ! (-e $archivocombos) ) {
@@ -232,7 +258,7 @@ sub generar_disponibilidades {
 	&disponibilidades_pedirdatos;
 	
 	$encontro=0;
-	open(IN, $archivocombos);
+	open(IN, $archivocombos) or die "No existe el archivo de entrada\n";;
 	if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
 	
 	while($linea = <IN>) {
@@ -304,12 +330,14 @@ sub disponibilidades_pedirdatos {
 	    $valorinicial+=1;
 	  }
 	}
+	#TODO: Aca deberia buscar en otro directorio. (Repodir)
+	$directoriorep="";
 	if ($escribir==1) {
 	  &pedir_nombre_archivo;
 	  while ($nombrearc eq "combos") { 
 		print "El nombre ingresado no puede ser combos.\n";
 		&pedir_nombre_archivo; }
-	  $nombrearc="$directoriocombos"."$nombrearc".".dis";
+	  $nombrearc="$directoriorep"."$nombrearc".".dis";
 	}
 }
 
