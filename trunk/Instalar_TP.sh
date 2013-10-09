@@ -14,7 +14,7 @@ backup="$CONFDIR/backup"
 
 
 function backup {
-
+echo "Realizando backup"
 ./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
 ./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
 ./Mover_B.sh ./PuedoUsarLog.sh $backup '-c'
@@ -41,11 +41,7 @@ function backup {
 ./Mover_B.sh ./combos.dis $backup '-c'
 
 ./Mover_B.sh ./Mover_B.sh $backup '-c'
-
 }
-
-
-
 
 #Funcion para grabar al Log
 function Log {
@@ -570,9 +566,6 @@ fi
 #Cargo a las variables los parametros default
 ParametrosDefault
 
-
-
-
 # Paso 1, 2 y 3
 mkdir -p "$CONFDIR"
 InicioLogInstalacion
@@ -580,10 +573,10 @@ InicioLogInstalacion
 #Se crea el directorio para bakcup
 mkdir -p "$CONFDIR/backup"
 
-#backup
-
-
-
+temp="$LOGDOR"
+LOGDIR="$backup"
+backup
+LOGDIR="$temp"
 
 #Paso 4.
 if [ -f "$Instconf" ];
