@@ -1,0 +1,136 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definición del tipo de documento.                                           %
+% Posibles tipos de papel: a4paper, letterpaper, legalpapper                  %
+% Posibles tamaños de letra: 10pt, 11pt, 12pt                                 %
+% Posibles clases de documentos: article, report, book, slides                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Los paquetes permiten ampliar las capacidades de LaTeX.                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Paquete para inclusión de gráficos.
+\usepackage{graphicx}
+\usepackage{verbatim}
+
+% Paquete notas al pie de página
+\usepackage{footnote}
+
+% Paquete que linkea el indice
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+% Agregar indice en el panel lateral.
+
+\usepackage{ifpdf}
+%if output to PDF then put the following in PDF header
+\ifpdf  
+    \pdfcatalog { /PageMode (/UseOutlines)
+                  /OpenAction (fitbh)  }
+\fi
+
+
+
+% Paquete para definir la codificación del conjunto de caracteres usado
+% (latin1 es ISO 8859-1).
+\usepackage[latin1]{inputenc}
+
+% Paquete para definir el idioma usado.
+\usepackage[spanish]{babel}
+
+\usepackage{listingsutf8}
+\usepackage{listings}
+\lstset{language={}, inputencoding=utf8/latin1, tabsize=4, showstringspaces=false, breaklines=true}
+
+% Título principal del documento.
+\title{	{\Huge{	\textbf{Trabajo Práctico: \\
+		     Sistma de reserva de entradas sin costo comercial \\ }}}
+		    {\hspace{30pt}}}
+
+% Información sobre los autores.
+\author{
+            \normalsize{Grupo Nº 8 TEMA B} \\
+            \normalsize{2do. Cuatrimestre de 2013} \\
+            \normalsize{75.08 Sistmas Operativos}                             \\
+            \normalsize{Facultad de Ingeniería, Universidad de Buenos Aires}            \\
+       }
+\date{}
+
+\begin{document}
+
+% Inserta el título.
+\maketitle
+
+% Quita el número en la primera página.
+\thispagestyle{empty}
+
+% Empieza en una pagina nueva.
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Hipótesis y Aclaraciones globales.}
+
+
+\newpage
+
+
+
+\section {Problemas Relevantes}
+
+\newpage
+
+\section{Archivos Readme}
+
+\subsection{Readme\_Instalar}
+
+\lstinputlisting{../Readme_Instalar}
+
+\subsection{Readme\_Iniciar}
+
+\lstinputlisting{../Readme_Iniciar}
+
+\subsection{Readme\_Recibir}
+
+\lstinputlisting{../Readme_Recibir}
+
+\subsection{Readme\_Reservar}
+
+\lstinputlisting{../Readme_Reservar}
+
+\subsection{Readme\_Grabar\_L}
+
+\lstinputlisting{../Readme_Grabar_L}
+
+\subsection{Readme\_Imprimir}
+
+\lstinputlisting{../Readme_Imprimir}
+
+\subsection{Readme\_Matar\_D}
+
+\lstinputlisting{../Readme_Matar_D}
+
+\newpage 
+
+
+\section{Esquema de Ejecución}
+
+\section{Listado de nuevas funciones y/o comandos auxiliares}
+
+\section{Listado de Nuevos Archivos}
+
+\section{Listado de Datos}
+
+\section{Prueba del Camino Feliz}
+\end{document}
