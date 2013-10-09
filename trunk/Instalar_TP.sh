@@ -13,7 +13,7 @@ existenFaltantes="" #para controlar si existen los archivos faltantes en la rein
 
 #Funcion para grabar al Log
 function Log {
-	sh "./Grabar_L.sh" "$0" "$1"
+	./Grabar_L.sh "$0" '-ins' "$1"
 	echo "$1"
 }
 
@@ -33,24 +33,23 @@ while read -r -a nombre
 do
 	miArreglo1[a]=$nombre
 	miArreglo2[a]=${nombre[1]}
-	echo "$nombre <-> ${nombre[1]}"	
-	#echo "${miArreglo1[a]}  ====  ${miArreglo2[a]}"
+	#echo "$nombre <-> ${nombre[1]}"
 	let a+=1
 done < $Instconf
-grupo="${miArreglo2[0]}"
-CONFDIR="${miArreglo2[1]}"
 
-BINDIR="${miArreglo2[2]}"
-MAEDIR="${miArreglo2[3]}"
-ARRIDIR="${miArreglo2[4]}"
-ACEPDIR="${miArreglo2[5]}"
-RECHDIR="${miArreglo2[6]}"
-REPODIR="${miArreglo2[7]}"
-PROCDIR="${miArreglo2[8]}"
-LOGDIR="${miArreglo2[9]}"
-LOGEXT="${miArreglo2[10]}"
-DATASIZE="${miArreglo2[11]}"
-LOGSIZE="${miArreglo2[12]}"
+export grupo="${miArreglo2[0]}"
+export CONFDIR="${miArreglo2[1]}"
+export BINDIR="${miArreglo2[2]}"
+export MAEDIR="${miArreglo2[3]}"
+export ARRIDIR="${miArreglo2[4]}"
+export ACEPDIR="${miArreglo2[5]}"
+export RECHDIR="${miArreglo2[6]}"
+export REPODIR="${miArreglo2[7]}"
+export PROCDIR="${miArreglo2[8]}"
+export LOGDIR="${miArreglo2[9]}"
+export LOGEXT="${miArreglo2[10]}"
+export DATASIZE="${miArreglo2[11]}"
+export LOGSIZE="${miArreglo2[12]}"
 
 #echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
 }
@@ -73,53 +72,53 @@ export LOGSIZE='400'
 #(Pasos 19 - )Funcion auxiliar que muestra el estado de la instalacion
 function MostrarMensajeEstado {
 clear
-echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
-echo "Libreria del Sistema: $CONFDIR"
+Log "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
+Log "Libreria del Sistema: $CONFDIR"
 if [ -d "$CONFDIR" ];
 then
 	ls "$CONFDIR"
 fi
-echo "Ejecutables:$BINDIR"
+Log "Ejecutables:$BINDIR"
 if [ -d "$BINDIR" ];
 then
 	ls "$BINDIR"
 fi
-echo "Archivos Maestros: $MAEDIR"
+Log "Archivos Maestros: $MAEDIR"
 if [ -d "$MAEDIR" ];
 then
 	ls "$MAEDIR"
 fi
-echo "Directorio de arribo de archivos externos: $ARRIDIR"
+Log "Directorio de arribo de archivos externos: $ARRIDIR"
 if [ -d "$ARRIDIR" ];
 then
 	ls "$ARRIDIR"
 fi
-echo "Archivos externos aceptados: $ACEPDIR"
+Log "Archivos externos aceptados: $ACEPDIR"
 if [ -d "$ACEPDIR" ];
 then
 	ls "$ACEPDIR"
 fi
-echo "Archivos externos rechazados: $RECHDIR"
+Log "Archivos externos rechazados: $RECHDIR"
 if [ -d "$RECHDIR" ];
 then
 	ls "$RECHDIR"
 fi
-echo "Reportes de salida:$REPODIR"
+Log "Reportes de salida:$REPODIR"
 if [ -d "$REPODIR" ];
 then
 	ls "$REPODIR"
 fi
-echo "Archivos procesados:$PROCDIR"
+Log "Archivos procesados:$PROCDIR"
 if [ -d "$PROCDIR" ];
 then
 	ls "$PROCDIR"
 fi
-echo "Logs de aditoria del Sistema:$LOGDIR/<$COMANDO>.$LOGEXT"
+Log "Logs de aditoria del Sistema:$LOGDIR/<$COMANDO>.$LOGEXT"
 if [ -d "$LOGDIR" ];
 then
 	ls "$LOGDIR"
 fi
-echo "Estado de la instalacion:$1"
+Log "Estado de la instalacion:$1"
 
 #FALTA GRABAR EN EL LOG LO MISMO [FALTA HACER]
 }
@@ -149,9 +148,9 @@ else
 	touch "$Instlog" #aca hay que darle permisos de escritura??VER
 fi
 
-echo "Inicio de Ejecución" 
-echo "Log del comando Instalar_TP:$Instlog"
-echo "Directorio de configuracion:$CONFDIR"
+Log "Inicio de Ejecución" 
+Log "Log del comando Instalar_TP:$Instlog"
+Log "Directorio de configuracion:$CONFDIR"
 
 # [FALTA HACER]
 # aca se debe grabar en el log tambien, con la funcion grabar
@@ -160,9 +159,7 @@ echo "Directorio de configuracion:$CONFDIR"
 #(Paso 4) Funcion que se encarga de reinstalar/continuar la instalacion
 function ReInstalar {
 
-CargarDelConf
-
-echo "Chequeando si la instalacion esta completa o no"
+Log "Chequeando si la instalacion esta completa o no"
 #[ FALTA HACER ]
 #CHEQUEAR EL Instalar_Tp.conf
 #Chequear si los directorios existen
@@ -174,22 +171,22 @@ echo "Chequeando si la instalacion esta completa o no"
 if [ "$estado" = "completa" ];
 then
 	MostrarMensajeEstado 'COMPLETA'
-	echo "Proceso de instalacion Cancelado"
+	Log "Proceso de instalacion Cancelado"
 	FIN
 else
-	echo "Instalacion con faltantes"
+	Log "Instalacion con faltantes"
 	MostrarMensajeEstado 'INCOMPLETA'
-	echo "Componentes faltantes:"
+	Log "Componentes faltantes:"
 	#[ FALTA HACER ]
 	#Mostrar componentes faltantes anteriormente chequeados
 
-	echo "Desea continuar la instalacion? (SI - No)"
+	Log "Desea continuar la instalacion? (SI - No)"
 	if FSiNo;
 	then
-		echo "Proceso de instalacion cancelado"
+		Log "Proceso de instalacion cancelado"
 		FIN
 	else
-		echo "Chequeando si se encuentran los faltantes ...."
+		Log "Chequeando si se encuentran los faltantes ...."
 		#[ FALTA HACER ]
 		#Comprobar si estan TODOS los archivos de backup
 		#Si alguno de los archivos no esta -> existenFaltantes = Si
@@ -199,7 +196,7 @@ else
 		then
 			PerlInstalado
 			MostrarMensajeEstado 'LISTA'
-			echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
+			Log "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
 			if FSiNo;
 			then
 				FIN
@@ -209,10 +206,10 @@ else
 			MoverMaestros
 			MoverDisponibilidad
 			MoverProgramasFunciones
-			echo "Instalación CONCLUIDA"
+			Log "Instalación CONCLUIDA"
 			FIN
 		else
-			echo "No existen los faltantes en el sistema"
+			Log "No existen los faltantes en el sistema"
 			FIN
 		fi
 		#HACEN FALTA UN PAR DE FIN POR ACA? -1
@@ -223,9 +220,9 @@ fi
 #(Paso 5) (Aceptacion de terminos) Retorna 1 si acepto los terminos, 0 si no.
 function AceptaTerminos {
 
-echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
-echo " ATENCION: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
-echo "¿Acepta? Si - No "
+Log "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
+Log " ATENCION: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO DE LICENCIA DE SOFTWARE incluido en este paquete."
+Log "¿Acepta? Si - No "
 FSiNo
 
 }
@@ -240,14 +237,14 @@ declare versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p'`
 #busco en la primeri linea v(5.14.xx)
 	if [ "$versioninst" -lt "$versionmin" ]
 	then
-	echo "Para instalar el TP es necesario contar con Perl 5 o superior instalado. Efectue su instalacion e intentelo nuevamente.Proceso de instalacion Cancelado."
+	Log "Para instalar el TP es necesario contar con Perl 5 o superior instalado. Efectue su instalacion e intentelo nuevamente.Proceso de instalacion Cancelado."
 	else
-	echo "Perl Version=$versioninst"
+	Log "Perl Version=$versioninst"
 	fi #se cierra el if de la version
 
 else
 	
-	echo "No esta instalado en su maquina Perl. Instalacion finalizada."
+	Log "No esta instalado en su maquina Perl. Instalacion finalizada."
 	FIN
 fi
 }
@@ -265,11 +262,11 @@ exit
 #(Paso 7) Funcion que define el directorio de instalación de los ejecutables
 function DefinirEjecutables {
 local direct
-echo "Defina el directorio de instalacion de los archivos ejecutables ($BINDIR)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los archivos ejecutables ($BINDIR)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los ejecutables"
+	Log "Proponga su directorio para los ejecutables"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	BINDIR="$grupo/$direct"
@@ -279,11 +276,11 @@ fi
 #(Paso 8) Funcion que define el directorio de instalación de los archivos maestros
 function DefinirMaestros {
 local direct
-echo "Defina el directorio de instalacion de los archivos maestros ($MAEDIR)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los archivos maestros ($MAEDIR)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos maestros"
+	Log "Proponga su directorio para los archivos maestros"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	MAEDIR="$grupo/$direct"
@@ -293,11 +290,11 @@ fi
 #(Paso 9) Funcion que define el directorio de arribo de archivos externos
 function DefinirExternos {
 local direct
-echo "Defina el directorio de instalacion de los archivos externos ($grupo/arribos)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los archivos externos ($grupo/arribos)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos maestros"
+	Log "Proponga su directorio para los archivos maestros"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	ARRIDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/arribos
@@ -307,8 +304,8 @@ fi
 #(Paso 10) Funcion que define el espacio mínimo libre para el arribo de archivos externos
 function EspacioMinimoArribos {
 local cantidad
-echo "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes ($DATASIZE):"
-echo "Desea conservar el Tamaño por defecto?: Si - No"
+Log "Defina el espacio minimo libre para el arribo de archivos externos en MBYtes ($DATASIZE):"
+Log "Desea conservar el Tamaño por defecto?: Si - No"
 if FSiNo;
 then
 	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
@@ -328,8 +325,8 @@ declare -i local taman=` echo $espa | sed 's#.* \([^ ]*\) [^ ]* [^ ]*$#\1#' `
 
 if [ "$taman" -lt "$DATASIZE" ];
 then
-	echo "ESPACIO INSUFICIENTE POR FAVOR LIBERE ESPACIO Y VUELVA A INSTALAR"
-	echo "Se necesitan $DATASIZE y se tiene $taman"
+	Log "ESPACIO INSUFICIENTE POR FAVOR LIBERE ESPACIO Y VUELVA A INSTALAR"
+	Log "Se necesitan $DATASIZE y se tiene $taman"
 	FIN
 fi
 }
@@ -337,11 +334,11 @@ fi
 #(Paso 12) Funcion que define el directorio de grabación de los archivos aceptados
 function DefinirAceptados {
 local direct
-echo "Defina el directorio de instalacion de los archivos maestros ($ACEPDIR)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los archivos maestros ($ACEPDIR)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos maestros"
+	Log "Proponga su directorio para los archivos maestros"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	ACEPDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/aceptados
@@ -351,11 +348,11 @@ fi
 #(Paso 13) Funcion que define el directorio de grabación de los archivos rechazados
 function DefinirRechazados {
 local direct
-echo "Defina el directorio de instalacion de los archivos rechazados ($RECHDIR)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los archivos rechazados ($RECHDIR)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos rechazados"
+	Log "Proponga su directorio para los archivos rechazados"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	RECHDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/recha
@@ -365,11 +362,11 @@ fi
 #(Paso 14) Funcion que define el directorio de grabación de los LISTADOS de salida
 function DefinirSalida {
 local direct
-echo "Defina el directorio de instalacion de los listados de salida($REPODIR)"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de instalacion de los listados de salida($REPODIR)"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos de salida"
+	Log "Proponga su directorio para los archivos de salida"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	REPODIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
@@ -379,11 +376,11 @@ fi
 #(Paso 15) Funcion que define el directorio de trabajo principal del proceso Reservar_B
 function DefinirProcesados {
 local direct
-echo "Defina el directorio de grabación de los archivos procesados ($PROCDIR):"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de grabación de los archivos procesados ($PROCDIR):"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos de salida"
+	Log "Proponga su directorio para los archivos de salida"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	PROCDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
@@ -393,11 +390,11 @@ fi
 #(Paso 16) Funcion que define el directorio de logs para los comandos
 function DefinirLogs {
 local direct
-echo "Defina el directorio de logs ($LOGDIR):"
-echo "Desea conservar el directorio por defecto?: Si - No"
+Log "Defina el directorio de logs ($LOGDIR):"
+Log "Desea conservar el directorio por defecto?: Si - No"
 if FSiNo;
 then
-	echo "Proponga su directorio para los archivos de salida"
+	Log "Proponga su directorio para los archivos de salida"
 	read direct
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	LOGDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
@@ -407,8 +404,8 @@ fi
 #(Paso 18) Funcion que define el tamaño máximo para los archivos de log
 function EspacioMaxLogs {
 local cantidad
-echo "Defina el tamaño máximo para los archivos $LOGEXT en Kbytes ($LOGSIZE):"
-echo "Desea conservar el Tamaño por defecto?: Si - No"
+Log "Defina el tamaño máximo para los archivos $LOGEXT en Kbytes ($LOGSIZE):"
+Log "Desea conservar el Tamaño por defecto?: Si - No"
 if FSiNo;
 then
 	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
@@ -422,8 +419,8 @@ fi
 
 #(Paso 17) Funcion que define la extension de los archivos de log
 function LogExtension {
-echo "Ingrese la extension para los archivos de log: ($LOGEXT)"
-echo "Desea conservar el Tamaño por defecto?: Si - No"
+Log "Ingrese la extension para los archivos de log: ($LOGEXT)"
+Log "Desea conservar el Tamaño por defecto?: Si - No"
 if FSiNo;
 then
 	read extension
@@ -433,7 +430,7 @@ fi
 
 #(Paso 21.1) Funcion que crea los directorios
 function InstalacionDirectorios {
-echo "Creando Estructuras de directorio ..."
+Log "Creando Estructuras de directorio ..."
 mkdir -p "$BINDIR"
 mkdir -p "$MAEDIR"
 mkdir -p "$ARRIDIR"
@@ -446,7 +443,7 @@ mkdir -p "$LOGDIR"
 
 #(Paso 21.2) Funcion que mueve los archivos maestros al directorio MAEDIR
 function MoverMaestros {
-echo "Instalando Archivos Maestros"
+Log "Instalando Archivos Maestros"
 
 ./Mover_B.sh ./salas.mae $MAEDIR
 ./Mover_B.sh ./obras.mae $MAEDIR
@@ -454,7 +451,7 @@ echo "Instalando Archivos Maestros"
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
 function MoverDisponibilidad {
-echo "Instalando Archivo de Disponibilidad"
+Log "Instalando Archivo de Disponibilidad"
 
 ./Mover_B.sh ./combos.dis $PROCDIR
 }
@@ -462,7 +459,7 @@ echo "Instalando Archivo de Disponibilidad"
 
 #(Paso 21.4) Funcion que mueve los ejecutables y funciones  al directorio BINDIR
 function MoverProgramasFunciones {
-echo "Instalando Programas y Funciones"
+Log "Instalando Programas y Funciones"
 
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
 ./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
@@ -494,11 +491,11 @@ echo "Instalando Programas y Funciones"
 
 #(Paso 21.5) Funcion que Actualiza el archivo de configuración
 function ActualizarArchivos {
-echo "Actualizando la configuración del sistema"
+Log "Actualizando la configuración del sistema"
 
 if [ -f "$Instconf" ];
 then
-	echo "Archivo de configuracion ya existente"
+	Log "Archivo de configuracion ya existente"
 	#actualizar?
 	#truncar el archivo viejo y escribir desde 0 mi opinion es (by jorge)
 
@@ -537,6 +534,9 @@ fi
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------
+#Cargo a las variables los parametros default
+ParametrosDefault
+
 # Paso 1, 2 y 3
 mkdir -p "$CONFDIR"
 InicioLogInstalacion
@@ -544,26 +544,27 @@ InicioLogInstalacion
 #Paso 4.
 if [ -f "$Instconf" ];
 then 
-	echo "instalacion incompleta o ya hecha"
+	CargarDelConf
+	#Aca copio el grabar_l al directorio del Instalar
+	Log "instalacion incompleta o ya hecha"
 	ReInstalar
 else 
-	echo "Instalacion por primera vez"
+	Log "Instalacion por primera vez"
 fi
 
 #Paso 5
 if AceptaTerminos;
 then 
-	echo "USUARIO RECHAZO TERMINOS"
+	Log "USUARIO RECHAZO TERMINOS"
 	FIN
 else 
-	echo "USUARIO ACEPTO TERMINOS"
+	Log "USUARIO ACEPTO TERMINOS"
 fi
 
 #Paso 6
 PerlInstalado
 
-#Cargo a las variables los parametros default
-ParametrosDefault
+
 
 #NOTA: se que queda medio sucio poner esta funcion aca pero creo que se ve mas "secuencial" la instalacion si la dejo aca
 function Definiciones {
@@ -606,7 +607,7 @@ EspacioMaxLogs
 #Paso 19: Mostrar estructura de directorios resultante y valores de parámetros configurados
 MostrarMensajeEstado ' LISTO'
 
-echo "Desea continuar con la instalacion?: Si - No"
+Log "Desea continuar con la instalacion?: Si - No"
 if FSiNo;
 then
 	clear
@@ -616,7 +617,7 @@ fi
 Definiciones
 
 #Paso 20: Confirmar Inicio de Instalación
-echo "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
+Log "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
 if FSiNo;
 then
 	FIN
@@ -632,7 +633,8 @@ MoverProgramasFunciones
 ActualizarArchivos
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
-"$BINDIR/Eliminar_B.sh" "$pwd/Grabar_L.sh"
+Log "borrando archivos temporarios"
+rm './Grabar_L.sh'
 
 #Paso 23: Mostrar mensaje de fin de instalación
 echo "Instalación CONCLUIDA"
