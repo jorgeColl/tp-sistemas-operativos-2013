@@ -13,7 +13,7 @@ existenFaltantes="" #para controlar si existen los archivos faltantes en la rein
 backup="$CONFDIR/backup"
 
 
-function backup{
+function backup {
 
 ./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
 ./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
