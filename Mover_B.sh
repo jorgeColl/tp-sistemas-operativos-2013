@@ -29,7 +29,7 @@
 	if [ ! -f $1 ]; then
 		#Si entro es porque NO existe el archivo
 		#Hacer un dump al log
-		./Grabar_L.sh "$0" "-e" "Se llamo al mover con un archivo origen inexistente."
+		./Grabar_L.sh "$0" "-e" "Se llamo al mover con un archivo origen inexistente. $1"
 		#echo "No existe el archivo origen"
 		exit -1
 	fi
