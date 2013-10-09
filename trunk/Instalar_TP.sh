@@ -57,22 +57,21 @@ LOGSIZE="${miArreglo2[12]}"
 
 #Por defecto asumo estos directorios 
 function ParametrosDefault {
-BINDIR="$grupo/bin"
-MAEDIR="$grupo/mae"
-ARRIDIR="$grupo/arribos"
-ACEPDIR="$grupo/aceptados"
-RECHDIR="$grupo/rechazados"
-REPODIR="$grupo/listados"
-PROCDIR="$grupo/procesados"
-LOGDIR="$grupo/log"
-LOGEXT='.log'
-DATASIZE='100'
-LOGSIZE='400'
+export BINDIR="$grupo/bin"
+export MAEDIR="$grupo/mae"
+export ARRIDIR="$grupo/arribos"
+export ACEPDIR="$grupo/aceptados"
+export RECHDIR="$grupo/rechazados"
+export REPODIR="$grupo/listados"
+export PROCDIR="$grupo/procesados"
+export LOGDIR="$grupo/log"
+export LOGEXT='.log'
+export DATASIZE='100'
+export LOGSIZE='400'
 }
 
 #(Pasos 19 - )Funcion auxiliar que muestra el estado de la instalacion
 function MostrarMensajeEstado {
-declare local salida
 clear
 echo "TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08"
 echo "Libreria del Sistema: $CONFDIR"
@@ -216,7 +215,7 @@ else
 			echo "No existen los faltantes en el sistema"
 			FIN
 		fi
-		#HACEN FALTA UN PAR DE FIN POR ACA?
+		#HACEN FALTA UN PAR DE FIN POR ACA? -1
 	fi
 fi
 }
@@ -256,7 +255,7 @@ fi
 #Para finalizar el script , guarda informacion en Instalar_TP.conf y en Instalar_TP.log
 function FIN {
 
-#[FALTA HACER]
+#[FALTA HACER] -1
 # guardar informacion en Instalar_TP.conf y en Instalar_TP.log	
 exit
 
@@ -633,7 +632,7 @@ MoverProgramasFunciones
 ActualizarArchivos
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
-"$BINDIR/Eliminar_B.sh" './Grabar_L.sh'
+"$BINDIR/Eliminar_B.sh" "$pwd/Grabar_L.sh"
 
 #Paso 23: Mostrar mensaje de fin de instalación
 echo "Instalación CONCLUIDA"
