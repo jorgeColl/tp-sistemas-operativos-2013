@@ -10,6 +10,42 @@ declare -i DATASIZE
 Instconf="$CONFDIR/Instalar_TP.conf" #ruta al conf del script
 estado="" #para controlar el estado de la instalacion 
 existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
+backup="$CONFDIR/backup"
+
+
+function backup{
+
+./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
+./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
+./Mover_B.sh ./PuedoUsarLog.sh $backup '-c'
+./Mover_B.sh ./Reservar_B.sh $backup '-c'
+./Mover_B.sh ./Matar_D.sh $backup '-c'
+./Mover_B.sh ./Start_D.sh $backup '-c'
+./Mover_B.sh ./Imprimir_B.pl $backup '-c'
+./Mover_B.sh ./EstaCorriendo.sh $backup '-c'
+./Mover_B.sh ./EstaInicializado.sh $backup '-c' 
+./Mover_B.sh ./Recibir_B.sh $backup '-c'
+./Mover_B.sh ./Eliminar_B.sh $backup '-c'
+
+./Mover_B.sh ./Readme_Instalar $backup '-c'
+./Mover_B.sh ./Readme_Start_D $backup '-c'
+./Mover_B.sh ./Readme_Iniciar $backup '-c'
+./Mover_B.sh ./Readme_Reservar $backup '-c'
+./Mover_B.sh ./Readme_Imprimir $backup '-c'
+./Mover_B.sh ./Readme_Recibir $backup '-c'
+./Mover_B.sh ./Readme_Grabar_L $backup '-c'
+./Mover_B.sh ./Readme_Matar_D $backup '-c'
+./Mover_B.sh ./Readme_Iniciar $backup '-c'
+./Mover_B.sh ./obras.mae $backup '-c'
+./Mover_B.sh ./salas.mae $backup '-c'
+./Mover_B.sh ./combos.dis $backup '-c'
+
+./Mover_B.sh ./Mover_B.sh $backup '-c'
+
+}
+
+
+
 
 #Funcion para grabar al Log
 function Log {
@@ -152,8 +188,7 @@ Log "Inicio de Ejecución"
 Log "Log del comando Instalar_TP:$Instlog"
 Log "Directorio de configuracion:$CONFDIR"
 
-# [FALTA HACER]
-# aca se debe grabar en el log tambien, con la funcion grabar
+
 }
 
 #(Paso 4) Funcion que se encarga de reinstalar/continuar la instalacion
@@ -534,6 +569,12 @@ fi
 #INICIO DE EJECUCION-----------------------------------------------------------
 #Cargo a las variables los parametros default
 ParametrosDefault
+
+#Se crea el directorio para bakcup
+mkdir -p "$CONFDIR/backup"
+
+#backup
+
 
 # Paso 1, 2 y 3
 mkdir -p "$CONFDIR"
