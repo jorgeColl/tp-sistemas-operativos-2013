@@ -192,6 +192,8 @@ sub generar_invitados {
       #TODO: Falta asegurarse de que $hash_info{$data[8]} no este vacio.
       # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
       if ($eleccion==$data[7]) {
+	  #hash info: Tiene por keys las referencias internas del solicitante. Los values son arrays, que tienen
+	  #una cadena con: info del evento en la primera posicion y el total de butacas acumuladas en la segunda.
 	  if ( exists( $hash_info{$data[8]}) ) { 
 	    $valoracum=$hash_info{$data[8]}[1] + $data[6];
 	    @lista_d=($hash_info{$data[8]}[0],$valoracum);
@@ -205,15 +207,23 @@ sub generar_invitados {
       }
     }
     close(ARC);
+    
+    #TODO: Deberia estar en repodir!
+    $nombrearc="$eleccion".".inv";
+    if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
+	
     foreach my $key ( keys %hash_info ) {
 	$totalacumulado=0;
 	$butacasconfirmadas=0;
 	if (length($key)==0) { next } #TODO: por que tengo que hacer esto?
+	
 	print ("\n$hash_info{$key}[0]$key\n");
+	if ($escribir==1) { print FICHERO_DESTINO ("\n$hash_info{$key}[0]$key\n"); }
 	$nombrearchivo="$repodirinv/$key.inv";
-	if ( ! (-e $nombrearchivo ) ) { print "sin listado de invitados \n"; }
+	if ( ! (-e $nombrearchivo ) ) { print "sin listado de invitados \n";
+					if ($escribir==1) { print FICHERO_DESTINO ("sin listado de invitados \n"); } }
 	else {
-	    open(ARCINV, $nombrearchivo) or print "No se puede abrir el archivo de invitados del solicitante $key";
+	    open(ARCINV, $nombrearchivo) or die "No se puede abrir el archivo de invitados del solicitante $key";
 	    $aux=0;
 	    while($registro = <ARCINV>) {
 		      chomp($registro);
@@ -221,15 +231,18 @@ sub generar_invitados {
 		      @datainv= split(";", $registro);
 		      $aux=$aux+$datainv[2]+1;
 		      print "$datainv[0],$datainv[2],$aux\n";
+		      if ($escribir==1) { print FICHERO_DESTINO ("$datainv[0],$datainv[2],$aux\n"); }
 	    }
 	    close (ARCINV);
+	    #TODO: Deberia imprimir también las butacas confirmadas si no hay archivo de invitados para el solicitante?
 	    print "Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n";
+	    if ($escribir==1) { print FICHERO_DESTINO ("Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n"); }
 	}
     }
+    if ($escribir==1) { close(FICHERO_DESTINO); }
 }
 
-	      
-	      
+
 # Funcion auxiliar para generar listas de invitados:
 # Accede al archivo combos y los lista. Al terminar, pide que se elija alguna de ellos
 # el id de la elegida se guarda en $eleccion
