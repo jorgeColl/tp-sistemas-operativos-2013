@@ -175,79 +175,91 @@ sub obtenernombrefichero {
 
 sub generar_invitados {
     &pedir_id_evento;
+    %hash_info=""; #Hash vacio.
     if ($eleccion == -1) { return; }
     #TODO: Cambiar por PROCDIR/reservas.ok
     $archivo_reservasok="reservas.ok";
     #TODO: cambiar por REPODIR (para REPODIR/<Referencia Interna Del Solicitante>.inv)
     $repodirinv="pruebas";
-    
-    if ( ! (-e $archivo_reservasok ) ) {
-		print "No existe el archivo de entrada\n";
-		return;
-    }
-    
-    open(ARC, $archivo_reservasok);
+
+    open(ARC, $archivo_reservasok),  or die "No se puede abrir el archivo de reservas";
     while($linea = <ARC>) {
       chomp($linea);
       #TODO: Usar expresiones regulares para verificar que este bien formado.
       @data= split(";", $linea);
       #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
       if ($#data ne 12 ) { next; }
-      if ($eleccion==$data[0]) {
-	  print "Evento: $data[7] Obra: $data[0]-$data[1], Fecha y Hora: $data[2]-$data[3] Hs. Sala: $data[4]-$data[5]\n";
-	  $nombrearchivo="$repodirinv/$data[8].inv";
-
-	  if ( ! (-e $nombrearchivo ) ) { print "sin listado de invitados \n"; }
+      #TODO: Falta asegurarse de que $hash_info{$data[8]} no este vacio.
+      # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
+      if ($eleccion==$data[7]) {
+	  if ( exists( $hash_info{$data[8]}) ) { 
+	    $valoracum=$hash_info{$data[8]}[1] + $data[6];
+	    @lista_d=($hash_info{$data[8]}[0],$valoracum);
+	    $hash_info{$data[8]}=[@lista_d];
+	  }
 	  else {
-	      open(ARCINV, $nombrearchivo);
-	      $aux=0;
-	      while($registro = <ARCINV>) {
-		 
-		  chomp($registro);
-		  #TODO: Usar expresiones regulares para verificar que este bien formado.
-		  @datainv= split(";", $registro);
-		  $aux=$aux+$datainv[2]+1;
-		  print "$datainv[0],$datainv[2],$aux\n";
-		  
-	      }
-	      close (ARCINV);
+	    $cadena= "Evento: $data[7] Obra: $data[0]-$data[1], Fecha y Hora: $data[2]-$data[3] Hs. Sala: $data[4]-$data[5]\n";
+	    @lista_d= ($cadena,$data[6]);
+	    $hash_info{$data[8]}= [@lista_d];
 	  }
       }
     }
     close(ARC);
+    foreach my $key ( keys %hash_info ) {
+	$totalacumulado=0;
+	$butacasconfirmadas=0;
+	if (length($key)==0) { next } #TODO: por que tengo que hacer esto?
+	print ("\n$hash_info{$key}[0]$key\n");
+	$nombrearchivo="$repodirinv/$key.inv";
+	if ( ! (-e $nombrearchivo ) ) { print "sin listado de invitados \n"; }
+	else {
+	    open(ARCINV, $nombrearchivo) or print "No se puede abrir el archivo de invitados del solicitante $key";
+	    $aux=0;
+	    while($registro = <ARCINV>) {
+		      chomp($registro);
+		      #TODO: Usar expresiones regulares para verificar que este bien formado.
+		      @datainv= split(";", $registro);
+		      $aux=$aux+$datainv[2]+1;
+		      print "$datainv[0],$datainv[2],$aux\n";
+	    }
+	    close (ARCINV);
+	    print "Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n";
+	}
+    }
 }
 
-
+	      
+	      
 # Funcion auxiliar para generar listas de invitados:
-# Accede al archivo maestro de obras y las lista. Al terminar, pide que se elija alguna de ellas
+# Accede al archivo combos y los lista. Al terminar, pide que se elija alguna de ellos
 # el id de la elegida se guarda en $eleccion
 sub pedir_id_evento {
-  print "Lista de obras: \n";
-  
-  #TODO: Cambiar por MAEDIR/obras.mae
-  $directorio_obras="obras.mae";
-  if ( ! (-e $directorio_obras ) ) {
-		print "No existe el archivo de entrada\n";
-		return;
+  print "Lista de eventos: \n";
+  #TODO: Aca deberia buscar en otro directorio. (procdir)
+  $directoriocombos="";
+  $archivocombos="$directoriocombos"."combos.dis";
+  if ( ! (-e $archivocombos) ) {
+      print "No existe el archivo de entrada\n";
+      return;
   }
   $contador=0;
   @ids;
-  open(IN, $directorio_obras);
+  open(IN, $archivocombos);
   while($linea = <IN>) {
     chomp($linea);
     #TODO: Usar expresiones regulares para verificar que este bien formado.
     @info= split(";", $linea);
     #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
-    if ($#info ne 3 ) { next; }
+    if ($#info ne 7 ) { next; }
     $contador+=1;
-    print "Opcion nro: $contador ID: $info[0], Nombre: $info[1] \n";
+    print "Opcion nro: $contador --- ID del combo: $info[0], ID de la obra: $info[1], Fecha y hora: $info[2] - $info[3] Hs, Sala: $info[4] \n";
     push(@ids,$info[0]);
   }
   close(IN);
   $numop=0;
   $eleccion=0;
   while ( $numop<=0 or $numop>$contador ) {
-    print "Elija NUMERO DE OPCION de la obra elegida, o -1 para salir\n";
+    print "Elija NUMERO DE OPCION del evento elegido, o -1 para salir\n";
     $numop= <STDIN>;
     chomp($numop);
     if ( $numop == -1) { return };
@@ -256,7 +268,6 @@ sub pedir_id_evento {
     else { $eleccion= $ids[$numop-1]; }
     
   }
-    
 }
 
 sub generar_disponibilidades {
