@@ -2,6 +2,7 @@
 
 OUTPUT="caminoFeliz.out"
 
+TP="`pwd`"
 
 function FSiNo {
 local var1
@@ -19,9 +20,11 @@ fi
 }
 
 function Abortar {
+	cd $TP
 	echo "test Abortado. Se borraran directorios."
 	./revertInstall.sh
-	#exit 0
+	read var
+	exit 0
 } 
 echo -e "Prueba del camino FELIZ :) \n La salida de los comandos se encuentra en $OUTPUT"
 echo -e "*************INSTALACION**************\nComenzar instalación?"
@@ -44,6 +47,13 @@ then
 	echo "No se han creado los directorios correctamente."
 	Abortar 
 fi
+#copio el log de la instalacion:
+echo "Copiando el log de la instalacion." 
+echo -e "\n\n**************LOG INSTALACION************\n\n" >> $OUTPUT
+cat instalacion.log >> $OUTPUT
+echo "Copiando Instalar_TP.conf ."
+echo -e "\n\n**************ARCHIVO CONFIGURACION************\n\n" >> $OUTPUT
+cat grupo8/conf/Instalar_TP.conf >> $OUTPUT
 echo -e "Instalacion Concluida con exito.\n\n*************INICIAR**************\nDesea Inicializar el ambiente de trabajo?"
 if FSiNo
 then
@@ -51,19 +61,19 @@ then
 fi
 echo -e "\n\n**************INICIAR************\n\n" >> $OUTPUT
 echo "Inicializando el ambiente"
-TP="`pwd`"
 cd grupo8/bin
-echo "No" >> aux
+echo "Si" >> aux
 source Iniciar_B.sh < aux >>"../../$OUTPUT"
-rm aux
 if [ $? -ne 0 ]
 then
 	echo "Error al inicializar el ambiente."
 	Abortar
 fi
-echo "arribos: $ARRIDIR"
-
+rm aux
 cd $TP
+echo "Copiando el log de iniciar."
+echo -e "\n\n**************LOG INICIAR************\n\n" >> $OUTPUT
+cat "grupo8/conf/Iniciar_B.sh.$LOGEXT" >> $OUTPUT
 echo -e  "**************FIN DEL TEST************\n\n" 
 #./revertInstall.sh
 
