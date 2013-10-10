@@ -573,7 +573,7 @@ InicioLogInstalacion
 #Se crea el directorio para bakcup
 mkdir -p "$CONFDIR/backup"
 
-temp="$LOGDOR"
+temp="$LOGDIR"
 LOGDIR="$backup"
 backup
 LOGDIR="$temp"
