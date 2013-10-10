@@ -283,7 +283,7 @@ fi
 #Para finalizar el script , guarda informacion en Instalar_TP.conf y en Instalar_TP.log
 function FIN {
 	
-exit
+exit 0
 
 }
 
@@ -474,15 +474,15 @@ mkdir -p "$LOGDIR"
 function MoverMaestros {
 Log "Instalando Archivos Maestros"
 
-./Mover_B.sh ./salas.mae $MAEDIR
-./Mover_B.sh ./obras.mae $MAEDIR
+./Mover_B.sh datos/salas.mae $MAEDIR
+./Mover_B.sh datos/obras.mae $MAEDIR
 }
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
 function MoverDisponibilidad {
 Log "Instalando Archivo de Disponibilidad"
 
-./Mover_B.sh ./combos.dis $PROCDIR
+./Mover_B.sh datos/combos.dis $PROCDIR
 }
 
 
