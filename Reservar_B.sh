@@ -195,7 +195,7 @@ do
 	disponibles= #Vacio para chequeos
 	registrosOK=0
 	registrosNOK=0
-	while read linea
+	while read linea || [[ -n "$linea" ]]
 	do
 		if [ -z "$linea" ]
 			then continue #Ignoramos lineas vacias
