@@ -11,6 +11,11 @@
 #Chequeamos la cantidad de parametros, con este decidimos que es cada uno.
 	comandoSolicitante=`echo ${1##*/}`
 	
+	if ! ./EstaInicializado.sh
+	then
+		#No esta inicializado, no puedo usar el log
+		exit -1
+	fi
 	if [ $# -lt 2 -o $# -gt 3 ]; then
 		echo -e "Invocacion incorrecta. Las correctas son: \n./Grabar_L comandoSolicitante tipoDeMensaje mensaje \n./Grabar_L comandoSolicitante mensaje "
 		exit -1
