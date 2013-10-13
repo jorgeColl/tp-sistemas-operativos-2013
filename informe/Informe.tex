@@ -140,13 +140,19 @@ en ejecución.
 
 \subsection{Mover\_B}
 
-La caracteristíca básica de este script no presente muchos inconvenientes. Es decir, mover archivos entre directorios es algo sencillo.
+La caracteristíca básica de este script no presentó muchos inconvenientes. Es decir, mover archivos entre directorios es algo sencillo.
 El problema surge cuando en el directorio destino ya se encuentra el archivo que queremos mover. En nuestro caso optamos por mover el 
 archivo con un nombre formado por: nombreOriginal+N , en donde N es la cantidad de documentos con el mismo nombre en el directorio.
 Adicionalmente, a este script, se le agregó funcionalidad para copiar archivos. Siendo necesaria en su invocación agregar el parámetro
 "-c".
 
 \subsection{Grabar\_L}
+
+El motivo de llevar adelante un 'Logger' radica en la trazabilidad de un programa en ejecución. Su implimentación resulta ser de 
+una dificultad moderada, pero, por el contrario, su utilidad es mucha. Para este sistema, se necesitan generar archivos de logs para cada script utilizado. Además 
+se le da un trato especial al de instalación, ya que este nunca se recorta y se ubica en un directorio distinto al resto.
+Para evitar la duplicación de código, se utiliza el mismo script para todos los archivos de log generados. Tomando como un caso especial la invocación de 'Grabar_L.sh' con el 
+parámetro "-ins". En esta oportunidad se genera una ruta distintiva y se anula la funcionalidad de limite de tamaño.
 
 
 \newpage
@@ -245,6 +251,7 @@ Para realizar la 'Prueba del camino Feliz' (ver sección ~\ref{sec:camino_feliz})
 han utilizado los datos provistos por la cátedra, sino que también se han agregado ciertos casos
 no contemplados por los mismos. Como por ejemplo reservas fuera de fecha, nombres de archivos
 inválidos, etc.
+
 Para esta parte de las pruebas, los archivos \texttt{combos.dis, obras.mae} 
 y \texttt{salas.mae} no han sido modificados.
 
