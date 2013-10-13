@@ -7,8 +7,13 @@ if ( ! system("./EstaInicializado.sh") == 0) {
 	return;
 }
 
-my $varex = $ENV{"PROCDIR"};
-print "\$varex is: $varex\n";
+#Importo las variables de ambiente
+my $procdir = $ENV{"PROCDIR"};
+my $repodir = $ENV{"REPODIR"};
+my $maedir = $ENV{"MAEDIR"};
+
+#Ubicacion del archivo reservas.ok que va a ser usado por varias funciones
+$archivo_reservasok="$procdir"."/reservas.ok";
 
 #Deberia pasarse al menos un parametro.
 if ( $#ARGV <0 ) {
@@ -43,18 +48,14 @@ switch ($val) {
 
 
 sub generar_tickets {
-    #TODO: Cambiar por PROCDIR/reservas.ok
-    $archivo_reservasok="reservas.ok";
     if ( ! (-e $archivo_reservasok ) ) {
 		print "No existe el archivo de entrada\n";
 		return;
     }
-    #TODO: Cambiar por REPoDIR/
-    $nombred="";
     $encontrado=0;
     &tickets_pedirid;
     if ($idcombo == -1) { return; }
-    $nombred="$idcombo"."$nombred".".tck";
+    $nombred="$repodir"."/"."$idcombo".".tck";
     open(ARC, $archivo_reservasok);
     if ($escribir==1) { open FICHERO_DESTINO, ">$nombred" or die "No se puede abrir destino"; }
     while($linea = <ARC>) {
@@ -90,6 +91,7 @@ sub generar_tickets {
       print "No se encontro ninguna entrada con el id de combo pedido\n";
       if ($escribir==1) {  print FICHERO_DESTINO ("No se encontro ninguna entrada con el id de combo pedido\n" ); }
       &tickets_pedirid;
+      &generar_tickets;
     }
     if ($escribir==1) {  close FICHERO_DESTINO }
     
@@ -105,8 +107,6 @@ sub tickets_pedirid {
 	
 sub generar_ranking {
     #Utiliza la referencia interna del solicitante para distinguir entre solicitantes.
-    #TODO: Cambiar por PROCDIR/reservas.ok
-    $archivo_reservasok="reservas.ok";
     if ( ! (-e $archivo_reservasok ) ) {
 		print "No existe el archivo de entrada\n";
 		return;
@@ -163,8 +163,7 @@ sub generar_ranking {
 #sera .001, etc. Si se excede (es decir, si ya existe .999) creara ranking.1000. 
 # Para numeros inferiores, Siempre se utilizaran 3 digitos.
 sub obtenernombrefichero {
-    #TODO: cambiar a repodir
-    $directorio_a_revisar="";
+    $directorio_a_revisar="$repodir"."/";
     $arch_a_revisar="$directorio_a_revisar"."ranking*";
     #Para ver cuantos archivos ranking fueron creados en ejecuciones anteriores.
     my @files = `ls $arch_a_revisar -l`;
@@ -185,11 +184,8 @@ sub generar_invitados {
     &pedir_id_evento;
     %hash_info=""; #Hash vacio.
     if ($eleccion == -1) { return; }
-    #TODO: Cambiar por PROCDIR/reservas.ok
-    $archivo_reservasok="reservas.ok";
-    #TODO: cambiar por REPODIR (para REPODIR/<Referencia Interna Del Solicitante>.inv)
-    $repodirinv="pruebas";
-
+    $repodirinv="$repodir";
+	
     open(ARC, $archivo_reservasok),  or die "No se puede abrir el archivo de reservas";
     while($linea = <ARC>) {
       chomp($linea);
@@ -199,7 +195,7 @@ sub generar_invitados {
       if ($#data ne 12 ) { next; }
       #TODO: Falta asegurarse de que $hash_info{$data[8]} no este vacio.
       # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
-      if ($eleccion==$data[7]) {
+      if ( "$eleccion" eq "$data[7]") {
 	  #hash info: Tiene por keys las referencias internas del solicitante. Los values son arrays, que tienen
 	  #una cadena con: info del evento en la primera posicion y el total de butacas acumuladas en la segunda.
 	  if ( exists( $hash_info{$data[8]}) ) { 
@@ -216,8 +212,7 @@ sub generar_invitados {
     }
     close(ARC);
     
-    #TODO: Deberia estar en repodir!
-    $nombrearc="$eleccion".".inv";
+    $nombrearc="$repodirinv"."/"."$eleccion".".inv";
     if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
 	
     foreach my $key ( keys %hash_info ) {
@@ -256,9 +251,7 @@ sub generar_invitados {
 # el id de la elegida se guarda en $eleccion
 sub pedir_id_evento {
   print "Lista de eventos: \n";
-  #TODO: Aca deberia buscar en otro directorio. (procdir)
-  $directoriocombos="";
-  $archivocombos="$directoriocombos"."combos.dis";
+  $archivocombos="$procdir"."/"."combos.dis";
   if ( ! (-e $archivocombos) ) {
       print "No existe el archivo de entrada\n";
       return;
@@ -292,9 +285,7 @@ sub pedir_id_evento {
 }
 
 sub generar_disponibilidades {
-	#TODO: Aca deberia buscar en otro directorio. (procdir)
-	$directoriocombos="";
-	$archivocombos="$directoriocombos"."combos.dis";
+	$archivocombos="$procdir"."/"."combos.dis";
 	if ( ! (-e $archivocombos) ) {
 		print "No existe el archivo de entrada\n";
 		return;
@@ -374,14 +365,13 @@ sub disponibilidades_pedirdatos {
 	    $valorinicial+=1;
 	  }
 	}
-	#TODO: Aca deberia buscar en otro directorio. (Repodir)
 	$directoriorep="";
 	if ($escribir==1) {
 	  &pedir_nombre_archivo;
 	  while ($nombrearc eq "combos") { 
 		print "El nombre ingresado no puede ser combos.\n";
 		&pedir_nombre_archivo; }
-	  $nombrearc="$directoriorep"."$nombrearc".".dis";
+	  $nombrearc="$repodir"."/"."$nombrearc".".dis";
 	}
 }
 
