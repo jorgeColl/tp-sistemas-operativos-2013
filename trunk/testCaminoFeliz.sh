@@ -74,6 +74,15 @@ cd $TP
 echo "Copiando el log de iniciar."
 echo -e "\n\n**************LOG INICIAR************\n\n" >> $OUTPUT
 cat "grupo8/conf/Iniciar_B.sh.$LOGEXT" >> $OUTPUT
+echo -e "\n\n**************RECIBIR+RESERVAR************\n\n" >> $OUTPUT
+echo "Se moveran algunos archivos a la carpeta de arribos."
+for archivo in `ls ../../datos`
+do
+	cp "../../datos/$archivo" "$ARRIDIR/$archivo"
+done
+
+
+
 echo -e  "**************FIN DEL TEST************\n\n" 
 #./revertInstall.sh
 
