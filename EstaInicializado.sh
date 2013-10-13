@@ -7,7 +7,10 @@
 #else echo "buuuu"
 #fi
 
+#Variables exportadas para Imprimir_B
 export PROCDIR
+export REPODIR
+export MAEDIR
 
 function EstaInicializado {
 if [ "$BINDIR" = "" ]||[ "$MAEDIR" = "" ] || [ "$ARRIDIR" = "" ] || [ "$ACEPDIR" = "" ] || [ "$RECHDIR" = "" ] || [ "$REPODIR" = "" ] || [ "$PROCDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$DATASIZE" = "" ] || [ "$LOGSIZE" = "" ];
