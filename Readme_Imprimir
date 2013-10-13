@@ -1,0 +1,44 @@
+------ Descripcion:
+Este proceso nos permite realizar consultas de disponibilidad, emitir el ranking de los 10 principales, generar la lista de invitados para las reservas confirmadas y generar los archivos para imprimir los tickets de entrada.
+
+------ Modo de uso:
+Para iniciar este script, primero debe:
+* Instalar el programa sin  errores (con Instalar_TP.sh)
+* Ingresar a la carpeta de archivos ejecutables (por defecto bin, o la que haya configurado en la instalacion) y haber ejecutado Iniciar_B.sh
+
+------- Formas de ejecucion:
+
+./Imprimir_B.pl -a
+
+Ayuda. Muestra un resumen del modo de uso.
+
+./Imprimir_B.pl -i
+
+Genera un listado de invitados a un evento.
+
+./Imprimir_B.pl -d
+
+Debe ingresarse un id de obra o de sala (o un rango de ids) y muestra información sobre salas y obras posibles y el numero de butacas disponibles.
+
+./Imprimir_B.pl -r
+
+Muestra un ranking de los 10 solicitantes más frecuentes.
+
+./Imprimir_B.pl -t
+
+Muestra un listado de tickets listo para imprimir.
+
+
+Opcion -w:
+
+Opcion combinable con -r,-t,-d o -i. Escribe en un archivo la salida de la ejecución, que de otra forma solo sería mostrada por pantalla.
+
+Debe ejecutarse como, por ejemplo
+
+./Imprimir_B.pl -d -w
+
+o
+
+./Imprimir_B.pl -w -d
+
+
