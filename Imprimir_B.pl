@@ -65,7 +65,7 @@ sub generar_tickets {
       #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
       if ($#data ne 12 ) { next; }
       $comboleido=$data[7];
-      if ($comboleido==$idcombo) {
+      if ($comboleido eq $idcombo) {
 	  $encontrado=1;
 	  $numconfirmadas=$data[6];
 	  while($numconfirmadas>0) {
