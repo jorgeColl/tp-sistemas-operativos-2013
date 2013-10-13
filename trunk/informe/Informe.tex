@@ -51,6 +51,7 @@
 \usepackage{listings}
 \lstset{language={}, inputencoding=utf8/latin1, tabsize=4, showstringspaces=false, breaklines=true}
 
+
 % Título principal del documento.
 \title{	{\Huge{	\textbf{Trabajo Práctico: \\
 		     Sistma de reserva de entradas sin costo comercial \\ }}}
@@ -65,7 +66,20 @@
        }
 \date{}
 
+\usepackage{fancyhdr}
+
+\lfoot[GRUPO 8  Tema B]{GRUPO 8  Tema B}
+\rfoot[\thepage]{\thepage}
+\cfoot[]{}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\pagestyle{fancy}
+
+
 \begin{document}
+
+
+
 
 % Inserta el título.
 \maketitle
@@ -83,15 +97,54 @@
 \section{Hipótesis y Aclaraciones globales.}
 
 
+
 \newpage
 
 
 
 \section {Problemas Relevantes}
 
+\subsection{Instalar}
+
+Uno de los principales problemas que surgió al momento de realizar la instalación 
+del sistema, fue que se debía guardar el log de la misma cuando aún no se habían 
+definido el directorio asignado para tal fin. Así mismo sucedía que al querer utilizar
+el script de Grabar\_L o Mover\_B, estos mismos iban a ser 'movidos' al realizar la
+instalación y esto generaba conflictos, ya que se estaba moviendo el mismo archivo 
+que se estaba ejecutando. 
+Para solucionarlo, se copiaron los archivos binarios a un directorio temporal que se utiliza 
+para la instalación y luego se elimina (ver sección ~\ref{subsec:backup})
+
+\subsection{Está Corriendo}
+
+Para varias funcionalidades, se pide chequear que un script no se ejecute más de una vez.
+A la hora de plantear cómo resolver este problema, surgieron varias formas de solucionarlo.
+Una forma era que cada script se chequeara a sí mismo, ya fuera mediante una variable de 
+ambiente, un archivo auxiliar que guardara dicho estado, etc. El problema de este tipo 
+de soluciones es que podían generar la indeseada situación de que dos procesos accedieran
+al mismo tiempo a la variable o archivo, si bien era un caso poco probable, era posible así 
+que fue descartada.
+Finalmente se optó por acudir al comando 'ps' con la opción -e y utilizando expresiones 
+regulares, filtrar los resultados y así verificar si el proceso buscado se encontraba o no
+en ejecución.
+
+
+
+
 \newpage
 
-\section{Archivos Readme}
+\section{Archivo Readme}
+
+\lstinputlisting{../README}
+
+
+\newpage 
+
+
+\section{Esquema de Ejecución}
+
+
+
 
 \subsection{Readme\_Instalar}
 
@@ -121,10 +174,7 @@
 
 \lstinputlisting{../Readme_Matar_D}
 
-\newpage 
-
-
-\section{Esquema de Ejecución}
+\newpage
 
 \section{Listado de nuevas funciones y/o comandos auxiliares}
 
@@ -149,7 +199,7 @@ instalación del sistema.
 
 
 
-
+\newpage
 
 \section{Listado de Nuevos Archivos}
 \subsection{LOGDIR/count}
@@ -164,7 +214,7 @@ definidos los directorios donde el usuario desea guardar sus datos, se usa este 
 dicho inconveniente.
 
 \subsection{CONFDIR/backup}
-
+\label{subsec:backup}
 Esta carpeta se crea en el momento de la instalación. En ella se copiarán todos los archivos binarios que 
 precisa el sistema para funcionar hasta que el usuario decida dónde va a ubicarlos.
 Se trata de un directorio temporal, pues una vez que el usuario termina de realizar todas las configuraciones,
@@ -194,7 +244,8 @@ A continuación, listamos los escenarios testeados y sus archivos asociados.
 \hline
 1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro333	& SI 		& Obra no disponible. \\
 \hline
-1-MAIL\_INVALIDO@GMAIL.COM-EstrenoenelPayro332 & NO		& Mail inválido. \\
+1-MAIL\_INVALIDO@GMAIL.COM-EstrenoenelPayro332
+ & NO		& Mail inválido. \\
 \hline
 147-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro332 & NO		& ID obra inválido. \\
 \hline
