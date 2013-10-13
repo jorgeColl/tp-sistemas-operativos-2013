@@ -1,0 +1,4 @@
+Procedimiento en bash para el movimiento de archivos.
+- En caso de encontrar archivos duplicados se dejaran en el destino pero con una numeracion final.
+- Parametros de ejecucion: ./mover ubicacionArchivoOrigen ubicacionArchivoDestino comandoSolicitante -c(opcional)
+- El parametro "-c" indica copia.

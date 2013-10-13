@@ -1,7 +1,7 @@
 #Logger
 #Procedimiento en bash para el registro de logs.
 #Parametros de ejecucion: ./Grabar_L comandoSolicitante tipoDeMensaje mensaje
-#El tipo de mensaje es opcional, por lo tanto, se puede invocar como: ./Grabar_L comandoSolicitante mensaje
+#El tipo de mensaje es opcional, por lo tanto, se puede invocar como: ./Grabar_L comandoSolicitante opcion mensaje
 #Opcion por defecto 'Informativo = I'
 #LOGSIZE debe estar ingresado en Bytes
 #Bugs conocidos:
