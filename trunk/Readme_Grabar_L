@@ -1,0 +1,6 @@
+Esta funcio crea y actualiza archivos de Log:
+- Verifica que el ambiente este inicializado.
+- No construye directorios.
+- Se invoca como: "Grabar_L comandoASolicitante opcion mensaje" o "Grabar_L comandoASolicitante mensaje".
+- Si en opción se coloca "-ins" se utiliza el Log de instalación.
+- Opciones disponibles: "-i" = "Informativo" ; "-e" = "Error" ; "-fe" = "Fatal Error" ; "-w" = "Warning" ;

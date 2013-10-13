@@ -1,4 +1,4 @@
-Esta funcion inicia procesos. Antes de hacerlo dene verificar que el ambiente
-se encuentre inicializado y que el proceso no se este ejecutando.
-Se invoca como: "Start_D comandoAEjecutar solicitante". El segundo parametro es opcional.
-El Start_D siempre escribe al log.
+Esta funcion inicia procesos. 
+- Antes de hacerlo debe verificar que el ambiente se encuentre inicializado y que el proceso no se este ejecutando.
+- Se invoca como: "Start_D comandoAEjecutar solicitante". El segundo parametro es opcional.
+- El Start_D siempre escribe al log.
