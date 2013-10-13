@@ -130,7 +130,58 @@
 
 \section{Listado de Nuevos Archivos}
 
+\newpage
 \section{Listado de Datos}
 
+Para realizar la 'Prueba del camino Feliz' (ver sección ~\ref{sec:camino_feliz}) no sólo se 
+han utilizado los datos provistos por la cátedra, sino que también se han agregado ciertos casos
+no contemplados por los mismos. Como por ejemplo reservas fuera de fecha, nombres de archivos
+inválidos, etc.
+Para esta parte de las pruebas, los archivos \texttt{combos.dis, obras.mae} 
+y \texttt{salas.mae} no han sido modificados.
+
+A continuación, listamos los escenarios testeados y sus archivos asociados.
+
+
+
+\begin{table} [h]
+\centering
+\begin{tabular}{ |p{6cm}|p{1,5cm}|p{4cm}| } 
+\hline\hline
+ Archivo                                    	& Provisto 	& Caso testeado \\ [0.5ex]
+ \hline
+1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro332 	& SI 		& Obra disponible. \\
+\hline
+1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro333	& SI 		& Obra no disponible. \\
+\hline
+1-MAIL\_INVALIDO@GMAIL.COM-EstrenoenelPayro332 & NO		& Mail inválido. \\
+\hline
+147-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro332 & NO		& ID obra inválido. \\
+\hline
+133-GRIFFO\_JULIO@GMAIL.COM-muchaAnticipacion 	 & NO 		& Reserva excede los 30 días. \\
+\hline
+NOMBRE\_INVALIDO				& NO		& Formato de nombre incorrecto. \\
+\hline
+133-GRIFFO\_JULIO@GMAIL.COM-vacio		& NO 		& Archivo vacío. \\
+\hline
+6-Teatro.Corrientes.Azul@reservas.com.ar-TCA\_3Nov13 & SI 	& Reserva por sala. No disponible. \\
+\hline
+18-Teatro.Payro@reservas.com.ar-PAyro251013a & SI 		& Reserva por sala. Disponible. \\
+\hline
+18-MAIL\_INVALIDO@GMAIL.COM-PAyro251013a	& NO 		& Mail inválido. \\
+\hline
+180-Teatro.Payro@reservas.com.ar-ID\_INVALIDO  & NO 		& ID sala inválido. \\
+
+ \hline
+
+ 
+ 
+ 
+\end{tabular}
+
+\end{table}
+
+\newpage
 \section{Prueba del Camino Feliz}
+\label{sec:camino_feliz}
 \end{document}

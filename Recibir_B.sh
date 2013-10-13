@@ -107,7 +107,7 @@ function EsSala {
 		Log "Mail inexistente, ID ok."
 		return 1
 	# el id no existe pero si el mail
-	elif grep -q "^[^;]*;[^;]*;[^;]*;[^;]*;[^;]*;${2}$" $SALAS
+	elif grep -q "^[^;]*;[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" $SALAS
 	then
 		Log "ID inexistente, mail ok."
 		return 2
@@ -136,7 +136,7 @@ function EsObra {
 		Log "Mail inexistente, id ok"
 		return 1
 	# el id no existe pero si el mail
-	elif grep -q "^[^;]*;[^;]*;[^;]*;${2}$" $OBRAS
+	elif grep -q "^[^;]*;[^;]*;[^;]*;${2}.*$" $OBRAS
 	then
 		Log "ID inexistente, mail ok."
 		return 2
