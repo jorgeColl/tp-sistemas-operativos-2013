@@ -498,7 +498,7 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./Start_D.sh $BINDIR
 ./Mover_B.sh ./Imprimir_B.pl $BINDIR
 ./Mover_B.sh ./EstaCorriendo.sh $BINDIR
-./Mover_B.sh ./EstaInicializado.sh $BINDIR
+./Mover_B.sh ./EstaInicializado.sh $BINDIR '-c'
 ./Mover_B.sh ./Recibir_B.sh $BINDIR
 ./Mover_B.sh ./Eliminar_B.sh $BINDIR
 
@@ -515,6 +515,11 @@ Log "Instalando Programas y Funciones"
 
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh $BINDIR
+
+#Donde se elimina lo que copie?
+#./Eliminar_B ./EstaInicializado.sh
+#./Eliminar_B ./Grabar_L.sh
+#./Eliminar_B ./PuedoUsarLog.sh
 
 }
 
