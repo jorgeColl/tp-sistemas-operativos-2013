@@ -6,6 +6,11 @@
 # ----------------------------------
 #!/bin/bash
 #Chequeamos los parametros:
+	./EstaInicializado.sh > /dev/null
+	if [ $? -ne 0 ]; then
+		echo "Ambiente no inicializado"
+		exit -1
+	fi
 	if [ $# -lt 1 -o $# -gt 2 ]; then
 		#echo -e "Invocacion incorrecta. \n\tLa manera correcta es: \n\tStart_D comandoAEjecutar comandoSolicitante"
 		sh "./Grabar_L.sh" "$0" "-e" "Invocacion incorrecta. \n\tLa manera correcta es: \n\tStart_D comandoAEjecutar comandoSolicitante"

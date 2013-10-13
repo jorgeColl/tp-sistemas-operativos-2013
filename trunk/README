@@ -1,0 +1,73 @@
+**********TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08*********
+
+
+**************INSTALACION***********************
+
+1. Conecte el dispositivo en la PC. 
+2. Copie el archivo "TP-G8-TB.tgz" en el directorio donde desea que se instale el sistema.
+3. Descomprima el archivo. Si desea hacerlo mediante la línea de comandos ejecute lo siguiente:
+	$ tar xvzf TP-G8-TB.tgz 
+   Al descomprimir se extraerán los archivos necesarios para la instalación y una carpeta 
+	"datos"
+4. Abra una terminal en este directorio y ejecute el script Instalar_TP.sh.
+5. Una vez ejecutado le pedirá que acepte los acuerdos de licencia. Deberá ingresar 'Si' para 
+	poder continuar.
+6. El instalador le solicitará que realice las configuraciones de los directorios de trabajo 
+	del sistema, para cada uno de ellos le ofrecerá una opción default, 
+	si no está de acuerdo con ella podrá cambiarla e ingresar el directorio que 
+	considere más conveniente.
+   
+5. Una vez realizadas las configuraciones, le pregutará si desea continuar con la instalación, 
+ 	> Si ingresa 'Si', se crearán todos los archivos y directorios necesarios y finalizará 
+	la etapa de instalación.
+	> Si ingresa 'No', podrá volver y cambiar sus configuraciones.
+
+ **************EJECUCION***********************
+
+1. Para poder poner en funcionamiento el daemon que controla los arribos deberá tener inicializado
+	el ambiente de trabajo. Ubíquese en el directorio donde ha guardado sus ejecutables y ejecute
+	el script Iniciar_B.sh del siguiente modo:
+
+	$. ./Iniciar_B.sh
+
+	(nota: se debe ejecutar como "punto espacio punto barra" de otro modo dará error y no
+	podrá iniciar el programa.)
+
+2. El inicializador de ambiente le preguntará si desea dar inicio al demonio Recibir_B.sh, si desea
+	hacerlo en ese momento, ingrese 'Si'. Si ingresa 'No', no se preocupe! aún puede activarlo
+	en otro momento del siguiente modo: 
+	
+	$./Start_D.sh Recibir_B.sh
+
+
+***************DONDE PONGO MIS ARCHIVOS DE RESERVAS?**********
+
+En la instalación se le ha pedido que elija un directorio de arribos, coloque sus archivos de reservas
+en ese directorio y serán procesados automáticamente, siempre y cuando cumplan con el formato 
+preestablecido, tanto en cuanto a su nombre como su contenido. 
+Consulte el directorio que ha configurado para rechazos si desea ver qué archivos han sido rechazados.
+
+
+***************NO RECUERDO SI YA HE INICIALIZADO EL AMBIENTE******
+
+Puede volver a correr el script Iniciar_B.sh cuantas veces quiera, dentro del mismo se hace un chequeo
+y si el ambiente ya se encuentra inicializado no se harán modificaciones.
+
+Del mismo modo si intenta correr el script Recibir_B y el ambiente no ha sido inicializado, 
+se lo indicará con el mensaje: "Ambiente no inicializado."
+
+Si aún no está seguro y quiere comprobarlo usted mismo, ejecute el siguiente comando: 
+	
+	$./EstaInicializado.sh
+
+Este le mostrará un mensaje indicando si ya ha inicializado o no, el ambiente.
+
+
+******************DETENER EJECUCION************
+
+Si en algún momento desea detener la ejecución del demonio coloque esto en la terminal:
+
+	$./Stop_D.sh Recibir_B.sh
+
+
+
