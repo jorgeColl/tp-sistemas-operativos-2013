@@ -2,4 +2,3 @@ Esta funcion inicia procesos. Antes de hacerlo dene verificar que el ambiente
 se encuentre inicializado y que el proceso no se este ejecutando.
 Se invoca como: "Start_D comandoAEjecutar solicitante". El segundo parametro es opcional.
 El Start_D siempre escribe al log.
-Falta el chequeo de inicialización. Supongo que alguien ya lo tiene hecho en otra función, por eso no lo agregue. Esto es correcto?
