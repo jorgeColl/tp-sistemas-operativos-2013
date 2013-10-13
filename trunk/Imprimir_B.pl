@@ -2,9 +2,9 @@
 
 use Switch;
 
-if ( ! system("./EstaInicializado.sh") == 0) {
-	print "Saliendo";
-	return;
+if ( ! system("./EstaInicializado.sh >> /dev/null") == 0) {
+	print "No esta inicializado. Correr ./Iniciar_B.sh\nSaliendo\n";
+	exit;
 }
 
 #Importo las variables de ambiente
