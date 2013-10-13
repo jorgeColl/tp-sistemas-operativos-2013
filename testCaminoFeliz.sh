@@ -4,7 +4,7 @@ OUTPUT="caminoFeliz.out"
 
 TP="`pwd`"
 
-function FSiNo {
+function fSiNo {
 local var1
 while [ "$var1" != "s" ] && [ "$var1" != "n" ]
 do 
@@ -28,7 +28,7 @@ function Abortar {
 } 
 echo -e "Prueba del camino FELIZ :) \n La salida de los comandos se encuentra en $OUTPUT"
 echo -e "*************INSTALACION**************\nComenzar instalación?"
-if FSiNo 
+if fSiNo 
 then 
 	Abortar
 fi
@@ -38,7 +38,7 @@ cat archivo_in_instalar.txt|./Instalar_TP.sh >> $OUTPUT
 #problema en instalacion:
 if [ $? -ne 0 ]
 then
-	echo "Se produjo un error en la instalacion"
+	echo "Se produjo un error en la instalacion."
 	Abortar
 fi
 # chequeo algunos archivos y directorios.
@@ -54,15 +54,19 @@ cat instalacion.log >> $OUTPUT
 echo "Copiando Instalar_TP.conf ."
 echo -e "\n\n**************ARCHIVO CONFIGURACION************\n\n" >> $OUTPUT
 cat grupo8/conf/Instalar_TP.conf >> $OUTPUT
-echo -e "Instalacion Concluida con exito.\n\n*************INICIAR**************\nDesea Inicializar el ambiente de trabajo?"
-if FSiNo
+echo -e "Instalacion Concluida con éxito."
+
+# INICIALIZAR EL AMBIENTE
+
+echo -e "\n\n*************INICIAR**************\nDesea Inicializar el ambiente de trabajo?"
+if fSiNo
 then
 	Abortar
 fi
 echo -e "\n\n**************INICIAR************\n\n" >> $OUTPUT
 echo "Inicializando el ambiente"
 cd grupo8/bin
-echo "Si" >> aux
+echo "No" >> aux
 source Iniciar_B.sh < aux >>"../../$OUTPUT"
 if [ $? -ne 0 ]
 then
@@ -74,12 +78,60 @@ cd $TP
 echo "Copiando el log de iniciar."
 echo -e "\n\n**************LOG INICIAR************\n\n" >> $OUTPUT
 cat "grupo8/conf/Iniciar_B.sh.$LOGEXT" >> $OUTPUT
+
+# RECIBIR Y RESERVAR. COPIO ARCHIVOS DE ENTRADA.
+
+echo -e "\n\n*************RECIBIR+RESERVAR**************\nCopiar archivos de entrada?"
+if fSiNo
+then
+	Abortar
+fi
 echo -e "\n\n**************RECIBIR+RESERVAR************\n\n" >> $OUTPUT
-echo "Se moveran algunos archivos a la carpeta de arribos."
-for archivo in `ls ../../datos`
+echo "Moviendo archivos de entrada a la carpeta de arribos."
+for archivo in `ls datos`
 do
-	cp "../../datos/$archivo" "$ARRIDIR/$archivo"
+	cp "datos/$archivo" "$ARRIDIR/$archivo"
 done
+
+# INICIO RECIBIR
+echo -e "Iniciar recibir?"
+if fSiNo
+then
+	Abortar
+fi
+echo "Iniciando Recibir_B.sh"
+cd $BINDIR
+./Start_D.sh Recibir_B.sh >> /dev/null
+sleep 15
+echo "Copiando el log de Recibir."
+cd $TP
+echo -e "\n\n*************LOG RECIBIR************\n\n" >> $OUTPUT
+cat $LOGDIR/Recibir_B.sh.$LOGEXT >> $OUTPUT
+echo "Copiando el log de Reservar."
+echo -e "\n\n**************LOG RESERVAR************\n\n" >> $OUTPUT
+cat $LOGDIR/Reservar_B.sh.$LOGEXT >> $OUTPUT
+echo "Copiando archivos en PROCDIR"
+echo -e "\n\n**************ARCHIVOS EN PROCDIR************\n\n" >> $OUTPUT
+for archivo in `ls $PROCDIR`
+do
+	echo "ARCHIVO: $archivo" >> $OUTPUT
+	cat $PROCDIR/$archivo >> $OUTPUT
+	echo -e "\n\n" >> $OUTPUT
+done
+cd $BINDIR
+./Matar_D.sh Recibir_B.sh >> /dev/null
+
+
+# IMPRIMIR
+
+echo -e "\n\n*************IMPRIMIR**************\n\nIniciar Imprimir?"
+if fSiNo
+then
+	Abortar
+fi
+echo -e "\n\n**************IMPRIMIR************\n\n" >> $OUTPUT
+echo ""
+
 
 
 

@@ -128,7 +128,47 @@
 
 \section{Listado de nuevas funciones y/o comandos auxiliares}
 
+\subsection{EstaInicializado.sh}
+
+Como su nombre lo indica, permite detectar si el ambiente en el que se encuentra corriendo
+el script ha sido inicializado o no. Ya que en varias partes del sistema se realiza este
+chequeo, se ha encapsulado aquí para evitar la repetición de código.
+
+\subsection{EstaCorriendo.sh}
+
+Esta funcionalidad permite verificar si un proceso se encuentra en ejecución o no. Surge
+de la necesidad de comprobar que un scritp como Recibir o Reservar, no se ejecuten más de 
+una vez ya que podrían generarse inconsistencias en el sistema.
+
+\subsection{Mover\_B.sh opción -c}
+
+Si bien en las especificaciones se incluye el comando 'Mover\_B' se le ha agregado la opción
+para que permita copiar ciertos archivos en vez de moverlos.
+De este modo, con unas pequeñas modificaciones, utilizamos el mismo comando para la etapa de
+instalación del sistema.
+
+
+
+
+
 \section{Listado de Nuevos Archivos}
+\subsection{LOGDIR/count}
+
+Este archivo es creado por Recibir\_B. Tiene como propósito llevar la cuenta de la cantidad de
+veces que se ha ejecutado el ciclo 'Recibir'. Consta de un único campo, de la forma n=Nº de Ciclo.
+
+\subsection{GRUPO/instalacion.log}
+
+Este archivo guardará el log de la instalación. Como al momento de realizar la misma, aún no se encuentran
+definidos los directorios donde el usuario desea guardar sus datos, se usa este archivo especial para evitar
+dicho inconveniente.
+
+\subsection{CONFDIR/backup}
+
+Esta carpeta se crea en el momento de la instalación. En ella se copiarán todos los archivos binarios que 
+precisa el sistema para funcionar hasta que el usuario decida dónde va a ubicarlos.
+Se trata de un directorio temporal, pues una vez que el usuario termina de realizar todas las configuraciones,
+es eliminado.
 
 \newpage
 \section{Listado de Datos}
@@ -184,4 +224,10 @@ NOMBRE\_INVALIDO				& NO		& Formato de nombre incorrecto. \\
 \newpage
 \section{Prueba del Camino Feliz}
 \label{sec:camino_feliz}
+
+Para realizar la prueba de una ejecución normal, desde que se instala el sistema, hasta llegar 
+al comando imprimir, se cuenta con un script que va realizando cada paso. La salida de cada comando,
+así como los archivos generados, se vuelcan en un archivo denominado 'caminoFeliz.out'
+
+
 \end{document}
