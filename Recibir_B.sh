@@ -201,6 +201,12 @@ function ChequearAceptados {
 
 # RECIBIR_B
 
+./EstaInicializado.sh >> /dev/null
+if [ $? -ne 0 ]
+then 
+	echo "No puede correr Recibir_B ambiente no inicializado."
+	exit 1
+fi
 ActualizarCiclo
 while true
 do
