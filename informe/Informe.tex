@@ -138,7 +138,15 @@ Finalmente se optó por acudir al comando 'ps' con la opción -e y utilizando expr
 regulares, filtrar los resultados y así verificar si el proceso buscado se encontraba o no
 en ejecución.
 
+\subsection{Mover\_B}
 
+La caracteristíca básica de este script no presente muchos inconvenientes. Es decir, mover archivos entre directorios es algo sencillo.
+El problema surge cuando en el directorio destino ya se encuentra el archivo que queremos mover. En nuestro caso optamos por mover el 
+archivo con un nombre formado por: nombreOriginal+N , en donde N es la cantidad de documentos con el mismo nombre en el directorio.
+Adicionalmente, a este script, se le agregó funcionalidad para copiar archivos. Siendo necesaria en su invocación agregar el parámetro
+"-c".
+
+\subsection{Grabar\_L}
 
 
 \newpage
