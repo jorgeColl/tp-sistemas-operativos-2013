@@ -1,0 +1,4 @@
+Procedimiento en bash para elminar archivos.
+- Parametros de ejecucion: ./Eliminar_B ubicacionArchivoOrigen
+- Graba siempre en el Log.
+
