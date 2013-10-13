@@ -65,9 +65,9 @@
 	
 	if [ ${copia:-0} -eq 1 ]; then
 		#Debo COPIAR, no mover
-		`cp ${1} ${archDestino}`
+		`cp ${1} ${archDestino} 2> /dev/null`
 	else
-		`mv ${1} ${archDestino}`
+		`mv ${1} ${archDestino} 2> /dev/null`
 	fi
 	if [ $? -eq 0 ]; then
 		./Grabar_L.sh "$0" "-i" "El mover fue ejecutado correctamente: $archOrigen -> $archDestino"
