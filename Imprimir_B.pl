@@ -2,6 +2,14 @@
 
 use Switch;
 
+if ( ! system("./EstaInicializado.sh") == 0) {
+	print "Saliendo";
+	return;
+}
+
+my $varex = $ENV{"PROCDIR"};
+print "\$varex is: $varex\n";
+
 #Deberia pasarse al menos un parametro.
 if ( $#ARGV <0 ) {
 	print "Debe pasar al menos un parametro\n";

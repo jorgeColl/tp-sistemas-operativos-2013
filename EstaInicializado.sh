@@ -7,6 +7,8 @@
 #else echo "buuuu"
 #fi
 
+export PROCDIR
+
 function EstaInicializado {
 if [ "$BINDIR" = "" ]||[ "$MAEDIR" = "" ] || [ "$ARRIDIR" = "" ] || [ "$ACEPDIR" = "" ] || [ "$RECHDIR" = "" ] || [ "$REPODIR" = "" ] || [ "$PROCDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$DATASIZE" = "" ] || [ "$LOGSIZE" = "" ];
 then 
