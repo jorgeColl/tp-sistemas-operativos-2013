@@ -4,7 +4,7 @@
 #	COMANDO: Instalar_TP.sh
 #------------------------------------------------------------
 grupo="`pwd`/grupo8"
-CONFDIR="$grupo/conf"
+export CONFDIR="$grupo/conf"
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
 Instconf="$CONFDIR/Instalar_TP.conf" #ruta al conf del script
@@ -346,7 +346,7 @@ fi
 
 #(Paso 11) Funcion que verifica el espacio en disco
 function ComprobarEspacio {
-mkdir -p $ARRIDIR #parche auxiliar !!!!!!!!!!!!!!!
+mkdir -p "$ARRIDIR" #parche auxiliar !!!!!!!!!!!!!!!
 
 local espa=`df "$ARRIDIR"`
 declare -i local taman=` echo $espa | sed 's#.* \([^ ]*\) [^ ]* [^ ]*$#\1#' `
@@ -578,11 +578,6 @@ InicioLogInstalacion
 #Se crea el directorio para bakcup
 mkdir -p "$CONFDIR/backup"
 
-temp="$LOGDIR"
-LOGDIR="$backup"
-backup
-LOGDIR="$temp"
-
 #Paso 4.
 if [ -f "$Instconf" ];
 then 
@@ -591,6 +586,10 @@ then
 	Log "instalacion incompleta o ya hecha"
 	ReInstalar
 else 
+	temp="$LOGDIR"
+	LOGDIR="$backup"
+	backup
+	LOGDIR="$temp"
 	Log "Instalacion por primera vez"
 fi
 
