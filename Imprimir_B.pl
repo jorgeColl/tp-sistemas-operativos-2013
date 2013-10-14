@@ -185,15 +185,15 @@ sub generar_invitados {
     %hash_info=""; #Hash vacio.
     if ($eleccion == -1) { return; }
     $repodirinv="$repodir";
-	
+
     open(ARC, $archivo_reservasok),  or die "No se puede abrir el archivo de reservas";
     while($linea = <ARC>) {
-      chomp($linea);
+      chomp ($linea);
       #TODO: Usar expresiones regulares para verificar que este bien formado.
       @data= split(";", $linea);
       #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
       if ($#data ne 12 ) { next; }
-      #TODO: Falta asegurarse de que $hash_info{$data[8]} no este vacio.
+      #TODO if ($hash_info{$data[8]} eq "") { next; }
       # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
       if ( "$eleccion" eq "$data[7]") {
 	  #hash info: Tiene por keys las referencias internas del solicitante. Los values son arrays, que tienen
@@ -229,11 +229,13 @@ sub generar_invitados {
 	    open(ARCINV, $nombrearchivo) or die "No se puede abrir el archivo de invitados del solicitante $key";
 	    $aux=0;
 	    while($registro = <ARCINV>) {
-		      chomp($registro);
 		      #TODO: Usar expresiones regulares para verificar que este bien formado.
+		      $registro =~ s/\r\n$/\n/;
+		      chomp($registro);
 		      @datainv= split(";", $registro);
 		      $aux=$aux+$datainv[2]+1;
-		      print "$datainv[0],$datainv[2],$aux\n";
+		      print "$datainv[0],";
+		      print "$datainv[2],$aux\n";
 		      if ($escribir==1) { print FICHERO_DESTINO ("$datainv[0],$datainv[2],$aux\n"); }
 	    }
 	    close (ARCINV);
