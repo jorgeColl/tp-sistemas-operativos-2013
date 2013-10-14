@@ -17,7 +17,6 @@ function backup {
 echo "Realizando backup"
 ./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
 ./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
-./Mover_B.sh ./PuedoUsarLog.sh $backup '-c'
 ./Mover_B.sh ./Reservar_B.sh $backup '-c'
 ./Mover_B.sh ./Matar_D.sh $backup '-c'
 ./Mover_B.sh ./Start_D.sh $backup '-c'
@@ -492,7 +491,6 @@ Log "Instalando Programas y Funciones"
 
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
 ./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
-./Mover_B.sh ./PuedoUsarLog.sh $BINDIR '-c'
 ./Mover_B.sh ./Reservar_B.sh $BINDIR
 ./Mover_B.sh ./Matar_D.sh $BINDIR
 ./Mover_B.sh ./Start_D.sh $BINDIR
@@ -501,6 +499,11 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./EstaInicializado.sh $BINDIR '-c'
 ./Mover_B.sh ./Recibir_B.sh $BINDIR
 ./Mover_B.sh ./Eliminar_B.sh $BINDIR
+
+# permiso de ejecución
+for file in `ls $BINDIR`; do
+	chmod +x $BINDIR/$file
+done
 
 #muevo readmes
 ./Mover_B.sh ./Readme_Instalar $BINDIR
@@ -511,15 +514,12 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./Readme_Recibir $BINDIR
 ./Mover_B.sh ./Readme_Grabar_L $BINDIR
 ./Mover_B.sh ./Readme_Matar_D $BINDIR
-./Mover_B.sh ./Readme_Iniciar $BINDIR
+./Mover_B.sh ./Readme_Mover_B $BINDIR
+./Mover_B.sh ./Readme_Eliminar_B $BINDIR
 
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh $BINDIR
-
-#Donde se elimina lo que copie?
-#./Eliminar_B ./EstaInicializado.sh
-#./Eliminar_B ./Grabar_L.sh
-#./Eliminar_B ./PuedoUsarLog.sh
+chmod +x $BINDIR/Mover_B.sh
 
 }
 
@@ -676,7 +676,8 @@ ActualizarArchivos
 
 #Paso 22: Borrar archivos temporarios, si los hubiese generado
 Log "borrando archivos temporarios"
-rm './Grabar_L.sh'
+rm 'Grabar_L.sh'
+rm 'EstaInicializado.sh'
 
 #Paso 23: Mostrar mensaje de fin de instalación
 echo "Instalación CONCLUIDA"
