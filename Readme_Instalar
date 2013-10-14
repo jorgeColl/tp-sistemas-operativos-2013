@@ -1,29 +1,12 @@
-BORRADOR PARA EL README
------------------------
+************************Readme de Instalar_TP ***************************************
 
-Jorge y compañeros, por aca vamos a comunicar las ideas de Instalar TP, en realidad para JOrge pero para que todos lo vayan viendo.
+Esta funcion se encarga de el proceso de instalacion del programa de Reservas_B.
+Si en algun momento se aborta la instalacion, el programa recuperara los datos almacenados por el usuario.
+Se deja al usuario la libertad de la eleccion del nombre de los directorios para la instalacion.
 
-Jorge, tengo hecho varias cosas, la idea que se me ocurrio fue , definir variables que se van a usar en el transcurso de la aplicacion, como CONFDIR, BINDIR, grupo ( todos directorios) y dps ir haciendo funciones por seccion tal como esta explicado en el enunciado. LUego llamaremos a cada funcion en el hilo del programa.
-
-Fui haciendo un par de puntos , comentemos en cada funcion a que punto del enunciado corresponde como fui haciendo asi no nos perdemos, igual el nombre de las funciones es bastante claro, o deberia serlo jaja.
-
-En las partes que hize falta grabar en el archivo de log, iba a hacer algo del estilo  >> Archivo.log pero hay que usar el comando copiar creo que tvia no esta hecho, dps cuando este hecho se lo tenemos que ir agregando.
-
-Quiza hay errores de sintaxis, seguramente, pero a grandes rasgos creo que haciendolo asi va bien.
-
-saludos.
-
-----------------------
-
-Actualización 27/09 Juancho
-
-El Mover_B, a mi entender, quedó utilizable y bien. Una cosas que hay que tener en cuenta es que recibe una referencia a archivo en un directorio. Si se quiero copiar algo del directorio actual se pasa como parámerto "./archivoActual". El secuenciamiento quedó bien, no genera una carpeta aparte para duplicados y cada serie de archivos tiene su numeración.
-
-El Grabar_L reciber varios parámetros, estan descriptos en la función. Espera que las variables esten disponibles, $LOGDIR $LOGEXT $CONFDIR. Una aclaración es que $LONGEXT  no incluye el punto. Es decir que para lograr la extensión 'unLog.pepito', la varible $LOGEXT debe estar seteada como $LOGEXT="pepito" .
-
-----------------------
-ACLARACION 29/09 jorge :
-TODAS las variables de entorno nombradas en el paso de instalar y que van a ser puestas en el entorno por INICIAR tendrán los mismos nombres que dice el enunciado del tp
-ej: $LOGDIR se llamará justamente $LOGDIR y asi con todas las variables
+	-Parametros que recibe la funcion: Ninguno.
+	-Invocacion de la funcion	 : ./Instalar_Tp.sh
+	-Escritura en el log		 : Siempre.
 
 
+	
