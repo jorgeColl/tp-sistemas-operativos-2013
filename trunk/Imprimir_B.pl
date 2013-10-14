@@ -109,7 +109,6 @@ sub generar_tickets {
     if ($encontrado==0) {
       print "No se encontro ninguna entrada con el id de combo pedido\n";
       if ($escribir==1) {  print FICHERO_DESTINO ("No se encontro ninguna entrada con el id de combo pedido\n" ); }
-      &tickets_pedirid;
       &generar_tickets;
     }
     if ($escribir==1) {  close FICHERO_DESTINO }
