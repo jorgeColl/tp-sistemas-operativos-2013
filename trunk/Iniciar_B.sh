@@ -2,6 +2,14 @@
 
 grupo=`pwd|grep -o "^.*grupo8"`
 
+#Funcion para grabar al Log
+function Log {
+        ./Grabar_L.sh "$0" '-ins' "$1"
+        echo "$1"
+}
+
+
+
 function ParametrosDefault {
 readonly BINDIR="$grupo/bin"
 readonly MAEDIR="$grupo/mae"
@@ -58,8 +66,8 @@ fi
 #Paso casi 3 Compruebo que este siendo llamado de la forma: . ./Iniciar_B.sh
 if [ $0 != "bash" ];
 then
-	echo 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
-	echo 'Iniciar_B.sh Finaliza MAL'
+	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
+	Log 'Iniciar_B.sh Finaliza MAL'
 else
 	#Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
 	if ! ./EstaInicializado.sh
@@ -67,7 +75,7 @@ else
 		ParametrosDefault
 		ExportarVariables
 	else
-		echo 'ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
+		Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
 	fi
 fi
 
@@ -75,18 +83,18 @@ fi
 echo "Desea efectuar la activación de Recibir_B? Si – No"
 if FSiNo
 then
-	echo "Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:"
-	echo './Start_D.sh ./Recibir_B.sh '
+	Log "Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:"
+	Log './Start_D.sh ./Recibir_B.sh '
 	return 0
 else
 	if ./EstaCorriendo.sh "Recibir_B.sh" "1"
 	then
-		echo "iniciando Recibir_B..."
+		Log "iniciando Recibir_B..."
 		./Start_D.sh ./Recibir_B.sh "Iniciar_B.sh"
 		
 	fi
-	echo "Cuando quiera terminar la ejecución de Recibir_B hagalo de esta forma:"
-	echo "./Stop_D.sh ./Recibir_B.sh"
+	Log "Cuando quiera terminar la ejecución de Recibir_B hagalo de esta forma:"
+	Log "./Stop_D.sh ./Recibir_B.sh"
 	
 fi
 
