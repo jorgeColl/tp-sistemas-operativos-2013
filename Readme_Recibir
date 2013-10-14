@@ -9,7 +9,7 @@ Se debe iniciar SIEMPRE con "Start_D" del siguiente modo:
 
 ./Start_D.sh Recibir_B.sh
 
-Se debe detener SIEMPRE con "Matar_D" del siguiente modo:
+Se debe detener SIEMPRE con "Stop_D" del siguiente modo:
 
-./Matar_D.sh Recibir_B.sh
+./Stop_D.sh Recibir_B.sh
 

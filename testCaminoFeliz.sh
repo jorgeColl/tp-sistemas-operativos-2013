@@ -118,7 +118,7 @@ do
 	echo -e "\n\n" >> $OUTPUT
 done
 cd $BINDIR
-./Matar_D.sh Recibir_B.sh >> /dev/null
+./Stop_D.sh Recibir_B.sh >> /dev/null
 
 
 # IMPRIMIR

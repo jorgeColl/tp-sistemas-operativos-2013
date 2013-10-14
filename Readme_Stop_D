@@ -2,4 +2,4 @@ Esta funcion mata procesos:
 - No verifica inicialización del ambiente.
 - Se puede llamar con nombre de proceso o ID.
 - Siempre escribe al Log.
-- Se invoca como: "Matar_D comandoAMatar".
+- Se invoca como: "Stop_D comandoAMatar".

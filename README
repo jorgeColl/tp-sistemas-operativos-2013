@@ -71,3 +71,12 @@ Si en algún momento desea detener la ejecución del demonio coloque esto en la 
 
 
 
+******************IMPRIMIR*********************
+
+Podrá consultar el estado de las reservas a través del comando imprimir. Para un mejor
+funcionamiento recuerde ejecutarlo de este modo:
+
+	$./Start_D.sh Imprimir_B.pl [param]
+
+
+

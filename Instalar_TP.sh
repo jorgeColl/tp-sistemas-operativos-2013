@@ -18,7 +18,7 @@ echo "Realizando backup"
 ./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
 ./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
 ./Mover_B.sh ./Reservar_B.sh $backup '-c'
-./Mover_B.sh ./Matar_D.sh $backup '-c'
+./Mover_B.sh ./Stop_D.sh $backup '-c'
 ./Mover_B.sh ./Start_D.sh $backup '-c'
 ./Mover_B.sh ./Imprimir_B.pl $backup '-c'
 ./Mover_B.sh ./EstaCorriendo.sh $backup '-c'
@@ -33,7 +33,7 @@ echo "Realizando backup"
 ./Mover_B.sh ./Readme_Imprimir $backup '-c'
 ./Mover_B.sh ./Readme_Recibir $backup '-c'
 ./Mover_B.sh ./Readme_Grabar_L $backup '-c'
-./Mover_B.sh ./Readme_Matar_D $backup '-c'
+./Mover_B.sh ./Readme_Stop_D $backup '-c'
 ./Mover_B.sh ./Readme_Iniciar $backup '-c'
 ./Mover_B.sh ./obras.mae $backup '-c'
 ./Mover_B.sh ./salas.mae $backup '-c'
@@ -492,7 +492,7 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./Iniciar_B.sh $BINDIR
 ./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
 ./Mover_B.sh ./Reservar_B.sh $BINDIR
-./Mover_B.sh ./Matar_D.sh $BINDIR
+./Mover_B.sh ./Stop_D.sh $BINDIR
 ./Mover_B.sh ./Start_D.sh $BINDIR
 ./Mover_B.sh ./Imprimir_B.pl $BINDIR
 ./Mover_B.sh ./EstaCorriendo.sh $BINDIR
@@ -513,7 +513,7 @@ done
 ./Mover_B.sh ./Readme_Imprimir $BINDIR
 ./Mover_B.sh ./Readme_Recibir $BINDIR
 ./Mover_B.sh ./Readme_Grabar_L $BINDIR
-./Mover_B.sh ./Readme_Matar_D $BINDIR
+./Mover_B.sh ./Readme_Stop_D $BINDIR
 ./Mover_B.sh ./Readme_Mover_B $BINDIR
 ./Mover_B.sh ./Readme_Eliminar_B $BINDIR
 

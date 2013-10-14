@@ -23,7 +23,7 @@
 		sh "./Grabar_L.sh" "$0" "-i" "El proceso: $1 no se esta ejecutando, no se puede detener." 
 	else 
 		#Saco el resto de la linea
-		ps -e | grep -E "$1" | sed '/^$/d' > archivoAuxiliarMatar_D.tmp
+		ps -e | grep -E "$1" | sed '/^$/d' > archivoAuxiliarStop_D.tmp
 		while read linea
 		do
 			p_id=`echo ${linea% *}`
@@ -36,7 +36,7 @@
 			#Escribir en log
 			sh "./Grabar_L.sh" "$0" "-i" "El proceso: $1 ha finalizado."
 			#echo "El proceso: $1 ha finalizado" #Escribir en log
-		done < archivoAuxiliarMatar_D.tmp
-		rm archivoAuxiliarMatar_D.tmp
+		done < archivoAuxiliarStop_D.tmp
+		rm archivoAuxiliarStop_D.tmp
 	fi
 	exit 0
