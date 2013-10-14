@@ -193,7 +193,6 @@ sub generar_invitados {
       @data= split(";", $linea);
       #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
       if ($#data ne 12 ) { next; }
-      #TODO if ($hash_info{$data[8]} eq "") { next; }
       # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
       if ( "$eleccion" eq "$data[7]") {
 	  #hash info: Tiene por keys las referencias internas del solicitante. Los values son arrays, que tienen
@@ -218,7 +217,7 @@ sub generar_invitados {
     foreach my $key ( keys %hash_info ) {
 	$totalacumulado=0;
 	$butacasconfirmadas=0;
-	if (length($key)==0) { next } #TODO: por que tengo que hacer esto?
+	if (length($key)==0) { next }
 	
 	print ("\n$hash_info{$key}[0]$key\n");
 	if ($escribir==1) { print FICHERO_DESTINO ("\n$hash_info{$key}[0]$key\n"); }
@@ -234,8 +233,7 @@ sub generar_invitados {
 		      chomp($registro);
 		      @datainv= split(";", $registro);
 		      $aux=$aux+$datainv[2]+1;
-		      print "$datainv[0],";
-		      print "$datainv[2],$aux\n";
+		      print "$datainv[0],$datainv[2],$aux\n";
 		      if ($escribir==1) { print FICHERO_DESTINO ("$datainv[0],$datainv[2],$aux\n"); }
 	    }
 	    close (ARCINV);
