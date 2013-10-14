@@ -46,6 +46,27 @@ switch ($val) {
 	
 }
 
+#Funcion auxiliar para procesar una linea de archivos.ok. Utilizada por varias funciones
+#Que deben procesar estas lineas, a saber: generar tickets, generar ranking y generar invitados.
+#setea una variable errrorenlalinea en 1 si encuentra un error en la linea, 0 en caso contrario.
+#Tambien pone sus datos en un array data que contiene: data[0]= id de la obra, data[1]=nombre
+#de la obra, data[2]=Fecha de funcion, data[3]=hora, data[4]=Id de sala, data[5]=nombre de sala,
+#data[6]= cantidad de butacas confirmadas,data[7]= id del combo, data[8]=referencia interna del
+# solicitante, data[9]= cantidad de butacas solicitadas, data[10]= correo del solicitante,
+#data[11]= Fecha de grabacion, data[12]= Usuario de grabacion
+#Precondicion: una linea a analizar en una variable llamada $linea
+sub procesar_linea_archivosok {
+      $errorenlalinea=0;
+      chomp($linea);
+      # Verifico archivo bien formado.
+      if (!($linea =~ /^[0-9]*;[^;]*;[^;]*;[^;]*;[0-9]*;[^;]*;[0-9]*;[^;]*;[^;]*;[0-9]*;[^;]*;[^;]*;[^;]*$/ )) { 
+		$errorenlalinea=1;
+      }
+      @data= split(";", $linea);
+      #Si no hay suficientes datos saltar esa linea.
+      if ($#data ne 12 ) { $errorenlalinea=1; }
+}
+
 
 sub generar_tickets {
     if ( ! (-e $archivo_reservasok ) ) {
@@ -59,11 +80,9 @@ sub generar_tickets {
     open(ARC, $archivo_reservasok);
     if ($escribir==1) { open FICHERO_DESTINO, ">$nombred" or die "No se puede abrir destino"; }
     while($linea = <ARC>) {
-      chomp($linea);
-      #TODO: Usar expresiones regulares para verificar que este bien formado.
-      @data= split(";", $linea);
-      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
-      if ($#data ne 12 ) { next; }
+      #Llamo una funcion para obtener datos de la linea y verificar su correcta formacion.
+      &procesar_linea_archivosok;
+      if ($errorenlalinea == 1 ) { next; }
       $comboleido=$data[7];
       if ($comboleido eq $idcombo) {
 	  $encontrado=1;
@@ -114,12 +133,9 @@ sub generar_ranking {
     %hash_ranking=""; #Hash vacio.
     open(ARC, $archivo_reservasok);
     while($linea = <ARC>) {
-      chomp($linea);
-      #TODO: Usar expresiones regulares para verificar que este bien formado.
-      @data= split(";", $linea);
-      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
-      if ($#data ne 12 ) { next; }
-      
+      #Llamo una funcion para obtener datos de la linea y verificar su correcta formacion.
+      &procesar_linea_archivosok;
+      if ($errorenlalinea == 1 ) { next; }
       # Usa un hash. Los keys son las referencias internas del solicitante.
       # Los values son arrays, cuyo primer valor es la sumatoria de reservas
       # y el segundo es la direccion de mail.
@@ -188,11 +204,9 @@ sub generar_invitados {
 
     open(ARC, $archivo_reservasok),  or die "No se puede abrir el archivo de reservas";
     while($linea = <ARC>) {
-      chomp ($linea);
-      #TODO: Usar expresiones regulares para verificar que este bien formado.
-      @data= split(";", $linea);
-      #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
-      if ($#data ne 12 ) { next; }
+      #Llamo una funcion para obtener datos de la linea y verificar su correcta formacion.
+      &procesar_linea_archivosok;
+      if ($errorenlalinea == 1 ) { next; }
       # Solo tiene importancia el registro si es para el combo seleccionado (eleccion=data[7])
       if ( "$eleccion" eq "$data[7]") {
 	  #hash info: Tiene por keys las referencias internas del solicitante. Los values son arrays, que tienen
@@ -228,8 +242,9 @@ sub generar_invitados {
 	    open(ARCINV, $nombrearchivo) or die "No se puede abrir el archivo de invitados del solicitante $key";
 	    $aux=0;
 	    while($registro = <ARCINV>) {
-		      #TODO: Usar expresiones regulares para verificar que este bien formado.
-		      $registro =~ s/\r\n$/\n/;
+		      $registro =~ s/\r\n$/\n/; #Reemplazar CR por \n
+		      #Verifico archivo de invitados bien formado.
+		      if (!($registro =~ /^[^;]*;[^;]*;[0-9]*$/ )) { next; }
 		      chomp($registro);
 		      @datainv= split(";", $registro);
 		      $aux=$aux+$datainv[2]+1;
@@ -237,7 +252,6 @@ sub generar_invitados {
 		      if ($escribir==1) { print FICHERO_DESTINO ("$datainv[0],$datainv[2],$aux\n"); }
 	    }
 	    close (ARCINV);
-	    #TODO: Deberia imprimir también las butacas confirmadas si no hay archivo de invitados para el solicitante?
 	    print "Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n";
 	    if ($escribir==1) { print FICHERO_DESTINO ("Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n"); }
 	}
@@ -261,7 +275,8 @@ sub pedir_id_evento {
   open(IN, $archivocombos);
   while($linea = <IN>) {
     chomp($linea);
-    #TODO: Usar expresiones regulares para verificar que este bien formado.
+    # Verifico archivo de combos bien formado.
+    if (!($linea =~ /^[^;]*;[0-9]*;[^;]*;[^;]*;[0-9]*;[0-9]*;[0-9]*;[^;]*$/ )) { next; }
     @info= split(";", $linea);
     #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
     if ($#info ne 7 ) { next; }
@@ -298,7 +313,8 @@ sub generar_disponibilidades {
 	
 	while($linea = <IN>) {
 	  chomp($linea);
-	   #TODO: Usar expresiones regulares para verificar que este bien formado.
+	  # Verifico archivo de combos bien formado.
+	  if (!($linea =~ /^[^;]*;[0-9]*;[^;]*;[^;]*;[0-9]*;[0-9]*;[0-9]*;[^;]*$/ )) { next; }
 	  @data= split(";", $linea);
 	  
 	  #Si no hay suficientes datos, suponer archivo mal formado y saltar esa linea.
