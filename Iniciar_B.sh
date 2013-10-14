@@ -64,20 +64,22 @@ fi
 
 
 #Paso casi 3 Compruebo que este siendo llamado de la forma: . ./Iniciar_B.sh
+#Por cuestiones de compatibilidad solo despliego el warning y no realizo ninguna accion
 if [ $0 != "bash" ];
 then
 	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
 	Log 'Iniciar_B.sh Finaliza MAL'
-else
-	#Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
-	if ! ./EstaInicializado.sh
-	then	
-		ParametrosDefault
-		ExportarVariables
-	else
-		Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
-	fi
 fi
+
+#Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
+if ! ./EstaInicializado.sh
+then	
+	ParametrosDefault
+	ExportarVariables
+else
+	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
+fi
+
 
 #Paso 5 Ver si se desea arrancar Recibir_B
 echo "Desea efectuar la activación de Recibir_B? Si – No"
