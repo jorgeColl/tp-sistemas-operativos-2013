@@ -347,7 +347,6 @@ sub generar_disponibilidades {
 	close(IN);
 	if ($encontro ne 1) {
 	    print "No se encontraron resultados para el o los valores ingresados.\n Vuelva a insertar datos.\n";
-	    if ($escribir==1) { print FICHERO_DESTINO ( "$data[6]\n"); }
 	    &generar_disponibilidades;
 	}
 }
