@@ -339,10 +339,15 @@ sub generar_disponibilidades {
 	      
 	  }
 	}
-	close(FICHERO_DESTINO);
+	if (  $escribir==1 ) {
+		close(FICHERO_DESTINO);
+		# Borrar archivo vacio si no se encontraron datos.
+		if ($encontro ne 1) { unlink $nombrearc; }
+	}
 	close(IN);
 	if ($encontro ne 1) {
 	    print "No se encontraron resultados para el o los valores ingresados.\n Vuelva a insertar datos.\n";
+	    if ($escribir==1) { print FICHERO_DESTINO ( "$data[6]\n"); }
 	    &generar_disponibilidades;
 	}
 }
@@ -350,14 +355,16 @@ sub generar_disponibilidades {
 #Funcion auxiliar de generar_disponibilidades para que el usuario ingrese datos.
 sub disponibilidades_pedirdatos {
 
-	print "¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala.\n";
+	print "¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala. -1 para salir.\n";
 	$entrada = <STDIN>;
 	chomp($entrada);
 	
-	if ( ($entrada ne "-o") and ($entrada ne "-s") ) {
-	    print "Opcion incorrecta.. \n";
-	    return;
+	while ( ($entrada ne "-o") and ($entrada ne "-s")  and ($entrada ne "-1") ) {
+	    print "Opcion incorrecta.. \n¿Desea ingresar un ID de obra o un ID de sala?\nIngrese -o para id de obra, -s para id de sala. -1 para salir.\n";
+	    $entrada = <STDIN>;
+	    chomp($entrada);
 	}
+	if ($entrada eq "-1") { exit }
 	print "Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'\n";
 	$numid= <STDIN>;
 	chomp($numid);
@@ -383,9 +390,6 @@ sub disponibilidades_pedirdatos {
 	$directoriorep="";
 	if ($escribir==1) {
 	  &pedir_nombre_archivo;
-	  while ($nombrearc eq "combos") { 
-		print "El nombre ingresado no puede ser combos.\n";
-		&pedir_nombre_archivo; }
 	  $nombrearc="$repodir"."/"."$nombrearc".".dis";
 	}
 }
@@ -395,6 +399,10 @@ sub pedir_nombre_archivo {
     print "Ingrese el nombre que desea para el archivo:\n";
     $nombrearc= <STDIN>;
     chomp($nombrearc);
+    while ($nombrearc eq "combos") { 
+		print "El nombre ingresado no puede ser combos.\n";
+		&pedir_nombre_archivo; 
+    }
 }
 
 sub imprimir_ayuda {
