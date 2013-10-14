@@ -43,7 +43,7 @@
 	
 	#Ahora debo crear la estructura de directorio
 	if [ $opcion = "-ins" ]; then
-		archDestino="${CONFIGDIR}instalacion.log"
+		archDestino="$CONFDIR/Instalar_TP.log"
 		#echo $archDestino
 	else
 		archDestino="${LOGDIR}/${comandoSolicitante}.${LOGEXT}"
