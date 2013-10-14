@@ -21,10 +21,9 @@ fi
 
 function Abortar {
 	cd $TP
-	echo "test Abortado. Se borraran directorios."
-	./revertInstall.sh
+	echo "test Abortado."
 	read var
-	exit 0
+	exit 1
 } 
 echo -e "Prueba del camino FELIZ :) \n La salida de los comandos se encuentra en $OUTPUT"
 echo -e "*************INSTALACION**************\nComenzar instalación?"
@@ -129,12 +128,36 @@ if fSiNo
 then
 	Abortar
 fi
-echo -e "\n\n**************IMPRIMIR************\n\n" >> $OUTPUT
-echo ""
+echo -e "\n\n**************IMPRIMIR************\n\n" >> ../../$OUTPUT
 
+echo "Probando evento con lista de invitados."
+echo "6" | ./Imprimir_B.pl -i -w >> /dev/null
+echo -e "\n************RESERVA CON LISTA DE INVITADOS\n" >> ../../$OUTPUT
+cat "$REPODIR/C00010023.inv" >> ../../$OUTPUT
 
+echo "Probando evento sin lista de invitados."
+echo "1" | ./Imprimir_B.pl -i -w >> /dev/null
+echo -e "\n************RESERVA SIN LISTA DE INVITADOS\n" >> ../../$OUTPUT
+cat "$REPODIR/C00010018.inv" >> ../../$OUTPUT
+
+echo "Probando disponibilidad de obras."
+echo -e "\n**********DISPONIBILIDAD DE LA OBRA CON ID: 1\n" >> ../../$OUTPUT
+echo -e "-o\n1"| ./Imprimir_B.pl -d >> ../../$OUTPUT
+
+echo "Probando disponibilidad de salas."
+echo -e "\n**********DISPONIBILIDAD DE LA SALA CON ID: 12\n">> ../../$OUTPUT
+echo -e "-s\n12"| ./Imprimir_B.pl -d >> ../../$OUTPUT
+
+echo "Probando ranking de reservas."
+echo -e "\n**********RANKING DE RESERVAS \n" >> ../../$OUTPUT
+./Imprimir_B.pl -r >> ../../$OUTPUT
+
+echo "Probando impresión de ticket."
+echo -e "\n**********GENERANDO TICKET DE RESERVAS CONFIRMADAS \n" >> ../../$OUTPUT
+echo "C00010026"|./Imprimir_B.pl -t >> ../../$OUTPUT
 
 
 echo -e  "**************FIN DEL TEST************\n\n" 
-#./revertInstall.sh
+
+cd $TP
 

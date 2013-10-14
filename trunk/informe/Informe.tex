@@ -97,9 +97,9 @@
 \section{Hipótesis y Aclaraciones globales.}
 \begin{itemize}
 
-	\item A Mover_B y Eliminar_B se le pasan rutas absolutas.
-	\item Matar_D, finaliza todas las instancias del programa solicitado.
-	\item Start_D no inicia el proceso si lo el mismo ya se encuentra corriendo en el sistema.
+	\item A Mover\_B y Eliminar\_B se le pasan rutas absolutas.
+	\item Matar\_D, finaliza todas las instancias del programa solicitado.
+	\item Start\_D no inicia el proceso lo el mismo ya se encuentra corriendo en el sistema o el ambiente no se ha inicializado.
 	\item Si se desea eliminar un archivo inexistente no se dentendra la ejecución del script. Sólo se informará en el Log.
 	\item Los nombres de los archivos de Logs pueden incluir puntos.
 	\item El tamaño del Log se verifica luego de escribir, por lo tanto, después de una escritura válidad el Log tiene un tamaño permitido.
@@ -122,8 +122,8 @@ definido el directorio asignado para tal fin. Así mismo sucedía que al querer ut
 el script de Grabar\_L o Mover\_B, estos mismos iban a ser 'movidos' al realizar la
 instalación y esto generaba conflictos, ya que se estaba moviendo el mismo archivo 
 que se estaba ejecutando. 
-Para solucionarlo, se copiaron los archivos binarios a un directorio temporal que se utiliza 
-para la instalación y luego se elimina (ver sección ~\ref{subsec:backup})
+Para solucionarlo, se copiaron los archivos binarios que generaban el conflicto en 
+vez de moverlos.
 
 \subsection{Está Corriendo}
 
@@ -151,8 +151,8 @@ Adicionalmente, a este script, se le agregó funcionalidad para copiar archivos. 
 El motivo de llevar adelante un 'Logger' radica en la trazabilidad de un programa en ejecución. Su implimentación resulta ser de 
 una dificultad moderada, pero, por el contrario, su utilidad es mucha. Para este sistema, se necesitan generar archivos de logs para cada script utilizado. Además 
 se le da un trato especial al de instalación, ya que este nunca se recorta y se ubica en un directorio distinto al resto.
-Para evitar la duplicación de código, se utiliza el mismo script para todos los archivos de log generados. Tomando como un caso especial la invocación de 'Grabar_L.sh' con el 
-parámetro "-ins". En esta oportunidad se genera una ruta distintiva y se anula la funcionalidad de limite de tamaño.
+Para evitar la duplicación de código, se utiliza el mismo script para todos los archivos de log generados. Tomando como un caso especial la invocación de 'Grabar\_L.sh' con el 
+parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula la funcionalidad de limite de tamaño.
 
 
 \newpage

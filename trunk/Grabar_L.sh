@@ -11,7 +11,8 @@
 #Chequeamos la cantidad de parametros, con este decidimos que es cada uno.
 	comandoSolicitante=`echo ${1##*/}`
 	
-	if ! ./EstaInicializado.sh
+	./EstaInicializado.sh >> /dev/null
+	if [ $? -ne 0 ]
 	then
 		#No esta inicializado, no puedo usar el log
 		exit -1
