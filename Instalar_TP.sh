@@ -264,7 +264,7 @@ cp $CONFDIR/backup/salas.mae "$MAEDIR"
 cp $CONFDIR/backup/combos.dis "$PROCDIR"
 
 # permiso de ejecución
-for file in `ls $BINDIR`; do
+for file in `ls "$BINDIR"`; do
 	chmod +x "$BINDIR/$file"
 done
 
@@ -563,7 +563,7 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./Eliminar_B.sh "$BINDIR"
 
 # permiso de ejecución
-for file in `ls $BINDIR`; do
+for file in `ls "$BINDIR"`; do
 	chmod +x "$BINDIR/$file"
 done
 
@@ -581,7 +581,7 @@ done
 
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh "$BINDIR"
-chmod +x "$BINDIR"/Mover_B.sh
+chmod +x "$BINDIR/Mover_B.sh"
 
 }
 
@@ -630,6 +630,10 @@ fi
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------
+#Aplico permisos de ejecucion
+chmod +x './Mover_B.sh'
+chmod +x './Grabar_L.sh'
+chmod +x './EstaInicializado.sh'
 #Cargo a las variables los parametros default
 ParametrosDefault
 
