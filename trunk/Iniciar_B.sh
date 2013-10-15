@@ -144,9 +144,55 @@ if [ -d "$CONFDIR" ]; then
                         fi
 		
 		Log "Estado de la instalacion INCOMPLETO. Proceso de Inicializacion cancelado"
+	$estado=0
 	fi
 fi #salgo de los ejecutables
 
+		Log "Viendo archivos Maestros:"
+		if [ -d "$MAEDIR" ];
+		then
+			echo "$MAEDIR"
+
+			if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];			then
+			ls "$MAEDIR"
+
+			else
+			if [ ! -f "$MAEDIR/obras.mae" ];
+                        then
+                                echo -e "obras.mae"
+                        fi
+			if [ ! -f "$MAEDIR/salas.mae" ];
+                        then
+                                echo -e "salas.mae"
+                        fi
+			Log "Faltan algun/os archivos maestros"
+			$estado=0
+			fi
+			
+		fi
+
+		Log "Viendo archivo de disponibilidad"
+		if [ -d "$PROCDIR" ];
+		then
+			echo "$PROCDIR"
+			if [ -f "$PROCDIR/combos.dis" ];
+			then
+			ls "$PROCDIR"
+			else
+			Log "Falta archivo de disponibilidades:"
+			Log "combos.dis"
+			$estado=0
+			fi
+		fi
+	
+	# Verifico si quedo algun faltante		
+	if [ $estado=1 ];
+	then
+	Log "Proceso de inicializacion comprobado exitosamente"
+	else
+	Log "Proceso de Inicializacion cancelado por faltantes"
+	exit
+	fi
 else
 	Log "Proceso de instalacion nunca empezado"
 	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
