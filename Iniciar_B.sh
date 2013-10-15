@@ -244,7 +244,9 @@ fi #salgo de los ejecutables
 	Log "Proceso de inicializacion comprobado exitosamente"
 	else
 	Log "Proceso de Inicializacion cancelado"
-	exit
+	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
+        rm "$Inilog"
+        exit
 	fi
 else
 	Log "Proceso de instalacion nunca empezado"
