@@ -40,7 +40,7 @@ export LOGSIZE
 }
 
 #Log de comando
-Inilog=$LOGDIR/Iniciar_B/$LOGEXT
+Inilog=$LOGDIR/Iniciar_B$LOGEXT
 
 
 #Funcion auxiliar para la carga de un Si-No
