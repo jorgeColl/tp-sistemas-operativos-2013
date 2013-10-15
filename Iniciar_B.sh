@@ -39,6 +39,10 @@ export DATASIZE
 export LOGSIZE
 }
 
+#Log de comando
+Inilog=$LOGDIR/Iniciar_B/$LOGEXT
+
+
 #Funcion auxiliar para la carga de un Si-No
 function FSiNo {
 local var1
@@ -56,8 +60,20 @@ fi
 }
 
 #INICIO DE EJECUCION-----------------------------------------------------------------
-# Paso 1 Inicializar el archivo de log
-#[ FALTA HACER ]
+# Paso 1 Inicializar el archivo de log, si no estaba lo crea.
+
+function InicioLog {
+if [ -f "$Inilog" ];
+then
+        echo "Existe "$Inilog""
+else
+        touch "$Inilog" 
+fi
+
+Log "Comando Iniciar_B inicio de Ejecucion"
+
+}
+
 
 #Paso 2 Verificar que la instalación está completa
 #[ FALTA HACER ]
