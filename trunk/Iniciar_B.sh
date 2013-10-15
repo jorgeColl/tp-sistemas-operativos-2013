@@ -65,14 +65,16 @@ fi
 function InicioLog {
 if [ -f "$Inilog" ];
 then
-        echo "Existe "$Inilog""
+        Log "Existe "$Inilog""
 else
         touch "$Inilog" 
 fi
 
 Log "Comando Iniciar_B inicio de Ejecucion"
-
 }
+
+InicioLog
+
 
 
 #Paso 2 Verificar que la instalación está completa
