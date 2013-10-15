@@ -94,6 +94,59 @@ if [ -d "$CONFDIR" ]; then
 		then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
+			#Pruebo si todos estos tienen permiso de ejecucion
+			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" ];
+			then
+			Log "Todos los ejecutables con permiso de ejecucion"
+			else
+			Log "Listado de ejecutables sin permiso de ejecucion"
+			 if [ ! -x "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
+                        then
+                                echo -e "Grabar_L.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Reservar_B.sh" ];
+                        then
+                                echo -e "Reservar_B.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Imprimir_B.pl" ];
+                        then
+                                echo -e "Imprimir_B.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Stop_D.sh" ];
+                        then
+                                echo -e "Stop_D.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Star_D.sh" ];
+                        then
+                                echo -e "Start_D.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Eliminar_B.sh" ];
+                        then
+                                echo -e "Eliminar_B.sh"
+                        fi
+
+			if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
+                        then
+                                echo -e "EstaCorriendo.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/EstaInicializado.sh" ];
+                        then
+                                echo -e "EstaInicializado.sh"
+                        fi
+
+                        if [ ! -x "$BINDIR/Recibir_B.sh" ];
+                        then
+                                echo -e "Recibir_B.sh"
+                        fi
+
+			$estado=0	
+			fi
 		else
 		
 			Log "Listado de componentes faltantes:"
@@ -185,12 +238,12 @@ fi #salgo de los ejecutables
 			fi
 		fi
 	
-	# Verifico si quedo algun faltante		
+	# Verifico si quedo bien el estado		
 	if [ $estado=1 ];
 	then
 	Log "Proceso de inicializacion comprobado exitosamente"
 	else
-	Log "Proceso de Inicializacion cancelado por faltantes"
+	Log "Proceso de Inicializacion cancelado"
 	exit
 	fi
 else
