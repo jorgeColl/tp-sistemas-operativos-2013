@@ -8,38 +8,36 @@ export CONFDIR="$grupo/conf"
 Instlog="$CONFDIR/Instalar_TP.log" #ruta a el log del script
 declare -i DATASIZE
 Instconf="$CONFDIR/Instalar_TP.conf" #ruta al conf del script
-estado="" #para controlar el estado de la instalacion 
-existenFaltantes="" #para controlar si existen los archivos faltantes en la reinstalacion
 backup="$CONFDIR/backup"
 
 
 function backup {
-echo "Realizando backup"
-./Mover_B.sh  ./Iniciar_B.sh "$backup" '-c'
+Log "Realizando backup"
+./Mover_B.sh ./Iniciar_B.sh "$backup" '-c'
 ./Mover_B.sh ./Grabar_L.sh "$backup" '-c'
-./Mover_B.sh ./Reservar_B.sh $backup '-c'
-./Mover_B.sh ./Stop_D.sh $backup '-c'
-./Mover_B.sh ./Start_D.sh $backup '-c'
-./Mover_B.sh ./Imprimir_B.pl $backup '-c'
-./Mover_B.sh ./EstaCorriendo.sh $backup '-c'
-./Mover_B.sh ./EstaInicializado.sh $backup '-c' 
-./Mover_B.sh ./Recibir_B.sh $backup '-c'
-./Mover_B.sh ./Eliminar_B.sh $backup '-c'
+./Mover_B.sh ./Reservar_B.sh "$backup" '-c'
+./Mover_B.sh ./Stop_D.sh "$backup" '-c'
+./Mover_B.sh ./Start_D.sh "$backup" '-c'
+./Mover_B.sh ./Imprimir_B.pl "$backup" '-c'
+./Mover_B.sh ./EstaCorriendo.sh "$backup" '-c'
+./Mover_B.sh ./EstaInicializado.sh "$backup" '-c' 
+./Mover_B.sh ./Recibir_B.sh "$backup" '-c'
+./Mover_B.sh ./Eliminar_B.sh "$backup" '-c'
 
-./Mover_B.sh ./Readme_Instalar $backup '-c'
-./Mover_B.sh ./Readme_Start_D $backup '-c'
-./Mover_B.sh ./Readme_Iniciar $backup '-c'
-./Mover_B.sh ./Readme_Reservar $backup '-c'
-./Mover_B.sh ./Readme_Imprimir $backup '-c'
-./Mover_B.sh ./Readme_Recibir $backup '-c'
-./Mover_B.sh ./Readme_Grabar_L $backup '-c'
-./Mover_B.sh ./Readme_Stop_D $backup '-c'
-./Mover_B.sh ./Readme_Iniciar $backup '-c'
-./Mover_B.sh ./obras.mae $backup '-c'
-./Mover_B.sh ./salas.mae $backup '-c'
-./Mover_B.sh ./combos.dis $backup '-c'
+./Mover_B.sh ./Readme_Instalar "$backup" '-c'
+./Mover_B.sh ./Readme_Start_D "$backup" '-c'
+./Mover_B.sh ./Readme_Iniciar "$backup" '-c'
+./Mover_B.sh ./Readme_Reservar "$backup" '-c'
+./Mover_B.sh ./Readme_Imprimir "$backup" '-c'
+./Mover_B.sh ./Readme_Recibir "$backup" '-c'
+./Mover_B.sh ./Readme_Grabar_L "$backup" '-c'
+./Mover_B.sh ./Readme_Stop_D "$backup" '-c'
+./Mover_B.sh ./Readme_Iniciar "$backup" '-c'
+./Mover_B.sh ./datos/obras.mae "$backup" '-c'
+./Mover_B.sh ./datos/salas.mae "$backup" '-c'
+./Mover_B.sh ./datos/combos.dis "$backup" '-c'
 
-./Mover_B.sh ./Mover_B.sh $backup '-c'
+./Mover_B.sh ./Mover_B.sh "$backup" '-c'
 }
 
 #Funcion para grabar al Log
@@ -64,10 +62,9 @@ while read -r -a nombre
 do
 	miArreglo1[a]=$nombre
 	miArreglo2[a]=${nombre[1]}
-	#echo "$nombre <-> ${nombre[1]}"
 	let a+=1
 done < $Instconf
-
+unset IFS
 export grupo="${miArreglo2[0]}"
 export CONFDIR="${miArreglo2[1]}"
 export BINDIR="${miArreglo2[2]}"
@@ -81,8 +78,6 @@ export LOGDIR="${miArreglo2[9]}"
 export LOGEXT="${miArreglo2[10]}"
 export DATASIZE="${miArreglo2[11]}"
 export LOGSIZE="${miArreglo2[12]}"
-
-#echo "$BINDIR $MAEDIR $ARRIDIR $ACEPDIR $RECHDIR $REPODIR $PROCDIR $LOGDIR $LOGEXT $DATASIZE $LOGSIZE"
 }
 
 #Por defecto asumo estos directorios 
@@ -151,18 +146,17 @@ then
 fi
 Log "Estado de la instalacion:$1"
 
-#FALTA GRABAR EN EL LOG LO MISMO [FALTA HACER]
 }
 
 #Funcion auxiliar para la carga de un Si-No
 function FSiNo {
 local var1
-while [ "$var1" != "Si" ] && [ "$var1" != "No" ]
+while [ "$var1" != "Si" ] && [ "$var1" != "No" ] && [ "$var1" != "n" ] && [ "$var1" != "s" ] && [ "$var1" != "no" ] && [ "$var1" != "si" ]
 do 
 	read var1
 done #Hasta que no contesta si o no sale del bucle
 
-if [ "$var1" = "Si" ]
+if [ "$var1" = "Si" ] || [ "$var1" = "s" ] || [ "$var1" = "si" ]
 then
 	return "1"
 else
@@ -176,73 +170,145 @@ if [ -f "$Instlog" ];
 then
 	echo "Existe "$Instlog""
 else
-	touch "$Instlog" #aca hay que darle permisos de escritura??VER
+	touch "$Instlog"
 fi
 
 Log "Inicio de Ejecución" 
 Log "Log del comando Instalar_TP:$Instlog"
 Log "Directorio de configuracion:$CONFDIR"
+}
+#(aux Paso4) Funcion auxiliar que segun con que opcion se llame , detalla los directorios que deberian estar creados o los crea
+#$1 es la opcion
+#$2 es el directorio
+function listarCrearDir {
+if [ ! -d "$1" ]
+then
+	Log "directorio: $1 esta FALTANDO"
+fi
+}
+#$1 es el parametro que recibe la opcion -l para listar -c para crear
+function ChequearDirectorios {
+listarCrearDir "$CONFDIR"
+listarCrearDir "$BINDIR"
+listarCrearDir "$MAEDIR"
+listarCrearDir "$ARRIDIR"
+listarCrearDir "$ACEPDIR"
+listarCrearDir "$RECHDIR"
+listarCrearDir "$REPODIR"
+listarCrearDir "$PROCDIR"
+listarCrearDir "$LOGDIR"
+}
+function listarArch {
+if [ ! -f "$1" ]
+then
+	Log "Archivo: $1 esta FALTANDO"
+fi
+}
+function ChequearArchivos {
+declare local temp1
+declare local temp2
+declare local temp3
+if [ "$1" = '-b' ]
+then
+	temp1="$CONFDIR/backup"
+	temp2="$CONFDIR/backup"
+	temp3="$CONFDIR/backup"
+else
+	temp1="$BINDIR"
+	temp2="$MAEDIR"
+	temp3="$PROCDIR"
+fi
+listarArch "$temp1/Iniciar_B.sh"
+listarArch "$temp1/Grabar_L.sh"
+listarArch "$temp1/Reservar_B.sh"
+listarArch "$temp1/Stop_D.sh"
+listarArch "$temp1/Start_D.sh"
+listarArch "$temp1/Imprimir_B.pl"
+listarArch "$temp1/EstaCorriendo.sh"
+listarArch "$temp1/EstaInicializado.sh"
+listarArch "$temp1/Recibir_B.sh"
+listarArch "$temp1/Eliminar_B.sh"
+listarArch "$temp1/Mover_B.sh"
 
+listarArch "$temp2/obras.mae"
+listarArch "$temp2/salas.mae"
 
+listarArch "$temp3/combos.dis"
 }
 
+function RestaurarArchivos {
+cp $CONFDIR/backup/Iniciar_B.sh "$BINDIR"
+cp $CONFDIR/backup/Grabar_L.sh "$BINDIR"
+cp $CONFDIR/backup/Reservar_B.sh  "$BINDIR"
+cp $CONFDIR/backup/Stop_D.sh  "$BINDIR"
+cp $CONFDIR/backup/Start_D.sh  "$BINDIR"
+cp $CONFDIR/backup/Imprimir_B.pl  "$BINDIR"
+cp $CONFDIR/backup/EstaCorriendo.sh  "$BINDIR"
+cp $CONFDIR/backup/EstaInicializado.sh  "$BINDIR"
+cp $CONFDIR/backup/Recibir_B.sh  "$BINDIR"
+cp $CONFDIR/backup/Eliminar_B.sh  "$BINDIR"
+cp $CONFDIR/backup/Mover_B.sh "$BINDIR"
+cp $CONFDIR/backup/Readme_Instalar "$BINDIR"
+cp $CONFDIR/backup/Readme_Start_D "$BINDIR"
+cp $CONFDIR/backup/Readme_Iniciar "$BINDIR"
+cp $CONFDIR/backup/Readme_Reservar "$BINDIR"
+cp $CONFDIR/backup/Readme_Imprimir "$BINDIR"
+cp $CONFDIR/backup/Readme_Recibir "$BINDIR"
+cp $CONFDIR/backup/Readme_Grabar_L "$BINDIR"
+cp $CONFDIR/backup/Readme_Stop_D "$BINDIR"
+cp $CONFDIR/backup/Readme_Iniciar "$BINDIR"
+
+cp $CONFDIR/backup/obras.mae "$MAEDIR"
+cp $CONFDIR/backup/salas.mae "$MAEDIR"
+
+cp $CONFDIR/backup/combos.dis "$PROCDIR"
+
+# permiso de ejecución
+for file in `ls $BINDIR`; do
+	chmod +x "$BINDIR/$file"
+done
+
+}
 #(Paso 4) Funcion que se encarga de reinstalar/continuar la instalacion
 function ReInstalar {
-
 Log "Chequeando si la instalacion esta completa o no"
-#[ FALTA HACER ]
-#CHEQUEAR EL Instalar_Tp.conf
-#Chequear si los directorios existen
-#Chequear si falta ejecutable
-#Chequear si faltan los archivos maestros
-#Chequear si falta archivo de disponibilidad
-#De acuerdo a lo anterior modificar variable -> estado
+declare local faltanDirs=$(ChequearDirectorios)
+declare local faltanArchs=$(ChequearArchivos)
 
-if [ "$estado" = "completa" ];
+if [ "$faltanDirs" = "" ] && [ "$faltanArchs" = "" ];
 then
 	MostrarMensajeEstado 'COMPLETA'
 	Log "Proceso de instalacion Cancelado"
-	FIN
 else
 	Log "Instalacion con faltantes"
 	MostrarMensajeEstado 'INCOMPLETA'
 	Log "Componentes faltantes:"
-	#[ FALTA HACER ]
-	#Mostrar componentes faltantes anteriormente chequeados
-
+	Log "$faltanDirs"
+	Log "$faltanArchs"
 	Log "Desea continuar la instalacion? (SI - No)"
 	if FSiNo;
 	then
 		Log "Proceso de instalacion cancelado"
-		FIN
 	else
 		Log "Chequeando si se encuentran los faltantes ...."
-		#[ FALTA HACER ]
 		#Comprobar si estan TODOS los archivos de backup
-		#Si alguno de los archivos no esta -> existenFaltantes = Si
-		#Si TODOS los archivos de backup estan -> existenFaltantes = No
-
-		if [ "$existenFaltantes" = "Si" ];
+		existenFaltantes=$(ChequearArchivos '-b')
+		if [ "$existenFaltantes" = "" ];
 		then
 			PerlInstalado
 			MostrarMensajeEstado 'LISTA'
 			Log "Iniciando Instalación. Esta Ud. seguro? (Si-No)"
-			if FSiNo;
+			if ! FSiNo;
 			then
-				FIN
+				InstalacionDirectorios
+				RestaurarArchivos
+				Log "Instalación SATISFACTORIAMENTE CONCLUIDA"
 			fi
-			#[ DUDA ]: copiamos los archivos de el dir de backup a el actual directorio de instalar para que esta parte funciones?
-			InstalacionDirectorios
-			MoverMaestros
-			MoverDisponibilidad
-			MoverProgramasFunciones
-			Log "Instalación CONCLUIDA"
-			FIN
 		else
-			Log "No existen los faltantes en el sistema"
-			FIN
+			Log "No existen los faltantes en el sistema para poder realizar la instalacion"
+			Log "$existenFaltantes"
+			Log "Instalacion ABORTADA"
 		fi
-	
 	fi
 fi
 }
@@ -279,13 +345,10 @@ else
 fi
 }
 
-#Para finalizar el script , guarda informacion en Instalar_TP.conf y en Instalar_TP.log
+#Para finalizar el script
 function FIN {
-	
 exit 0
-
 }
-
 
 #(Paso 7) Funcion que define el directorio de instalación de los ejecutables
 function DefinirEjecutables {
@@ -458,7 +521,6 @@ fi
 
 #(Paso 21.1) Funcion que crea los directorios
 function InstalacionDirectorios {
-Log "Creando Estructuras de directorio ..."
 mkdir -p "$BINDIR"
 mkdir -p "$MAEDIR"
 mkdir -p "$ARRIDIR"
@@ -489,37 +551,37 @@ Log "Instalando Archivo de Disponibilidad"
 function MoverProgramasFunciones {
 Log "Instalando Programas y Funciones"
 
-./Mover_B.sh ./Iniciar_B.sh $BINDIR
-./Mover_B.sh ./Grabar_L.sh $BINDIR '-c'
-./Mover_B.sh ./Reservar_B.sh $BINDIR
-./Mover_B.sh ./Stop_D.sh $BINDIR
-./Mover_B.sh ./Start_D.sh $BINDIR
-./Mover_B.sh ./Imprimir_B.pl $BINDIR
-./Mover_B.sh ./EstaCorriendo.sh $BINDIR
-./Mover_B.sh ./EstaInicializado.sh $BINDIR '-c'
-./Mover_B.sh ./Recibir_B.sh $BINDIR
-./Mover_B.sh ./Eliminar_B.sh $BINDIR
+./Mover_B.sh ./Iniciar_B.sh "$BINDIR"
+./Mover_B.sh ./Grabar_L.sh "$BINDIR" '-c'
+./Mover_B.sh ./Reservar_B.sh "$BINDIR"
+./Mover_B.sh ./Stop_D.sh "$BINDIR"
+./Mover_B.sh ./Start_D.sh "$BINDIR"
+./Mover_B.sh ./Imprimir_B.pl "$BINDIR"
+./Mover_B.sh ./EstaCorriendo.sh "$BINDIR"
+./Mover_B.sh ./EstaInicializado.sh "$BINDIR" '-c'
+./Mover_B.sh ./Recibir_B.sh "$BINDIR"
+./Mover_B.sh ./Eliminar_B.sh "$BINDIR"
 
 # permiso de ejecución
 for file in `ls $BINDIR`; do
-	chmod +x $BINDIR/$file
+	chmod +x "$BINDIR/$file"
 done
 
 #muevo readmes
-./Mover_B.sh ./Readme_Instalar $BINDIR
-./Mover_B.sh ./Readme_Start_D $BINDIR
-./Mover_B.sh ./Readme_Iniciar $BINDIR
-./Mover_B.sh ./Readme_Reservar $BINDIR
-./Mover_B.sh ./Readme_Imprimir $BINDIR
-./Mover_B.sh ./Readme_Recibir $BINDIR
-./Mover_B.sh ./Readme_Grabar_L $BINDIR
-./Mover_B.sh ./Readme_Stop_D $BINDIR
-./Mover_B.sh ./Readme_Mover_B $BINDIR
-./Mover_B.sh ./Readme_Eliminar_B $BINDIR
+./Mover_B.sh ./Readme_Instalar "$BINDIR"
+./Mover_B.sh ./Readme_Start_D "$BINDIR"
+./Mover_B.sh ./Readme_Iniciar "$BINDIR"
+./Mover_B.sh ./Readme_Reservar "$BINDIR"
+./Mover_B.sh ./Readme_Imprimir "$BINDIR"
+./Mover_B.sh ./Readme_Recibir "$BINDIR"
+./Mover_B.sh ./Readme_Grabar_L "$BINDIR"
+./Mover_B.sh ./Readme_Stop_D "$BINDIR"
+./Mover_B.sh ./Readme_Mover_B "$BINDIR"
+./Mover_B.sh ./Readme_Eliminar_B "$BINDIR"
 
 #muevo mover jeje
-./Mover_B.sh ./Mover_B.sh $BINDIR
-chmod +x $BINDIR/Mover_B.sh
+./Mover_B.sh ./Mover_B.sh "$BINDIR"
+chmod +x "$BINDIR"/Mover_B.sh
 
 }
 
@@ -573,19 +635,24 @@ ParametrosDefault
 
 # Paso 1, 2 y 3
 mkdir -p "$CONFDIR"
-InicioLogInstalacion
-
 #Se crea el directorio para bakcup
 mkdir -p "$CONFDIR/backup"
 
 #Paso 4.
 if [ -f "$Instconf" ];
 then 
+	cp "$CONFDIR/backup/Grabar_L.sh" './'
+	cp "$CONFDIR/backup/EstaInicializado.sh" './'
+	InicioLogInstalacion
 	CargarDelConf
-	#Aca copio el grabar_l al directorio del Instalar
 	Log "instalacion incompleta o ya hecha"
 	ReInstalar
+	Log "borrando archivos temporarios"
+	rm 'Grabar_L.sh'
+	rm 'EstaInicializado.sh'
+	FIN
 else 
+	InicioLogInstalacion
 	temp="$LOGDIR"
 	LOGDIR="$backup"
 	backup
@@ -604,8 +671,6 @@ fi
 
 #Paso 6
 PerlInstalado
-
-
 
 #NOTA: se que queda medio sucio poner esta funcion aca pero creo que se ve mas "secuencial" la instalacion si la dejo aca
 function Definiciones {
@@ -665,6 +730,7 @@ then
 fi
 
 #Paso 21: Instalacion
+Log "Creando Estructuras de directorio ..."
 InstalacionDirectorios
 MoverMaestros 
 MoverDisponibilidad 
@@ -679,7 +745,7 @@ rm 'Grabar_L.sh'
 rm 'EstaInicializado.sh'
 
 #Paso 23: Mostrar mensaje de fin de instalación
-echo "Instalación CONCLUIDA"
+echo "Instalación SATISFACTORIAMENTE CONCLUIDA"
 
 #Paso 24: FIN
 FIN
