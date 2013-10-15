@@ -12,7 +12,7 @@
 SLEEP=5
 
 # archivo donde se guarda la cuenta de las ejecuciones.
-COUNTFILE=$LOGDIR/count
+COUNTFILE="$LOGDIR/count"
 
 # archivos de obras y salas
 OBRAS="$MAEDIR/obras.mae"
@@ -25,7 +25,7 @@ export LANG
 
 
 function Log {
-	./Grabar_L.sh $0 "$1"	
+	./Grabar_L.sh "$0" "$1"	
 }
 
 # 1.grabar en el log el numero de ciclo.
@@ -35,11 +35,11 @@ function Log {
 # número de veces que se ha llamado al script.
 function ActualizarCiclo {
 	n=0
-	touch $COUNTFILE # cambia la fecha de la ultima modificacion.
+	touch "$COUNTFILE" # cambia la fecha de la ultima modificacion.
 	# solo esta por si no existe el archivo, para que lo cree.
-	. $COUNTFILE #ejecuta n=<# de ejecucion> 
+	. "$COUNTFILE" #ejecuta n=<# de ejecucion> 
 	n=$(expr $n + 1)
-	echo "n=$n" > $COUNTFILE
+	echo "n=$n" > "$COUNTFILE"
 	Log "Ciclo Nro $n"
 }
 
@@ -68,7 +68,7 @@ function EsDeInvitados {
 # != 0 si no tiene el formato valido o no se ha encontrado 
 # 	mail o id.
 function EsObraOSala {
-	if `echo $1|grep -q "^[^-]*-[^-]*-.*"`
+	if `echo "$1"|grep -q "^[^-]*-[^-]*-.*"`
 	then
 		# el nombre del archivo tiene el formato:
 		# id_obra_o_sala-correo-xxx
@@ -97,17 +97,17 @@ function EsObraOSala {
 # != 0 si no se encuentra en el archivo.
 function EsSala {
 	# caso econtre sala y mail.
-	if grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" $SALAS
+	if grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" "$SALAS"
 	then
 		return 0
 	# solo encontre el id, el mail no es correcto.	
-	elif grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;[^;]*$" $SALAS
+	elif grep -q "^${1};[^;]*;[^;]*;[^;]*;[^;]*;[^;]*$" "$SALAS"
 	then
 		
 		Log "Mail inexistente, ID ok."
 		return 1
 	# el id no existe pero si el mail
-	elif grep -q "^[^;]*;[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" $SALAS
+	elif grep -q "^[^;]*;[^;]*;[^;]*;[^;]*;[^;]*;${2}.*$" "$SALAS"
 	then
 		Log "ID inexistente, mail ok."
 		return 2
@@ -123,24 +123,24 @@ function EsSala {
 # != 0 si no se encuentra en el archivo.
 function EsObra {
 	# caso encontre obra y mail de produccion general
-	if grep -q "^${1};[^;]*;${2};.*$" $OBRAS 
+	if grep -q "^${1};[^;]*;${2};.*$" "$OBRAS" 
 	then
 		return 0
 	# caso	encontre obra y mail de produccion ejecutiva
-	elif grep -q "^${1};[^;]*;[^;]*;${2}.*$" $OBRAS
+	elif grep -q "^${1};[^;]*;[^;]*;${2}.*$" "$OBRAS"
 	then 
 		return 0
 	# solo encontre el id, el mail no es correcto.	
-	elif grep -q "^${1};[^;]*;[^;]*;[^;]*$" $OBRAS
+	elif grep -q "^${1};[^;]*;[^;]*;[^;]*$" "$OBRAS"
 	then
 		Log "Mail inexistente, id ok"
 		return 1
 	# el id no existe pero si el mail
-	elif grep -q "^[^;]*;[^;]*;[^;]*;${2}.*$" $OBRAS
+	elif grep -q "^[^;]*;[^;]*;[^;]*;${2}.*$" "$OBRAS"
 	then
 		Log "ID inexistente, mail ok."
 		return 2
-	elif grep -q "^[^;]*;[^;]*;${2};[^;]$" $OBRAS
+	elif grep -q "^[^;]*;[^;]*;${2};[^;]$" "$OBRAS"
 	then
 		Log "ID inexistente, mail ok."
 		return 2
@@ -154,24 +154,24 @@ function ChequearArribos {
 # recorro cada archivo en arribos
 ls "$ARRIDIR"|while read archivo
 do
-	local origen=$ARRIDIR/$archivo
+	local origen="$ARRIDIR/$archivo"
 	local destino
 	# si es un archivo (salteo los directorios y verifico que sea de texto)	
-	if [ "-f "$origen"" -a "file -i $origen|grep -q "^.*text.*"" ] 
+	if [ "-f "$origen"" -a "file -i "$origen"|grep -q "^.*text.*"" ] 
 	then
 		Log "Procesando $archivo ."
-		if EsDeInvitados $archivo
+		if EsDeInvitados "$archivo"
 		then
 			destino=$REPODIR/$archivo
 		# caso archivos obras o salas
-		elif EsObraOSala $archivo
+		elif EsObraOSala "$archivo"
 		then
 			destino=$ACEPDIR/$archivo
 		else
 			destino=$RECHDIR/$archivo
 		fi
 		./Mover_B.sh "$origen" "$destino" "$0"
-		local dst=`echo $destino|grep -o "grupo8/.*$"`
+		local dst=`echo "$destino"|grep -o "grupo8/.*$"`
 		Log "Se moverá a $dst"
 		if [ $? -eq 0 ]
 		then 
@@ -191,11 +191,11 @@ done
 
 function ChequearAceptados {
 	# si hay archivos: 
-	if [ "$(ls $ACEPDIR)" ]
+	if [ "$(ls "$ACEPDIR")" ]
 	then
 		# dentro de Start_D se hace el chequeo de 
 		# que el proceso no se esté ejecutando.
-		./Start_D.sh Reservar_B.sh $0
+		./Start_D.sh Reservar_B.sh "$0"
 	fi
 }
 

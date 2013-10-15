@@ -23,7 +23,7 @@ function Abortar {
 	cd $TP
 	echo "test Abortado."
 	read var
-	exit 1
+	#exit 1
 } 
 echo -e "Prueba del camino FELIZ :) \n La salida de los comandos se encuentra en $OUTPUT"
 echo -e "*************INSTALACION**************\nComenzar instalación?"
