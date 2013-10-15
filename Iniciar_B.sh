@@ -1,6 +1,7 @@
 #!/bin/bash
 
 grupo=`pwd|grep -o "^.*grupo8"`
+estado=1 # 1 todo OK; 0 Mal
 
 #Funcion para grabar al Log
 function Log {
@@ -78,8 +79,80 @@ InicioLog
 
 
 #Paso 2 Verificar que la instalación está completa
-#[ FALTA HACER ]
 
+if [ -d "$CONFDIR" ]; then
+
+	Log "Se ha efectuado la instalacion de Reservas_B"
+	echo "Directorio de configuracion:"$CONFDIR"" #Muestro su path
+	ls "$CONFDIR"
+	Log "Comprobando si hay faltantes ... "
+	
+	if [ -d "$BINDIR" ];
+	then
+	echo  "Ejecutables: $BINDIR "
+		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/Eliminar_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" ]; #chequea q esten todas las funciones
+		then
+			Log "Se encuentran todos los ejecutables"
+			ls "$BINDIR"
+		else
+		
+			Log "Listado de componentes faltantes:"
+			
+			if [ ! -f "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
+                        then
+                                echo -e "Grabar_L.sh"
+                        fi
+                       
+                        if [ ! -f "$BINDIR/Reservar_B.sh" ];
+                        then
+                                echo -e "Reservar_B.sh"
+                        fi
+                       
+                        if [ ! -f "$BINDIR/Imprimir_B.pl" ];
+                        then
+                                echo -e "Imprimir_B.sh"
+                        fi
+
+                        if [ ! -f "$BINDIR/Stop_D.sh" ];
+                        then
+                                echo -e "Stop_D.sh"
+                        fi
+                       
+                        if [ ! -f "$BINDIR/Star_D.sh" ];
+                        then
+                                echo -e "Start_D.sh"
+                        fi
+                       
+                        if [ ! -f "$BINDIR/Eliminar_B.sh" ];
+                        then
+                                echo -e "Eliminar_B.sh"
+                        fi
+
+			if [ ! -f "$BINDIR/EstaCorriendo.sh" ];
+                        then
+                                echo -e "EstaCorriendo.sh"
+                        fi
+
+			if [ ! -f "$BINDIR/EstaInicializado.sh" ];
+                        then
+                                echo -e "EstaInicializado.sh"
+                        fi
+
+			if [ ! -f "$BINDIR/Recibir_B.sh" ];
+                        then
+                                echo -e "Recibir_B.sh"
+                        fi
+		
+		Log "Estado de la instalacion INCOMPLETO. Proceso de Inicializacion cancelado"
+	fi
+fi #salgo de los ejecutables
+
+else
+	Log "Proceso de instalacion nunca empezado"
+	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
+	rm "$Inilog" 
+	exit
+fi
 
 #Paso casi 3 Compruebo que este siendo llamado de la forma: . ./Iniciar_B.sh
 #Por cuestiones de compatibilidad solo despliego el warning y no realizo ninguna accion
