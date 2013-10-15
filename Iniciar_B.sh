@@ -1,7 +1,7 @@
 #!/bin/bash
 
 grupo=`pwd|grep -o "^.*grupo8"`
-estado=1 # 1 todo OK; 0 Mal
+estado="bien"
 
 #Funcion para grabar al Log
 function Log {
@@ -145,7 +145,7 @@ if [ -d "$CONFDIR" ]; then
                                 echo -e "Recibir_B.sh"
                         fi
 
-			$estado=0	
+			$estado="mal"	
 			fi
 		else
 		
@@ -197,7 +197,7 @@ if [ -d "$CONFDIR" ]; then
                         fi
 		
 		Log "Estado de la instalacion INCOMPLETO. Proceso de Inicializacion cancelado"
-	$estado=0
+	$estado="mal"
 	fi
 fi #salgo de los ejecutables
 
@@ -219,7 +219,7 @@ fi #salgo de los ejecutables
                                 echo -e "salas.mae"
                         fi
 			Log "Faltan algun/os archivos maestros"
-			$estado=0
+			$estado="mal"
 			fi
 			
 		fi
@@ -234,12 +234,12 @@ fi #salgo de los ejecutables
 			else
 			Log "Falta archivo de disponibilidades:"
 			Log "combos.dis"
-			$estado=0
+			$estado="mal"
 			fi
 		fi
 	
 	# Verifico si quedo bien el estado		
-	if [ $estado=1 ];
+	if [ $estado="bien" ];
 	then
 	Log "Proceso de inicializacion comprobado exitosamente"
 	else
