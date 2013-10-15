@@ -236,7 +236,7 @@ fi
 	# Verifico si quedo bien el estado		
 	if [ "$estado" = "bien" ];
 	then
-		Log "Proceso de inicializacion comprobado exitosamente"
+		Log "Proceso de comprobacion realizado exitosamente"
 	else
 		Log "Proceso de Inicializacion cancelado"
 		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
