@@ -67,12 +67,12 @@
 	#Obtengo el tamanio del archivo.
 	tamanio=0
 	if [ ! opcion = "-ins" ]; then
-		tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed -E 's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
-		tamanio=`echo $tamanio | sed -E 's/ .*//'` 
+		tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed  's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
+		tamanio=`echo $tamanio | sed  's/ .*//'` 
 		#tamanio=`expr $tamanio + 0`
 	fi
 	if [ ${tamanio:-0} -gt "$LOGSIZE" ]; then
-		`sed -E "1,50 d" "$archDestino" > "$archDestino"`
+		`sed  "1,50 d" "$archDestino" > "$archDestino"`
 		echo "$tiempo;Se ha recortado el archivo de Log;" >> "$archDestino"
 	fi
 	exit 0

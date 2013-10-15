@@ -1,28 +1,12 @@
 #!/bin/bash
 
 grupo=`pwd|grep -o "^.*grupo8"`
+Instconf="putaso"
 estado="bien"
-
 #Funcion para grabar al Log
 function Log {
-        ./Grabar_L.sh "$0" '-ins' "$1"
+        ./Grabar_L.sh "Iniciar_B.sh" "$1"
         echo "$1"
-}
-
-
-
-function ParametrosDefault {
-readonly BINDIR="$grupo/bin"
-readonly MAEDIR="$grupo/mae"
-readonly ARRIDIR="$grupo/arribos"
-readonly ACEPDIR="$grupo/aceptados"
-readonly RECHDIR="$grupo/rechazados"
-readonly REPODIR="$grupo/listados"
-readonly PROCDIR="$grupo/procesados"
-readonly LOGDIR="$grupo/log"
-readonly LOGEXT="log"
-readonly DATASIZE='100'
-readonly LOGSIZE='400'
 }
 
 function ExportarVariables {
@@ -39,10 +23,6 @@ export LOGEXT
 export DATASIZE
 export LOGSIZE
 }
-
-#Log de comando
-Inilog="$LOGDIR/Iniciar_B$LOGEXT"
-
 
 #Funcion auxiliar para la carga de un Si-No
 function FSiNo {
@@ -63,33 +43,49 @@ fi
 #INICIO DE EJECUCION-----------------------------------------------------------------
 # Paso 1 Inicializar el archivo de log, si no estaba lo crea.
 
-function InicioLog {
-if [ -f "$Inilog" ];
-then
-        Log "Existe "$Inilog""
-else
-        touch "$Inilog" 
-fi
+function CargarDelConf {
+miArreglo1=()
+miArreglo2=()
 
-Log "Comando Iniciar_B inicio de Ejecucion"
+let a=0
+IFS='='
+while read -r -a nombre      
+do
+	miArreglo1[a]=$nombre
+	miArreglo2[a]=${nombre[1]}
+	let a+=1
+done < "$Instconf"
+unset IFS
+export grupo="${miArreglo2[0]}"
+export CONFDIR="${miArreglo2[1]}"
+export BINDIR="${miArreglo2[2]}"
+export MAEDIR="${miArreglo2[3]}"
+export ARRIDIR="${miArreglo2[4]}"
+export ACEPDIR="${miArreglo2[5]}"
+export RECHDIR="${miArreglo2[6]}"
+export REPODIR="${miArreglo2[7]}"
+export PROCDIR="${miArreglo2[8]}"
+export LOGDIR="${miArreglo2[9]}"
+export LOGEXT="${miArreglo2[10]}"
+export DATASIZE="${miArreglo2[11]}"
+export LOGSIZE="${miArreglo2[12]}"
 }
-
-InicioLog
-
 
 
 #Paso 2 Verificar que la instalación está completa
 
-if [ -d "$CONFDIR" ]; then
-
+if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
+	Instconf="$grupo/conf/Instalar_TP.conf"
+	CargarDelConf
 	Log "Se ha efectuado la instalacion de Reservas_B"
-	echo "Directorio de configuracion:"$CONFDIR"" #Muestro su path
+	echo "directorio de conf: $Instconf"
+	Log "Directorio de configuracion: $CONFDIR"
 	ls "$CONFDIR"
 	Log "Comprobando si hay faltantes ... "
 	
 	if [ -d "$BINDIR" ];
 	then
-	echo  "Ejecutables: $BINDIR "
+		Log  "Ejecutables: $BINDIR "
 		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/Eliminar_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" ]; #chequea q esten todas las funciones
 		then
 			Log "Se encuentran todos los ejecutables"
@@ -97,55 +93,55 @@ if [ -d "$CONFDIR" ]; then
 			#Pruebo si todos estos tienen permiso de ejecucion
 			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" ];
 			then
-			Log "Todos los ejecutables con permiso de ejecucion"
+				Log "Todos los ejecutables con permiso de ejecucion"
 			else
-			Log "Listado de ejecutables sin permiso de ejecucion"
-			 if [ ! -x "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
-                        then
-                                echo -e "Grabar_L.sh"
-                        fi
+				Log "Listado de ejecutables sin permiso de ejecucion"
+				 if [ ! -x "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
+		                then
+		                        Log   "Grabar_L.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Reservar_B.sh" ];
-                        then
-                                echo -e "Reservar_B.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Reservar_B.sh" ];
+		                then
+		                        Log   "Reservar_B.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Imprimir_B.pl" ];
-                        then
-                                echo -e "Imprimir_B.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Imprimir_B.pl" ];
+		                then
+		                        Log   "Imprimir_B.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Stop_D.sh" ];
-                        then
-                                echo -e "Stop_D.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Stop_D.sh" ];
+		                then
+		                        Log   "Stop_D.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Star_D.sh" ];
-                        then
-                                echo -e "Start_D.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Star_D.sh" ];
+		                then
+		                        Log   "Start_D.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Eliminar_B.sh" ];
-                        then
-                                echo -e "Eliminar_B.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Eliminar_B.sh" ];
+		                then
+		                        Log   "Eliminar_B.sh"
+		                fi
 
-			if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
-                        then
-                                echo -e "EstaCorriendo.sh"
-                        fi
+				if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
+		                then
+		                        Log   "EstaCorriendo.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/EstaInicializado.sh" ];
-                        then
-                                echo -e "EstaInicializado.sh"
-                        fi
+		                if [ ! -x "$BINDIR/EstaInicializado.sh" ];
+		                then
+		                        Log   "EstaInicializado.sh"
+		                fi
 
-                        if [ ! -x "$BINDIR/Recibir_B.sh" ];
-                        then
-                                echo -e "Recibir_B.sh"
-                        fi
+		                if [ ! -x "$BINDIR/Recibir_B.sh" ];
+		                then
+		                        Log   "Recibir_B.sh"
+		                fi
 
-			$estado="mal"	
+				$estado="mal"	
 			fi
 		else
 		
@@ -153,111 +149,108 @@ if [ -d "$CONFDIR" ]; then
 			
 			if [ ! -f "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
                         then
-                                echo -e "Grabar_L.sh"
+                                 Log   "Grabar_L.sh"
                         fi
                        
                         if [ ! -f "$BINDIR/Reservar_B.sh" ];
                         then
-                                echo -e "Reservar_B.sh"
+                                 Log   "Reservar_B.sh"
                         fi
                        
                         if [ ! -f "$BINDIR/Imprimir_B.pl" ];
                         then
-                                echo -e "Imprimir_B.sh"
+                                 Log   "Imprimir_B.sh"
                         fi
 
                         if [ ! -f "$BINDIR/Stop_D.sh" ];
                         then
-                                echo -e "Stop_D.sh"
+                                 Log   "Stop_D.sh"
                         fi
                        
                         if [ ! -f "$BINDIR/Star_D.sh" ];
                         then
-                                echo -e "Start_D.sh"
+                                 Log   "Start_D.sh"
                         fi
                        
                         if [ ! -f "$BINDIR/Eliminar_B.sh" ];
                         then
-                                echo -e "Eliminar_B.sh"
+                                 Log   "Eliminar_B.sh"
                         fi
 
 			if [ ! -f "$BINDIR/EstaCorriendo.sh" ];
                         then
-                                echo -e "EstaCorriendo.sh"
+                                 Log   "EstaCorriendo.sh"
                         fi
 
 			if [ ! -f "$BINDIR/EstaInicializado.sh" ];
                         then
-                                echo -e "EstaInicializado.sh"
+                                 Log   "EstaInicializado.sh"
                         fi
 
 			if [ ! -f "$BINDIR/Recibir_B.sh" ];
                         then
-                                echo -e "Recibir_B.sh"
+                                 Log   "Recibir_B.sh"
                         fi
 		
 		Log "Estado de la instalacion INCOMPLETO. Proceso de Inicializacion cancelado"
-	$estado="mal"
+		$estado="mal"
 	fi
 fi #salgo de los ejecutables
 
-		Log "Viendo archivos Maestros:"
-		if [ -d "$MAEDIR" ];
+Log "Viendo archivos Maestros:"
+if [ -d "$MAEDIR" ];
+then
+	Log "$MAEDIR"
+	if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];
+	then
+		ls "$MAEDIR"
+	else
+		if [ ! -f "$MAEDIR/obras.mae" ];
+        	then
+                	Log   "obras.mae"
+        	fi
+		if [ ! -f "$MAEDIR/salas.mae" ];
 		then
-			echo "$MAEDIR"
-
-			if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];			then
-			ls "$MAEDIR"
-
-			else
-			if [ ! -f "$MAEDIR/obras.mae" ];
-                        then
-                                echo -e "obras.mae"
-                        fi
-			if [ ! -f "$MAEDIR/salas.mae" ];
-                        then
-                                echo -e "salas.mae"
-                        fi
-			Log "Faltan algun/os archivos maestros"
-			$estado="mal"
-			fi
-			
+		         Log   "salas.mae"
 		fi
+		Log "Faltan algun/os archivos maestros"
+		$estado="mal"
+	fi
+	
+fi
 
-		Log "Viendo archivo de disponibilidad"
-		if [ -d "$PROCDIR" ];
-		then
-			echo "$PROCDIR"
-			if [ -f "$PROCDIR/combos.dis" ];
-			then
-			ls "$PROCDIR"
-			else
-			Log "Falta archivo de disponibilidades:"
-			Log "combos.dis"
-			$estado="mal"
-			fi
-		fi
+Log "Viendo archivo de disponibilidad"
+if [ -d "$PROCDIR" ];
+then
+	Log "$PROCDIR"
+	if [ -f "$PROCDIR/combos.dis" ];
+	then
+		ls "$PROCDIR"
+	else
+		Log "Falta archivo de disponibilidades:"
+		Log "combos.dis"
+		$estado="mal"
+	fi
+fi
 	
 	# Verifico si quedo bien el estado		
-	if [ $estado="bien" ];
+	if [ "$estado" = "bien" ];
 	then
-	Log "Proceso de inicializacion comprobado exitosamente"
+		Log "Proceso de inicializacion comprobado exitosamente"
 	else
-	Log "Proceso de Inicializacion cancelado"
-	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
-        rm "$Inilog"
-        exit
+		Log "Proceso de Inicializacion cancelado"
+		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
+		return 1
 	fi
 else
 	Log "Proceso de instalacion nunca empezado"
 	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
-	rm "$Inilog" 
-	exit
+	return 1
 fi
 
 #Paso casi 3 Compruebo que este siendo llamado de la forma: . ./Iniciar_B.sh
 #Por cuestiones de compatibilidad solo despliego el warning y no realizo ninguna accion
-if [ $0 != "bash" ];
+if [ "$0" != "bash" ];
 then
 	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
 	Log 'Iniciar_B.sh Finaliza MAL'
@@ -266,7 +259,7 @@ fi
 #Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
 if ! ./EstaInicializado.sh
 then	
-	ParametrosDefault
+	#ParametrosDefault
 	ExportarVariables
 else
 	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
@@ -274,7 +267,7 @@ fi
 
 
 #Paso 5 Ver si se desea arrancar Recibir_B
-echo "Desea efectuar la activación de Recibir_B? Si – No"
+Log "Desea efectuar la activación de Recibir_B? Si – No"
 if FSiNo
 then
 	Log "Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:"
@@ -289,6 +282,5 @@ else
 	fi
 	Log "Cuando quiera terminar la ejecución de Recibir_B hagalo de esta forma:"
 	Log "./Stop_D.sh ./Recibir_B.sh"
-	
 fi
 
