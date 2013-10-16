@@ -226,12 +226,12 @@ sub generar_invitados {
     
     $nombrearc="$repodirinv"."/"."$eleccion".".inv";
     if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
-	
+    $encontrado=0;
     foreach my $key ( keys %hash_info ) {
 	$totalacumulado=0;
 	$butacasconfirmadas=0;
 	if (length($key)==0) { next }
-	
+	$encontrado=1;
 	print ("\n$hash_info{$key}[0]$key\n");
 	if ($escribir==1) { print FICHERO_DESTINO ("\n$hash_info{$key}[0]$key\n"); }
 	$nombrearchivo="$repodirinv/$key.inv";
@@ -254,6 +254,10 @@ sub generar_invitados {
 	    print "Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n";
 	    if ($escribir==1) { print FICHERO_DESTINO ("Total acumulado: $aux Cantidad de butacas confirmadas: $hash_info{$key}[1]\n"); }
 	}
+    }
+    if ($encontrado==0) {
+		print "sin información de reservas para este evento \n";
+		if ($escribir==1) { print FICHERO_DESTINO ("sin información de reservas para este evento \n"); } 
     }
     if ($escribir==1) { close(FICHERO_DESTINO); }
 }
@@ -308,7 +312,6 @@ sub generar_disponibilidades {
 	
 	$encontro=0;
 	open(IN, $archivocombos) or die "No existe el archivo de entrada\n";;
-	if ($escribir==1) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
 	
 	while($linea = <IN>) {
 	  chomp($linea);
@@ -328,6 +331,9 @@ sub generar_disponibilidades {
 	  
 	  for ($i=0; $i<=$#valores; $i++) {
 	      if ($valores[$i] eq $idbus) {
+		#Solamente abrir archivo destino si se activo la opcion -w y
+		#si además no se habia encontrado una coincidencia antes.
+		if ($escribir==1 and $encontro==0) { open FICHERO_DESTINO, ">$nombrearc" or die "No se puede abrir destino"; }
 		$encontro=1;
 		for ($k=0; $k<6; $k++) { 
 				print ( "$data[$k] - "); 
@@ -339,11 +345,7 @@ sub generar_disponibilidades {
 	      
 	  }
 	}
-	if (  $escribir==1 ) {
-		close(FICHERO_DESTINO);
-		# Borrar archivo vacio si no se encontraron datos.
-		if ($encontro ne 1) { unlink $nombrearc; }
-	}
+	if (  $escribir==1 and $encontro==1 ) { close(FICHERO_DESTINO); }
 	close(IN);
 	if ($encontro ne 1) {
 	    print "No se encontraron resultados para el o los valores ingresados.\n Vuelva a insertar datos.\n";
