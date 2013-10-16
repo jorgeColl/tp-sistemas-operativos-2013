@@ -202,6 +202,16 @@ parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula l
 
 \lstinputlisting{../Readme_Stop_D}
 
+
+\subsection{Readme\_Start\_D}
+
+\lstinputlisting{../Readme_Start_D}
+
+\subsection{Readme\_Mover\_B}
+
+\lstinputlisting{../Readme_Mover_B}
+
+
 \newpage
 
 \section{Listado de nuevas funciones y/o comandos auxiliares}
@@ -222,7 +232,7 @@ una vez ya que podrían generarse inconsistencias en el sistema.
 
 Si bien en las especificaciones se incluye el comando 'Mover\_B' se le ha agregado la opción
 para que permita copiar ciertos archivos en vez de moverlos.
-De este modo, con unas pequeñas modificaciones, utilizamos el mismo comando para la etapa de
+De este modo, con unas pequeñas modificaciones, se utiliza el mismo comando para la etapa de
 instalación del sistema.
 
 
@@ -234,18 +244,13 @@ instalación del sistema.
 Este archivo es creado por Recibir\_B. Tiene como propósito llevar la cuenta de la cantidad de
 veces que se ha ejecutado el ciclo 'Recibir'. Consta de un único campo, de la forma n=Nº de Ciclo.
 
-\subsection{GRUPO/instalacion.log}
-
-Este archivo guardará el log de la instalación. Como al momento de realizar la misma, aún no se encuentran
-definidos los directorios donde el usuario desea guardar sus datos, se usa este archivo especial para evitar
-dicho inconveniente.
-
 \subsection{CONFDIR/backup}
 \label{subsec:backup}
 Esta carpeta se crea en el momento de la instalación. En ella se copiarán todos los archivos binarios que 
 precisa el sistema para funcionar hasta que el usuario decida dónde va a ubicarlos.
-Se trata de un directorio temporal, pues una vez que el usuario termina de realizar todas las configuraciones,
-es eliminado.
+La carpeta se mantiene como resguardo para preservar el funcionamiento del sistema.
+Si por algún motivo se pierde algún archivo binario del directorio 'BINDIR', el script
+\texttt{Iniciar\_B} lo detectará y utilizará esta copia de resguardo para reponerlo.
 
 \newpage
 \section{Listado de Datos}
@@ -268,7 +273,9 @@ A continuación, listamos los escenarios testeados y sus archivos asociados.
 \hline\hline
  Archivo                                    	& Provisto 	& Caso testeado \\ [0.5ex]
  \hline
-1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro332 	& SI 		& Obra disponible. \\
+ 1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro334 & SI 		& Reserva por obra disponible.\\
+ \hline
+1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro332 	& SI 		& Reserva con menos de 48hs. \\
 \hline
 1-LEYER\_DEMIAN@GMAIL.COM-EstrenoenelPayro333	& SI 		& Obra no disponible. \\
 \hline

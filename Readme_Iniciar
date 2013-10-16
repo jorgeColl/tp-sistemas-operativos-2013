@@ -1,0 +1,16 @@
+*******************Readme Iniciar***************************************
+
+
+Esta función se encarga de inicializar el ambiente de trabajo y comprobar
+posibles faltantes en los ejecutables que componen el sistema.
+
+Para que los cambios tengan efecto debe ser llamado del siguiente modo:
+ 
+	$. ./Iniciar_B.sh
+
+
+Si el ambiente ya se encuentra inicializado, no se realizarán modificaciones.
+
+Si el ambiente aún no ha sido inicializado, se cargarán las configuraciones
+que realizó en el momento de la instalación.
+
