@@ -93,7 +93,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
 			#Pruebo si todos estos tienen permiso de ejecucion
-			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" ];
+			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover.sh" ];
 			then
 				Log "Todos los ejecutables con permiso de ejecucion"
 			else
@@ -143,7 +143,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		                        Log   "Recibir_B.sh"
 		                fi
 
-				$estado="mal"	
+				estado="mal"	
 			fi
 		else
 				
@@ -195,13 +195,14 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
                         fi
 		
 		Log "Estado de la instalacion INCOMPLETO"
-		"$estado"="mal"
+		estado="mal"
 	fi
 fi #salgo de los ejecutables
 echo ""
 Log "Viendo archivos Maestros:"
 if [ -d "$MAEDIR" ];
 then
+	Log "Ruta de los maestros:"
 	Log "$MAEDIR"
 	if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];
 	then
@@ -216,7 +217,7 @@ then
 		         Log   "salas.mae"
 		fi
 		Log "Faltan algun/os archivos maestros"
-		"$estado"="mal"
+		estado="mal"
 	fi
 	
 fi
@@ -231,7 +232,7 @@ then
 	else
 		Log "Falta archivo de disponibilidades:"
 		Log "combos.dis"
-		"$estado"="mal"
+		estado="mal"
 	fi
 fi
 	
@@ -257,9 +258,9 @@ fi
 if [ "$0" != "bash" ];
 then
 	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
-	#Log 'Iniciar_B.sh Finaliza MAL'
-fi
 
+fi
+echo""
 #Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
 if ! ./EstaInicializado.sh
 then	
