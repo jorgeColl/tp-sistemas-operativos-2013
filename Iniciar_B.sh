@@ -72,7 +72,7 @@ export LOGSIZE="${miArreglo2[12]}"
 function VerPermisos {
 
  #Pruebo si todos estos tienen permiso de ejecucion
-if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
+if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
 	 then
    	 Log "Todos los ejecutables con permiso de ejecucion"
 else
@@ -106,12 +106,6 @@ else
          Log   "Start_D.sh"
 		chmod +x "$BINDIR/Start_D.sh"
          fi
-
-        if [ ! -x "$BINDIR/Eliminar_B.sh" ];
-        then
-        Log   "Eliminar_B.sh"
-		chmod +x "$BINDIR/Eliminar_B.sh"
-        fi
 
         if [ ! -x "$BINDIR/EstaCorriendo.sh" ]; 
         then
@@ -216,42 +210,41 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 	fi
 fi #salgo de los ejecutables
 echo ""
-Log "Viendo archivos Maestros:"
-if [ -d "$MAEDIR" ];
-then
-	Log "Ruta de los maestros:"
-	Log "$MAEDIR"
-	if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];
+	Log "Viendo archivos Maestros:"
+	if [ -d "$MAEDIR" ];
 	then
-		ls "$MAEDIR"
-	else
-		if [ ! -f "$MAEDIR/obras.mae" ];
-        	then
-                	Log   "obras.mae"
-        	fi
-		if [ ! -f "$MAEDIR/salas.mae" ];
+		Log "Ruta de los maestros:"
+		Log "$MAEDIR"
+		if [ -f "$MAEDIR/obras.mae" -a -f "$MAEDIR/salas.mae" ];
 		then
-		         Log   "salas.mae"
-		fi
+			ls "$MAEDIR"
+		else
+			if [ ! -f "$MAEDIR/obras.mae" ];
+        		then
+                		Log   "obras.mae"
+        		fi
+			if [ ! -f "$MAEDIR/salas.mae" ];
+			then
+			         Log   "salas.mae"
+			fi
 		Log "Faltan algun/os archivos maestros"
 		estado="mal"
+		fi
 	fi
-	
-fi
-echo""
-Log "Viendo archivo de disponibilidad"
-if [ -d "$PROCDIR" ];
-then
-	Log "$PROCDIR"
-	if [ -f "$PROCDIR/combos.dis" ];
+	echo""
+	Log "Viendo archivo de disponibilidad"
+	if [ -d "$PROCDIR" ];
 	then
-		ls "$PROCDIR"
-	else
-		Log "Falta archivo de disponibilidades:"
-		Log "combos.dis"
-		estado="mal"
+		Log "$PROCDIR"
+		if [ -f "$PROCDIR/combos.dis" ];
+		then
+			ls "$PROCDIR"
+		else
+			Log "Falta archivo de disponibilidades:"
+			Log "combos.dis"
+			estado="mal"
+		fi
 	fi
-fi
 	
 	# Verifico si quedo bien el estado		
 	if [ "$estado" = "bien" ];
