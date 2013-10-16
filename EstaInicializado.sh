@@ -3,8 +3,6 @@
 
 #Esto viene joya para cuando una persona quiere hacer:
 #if ./EstaInicializad.sh
-#then echo "wiiii"
-#else echo "buuuu"
 #fi
 
 #Variables exportadas para Imprimir_B
@@ -18,7 +16,7 @@ then
 	echo "No esta inicializado"
 	return "1"
 else 
-	echo "Esta inicializado"
+	echo "EL ambiente esta inicializado"
 	return "0"
 fi
 }
