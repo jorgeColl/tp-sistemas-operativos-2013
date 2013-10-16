@@ -22,7 +22,6 @@ Log "Realizando backup"
 ./Mover_B.sh ./EstaCorriendo.sh "$backup" '-c'
 ./Mover_B.sh ./EstaInicializado.sh "$backup" '-c' 
 ./Mover_B.sh ./Recibir_B.sh "$backup" '-c'
-./Mover_B.sh ./Eliminar_B.sh "$backup" '-c'
 
 ./Mover_B.sh ./Readme_Instalar "$backup" '-c'
 ./Mover_B.sh ./Readme_Start_D "$backup" '-c'
@@ -227,7 +226,6 @@ listarArch "$temp1/Imprimir_B.pl"
 listarArch "$temp1/EstaCorriendo.sh"
 listarArch "$temp1/EstaInicializado.sh"
 listarArch "$temp1/Recibir_B.sh"
-listarArch "$temp1/Eliminar_B.sh"
 listarArch "$temp1/Mover_B.sh"
 
 listarArch "$temp2/obras.mae"
@@ -246,7 +244,6 @@ cp $CONFDIR/backup/Imprimir_B.pl  "$BINDIR"
 cp $CONFDIR/backup/EstaCorriendo.sh  "$BINDIR"
 cp $CONFDIR/backup/EstaInicializado.sh  "$BINDIR"
 cp $CONFDIR/backup/Recibir_B.sh  "$BINDIR"
-cp $CONFDIR/backup/Eliminar_B.sh  "$BINDIR"
 cp $CONFDIR/backup/Mover_B.sh "$BINDIR"
 cp $CONFDIR/backup/Readme_Instalar "$BINDIR"
 cp $CONFDIR/backup/Readme_Start_D "$BINDIR"
@@ -560,7 +557,6 @@ Log "Instalando Programas y Funciones"
 ./Mover_B.sh ./EstaCorriendo.sh "$BINDIR"
 ./Mover_B.sh ./EstaInicializado.sh "$BINDIR" '-c'
 ./Mover_B.sh ./Recibir_B.sh "$BINDIR"
-./Mover_B.sh ./Eliminar_B.sh "$BINDIR"
 
 # permiso de ejecución
 for file in `ls "$BINDIR"`; do
@@ -577,7 +573,6 @@ done
 ./Mover_B.sh ./Readme_Grabar_L "$BINDIR"
 ./Mover_B.sh ./Readme_Stop_D "$BINDIR"
 ./Mover_B.sh ./Readme_Mover_B "$BINDIR"
-./Mover_B.sh ./Readme_Eliminar_B "$BINDIR"
 
 #muevo mover jeje
 ./Mover_B.sh ./Mover_B.sh "$BINDIR"

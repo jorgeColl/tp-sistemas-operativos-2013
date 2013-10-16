@@ -88,12 +88,12 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 	if [ -d "$BINDIR" ];
 	then
 		Log  "Ejecutables: $BINDIR "
-		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/Eliminar_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" -a -f "$BINDIR/Mover_B.sh" ]; #chequea q esten todas las funciones
+		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" -a -f "$BINDIR/Mover_B.sh" ]; #chequea q esten todas las funciones
 		then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
 			#Pruebo si todos estos tienen permiso de ejecucion
-			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
+			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
 			then
 				Log "Todos los ejecutables con permiso de ejecucion"
 			else
@@ -123,12 +123,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		                        Log   "Start_D.sh"
 		                fi
 
-		                if [ ! -x "$BINDIR/Eliminar_B.sh" ];
-		                then
-		                        Log   "Eliminar_B.sh"
-		                fi
-
-				if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
+		                if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
 		                then
 		                        Log   "EstaCorriendo.sh"
 		                fi
@@ -180,12 +175,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
                                  Log   "Start_D.sh"
                         fi
                        
-                        if [ ! -f "$BINDIR/Eliminar_B.sh" ];
-                        then
-                                 Log   "Eliminar_B.sh"
-                        fi
-
-			if [ ! -f "$BINDIR/EstaCorriendo.sh" ];
+                       	if [ ! -f "$BINDIR/EstaCorriendo.sh" ];
                         then
                                  Log   "EstaCorriendo.sh"
                         fi
