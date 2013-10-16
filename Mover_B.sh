@@ -63,13 +63,13 @@
 		archDestino=`echo "$2"$repeticiones`
 	fi
 	
-	archDestino=`echo "$archDestino" | sed -E "s/ /\\\ /g"` 	#Reemplazo los espacios por '\ ', luego quito los doble "\"
-	#archDestino=`echo "$archDestino" | sed -E "s/\\\\/\\/g"`
-	archInicio=`echo "$1" | sed -E "s/ /\\\ /g"`
-	#archInicio=`echo "$archInicio" | sed -E "s/\\\\/\\/g"`
+	archDestino=`echo "$archDestino" | sed "s/ /\\\ /g"` 	#Reemplazo los espacios por '\ ', luego quito los doble "\"
+	#archDestino=`echo "$archDestino" | sed "s/\\\\/\\/g"`
+	archInicio=`echo "$1" | sed "s/ /\\\ /g"`
+	#archInicio=`echo "$archInicio" | sed "s/\\\\/\\/g"`
 	
-	echo "$archInicio"
-	echo "$archDestino"
+	#echo "$archInicio"
+	#echo "$archDestino"
 	if [ ${copia:-0} -eq 1 ]; then
 		#Debo COPIAR, no mover
 		`cp "${archInicio}" "${archDestino}" 2> /dev/null`

@@ -22,13 +22,13 @@
 		exit -1
 	fi
 	if [ $# -eq 2 ]; then
-		mensaje=$2
+		mensaje="$2"
 		opcion="-i"
 	else
-		mensaje=$3
-		opcion=$2
+		mensaje="$3"
+		opcion="$2"
 	fi
-	case $opcion in
+	case "$opcion" in
 	-i ) 
 		opcion="Informativo";;
 	-e )
@@ -42,11 +42,11 @@
 	esac
 	
 	#Ahora debo crear la estructura de directorio
-	if [ $opcion = "-ins" ]; then
+	if [ "$opcion" = "-ins" ]; then
 		archDestino="$CONFDIR/Instalar_TP.log"
 		#echo $archDestino
 	else
-		archDestino="${LOGDIR}/${comandoSolicitante}.${LOGEXT}"
+		archDestino="${LOGDIR}/${comandoSolicitante}${LOGEXT}"
 	fi
 	#Recorto el mensaje de ser necesario
 	if [ ${#mensaje} -gt 120 ]; then
@@ -66,9 +66,9 @@
 	
 	#Obtengo el tamanio del archivo.
 	tamanio=0
-	if [ ! opcion = "-ins" ]; then
+	if [ ! "$opcion" = "-ins" ]; then
 		tamanio=`ls -l | grep "$comandoSolicitante.$LOGEXT" | sed  's/^[^ ]* [^ ]* [^ ]* [^ ]* //g'`
-		tamanio=`echo $tamanio | sed  's/ .*//'` 
+		tamanio=`echo "$tamanio" | sed  's/ .*//'` 
 		#tamanio=`expr $tamanio + 0`
 	fi
 	if [ ${tamanio:-0} -gt "$LOGSIZE" ]; then
