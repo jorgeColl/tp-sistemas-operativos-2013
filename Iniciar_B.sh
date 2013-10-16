@@ -88,7 +88,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 	if [ -d "$BINDIR" ];
 	then
 		Log  "Ejecutables: $BINDIR "
-		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/Eliminar_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" ]; #chequea q esten todas las funciones
+		if [ -f "$BINDIR/EstaInicializado.sh" -a -f "$BINDIR/Grabar_L.sh" -a -f "$BINDIR/Reservar_B.sh" -a -f "$BINDIR/Stop_D.sh" -a -f "$BINDIR/Start_D.sh" -a -f "$BINDIR/Imprimir_B.pl" -a -f "$BINDIR/Recibir_B.sh" -a -f "$BINDIR/Eliminar_B.sh" -a -f "$BINDIR/EstaCorriendo.sh" -a -f "$BINDIR/Mover_B.sh"]; #chequea q esten todas las funciones
 		then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
