@@ -24,6 +24,21 @@ export DATASIZE
 export LOGSIZE
 }
 
+function Reiniciar {
+export BINDIR=""
+export MAEDIR=""
+export ARRIDIR=""
+export RECHDIR=""
+export ACEPDIR=""
+export REPODIR=""
+export PROCDIR=""
+export LOGDIR=""
+export DATASIZE=""
+export LOGEXT=""
+export DATASIZE=""
+export LOGSIZE=""
+}
+
 #Funcion auxiliar para la carga de un Si-No
 function FSiNo {
 local var1
@@ -255,6 +270,7 @@ echo ""
 	else
 		Log "Hay errores en la comprobacion de la Instalacion"
 		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y/o seguir las indicaciones del Readme correspondiente"
+		Reiniciar
 		return 1
 	fi
 else
