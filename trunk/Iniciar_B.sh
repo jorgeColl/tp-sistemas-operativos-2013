@@ -41,8 +41,6 @@ fi
 }
 
 
-#INICIO DE EJECUCION-----------------------------------------------------------------
-# Paso 1 Inicializar el archivo de log, si no estaba lo crea.
 function CargarDelConf {
 miArreglo1=()
 miArreglo2=()
@@ -70,6 +68,17 @@ export LOGEXT="${miArreglo2[10]}"
 export DATASIZE="${miArreglo2[11]}"
 export LOGSIZE="${miArreglo2[12]}"
 }
+
+#INICIO DE EJECUCION-----------------------------------------------------------------
+
+#Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
+./EstaInicializado.sh >> /dev/null
+if [ $? -ne 0 ]
+then	
+	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
+	return 1
+fi
+
 
 
 #Paso 2 Verificar que la instalación está completa
@@ -257,13 +266,6 @@ then
 
 fi
 echo""
-#Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
-if ! ./EstaInicializado.sh
-then	
-	ExportarVariables
-else
-	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
-fi
 
 #Agrego al final del path a mis binarios
 export PATH=$PATH:$BINDIR

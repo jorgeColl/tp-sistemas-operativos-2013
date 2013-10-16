@@ -2,7 +2,7 @@
 
 OUTPUT="caminoFeliz.out"
 
-TP="`pwd`"
+TP="$PWD"
 
 function fSiNo {
 local var1
@@ -22,8 +22,7 @@ fi
 function Abortar {
 	cd $TP
 	echo "test Abortado."
-	read var
-	#exit 1
+	exit 1
 } 
 echo -e "Prueba del camino FELIZ :) \n La salida de los comandos se encuentra en $OUTPUT"
 echo -e "*************INSTALACION**************\nComenzar instalación?"
@@ -47,9 +46,6 @@ then
 	Abortar 
 fi
 #copio el log de la instalacion:
-echo "Copiando el log de la instalacion." 
-echo -e "\n\n**************LOG INSTALACION************\n\n" >> $OUTPUT
-cat instalacion.log >> $OUTPUT
 echo "Copiando Instalar_TP.conf ."
 echo -e "\n\n**************ARCHIVO CONFIGURACION************\n\n" >> $OUTPUT
 cat grupo8/conf/Instalar_TP.conf >> $OUTPUT
@@ -65,18 +61,18 @@ fi
 echo -e "\n\n**************INICIAR************\n\n" >> $OUTPUT
 echo "Inicializando el ambiente"
 cd grupo8/bin
-echo "No" >> aux
-source Iniciar_B.sh < aux >>"../../$OUTPUT"
+echo "No" >> ".aux"
+source Iniciar_B.sh < ".aux" >>"../../$OUTPUT"
 if [ $? -ne 0 ]
 then
 	echo "Error al inicializar el ambiente."
 	Abortar
 fi
-rm aux
+rm ".aux"
 cd $TP
 echo "Copiando el log de iniciar."
 echo -e "\n\n**************LOG INICIAR************\n\n" >> $OUTPUT
-cat "grupo8/conf/Iniciar_B.sh.$LOGEXT" >> $OUTPUT
+cat "grupo8/log/Iniciar_B.sh$LOGEXT" >> $OUTPUT
 
 # RECIBIR Y RESERVAR. COPIO ARCHIVOS DE ENTRADA.
 
@@ -98,17 +94,17 @@ if fSiNo
 then
 	Abortar
 fi
-echo "Iniciando Recibir_B.sh"
+echo "Iniciando Recibir_B.sh. Esto demora unos 15 segundos."
 cd $BINDIR
 ./Start_D.sh Recibir_B.sh >> /dev/null
 sleep 15
 echo "Copiando el log de Recibir."
 cd $TP
 echo -e "\n\n*************LOG RECIBIR************\n\n" >> $OUTPUT
-cat $LOGDIR/Recibir_B.sh.$LOGEXT >> $OUTPUT
+cat $LOGDIR/Recibir_B.sh$LOGEXT >> $OUTPUT
 echo "Copiando el log de Reservar."
 echo -e "\n\n**************LOG RESERVAR************\n\n" >> $OUTPUT
-cat $LOGDIR/Reservar_B.sh.$LOGEXT >> $OUTPUT
+cat $LOGDIR/Reservar_B.sh$LOGEXT >> $OUTPUT
 echo "Copiando archivos en PROCDIR"
 echo -e "\n\n**************ARCHIVOS EN PROCDIR************\n\n" >> $OUTPUT
 for archivo in `ls $PROCDIR`
@@ -135,9 +131,9 @@ echo "6" | ./Imprimir_B.pl -i -w >> /dev/null
 echo -e "\n************RESERVA CON LISTA DE INVITADOS\n" >> ../../$OUTPUT
 cat "$REPODIR/C00010023.inv" >> ../../$OUTPUT
 
-echo "Probando evento sin lista de invitados."
+echo "Probando evento sin reservas."
 echo "1" | ./Imprimir_B.pl -i -w >> /dev/null
-echo -e "\n************RESERVA SIN LISTA DE INVITADOS\n" >> ../../$OUTPUT
+echo -e "\n************EVENTO SIN RESERVAS\n" >> ../../$OUTPUT
 cat "$REPODIR/C00010018.inv" >> ../../$OUTPUT
 
 echo "Probando disponibilidad de obras."
