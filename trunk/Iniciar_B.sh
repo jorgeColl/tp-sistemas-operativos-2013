@@ -69,6 +69,72 @@ export DATASIZE="${miArreglo2[11]}"
 export LOGSIZE="${miArreglo2[12]}"
 }
 
+function VerPermisos {
+
+ #Pruebo si todos estos tienen permiso de ejecucion
+if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
+	 then
+   	 Log "Todos los ejecutables con permiso de ejecucion"
+else
+     	  Log "Listado de ejecutables sin permiso de ejecucion"
+          if [ ! -x "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
+          then
+          Log   "Grabar_L.sh"
+	  	chmod +x "$BINDIR/Grabar_L.sh"
+          fi
+
+          if [ ! -x "$BINDIR/Reservar_B.sh" ];
+          then
+          Log   "Reservar_B.sh"
+		chmod +x "$BINDIR/Reservar_B.sh"
+          fi
+
+         if [ ! -x "$BINDIR/Imprimir_B.pl" ];
+         then
+         Log   "Imprimir_B.sh"
+		chmod +x "$BINDIR/Imprimir_B.sh"
+         fi
+
+	 if [ ! -x "$BINDIR/Stop_D.sh" ];
+         then
+         Log   "Stop_D.sh"
+		chmod +x "$BINDIR/Stop_D.sh"
+	 fi
+
+         if [ ! -x "$BINDIR/Start_D.sh" ];
+         then
+         Log   "Start_D.sh"
+		chmod +x "$BINDIR/Start_D.sh"
+         fi
+
+        if [ ! -x "$BINDIR/Eliminar_B.sh" ];
+        then
+        Log   "Eliminar_B.sh"
+		chmod +x "$BINDIR/Eliminar_B.sh"
+        fi
+
+        if [ ! -x "$BINDIR/EstaCorriendo.sh" ]; 
+        then
+        Log   "EstaCorriendo.sh"
+	      chmod +x "$BINDIR/EstaCorriendo.sh"
+        fi
+
+        if [ ! -x "$BINDIR/EstaInicializado.sh" ];
+        then
+        Log   "EstaInicializado.sh"
+	chmod +x "$BINDIR/EstaInicializado.sh"
+        fi
+
+        if [ ! -x "$BINDIR/Recibir_B.sh" ];
+        then
+        Log   "Recibir_B.sh"
+	chmod +x "$BINDIR/Recibir_B.sh"
+        fi
+	Log "Se dieron los permisos necesarios de el/los archivos sin permisos"
+fi
+}
+
+
 #INICIO DE EJECUCION-----------------------------------------------------------------
 
 #Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
@@ -101,60 +167,6 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
-			#Pruebo si todos estos tienen permiso de ejecucion
-			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
-			then
-				Log "Todos los ejecutables con permiso de ejecucion"
-			else
-				Log "Listado de ejecutables sin permiso de ejecucion"
-				 if [ ! -x "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
-		                then
-		                        Log   "Grabar_L.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/Reservar_B.sh" ];
-		                then
-		                        Log   "Reservar_B.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/Imprimir_B.pl" ];
-		                then
-		                        Log   "Imprimir_B.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/Stop_D.sh" ];
-		                then
-		                        Log   "Stop_D.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/Star_D.sh" ];
-		                then
-		                        Log   "Start_D.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/EstaCorriendo.sh" ];
-		                then
-		                        Log   "EstaCorriendo.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/EstaInicializado.sh" ];
-		                then
-		                        Log   "EstaInicializado.sh"
-		                fi
-
-		                if [ ! -x "$BINDIR/Recibir_B.sh" ];
-		                then
-		                        Log   "Recibir_B.sh"
-		                fi
-				
-			        if [ ! -x "$BINDIR/Mover_B.sh" ];
-                                then
-                                        Log   "Mover_B.sh"
-                                fi
-
-				
-				estado="mal"	
-			fi
 		else
 				
 			Log "Listado de componentes faltantes:"
@@ -267,13 +279,12 @@ then
 fi
 echo""
 
-#Agrego al final del path a mis binarios
-export PATH=$PATH:$BINDIR
+VerPermisos
 
-#Controlo nuevamente los permisos de ejecucion de los archivos
-for file in `ls "$BINDIR"`; do
-        chmod +x "$BINDIR/$file"
-done
+#Agrego al final del path a mis binarios
+
+export PATH=$PATH:$BINDIR
+	Log "Se seteo la ruta: "$BINDIR" en la variable PATH"
 
 
 #Paso 5 Ver si se desea arrancar Recibir_B
