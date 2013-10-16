@@ -96,10 +96,14 @@
 
 \section{Hipótesis y Aclaraciones globales.}
 \begin{itemize}
-
+	\item Los directorios NO pueden tener espacios en sus nombres.
+	\item Si el archivo 'Instalar_TP.conf' existe, está bien formado.
+	\item Los 2 días para la anticipación de las reservas se cuentan como 48hs desde el momento de la reserva.
+	\item Los 30 días para la anticipación de las reservas se cuentan como 720hs desde el momento de la reserva.
+	\item Los directorios que configura el usuario son distintos entre sí.
 	\item A Mover\_B y Eliminar\_B se le pasan rutas absolutas.
 	\item Matar\_D, finaliza todas las instancias del programa solicitado.
-	\item Start\_D no inicia el proceso si el mismo ya se encuentra corriendo en el sistema o el ambiente no se ha inicializado.
+	\item Start\_D no inicia el proceso lo el mismo ya se encuentra corriendo en el sistema o el ambiente no se ha inicializado.
 	\item Si se desea eliminar un archivo inexistente no se dentendra la ejecución del script. Sólo se informará en el Log.
 	\item Los nombres de los archivos de Logs pueden incluir puntos.
 	\item El tamaño del Log se verifica luego de escribir, por lo tanto, después de una escritura válidad el Log tiene un tamaño permitido.
@@ -194,9 +198,9 @@ parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula l
 
 \lstinputlisting{../Readme_Imprimir}
 
-\subsection{Readme\_Matar\_D}
+\subsection{Readme\_Stop\_D}
 
-\lstinputlisting{../Readme_Matar_D}
+\lstinputlisting{../Readme_Stop_D}
 
 \newpage
 
@@ -309,6 +313,9 @@ NOMBRE\_INVALIDO				& NO		& Formato de nombre incorrecto. \\
 Para realizar la prueba de una ejecución normal, desde que se instala el sistema, hasta llegar 
 al comando imprimir, se cuenta con un script que va realizando cada paso. La salida de cada comando,
 así como los archivos generados, se vuelcan en un archivo denominado 'caminoFeliz.out'
+
+
+%\lstinputlisting{../caminoFeliz.out}
 
 
 \end{document}
