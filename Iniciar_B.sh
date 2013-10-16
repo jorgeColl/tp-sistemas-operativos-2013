@@ -1,7 +1,7 @@
 #!/bin/bash
 
 grupo=`pwd|grep -o "^.*grupo8"`
-Instconf="putaso"
+
 estado="bien"
 #Funcion para grabar al Log
 function Log {
@@ -79,10 +79,12 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 	CargarDelConf
 	Log "Se ha efectuado la instalacion de Reservas_B"
 	echo "directorio de conf: $Instconf"
+	echo""
 	Log "Directorio de configuracion: $CONFDIR"
 	ls "$CONFDIR"
+	echo""
 	Log "Comprobando si hay faltantes ... "
-	
+	echo ""
 	if [ -d "$BINDIR" ];
 	then
 		Log  "Ejecutables: $BINDIR "
@@ -144,7 +146,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 				$estado="mal"	
 			fi
 		else
-		
+				
 			Log "Listado de componentes faltantes:"
 			
 			if [ ! -f "$BINDIR/Grabar_L.sh" ]; #para imprimir cual falta
@@ -196,7 +198,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		$estado="mal"
 	fi
 fi #salgo de los ejecutables
-
+echo ""
 Log "Viendo archivos Maestros:"
 if [ -d "$MAEDIR" ];
 then
@@ -218,7 +220,7 @@ then
 	fi
 	
 fi
-
+echo""
 Log "Viendo archivo de disponibilidad"
 if [ -d "$PROCDIR" ];
 then
@@ -236,15 +238,17 @@ fi
 	# Verifico si quedo bien el estado		
 	if [ "$estado" = "bien" ];
 	then
+		echo""
 		Log "Proceso de comprobacion realizado exitosamente"
+		echo""
 	else
 		Log "Proceso de Inicializacion cancelado"
-		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
+		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y/o seguir las indicaciones del Readme correspondiente"
 		return 1
 	fi
 else
 	Log "Proceso de instalacion nunca empezado"
-	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y seguir las indicaciones"
+	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y/o seguir las indicaciones del Readme correspondiente"
 	return 1
 fi
 
@@ -253,13 +257,12 @@ fi
 if [ "$0" != "bash" ];
 then
 	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
-	Log 'Iniciar_B.sh Finaliza MAL'
+	#Log 'Iniciar_B.sh Finaliza MAL'
 fi
 
 #Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
 if ! ./EstaInicializado.sh
 then	
-	#ParametrosDefault
 	ExportarVariables
 else
 	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
