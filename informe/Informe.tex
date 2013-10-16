@@ -97,11 +97,11 @@
 \section{Hipótesis y Aclaraciones globales.}
 \begin{itemize}
 	\item Los directorios NO pueden tener espacios en sus nombres.
-	\item Si el archivo 'Instalar_TP.conf' existe, está bien formado.
+	\item Si el archivo 'Instalar\_TP.conf' existe, está bien formado.
 	\item Los 2 días para la anticipación de las reservas se cuentan como 48hs desde el momento de la reserva.
 	\item Los 30 días para la anticipación de las reservas se cuentan como 720hs desde el momento de la reserva.
 	\item Los directorios que configura el usuario son distintos entre sí.
-	\item A Mover\_B y Eliminar\_B se le pasan rutas absolutas.
+	\item A Mover\_B se le pasan rutas absolutas.
 	\item Matar\_D, finaliza todas las instancias del programa solicitado.
 	\item Start\_D no inicia el proceso lo el mismo ya se encuentra corriendo en el sistema o el ambiente no se ha inicializado.
 	\item Si se desea eliminar un archivo inexistente no se dentendra la ejecución del script. Sólo se informará en el Log.
@@ -224,12 +224,6 @@ Si bien en las especificaciones se incluye el comando 'Mover\_B' se le ha agrega
 para que permita copiar ciertos archivos en vez de moverlos.
 De este modo, con unas pequeñas modificaciones, utilizamos el mismo comando para la etapa de
 instalación del sistema.
-
-\subsection{Eliminar\_B.sh}
-
-Dado que en ocasiones se necesita eliminar archivos, se construyo una función que suprime archivos a partir su ubicación. Adicionalmente se graba 
-información sobre su uso en el Log.
-
 
 
 \newpage
