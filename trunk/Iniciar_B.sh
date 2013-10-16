@@ -40,9 +40,9 @@ else
 fi
 }
 
+
 #INICIO DE EJECUCION-----------------------------------------------------------------
 # Paso 1 Inicializar el archivo de log, si no estaba lo crea.
-
 function CargarDelConf {
 miArreglo1=()
 miArreglo2=()
@@ -242,7 +242,7 @@ fi
 		Log "Proceso de comprobacion realizado exitosamente"
 		echo""
 	else
-		Log "Proceso de Inicializacion cancelado"
+		Log "Hay errores en la comprobacion de la Instalacion"
 		Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y/o seguir las indicaciones del Readme correspondiente"
 		return 1
 	fi
@@ -267,6 +267,14 @@ then
 else
 	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
 fi
+
+#Agrego al final del path a mis binarios
+export PATH=$PATH:$BINDIR
+
+#Controlo nuevamente los permisos de ejecucion de los archivos
+for file in `ls "$BINDIR"`; do
+        chmod +x "$BINDIR/$file"
+done
 
 
 #Paso 5 Ver si se desea arrancar Recibir_B
