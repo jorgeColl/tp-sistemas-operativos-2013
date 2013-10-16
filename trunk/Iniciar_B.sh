@@ -93,7 +93,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 			Log "Se encuentran todos los ejecutables"
 			ls "$BINDIR"
 			#Pruebo si todos estos tienen permiso de ejecucion
-			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover.sh" ];
+			if [ -x "$BINDIR/EstaInicializado.sh" -a -x "$BINDIR/Grabar_L.sh" -a -x "$BINDIR/Reservar_B.sh" -a -x "$BINDIR/Stop_D.sh" -a -x "$BINDIR/Start_D.sh" -a -x "$BINDIR/Imprimir_B.pl" -a -x "$BINDIR/Recibir_B.sh" -a -x "$BINDIR/Eliminar_B.sh" -a -x "$BINDIR/EstaCorriendo.sh" -a -x "$BINDIR/Mover_B.sh" ];
 			then
 				Log "Todos los ejecutables con permiso de ejecucion"
 			else
@@ -142,7 +142,13 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		                then
 		                        Log   "Recibir_B.sh"
 		                fi
+				
+			        if [ ! -x "$BINDIR/Mover_B.sh" ];
+                                then
+                                        Log   "Mover_B.sh"
+                                fi
 
+				
 				estado="mal"	
 			fi
 		else
