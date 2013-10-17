@@ -29,6 +29,9 @@
     urlcolor=black
 }
 
+% Controlar margenes.
+\usepackage[left=1.5in,right=1in,top=1.5in,bottom=1.5in]{geometry}
+
 % Agregar indice en el panel lateral.
 
 \usepackage{ifpdf}
@@ -152,10 +155,12 @@ Adicionalmente, a este script, se le agregó funcionalidad para copiar archivos. 
 
 \subsection{Grabar\_L}
 
-El motivo de llevar adelante un 'Logger' radica en la trazabilidad de un programa en ejecución. Su implimentación resulta ser de 
-una dificultad moderada, pero, por el contrario, su utilidad es mucha. Para este sistema, se necesitan generar archivos de logs para cada script utilizado. Además 
+El motivo de llevar adelante un 'Logger' radica en la trazabilidad de un programa en ejecución. Su implementación resulta ser de 
+una dificultad moderada, pero, por el contrario, su utilidad es mucha. 
+Para este sistema, se necesitan generar archivos de logs para cada script utilizado. Además 
 se le da un trato especial al de instalación, ya que este nunca se recorta y se ubica en un directorio distinto al resto.
-Para evitar la duplicación de código, se utiliza el mismo script para todos los archivos de log generados. Tomando como un caso especial la invocación de 'Grabar\_L.sh' con el 
+Para evitar la duplicación de código, se utiliza el mismo script para todos los archivos de log generados.
+Tomando como un caso especial la invocación de 'Grabar\_L.sh' con el 
 parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula la funcionalidad de limite de tamaño.
 
 
@@ -169,10 +174,7 @@ parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula l
 \newpage 
 
 
-\section{Esquema de Ejecución}
-
-
-
+\section{Readme de cada función}
 
 \subsection{Readme\_Instalar}
 
@@ -211,6 +213,23 @@ parámetro '-ins'. En esta oportunidad se genera una ruta distintiva y se anula l
 
 \lstinputlisting{../Readme_Mover_B}
 
+
+
+\section{Esquema de Ejecución}
+
+A continuación se mostrarán los pasos básicos de una ejecución normal, qué archivos se utilizan,
+qué función los genera. Se ha utilizado una notación similar a UML para un diagrama de secuencia.
+
+{\newgeometry{left=1.5in,right=0.8in,top=1in,bottom=1in}
+
+\begin{figure}[!htp]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{DiagramaDeSecuencia.png}
+\end{center}
+\label{fig001}
+\end{figure}
+
+\restoregeometry
 
 \newpage
 
@@ -290,7 +309,7 @@ NOMBRE\_INVALIDO				& NO		& Formato de nombre incorrecto. \\
 \hline
 133-GRIFFO\_JULIO@GMAIL.COM-vacio		& NO 		& Archivo vacío. \\
 \hline
-6-Teatro.Corrientes.Azul@reservas.com.ar-TCA\_3Nov13 & SI 	& Reserva por sala. No disponible. \\
+6-Teatro.Corrientes.Azul@reservas. com.ar-TCA\_3Nov13 & SI 	& Reserva por sala. No disponible. \\
 \hline
 18-Teatro.Payro@reservas.com.ar-PAyro251013a & SI 		& Reserva por sala. Disponible. \\
 \hline
@@ -311,12 +330,14 @@ NOMBRE\_INVALIDO				& NO		& Formato de nombre incorrecto. \\
 \section{Prueba del Camino Feliz}
 \label{sec:camino_feliz}
 
+{\newgeometry{left=1.5in,right=0.8in,top=1in,bottom=1in}
 Para realizar la prueba de una ejecución normal, desde que se instala el sistema, hasta llegar 
 al comando imprimir, se cuenta con un script que va realizando cada paso. La salida de cada comando,
 así como los archivos generados, se vuelcan en un archivo denominado 'caminoFeliz.out'
 
 
-%\lstinputlisting{../caminoFeliz.out}
+\lstinputlisting{../caminoFeliz.out}
 
+\restoregeometry
 
 \end{document}

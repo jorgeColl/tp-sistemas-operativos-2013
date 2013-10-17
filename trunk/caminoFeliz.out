@@ -2,8 +2,8 @@
 
 
 Inicio de Ejecución
-Log del comando Instalar_TP:/home/testusr/tp/grupo8/conf/Instalar_TP.log
-Directorio de configuracion:/home/testusr/tp/grupo8/conf
+Log del comando Instalar_TP:/home/alumnos/tp/grupo8/conf/Instalar_TP.log
+Directorio de configuracion:/home/alumnos/tp/grupo8/conf
 Realizando backup
 Instalacion por primera vez
 TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08
@@ -11,40 +11,40 @@ TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08
 ¿Acepta? Si - No 
 USUARIO ACEPTO TERMINOS
 Perl Version=5
-Defina el directorio de instalacion de los archivos ejecutables (/home/testusr/tp/grupo8/bin)
+Defina el directorio de instalacion de los archivos ejecutables (/home/alumnos/tp/grupo8/bin)
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de instalacion de los archivos maestros (/home/testusr/tp/grupo8/mae)
+Defina el directorio de instalacion de los archivos maestros (/home/alumnos/tp/grupo8/mae)
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de instalacion de los archivos externos (/home/testusr/tp/grupo8/arribos)
+Defina el directorio de instalacion de los archivos externos (/home/alumnos/tp/grupo8/arribos)
 Desea conservar el directorio por defecto?: Si - No
 Defina el espacio minimo libre para el arribo de archivos externos en MBYtes (100):
 Desea conservar el Tamaño por defecto?: Si - No
-Defina el directorio de instalacion de los archivos maestros (/home/testusr/tp/grupo8/aceptados)
+Defina el directorio de instalacion de los archivos maestros (/home/alumnos/tp/grupo8/aceptados)
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de instalacion de los archivos rechazados (/home/testusr/tp/grupo8/rechazados)
+Defina el directorio de instalacion de los archivos rechazados (/home/alumnos/tp/grupo8/rechazados)
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de instalacion de los listados de salida(/home/testusr/tp/grupo8/listados)
+Defina el directorio de instalacion de los listados de salida(/home/alumnos/tp/grupo8/listados)
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de grabación de los archivos procesados (/home/testusr/tp/grupo8/procesados):
+Defina el directorio de grabación de los archivos procesados (/home/alumnos/tp/grupo8/procesados):
 Desea conservar el directorio por defecto?: Si - No
-Defina el directorio de logs (/home/testusr/tp/grupo8/log):
+Defina el directorio de logs (/home/alumnos/tp/grupo8/log):
 Desea conservar el directorio por defecto?: Si - No
 Ingrese la extension para los archivos de log: (.log)
 Desea conservar el Tamaño por defecto?: Si - No
 Defina el tamaño máximo para los archivos .log en Kbytes (400):
 Desea conservar el Tamaño por defecto?: Si - No
 [H[2JTP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08
-Libreria del Sistema: /home/testusr/tp/grupo8/conf
+Libreria del Sistema: /home/alumnos/tp/grupo8/conf
 backup
 Instalar_TP.log
-Ejecutables:/home/testusr/tp/grupo8/bin
-Archivos Maestros: /home/testusr/tp/grupo8/mae
-Directorio de arribo de archivos externos: /home/testusr/tp/grupo8/arribos
-Archivos externos aceptados: /home/testusr/tp/grupo8/aceptados
-Archivos externos rechazados: /home/testusr/tp/grupo8/rechazados
-Reportes de salida:/home/testusr/tp/grupo8/listados
-Archivos procesados:/home/testusr/tp/grupo8/procesados
-Logs de aditoria del Sistema:/home/testusr/tp/grupo8/log/<>..log
+Ejecutables:/home/alumnos/tp/grupo8/bin
+Archivos Maestros: /home/alumnos/tp/grupo8/mae
+Directorio de arribo de archivos externos: /home/alumnos/tp/grupo8/arribos
+Archivos externos aceptados: /home/alumnos/tp/grupo8/aceptados
+Archivos externos rechazados: /home/alumnos/tp/grupo8/rechazados
+Reportes de salida:/home/alumnos/tp/grupo8/listados
+Archivos procesados:/home/alumnos/tp/grupo8/procesados
+Logs de aditoria del Sistema:/home/alumnos/tp/grupo8/log/<>..log
 Estado de la instalacion: LISTO
 Desea continuar con la instalacion?: Si - No
 Iniciando Instalación. Esta Ud. seguro? (Si-No)
@@ -54,87 +54,77 @@ Instalando Archivo de Disponibilidad
 Instalando Programas y Funciones
 Actualizando la configuración del sistema
 borrando archivos temporarios
-Instalación CONCLUIDA
-
-
-**************LOG INSTALACION************
-
-
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins;Inicio de Ejecución;
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins;Log del comando Instalar_TP:/home/testusr/tp/grupo8/conf/Instalar_TP.log;
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins;Directorio de configuracion:/home/testusr/tp/grupo8/conf;
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins;Instalacion por primera vez;
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins;TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08;
-dom-oct-13-23:27:27;Instalar_TP.sh;Instalar_TP.sh;-ins; ATENCION: Al instalar el TP SO7508 Segundo Cuatrimestre 2013 UD. expresa aceptar los terminos y condiciones del ACERDO ;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;¿Acepta? Si - No ;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;USUARIO ACEPTO TERMINOS;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Perl Version=5;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los archivos ejecutables (/home/testusr/tp/grupo8/bin);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los archivos maestros (/home/testusr/tp/grupo8/mae);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los archivos externos (/home/testusr/tp/grupo8/arribos);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el espacio minimo libre para el arribo de archivos externos en MBYtes (100):;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el Tamaño por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los archivos maestros (/home/testusr/tp/grupo8/aceptados);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los archivos rechazados (/home/testusr/tp/grupo8/rechazados);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de instalacion de los listados de salida(/home/testusr/tp/grupo8/listados);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de grabación de los archivos procesados (/home/testusr/tp/grupo8/procesados):;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el directorio de logs (/home/testusr/tp/grupo8/log):;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el directorio por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Ingrese la extension para los archivos de log: (.log);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el Tamaño por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Defina el tamaño máximo para los archivos .log en Kbytes (400):;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea conservar el Tamaño por defecto?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;TP SO7508 Segundo Cuatrimestre 2013. Tema B Copyright Grupo 08;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Libreria del Sistema: /home/testusr/tp/grupo8/conf;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Ejecutables:/home/testusr/tp/grupo8/bin;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Archivos Maestros: /home/testusr/tp/grupo8/mae;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Directorio de arribo de archivos externos: /home/testusr/tp/grupo8/arribos;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Archivos externos aceptados: /home/testusr/tp/grupo8/aceptados;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Archivos externos rechazados: /home/testusr/tp/grupo8/rechazados;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Reportes de salida:/home/testusr/tp/grupo8/listados;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Archivos procesados:/home/testusr/tp/grupo8/procesados;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Logs de aditoria del Sistema:/home/testusr/tp/grupo8/log/<>..log;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Estado de la instalacion: LISTO;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Desea continuar con la instalacion?: Si - No;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Iniciando Instalación. Esta Ud. seguro? (Si-No);
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Creando Estructuras de directorio ...;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Instalando Archivos Maestros;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Instalando Archivo de Disponibilidad;
-dom-oct-13-23:27:28;Instalar_TP.sh;Instalar_TP.sh;-ins;Instalando Programas y Funciones;
-dom-oct-13-23:27:29;Instalar_TP.sh;Instalar_TP.sh;-ins;Actualizando la configuración del sistema;
-dom-oct-13-23:27:29;Instalar_TP.sh;Instalar_TP.sh;-ins;borrando archivos temporarios;
+Instalación SATISFACTORIAMENTE CONCLUIDA
 
 
 **************ARCHIVO CONFIGURACION************
 
 
-GRUPO=/home/testusr/tp/grupo8=testusr=dom oct 13 23:27:29 ART 2013
-CONFDIR=/home/testusr/tp/grupo8/conf=testusr=dom oct 13 23:27:29 ART 2013
-BINDIR=/home/testusr/tp/grupo8/bin=testusr=dom oct 13 23:27:29 ART 2013
-MAEDIR=/home/testusr/tp/grupo8/mae=testusr=dom oct 13 23:27:29 ART 2013
-ARRIDIR=/home/testusr/tp/grupo8/arribos=testusr=dom oct 13 23:27:29 ART 2013
-ACEPDIR=/home/testusr/tp/grupo8/aceptados=testusr=dom oct 13 23:27:29 ART 2013
-RECHDIR=/home/testusr/tp/grupo8/rechazados=testusr=dom oct 13 23:27:29 ART 2013
-REPODIR=/home/testusr/tp/grupo8/listados=testusr=dom oct 13 23:27:29 ART 2013
-PROCDIR=/home/testusr/tp/grupo8/procesados=testusr=dom oct 13 23:27:29 ART 2013
-LOGDIR=/home/testusr/tp/grupo8/log=testusr=dom oct 13 23:27:29 ART 2013
-LOGEXT=.log=testusr=dom oct 13 23:27:29 ART 2013
-DATASIZE=100=testusr=dom oct 13 23:27:29 ART 2013
-LOGSIZE=400=testusr=dom oct 13 23:27:29 ART 2013
+GRUPO=/home/alumnos/tp/grupo8=alumnos=Thu Oct 17 00:18:17 ART 2013
+CONFDIR=/home/alumnos/tp/grupo8/conf=alumnos=Thu Oct 17 00:18:17 ART 2013
+BINDIR=/home/alumnos/tp/grupo8/bin=alumnos=Thu Oct 17 00:18:17 ART 2013
+MAEDIR=/home/alumnos/tp/grupo8/mae=alumnos=Thu Oct 17 00:18:17 ART 2013
+ARRIDIR=/home/alumnos/tp/grupo8/arribos=alumnos=Thu Oct 17 00:18:17 ART 2013
+ACEPDIR=/home/alumnos/tp/grupo8/aceptados=alumnos=Thu Oct 17 00:18:17 ART 2013
+RECHDIR=/home/alumnos/tp/grupo8/rechazados=alumnos=Thu Oct 17 00:18:17 ART 2013
+REPODIR=/home/alumnos/tp/grupo8/listados=alumnos=Thu Oct 17 00:18:17 ART 2013
+PROCDIR=/home/alumnos/tp/grupo8/procesados=alumnos=Thu Oct 17 00:18:17 ART 2013
+LOGDIR=/home/alumnos/tp/grupo8/log=alumnos=Thu Oct 17 00:18:17 ART 2013
+LOGEXT=.log=alumnos=Thu Oct 17 00:18:17 ART 2013
+DATASIZE=100=alumnos=Thu Oct 17 00:18:17 ART 2013
+LOGSIZE=400=alumnos=Thu Oct 17 00:18:17 ART 2013
 
 
 **************INICIAR************
 
 
-Esta inicializado
-ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente
+Se ha efectuado la instalacion de Reservas_B
+directorio de conf: /home/alumnos/tp/grupo8/conf/Instalar_TP.conf
+
+Directorio de configuracion: /home/alumnos/tp/grupo8/conf
+backup
+Instalar_TP.conf
+Instalar_TP.log
+
+Comprobando si hay faltantes ... 
+
+Ejecutables: /home/alumnos/tp/grupo8/bin 
+Se encuentran todos los ejecutables
+EstaCorriendo.sh
+EstaInicializado.sh
+Grabar_L.sh
+Imprimir_B.pl
+Iniciar_B.sh
+Mover_B.sh
+Readme_Grabar_L
+Readme_Imprimir
+Readme_Iniciar
+Readme_Instalar
+Readme_Mover_B
+Readme_Recibir
+Readme_Reservar
+Readme_Start_D
+Readme_Stop_D
+Recibir_B.sh
+Reservar_B.sh
+Start_D.sh
+Stop_D.sh
+Todos los ejecutables con permiso de ejecucion
+
+Viendo archivos Maestros:
+Ruta de los maestros:
+/home/alumnos/tp/grupo8/mae
+obras.mae
+salas.mae
+
+Viendo archivo de disponibilidad
+/home/alumnos/tp/grupo8/procesados
+combos.dis
+
+Proceso de comprobacion realizado exitosamente
+
+WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh 
+
 Desea efectuar la activación de Recibir_B? Si – No
 Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:
 ./Start_D.sh ./Recibir_B.sh 
@@ -143,6 +133,22 @@ Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:
 **************LOG INICIAR************
 
 
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Se ha efectuado la instalacion de Reservas_B;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Directorio de configuracion: /home/alumnos/tp/grupo8/conf;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Comprobando si hay faltantes ... ;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Ejecutables: /home/alumnos/tp/grupo8/bin ;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Se encuentran todos los ejecutables;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Todos los ejecutables con permiso de ejecucion;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Viendo archivos Maestros:;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Ruta de los maestros:;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;/home/alumnos/tp/grupo8/mae;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Viendo archivo de disponibilidad;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;/home/alumnos/tp/grupo8/procesados;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Proceso de comprobacion realizado exitosamente;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh ;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Desea efectuar la activación de Recibir_B? Si – No;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:;
+Thu-Oct-17-00:18:18;Iniciar_B.sh;Iniciar_B.sh;Informativo;./Start_D.sh ./Recibir_B.sh ;
 
 
 **************RECIBIR+RESERVAR************
@@ -153,229 +159,229 @@ Si desea ejecutar Recibir_B en algun momento, hagalo de esta forma:
 *************LOG RECIBIR************
 
 
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Ciclo Nro 1;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MAIL_INVALIDO@GMAIL.COM-EstrenoenelPayro332 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mail inexistente, id ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/1-MAIL_INVALIDO@GMAIL.COM-EstrenoenelPayro332;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54 .;
-Sun-Oct-13-23:27:34;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1241.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1241.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1242.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1242.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1243.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1243.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1244.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1244.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1245.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1245.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1246.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1246.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1247.inv .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1247.inv;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 133-GRIFFO_JULIO@GMAIL.COM-vacio .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/133-GRIFFO_JULIO@GMAIL.COM-vacio;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 147-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332 .;
-Sun-Oct-13-23:27:35;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;ID inexistente, mail ok.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/147-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-MAIL_INVALIDO@GMAIL.COM-PAyro251013a .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mail inexistente, ID ok.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/18-MAIL_INVALIDO@GMAIL.COM-PAyro251013a;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro171013a .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro171013a;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro181013a .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro181013a;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro251013a .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro251013a;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro261013a .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro261013a;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 180-Teatro.Payro@reservas.com.ar-ID_INVALIDO .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;ID inexistente, mail ok.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/180-Teatro.Payro@reservas.com.ar-ID_INVALIDO;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12 .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13 .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14 .;
-Sun-Oct-13-23:27:36;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 334.inv .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/334.inv;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13 .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NOMBRE_INVALIDO .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato de nombre incorrecto.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/NOMBRE_INVALIDO;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila12.inv .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila12.inv;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila13.inv .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila13.inv;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila14.inv .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila14.inv;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando TCA_3Nov13.inv .;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/TCA_3Nov13.inv;
-Sun-Oct-13-23:27:37;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Ciclo Nro 1;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MAIL_INVALIDO@GMAIL.COM-EstrenoenelPayro332 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mail inexistente, id ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/1-MAIL_INVALIDO@GMAIL.COM-EstrenoenelPayro332;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54 .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1241.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1241.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1242.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1242.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1243.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1243.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1244.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1244.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1245.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1245.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1246.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1246.inv;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 1247.inv .;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:21;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/1247.inv;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 133-GRIFFO_JULIO@GMAIL.COM-vacio .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/133-GRIFFO_JULIO@GMAIL.COM-vacio;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 147-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332 .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;ID inexistente, mail ok.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/147-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-MAIL_INVALIDO@GMAIL.COM-PAyro251013a .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mail inexistente, ID ok.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/18-MAIL_INVALIDO@GMAIL.COM-PAyro251013a;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro171013a .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro171013a;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro181013a .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro181013a;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro251013a .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro251013a;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 18-Teatro.Payro@reservas.com.ar-PAyro261013a .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/18-Teatro.Payro@reservas.com.ar-PAyro261013a;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 180-Teatro.Payro@reservas.com.ar-ID_INVALIDO .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;ID inexistente, mail ok.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/180-Teatro.Payro@reservas.com.ar-ID_INVALIDO;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12 .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13 .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14 .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de obra.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 334.inv .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/334.inv;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando 6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13 .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Archivo de sala.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/aceptados/6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NOMBRE_INVALIDO .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Formato de nombre incorrecto.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/rechazados/NOMBRE_INVALIDO;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila12.inv .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila12.inv;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila13.inv .;
+Thu-Oct-17-00:18:22;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila13.inv;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando NoeTEA_Fila14.inv .;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/NoeTEA_Fila14.inv;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Procesando TCA_3Nov13.inv .;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Formato (*.inv) archivo de invitados.;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Se moverá a grupo8/listados/TCA_3Nov13.inv;
+Thu-Oct-17-00:18:23;Recibir_B.sh;Recibir_B.sh;Informativo;Mover ok;
 
 
 **************LOG RESERVAR************
 
 
-Sun-Oct-13-23:27:37;Reservar_B.sh;Reservar_B.sh;Informativo;Inicio de Reservar_B;
-Sun-Oct-13-23:27:37;Reservar_B.sh;Reservar_B.sh;Informativo;Cantidad de archivos: 18;
-Sun-Oct-13-23:27:37;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
-Sun-Oct-13-23:27:37;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 5;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 5;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 5;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 5;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33;
-Sun-Oct-13-23:27:38;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 7;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 7;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 7;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 7;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:39;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 133-GRIFFO_JULIO@GMAIL.COM-vacio;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Se rechaza 133-GRIFFO_JULIO@GMAIL.COM-vacio por estar en blanco;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro171013a;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 3;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro181013a;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 3;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro251013a;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 4;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro261013a;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 4;
-Sun-Oct-13-23:27:40;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 3;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 2;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 10;
-Sun-Oct-13-23:27:41;Reservar_B.sh;Reservar_B.sh;Informativo;Fin de Reservar_B;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Inicio de Reservar_B;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Cantidad de archivos: 18;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 5;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro333;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 5;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro334;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 5;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro335;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 5;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del27al33;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 7;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del34al40;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 7;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del41al47;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 7;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
+Thu-Oct-17-00:18:23;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 1-MORA_ANTONIO@HOTMAIL.COM-UnaHistoria_del48al54;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 7;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 133-GRIFFO_JULIO@GMAIL.COM-muchaAnticipacion;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 133-GRIFFO_JULIO@GMAIL.COM-vacio;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Se rechaza 133-GRIFFO_JULIO@GMAIL.COM-vacio por estar en blanco;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro171013a;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 3;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro181013a;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 3;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro251013a;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 4;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 18-Teatro.Payro@reservas.com.ar-PAyro261013a;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 4;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila12;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 3;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila13;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 2;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 3-BEIRO_CLAUDIO@GMAIL.COM-NoeTEA_Fila14;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 1;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Archivo a procesar: 6-Teatro.Corrientes.Azul@reservas.com.ar-TCA_3Nov13;
+Thu-Oct-17-00:18:24;Reservar_B.sh;Reservar_B.sh;Informativo;Actualización del archivo de disponibilidad;
+Thu-Oct-17-00:18:25;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados OK: 0;
+Thu-Oct-17-00:18:25;Reservar_B.sh;Reservar_B.sh;Informativo;Registros grabados NOK: 10;
+Thu-Oct-17-00:18:25;Reservar_B.sh;Reservar_B.sh;Informativo;Fin de Reservar_B;
 
 
 **************ARCHIVOS EN PROCDIR************
@@ -513,7 +519,7 @@ TCA_3Nov13;03/11/2013;18:00;;;10;Platea sin numerar
 
 
 ARCHIVO: combos.dis
-C00010018;1;17/10/2013;17:00;18;920;67;NINGUNO
+C00010018;1;17/10/2013;17:00;18;920;113;NINGUNO
 C00010019;1;18/10/2013;17:00;18;920;0;NINGUNO
 C00010020;1;19/10/2013;19:00;18;920;0;NINGUNO
 C00010021;1;20/10/2013;16:00;18;920;0;NINGUNO
@@ -662,92 +668,128 @@ C00010163;69;31/01/2014;20:00;108;450;450;KIOSKO
 
 
 ARCHIVO: reservas.nok
-333;18/10/2013;17:00;;;4;;Falta de disponibilidad;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-333;18/10/2013;17:00;;;4;;Falta de disponibilidad;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-333;18/10/2013;17:00;;;4;;Falta de disponibilidad;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-333;18/10/2013;17:00;;;4;;Falta de disponibilidad;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-333;18/10/2013;17:00;;;4;;Falta de disponibilidad;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1234;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1235;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1236;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1237;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1238;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1239;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1240;18/10/2013;17:00;;;2;Platea;Falta de disponibilidad;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1248;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1249;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1250;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1251;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1252;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1253;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1254;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-;10/01/2014;23:00;;;4;;Reserva anticipada;Falta sala;133;GRIFFO_JULIO@GMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-;18/10/2013;17:00;;;4;Platea;Falta de disponibilidad;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;18/10/2013;17:00;;;4;Platea;Falta de disponibilidad;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;18/10/2013;17:00;;;4;Platea;Falta de disponibilidad;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-NoeTEA_Fila13;02/11/2013;18:00;13;12;6;Filas 01 a 18;Falta de disponibilidad;Falta sala;3;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:41 ART 2013;testusr
-NoeTEA_Fila14;02/11/2013;18:00;14;8;7;Filas 01 a 18;Falta de disponibilidad;Falta sala;3;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;1;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;2;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;3;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;4;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;5;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;6;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;7;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;8;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;9;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
-TCA_3Nov13;03/11/2013;18:00;;;10;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Sun Oct 13 23:27:41 ART 2013;testusr
+332;17/10/2013;17:00;;;4;;Reserva vencida;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+332;17/10/2013;17:00;;;4;;Reserva vencida;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+332;17/10/2013;17:00;;;4;;Reserva vencida;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+332;17/10/2013;17:00;;;4;;Reserva vencida;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+332;17/10/2013;17:00;;;4;;Reserva vencida;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+333;18/10/2013;17:00;;;4;;Reserva tardia;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+333;18/10/2013;17:00;;;4;;Reserva tardia;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+333;18/10/2013;17:00;;;4;;Reserva tardia;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+333;18/10/2013;17:00;;;4;;Reserva tardia;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+333;18/10/2013;17:00;;;4;;Reserva tardia;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+335;26/10/2013;17:00;;;4;;No existe el evento solicitado;Falta sala;1;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1227;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1228;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1229;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1230;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1231;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1232;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1233;17/10/2013;17:00;;;2;Platea;Reserva vencida;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1234;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1235;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1236;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1237;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1238;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1239;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1240;18/10/2013;17:00;;;2;Platea;Reserva tardia;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1248;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1249;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1250;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1251;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1252;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1253;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+1254;26/10/2013;17:00;;;2;Platea;No existe el evento solicitado;Falta sala;1;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+;10/01/2014;23:00;;;4;;Reserva anticipada;Falta sala;133;GRIFFO_JULIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+;17/10/2013;17:00;;;4;Platea;Reserva vencida;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;17/10/2013;17:00;;;4;Platea;Reserva vencida;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;17/10/2013;17:00;;;4;Platea;Reserva vencida;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;18/10/2013;17:00;;;4;Platea;Reserva tardia;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;18/10/2013;17:00;;;4;Platea;Reserva tardia;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;18/10/2013;17:00;;;4;Platea;Reserva tardia;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+;26/10/2013;17:00;;;4;Platea;No existe el evento solicitado;18;Falta obra;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+NoeTEA_Fila13;02/11/2013;18:00;13;12;6;Filas 01 a 18;Falta de disponibilidad;Falta sala;3;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+NoeTEA_Fila14;02/11/2013;18:00;14;8;7;Filas 01 a 18;Falta de disponibilidad;Falta sala;3;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;1;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;2;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;3;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;4;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;5;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;6;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;7;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;8;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;9;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+TCA_3Nov13;03/11/2013;18:00;;;10;Platea sin numerar;No existe el evento solicitado;6;Falta obra;Teatro.Corrientes.Azul@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
 
 
 
 ARCHIVO: reservas.ok
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;332;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:37 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;332;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:37 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;332;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:37 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;332;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:37 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;332;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:37 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1227;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1228;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1229;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1230;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1231;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1232;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;2;C00010018;1233;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:38 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1241;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1242;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1243;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1244;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1245;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1246;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1247;2;MORA_ANTONIO@HOTMAIL.COM;Sun Oct 13 23:27:39 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;17/10/2013;17:00;18;Teatro Payro;4;C00010018;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Sun Oct 13 23:27:40 ART 2013;testusr
-3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;1;C00010026;NoeTEA_Fila12;1;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:40 ART 2013;testusr
-3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;2;C00010026;NoeTEA_Fila12;2;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:40 ART 2013;testusr
-3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;3;C00010026;NoeTEA_Fila12;3;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:40 ART 2013;testusr
-3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;4;C00010026;NoeTEA_Fila13;4;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:41 ART 2013;testusr
-3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;5;C00010026;NoeTEA_Fila13;5;BEIRO_CLAUDIO@GMAIL.COM;Sun Oct 13 23:27:41 ART 2013;testusr
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;334;4;LEYER_DEMIAN@GMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1241;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1242;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1243;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1244;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1245;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1246;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;2;C00010023;1247;2;MORA_ANTONIO@HOTMAIL.COM;Thu Oct 17 00:18:23 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+1;Una historia para cartucho;25/10/2013;17:00;18;Teatro Payro;4;C00010023;;4;Teatro.Payro@reservas.com.ar;Thu Oct 17 00:18:24 ART 2013;alumnos
+3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;1;C00010026;NoeTEA_Fila12;1;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;2;C00010026;NoeTEA_Fila12;2;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;3;C00010026;NoeTEA_Fila12;3;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;4;C00010026;NoeTEA_Fila13;4;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
+3;En busca de No�;02/11/2013;18:00;12;Teatro Espacio Abierto;5;C00010026;NoeTEA_Fila13;5;BEIRO_CLAUDIO@GMAIL.COM;Thu Oct 17 00:18:24 ART 2013;alumnos
 
 
+**************ARCHIVOS EN RECHDIR************
+
+
+ARCHIVO: 133-GRIFFO_JULIO@GMAIL.COM-vacio
+
+
+
+ARCHIVO: 147-LEYER_DEMIAN@GMAIL.COM-EstrenoenelPayro332
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+
+
+ARCHIVO: 180-Teatro.Payro@reservas.com.ar-ID_INVALIDO
+
+
+
+ARCHIVO: 18-MAIL_INVALIDO@GMAIL.COM-PAyro251013a
+;25/10/2013;17:00;;;4;Platea
+;25/10/2013;17:00;;;4;Platea
+;25/10/2013;17:00;;;4;Platea
+;25/10/2013;17:00;;;4;Platea
+
+
+ARCHIVO: 1-MAIL_INVALIDO@GMAIL.COM-EstrenoenelPayro332
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+332;17/10/2013;17:00;;;4;
+
+
+ARCHIVO: NOMBRE_INVALIDO
+;10/01/2014;23:00;;;4;
 
 
 
@@ -759,112 +801,81 @@ ARCHIVO: reservas.ok
 
 
 Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1244
-MIGUEL CAPPA,,1
-ALEJANDRO CARDIERI,,2
-Total acumulado: 2 Cantidad de butacas confirmadas: 2
-
-Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
 334
-EUGENIO UCHIMA,,1
-ARIEL TASTNY,,2
-SERGIO UTHAY,,3
-MARCELO BAL,,4
-JUAN BIKU,,5
-JAVIER BOLDI,,6
-DAVID CARELLA,,7
-MATIAS CERES,,8
-JUAN CHIMA,,9
-SEBASTIAN CORSO,,10
-EMILIANO GAN,,11
-MIGUEL GENDYK,,12
-GUILLERMINA KAILO,,13
-ANDRES OLAZABAL,,14
-CESAR PARLA,,15
-MARTIN PEREYRA,,16
-ANDRES PESL,,17
-CESAR PETRINA,,18
-GUSTAVO PEZZOLI,,19
+EUGENIO UCHIMA,,1
+ARIEL TASTNY,,2
+SERGIO UTHAY,,3
+MARCELO BAL,,4
+JUAN BIKU,,5
+JAVIER BOLDI,,6
+DAVID CARELLA,,7
+MATIAS CERES,,8
+JUAN CHIMA,,9
+SEBASTIAN CORSO,,10
+EMILIANO GAN,,11
+MIGUEL GENDYK,,12
+GUILLERMINA KAILO,,13
+ANDRES OLAZABAL,,14
+CESAR PARLA,,15
+MARTIN PEREYRA,,16
+ANDRES PESL,,17
+CESAR PETRINA,,18
+GUSTAVO PEZZOLI,,19
 OSCAR PISTONE,,20
 Total acumulado: 20 Cantidad de butacas confirmadas: 20
 
 Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1245
-DANIEL CARRERA,,1
-ALEJANDRA CATTANEO,,2
-Total acumulado: 2 Cantidad de butacas confirmadas: 2
-
-Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
 1242
-CECILIA RIVELLI,,1
+CECILIA RIVELLI,,1
 DANIEL RIZZO,,2
 Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
 Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1246
-ANIBAL CHINIKAILO,,1
-LUIS CLAVERINO,,2
-Total acumulado: 2 Cantidad de butacas confirmadas: 2
-
-Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1241
-SILVIA RIBOLDI,,1
-JULIAN RIVAS,,2
-Total acumulado: 2 Cantidad de butacas confirmadas: 2
-
-Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
 1243
-GUSTAVO ROBLEDO,,1
+GUSTAVO ROBLEDO,,1
 CARLOS RODRIGUEZ,,2
 Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
 Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
 1247
-MARIELA CORRALES,,1
+MARIELA CORRALES,,1
 LAURA DENKER,,2
 Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
-************RESERVA SIN LISTA DE INVITADOS
+Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
+1244
+MIGUEL CAPPA,,1
+ALEJANDRO CARDIERI,,2
+Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
+Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
+1245
+DANIEL CARRERA,,1
+ALEJANDRA CATTANEO,,2
+Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1233
-sin listado de invitados 
+Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
+1246
+ANIBAL CHINIKAILO,,1
+LUIS CLAVERINO,,2
+Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1230
-sin listado de invitados 
+Evento: C00010023 Obra: 1-Una historia para cartucho, Fecha y Hora: 25/10/2013-17:00 Hs. Sala: 18-Teatro Payro
+1241
+SILVIA RIBOLDI,,1
+JULIAN RIVAS,,2
+Total acumulado: 2 Cantidad de butacas confirmadas: 2
 
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1229
-sin listado de invitados 
+************EVENTO SIN RESERVAS
 
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-332
-sin listado de invitados 
-
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1232
-sin listado de invitados 
-
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1227
-sin listado de invitados 
-
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1228
-sin listado de invitados 
-
-Evento: C00010018 Obra: 1-Una historia para cartucho, Fecha y Hora: 17/10/2013-17:00 Hs. Sala: 18-Teatro Payro
-1231
-sin listado de invitados 
+sin información de reservas para este evento 
 
 **********DISPONIBILIDAD DE LA OBRA CON ID: 1
 
 ¿Desea ingresar un ID de obra o un ID de sala?
-Ingrese -o para id de obra, -s para id de sala.
+Ingrese -o para id de obra, -s para id de sala. -1 para salir.
 Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'
-C00010018 - 1 - 17/10/2013 - 17:00 - 18 - 920 - 67
+C00010018 - 1 - 17/10/2013 - 17:00 - 18 - 920 - 113
 C00010019 - 1 - 18/10/2013 - 17:00 - 18 - 920 - 0
 C00010020 - 1 - 19/10/2013 - 19:00 - 18 - 920 - 0
 C00010021 - 1 - 20/10/2013 - 16:00 - 18 - 920 - 0
@@ -876,7 +887,7 @@ C00010025 - 1 - 27/10/2013 - 16:00 - 18 - 920 - 0
 **********DISPONIBILIDAD DE LA SALA CON ID: 12
 
 ¿Desea ingresar un ID de obra o un ID de sala?
-Ingrese -o para id de obra, -s para id de sala.
+Ingrese -o para id de obra, -s para id de sala. -1 para salir.
 Ingrese un numero para buscar un id, o un rango de ids con el siguiente formato: 'idinicial-idfinal'
 C00010026 - 3 - 02/11/2013 - 18:00 - 12 - 850 - 5
 C00010027 - 3 - 02/11/2013 - 21:00 - 12 - 850 - 0
@@ -884,10 +895,10 @@ C00010028 - 3 - 03/11/2013 - 18:00 - 12 - 850 - 0
 
 **********RANKING DE RESERVAS 
 
-LEYER_DEMIAN@GMAIL.COM-20
-LEYER_DEMIAN@GMAIL.COM-20
+Teatro.Payro@reservas.com.ar-16
 BEIRO_CLAUDIO@GMAIL.COM-9
 BEIRO_CLAUDIO@GMAIL.COM-6
+MORA_ANTONIO@HOTMAIL.COM-2
 MORA_ANTONIO@HOTMAIL.COM-2
 MORA_ANTONIO@HOTMAIL.COM-2
 MORA_ANTONIO@HOTMAIL.COM-2
