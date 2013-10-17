@@ -252,6 +252,9 @@ echo ""
 		Log "Faltan algun/os archivos maestros"
 		estado="mal"
 		fi
+	else
+	Log "Falta carpeta entera de archivos Maestros"
+	estado="mal"
 	fi
 
 	echo""
@@ -267,6 +270,9 @@ echo ""
 			Log "combos.dis"
 			estado="mal"
 		fi
+	else
+	Log "Falta carpeta entera de archivo de Disponibilidades"
+	estado="mal"
 	fi
 	
 	# Verifico si quedo bien el estado		
