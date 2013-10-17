@@ -282,6 +282,36 @@ echo ""
 	Log "Falta carpeta entera de archivo de Disponibilidades"
 	estado="mal"
 	fi
+
+	if [ ! -d "$ARRIDIR" ]
+	then
+	Log "Falta el directorio para el arribo de archivos"
+	estado="mal"
+	fi
+	
+	if [ ! -d "$RECHDIR" ]
+	then
+	Log "Falta el directorio para los archivos rechazados"
+	estado="mal"
+	fi
+
+	if [ ! -d "$REPODIR" ]
+	then
+	Log "Falta el directorio para los archivos de listado de salida"
+	estado="mal"
+	fi
+
+	if [ ! -d "$LOGDIR" ]
+	then
+	Log "Falta el directorio para el log"
+	estado="mal"
+	fi
+
+	if [ ! -d "$ACEPDIR" ]
+	then
+	Log "Falta el directorio para los archivos aceptados"
+	estado="mal"
+	fi
 	
 	# Verifico si quedo bien el estado		
 	if [ "$estado" = "bien" ];
