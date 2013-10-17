@@ -236,16 +236,17 @@ echo ""
 		else
 			if [ ! -f "$MAEDIR/obras.mae" ];
         		then
-                		Log   "obras.mae"
+                		Log   "Falta: obras.mae"
         		fi
 			if [ ! -f "$MAEDIR/salas.mae" ];
 			then
-			         Log   "salas.mae"
+			         Log   "Falta: salas.mae"
 			fi
 		Log "Faltan algun/os archivos maestros"
 		estado="mal"
 		fi
 	fi
+
 	echo""
 	Log "Viendo archivo de disponibilidad"
 	if [ -d "$PROCDIR" ];
@@ -274,7 +275,7 @@ echo ""
 		return 1
 	fi
 else
-	Log "Proceso de instalacion nunca empezado"
+	Log "Proceso de instalacion erroneo. No se encuentra el archivo de configuracion de la Instalacion (Instalar_TP.conf)"
 	Log "Debe proceder a ejecutar el comando ./Instalar_TP.sh y/o seguir las indicaciones del Readme correspondiente"
 	return 1
 fi
@@ -286,15 +287,15 @@ then
 	Log 'WARNING: Recordar correr Iniciar_B.sh de la forma: . ./Iniciar_B.sh '
 
 fi
-echo""
+echo ""
 
 VerPermisos
-
+echo ""
 #Agrego al final del path a mis binarios
 
 export PATH=$PATH:$BINDIR
-	Log "Se seteo la ruta: "$BINDIR" en la variable PATH"
-
+Log "Se seteo la ruta: "$BINDIR" en la variable PATH"
+echo""
 
 #Paso 5 Ver si se desea arrancar Recibir_B
 Log "Desea efectuar la activación de Recibir_B? Si – No"
