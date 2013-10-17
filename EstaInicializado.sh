@@ -9,10 +9,10 @@ function EstaInicializado {
 if [ "$BINDIR" = "" ]||[ "$MAEDIR" = "" ] || [ "$ARRIDIR" = "" ] || [ "$ACEPDIR" = "" ] || [ "$RECHDIR" = "" ] || [ "$REPODIR" = "" ] || [ "$PROCDIR" = "" ] || [ "$LOGDIR" = "" ] || [ "$DATASIZE" = "" ] || [ "$LOGSIZE" = "" ];
 then 
 	echo "No esta inicializado"
-	return "0"
+	return "1"
 else 
 	echo "EL ambiente esta inicializado"
-	return "1"
+	return "0"
 fi
 }
 EstaInicializado
