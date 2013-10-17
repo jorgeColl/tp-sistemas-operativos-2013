@@ -113,6 +113,15 @@ do
 	cat $PROCDIR/$archivo >> $OUTPUT
 	echo -e "\n\n" >> $OUTPUT
 done
+echo -e "\n\n**************ARCHIVOS EN RECHDIR************\n\n" >> $OUTPUT
+for archivo in `ls $RECHDIR`
+do
+	echo "ARCHIVO: $archivo" >> $OUTPUT
+	cat $RECHDIR/$archivo >> $OUTPUT
+	echo -e "\n\n" >> $OUTPUT
+done
+
+
 cd $BINDIR
 ./Stop_D.sh Recibir_B.sh >> /dev/null
 
