@@ -148,7 +148,7 @@ fi
 
 #Paso 3 y 4 Verificar si el ambiente ya ha sido inicializado.
 ./EstaInicializado.sh >> /dev/null
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then	
 	Log 'Ambiente ya inicializado, si quiere reiniciar termine su sesión e ingrese nuevamente'
 	return 1
