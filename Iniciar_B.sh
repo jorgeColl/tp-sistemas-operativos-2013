@@ -154,13 +154,21 @@ then
 	return 1
 fi
 
-
+	
 
 #Paso 2 Verificar que la instalación está completa
 
 if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 	Instconf="$grupo/conf/Instalar_TP.conf"
 	CargarDelConf
+	
+	if [ ! -f "$BINDIR/Grabar_L.sh" ]; then
+	echo "No se encuentra la funcion Grabar_L"
+	echo "Proceso de inicializacion cancelado."
+	Reiniciar
+	return 1
+	fi
+	
 	Log "Se ha efectuado la instalacion de Reservas_B"
 	echo "directorio de conf: $Instconf"
 	echo""
