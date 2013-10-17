@@ -200,7 +200,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
                                  Log   "Stop_D.sh"
                         fi
                        
-                        if [ ! -f "$BINDIR/Star_D.sh" ];
+                        if [ ! -f "$BINDIR/Start_D.sh" ];
                         then
                                  Log   "Start_D.sh"
                         fi
@@ -219,6 +219,13 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
                         then
                                  Log   "Recibir_B.sh"
                         fi
+			
+			if [ ! -f "$BINDIR/Mover_B.sh" ];
+                        then
+                                 Log   "Mover_B.sh"
+                        fi
+			
+			
 		
 		Log "Estado de la instalacion INCOMPLETO"
 		estado="mal"
