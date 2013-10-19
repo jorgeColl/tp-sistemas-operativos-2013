@@ -236,30 +236,30 @@ listarArch "$temp3/combos.dis"
 }
 
 function RestaurarArchivos {
-cp $CONFDIR/backup/Iniciar_B.sh "$BINDIR"
-cp $CONFDIR/backup/Grabar_L.sh "$BINDIR"
-cp $CONFDIR/backup/Reservar_B.sh  "$BINDIR"
-cp $CONFDIR/backup/Stop_D.sh  "$BINDIR"
-cp $CONFDIR/backup/Start_D.sh  "$BINDIR"
-cp $CONFDIR/backup/Imprimir_B.pl  "$BINDIR"
-cp $CONFDIR/backup/EstaCorriendo.sh  "$BINDIR"
-cp $CONFDIR/backup/EstaInicializado.sh  "$BINDIR"
-cp $CONFDIR/backup/Recibir_B.sh  "$BINDIR"
-cp $CONFDIR/backup/Mover_B.sh "$BINDIR"
-cp $CONFDIR/backup/Readme_Instalar "$BINDIR"
-cp $CONFDIR/backup/Readme_Start_D "$BINDIR"
-cp $CONFDIR/backup/Readme_Iniciar "$BINDIR"
-cp $CONFDIR/backup/Readme_Reservar "$BINDIR"
-cp $CONFDIR/backup/Readme_Imprimir "$BINDIR"
-cp $CONFDIR/backup/Readme_Recibir "$BINDIR"
-cp $CONFDIR/backup/Readme_Grabar_L "$BINDIR"
-cp $CONFDIR/backup/Readme_Stop_D "$BINDIR"
-cp $CONFDIR/backup/Readme_Iniciar "$BINDIR"
+cp "$CONFDIR/backup/Iniciar_B.sh" "$BINDIR"
+cp "$CONFDIR/backup/Grabar_L.sh" "$BINDIR"
+cp "$CONFDIR/backup/Reservar_B.sh" "$BINDIR"
+cp "$CONFDIR/backup/Stop_D.sh" "$BINDIR"
+cp "$CONFDIR/backup/Start_D.sh" "$BINDIR"
+cp "$CONFDIR/backup/Imprimir_B.pl" "$BINDIR"
+cp "$CONFDIR/backup/EstaCorriendo.sh" "$BINDIR"
+cp "$CONFDIR/backup/EstaInicializado.sh" "$BINDIR"
+cp "$CONFDIR/backup/Recibir_B.sh" "$BINDIR"
+cp "$CONFDIR/backup/Mover_B.sh" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Instalar" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Start_D" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Iniciar" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Reservar" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Imprimir" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Recibir" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Grabar_L" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Stop_D" "$BINDIR"
+cp "$CONFDIR/backup/Readme_Iniciar" "$BINDIR"
 
-cp $CONFDIR/backup/obras.mae "$MAEDIR"
-cp $CONFDIR/backup/salas.mae "$MAEDIR"
+cp "$CONFDIR/backup/obras.mae" "$MAEDIR"
+cp "$CONFDIR/backup/salas.mae" "$MAEDIR"
 
-cp $CONFDIR/backup/combos.dis "$PROCDIR"
+cp "$CONFDIR/backup/combos.dis" "$PROCDIR"
 
 # permiso de ejecución
 for file in `ls "$BINDIR"`; do
@@ -542,15 +542,15 @@ mkdir -p "$LOGDIR"
 function MoverMaestros {
 Log "Instalando Archivos Maestros"
 
-./Mover_B.sh datos/salas.mae $MAEDIR
-./Mover_B.sh datos/obras.mae $MAEDIR
+./Mover_B.sh datos/salas.mae "$MAEDIR"
+./Mover_B.sh datos/obras.mae "$MAEDIR"
 }
 
 #(Paso 21.3) Funcion que mueve el archivo de disponibilidad al directorio PROCDIR
 function MoverDisponibilidad {
 Log "Instalando Archivo de Disponibilidad"
 
-./Mover_B.sh datos/combos.dis $PROCDIR
+./Mover_B.sh datos/combos.dis "$PROCDIR"
 }
 
 
@@ -597,7 +597,7 @@ Log "Actualizando la configuración del sistema"
 if [ -f "$Instconf" ];
 then
 	Log "Archivo de configuracion ya existente"
-	echo -n "" > $Instconf && touch $Instconf # se trunca 
+	echo -n "" > "$Instconf" && touch "$Instconf" # se trunca 
 
 	grabarAlConf2 'GRUPO' "$grupo"
         grabarAlConf2 'CONFDIR' "$CONFDIR"
