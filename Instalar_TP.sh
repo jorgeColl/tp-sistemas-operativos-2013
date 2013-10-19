@@ -152,7 +152,8 @@ function FSiNo {
 local var1
 while [ "$var1" != "Si" ] && [ "$var1" != "No" ] && [ "$var1" != "n" ] && [ "$var1" != "s" ] && [ "$var1" != "no" ] && [ "$var1" != "si" ]
 do 
-	read var1
+	read  var1
+	Log "El usuario ingresó: $var1" 1> /dev/null
 done #Hasta que no contesta si o no sale del bucle
 
 if [ "$var1" = "Si" ] || [ "$var1" = "s" ] || [ "$var1" = "si" ]
@@ -333,10 +334,8 @@ declare versioninst=`perl -v | sed -n 's/.*v\([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p'`
 	Log "Para instalar el TP es necesario contar con Perl 5 o superior instalado. Efectue su instalacion e intentelo nuevamente.Proceso de instalacion Cancelado."
 	else
 	Log "Perl Version=$versioninst"
-	fi #se cierra el if de la version
-
+	fi
 else
-	
 	Log "No esta instalado en su maquina Perl. Instalacion finalizada."
 	FIN
 fi
@@ -356,6 +355,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los ejecutables"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	BINDIR="$grupo/$direct"
 fi
@@ -370,6 +370,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos maestros"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	MAEDIR="$grupo/$direct"
 fi
@@ -384,6 +385,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos maestros"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	ARRIDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/arribos
 fi
@@ -399,6 +401,7 @@ then
 	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
 	do
 		read cantidad
+		Log "El usuario ingresó: $cantidad" 1> /dev/null
 	done
 	DATASIZE="$cantidad"
 fi
@@ -428,6 +431,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos maestros"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	ACEPDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/aceptados
 fi
@@ -442,6 +446,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos rechazados"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	RECHDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/recha
 fi
@@ -456,6 +461,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos de salida"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	REPODIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
 fi
@@ -470,6 +476,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos de salida"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	PROCDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
 fi
@@ -484,6 +491,7 @@ if FSiNo;
 then
 	Log "Proponga su directorio para los archivos de salida"
 	read direct
+	Log "El usuario ingresó: $direct" 1> /dev/null
 	direct=`echo "$direct" | sed  's#^/\(.*\)#\1#'` #saca la primer / si es que tiene
 	LOGDIR="$grupo/$direct" #Si supongo que me dan del estilo tp/lista
 fi
@@ -499,6 +507,7 @@ then
 	while [[ $cantidad != [0-9]* ]] #leve comprovacion de que se ingresa un entero
 	do
 		read cantidad
+		Log "El usuario ingresó: $cantidad" 1> /dev/null
 	done
 	LOGSIZE="$cantidad"
 fi
@@ -512,6 +521,7 @@ Log "Desea conservar el Tamaño por defecto?: Si - No"
 if FSiNo;
 then
 	read extension
+	Log "El usuario ingresó: $extension" 1> /dev/null
 	LOGEXT=$extension
 fi
 }
@@ -587,9 +597,6 @@ Log "Actualizando la configuración del sistema"
 if [ -f "$Instconf" ];
 then
 	Log "Archivo de configuracion ya existente"
-	#actualizar?
-	#truncar el archivo viejo y escribir desde 0 mi opinion es (by jorge)
-
 	echo -n "" > $Instconf && touch $Instconf # se trunca 
 
 	grabarAlConf2 'GRUPO' "$grupo"
