@@ -110,6 +110,12 @@
 	\item Si se desea eliminar un archivo inexistente no se dentendra la ejecución del script. Sólo se informará en el Log.
 	\item Los nombres de los archivos de Logs pueden incluir puntos.
 	\item El tamaño del Log se verifica luego de escribir, por lo tanto, después de una escritura válidad el Log tiene un tamaño permitido.
+	\item Los registros que no tienen referencia interna del solicitante son ignorados en la opción -i. Aunque el archivo reservas.ok puede contener un número de butacas confirmadas para estos registros, el enunciado pide imprimir la suma de todas las butacas confirmadas para cada referencia interna. Como este último dato es desconocido, no se tiene en cuenta en la impresión de totales.
+
+	\item El enunciado exige utilizar hashes en la porción del programa implementada en perl. Se utilizó en los segundos puntos:
+	- Opción -r (Ranking de solicitantes): Al analizar el archivo reservas.ok, se utiliza un hash. Los keys son las referencias internas del solicitante. Los values son arrays, cuyo primer valor es la sumatoria de reservas y el segundo es la dirección de mail (Guardada porque el enunciado pide imprimir la dirección de mail en lugar de la referencia interna al mostrar el ranking). De esta forma, al avanzar sobre las lineas de reservas.ok, si la referencia interna no existe entre las keys se agrega. Si existe, se modifica su value para aumentar el número de reservas. Luego, basta con utilizar la función sort (Provista por el lenguaje) para obtener los diez solicitantes con mayor número de reservas.
+	- Opcion -i (Lista de invitados a un evento): No hay nada que asegure que en reservas.ok no puedan haber varias líneas para el mismo solicitante en el mismo evento. Estas lineas podrían no ser continuas en el archivo, es decir, estar intercaladas entre otras lineas correspondientes a otros solicitantes y/o eventos. Por lo tanto, se optó por recorrer el archivo e ir guardando sus datos en un hash. Este último contiene como keys las referencias internas del solicitante. Los values son arrays, con dos valores: En primer lugar una cadena con información del evento que deberá ser impresa posteriormente. En segundo lugar, el total de butacas acumuladas. Cuando se termina el archivo, se imprime la información de cada solicitante recorriendo el hash.
+
 
 
 \end{itemize}
