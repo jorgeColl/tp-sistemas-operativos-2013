@@ -155,31 +155,31 @@ function ChequearArribos {
 ls "$ARRIDIR"|while read archivo
 do
 	local origen="$ARRIDIR/$archivo"
+	echo "ORIGEN: $origen"
 	local destino
 	# si es un archivo (salteo los directorios y verifico que sea de texto)	
-	if [ "-f "$origen"" -a "file -i "$origen"|grep -q "^.*text.*"" ] 
+	Log "Procesando $archivo ."
+	if [ -f "$origen" ]
 	then
-		Log "Procesando $archivo ."
-		if EsDeInvitados "$archivo"
+		if `file -i "$origen"|grep -q "^.*text.*"`
 		then
-			destino=$REPODIR/$archivo
-		# caso archivos obras o salas
-		elif EsObraOSala "$archivo"
-		then
-			destino=$ACEPDIR/$archivo
+			if EsDeInvitados "$archivo"
+			then
+				destino=$REPODIR/$archivo
+			# caso archivos obras o salas
+			elif EsObraOSala "$archivo"
+			then
+				destino=$ACEPDIR/$archivo
+			else
+				destino=$RECHDIR/$archivo
+			fi
 		else
 			destino=$RECHDIR/$archivo
+			Log "No es archivo de texto."		
 		fi
 		./Mover_B.sh "$origen" "$destino" "$0"
 		local dst=`echo "$destino"|grep -o "grupo8/.*$"`
 		Log "Se moverá a $dst"
-		if [ $? -eq 0 ]
-		then 
-			Log "Mover ok"
-		else
-			Log "Error al mover"
-		fi
-
 	fi
 done
 			

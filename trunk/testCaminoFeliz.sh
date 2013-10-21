@@ -20,7 +20,7 @@ fi
 }
 
 function Abortar {
-	cd $TP
+	cd "$TP"
 	echo "test Abortado."
 	exit 1
 } 
@@ -69,7 +69,7 @@ then
 	Abortar
 fi
 rm ".aux"
-cd $TP
+cd "$TP"
 echo "Copiando el log de iniciar."
 echo -e "\n\n**************LOG INICIAR************\n\n" >> $OUTPUT
 cat "grupo8/log/Iniciar_B.sh$LOGEXT" >> $OUTPUT
@@ -95,34 +95,34 @@ then
 	Abortar
 fi
 echo "Iniciando Recibir_B.sh. Esto demora unos 15 segundos."
-cd $BINDIR
+cd "$BINDIR"
 ./Start_D.sh Recibir_B.sh >> /dev/null
 sleep 15
 echo "Copiando el log de Recibir."
-cd $TP
+cd "$TP"
 echo -e "\n\n*************LOG RECIBIR************\n\n" >> $OUTPUT
-cat $LOGDIR/Recibir_B.sh$LOGEXT >> $OUTPUT
+cat "$LOGDIR/Recibir_B.sh$LOGEXT" >> $OUTPUT
 echo "Copiando el log de Reservar."
 echo -e "\n\n**************LOG RESERVAR************\n\n" >> $OUTPUT
-cat $LOGDIR/Reservar_B.sh$LOGEXT >> $OUTPUT
+cat "$LOGDIR/Reservar_B.sh$LOGEXT" >> $OUTPUT
 echo "Copiando archivos en PROCDIR"
 echo -e "\n\n**************ARCHIVOS EN PROCDIR************\n\n" >> $OUTPUT
-for archivo in `ls $PROCDIR`
+for archivo in `ls "$PROCDIR"`
 do
 	echo "ARCHIVO: $archivo" >> $OUTPUT
-	cat $PROCDIR/$archivo >> $OUTPUT
+	cat "$PROCDIR/$archivo" >> $OUTPUT
 	echo -e "\n\n" >> $OUTPUT
 done
 echo -e "\n\n**************ARCHIVOS EN RECHDIR************\n\n" >> $OUTPUT
-for archivo in `ls $RECHDIR`
+for archivo in `ls "$RECHDIR"`
 do
 	echo "ARCHIVO: $archivo" >> $OUTPUT
-	cat $RECHDIR/$archivo >> $OUTPUT
+	cat "$RECHDIR/$archivo" >> $OUTPUT
 	echo -e "\n\n" >> $OUTPUT
 done
 
 
-cd $BINDIR
+cd "$BINDIR"
 ./Stop_D.sh Recibir_B.sh >> /dev/null
 
 
@@ -164,5 +164,5 @@ echo "C00010026"|./Imprimir_B.pl -t >> ../../$OUTPUT
 
 echo -e  "**************FIN DEL TEST************\n\n" 
 
-cd $TP
+cd "$TP"
 

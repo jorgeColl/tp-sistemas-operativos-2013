@@ -344,7 +344,7 @@ VerPermisos
 echo ""
 #Agrego al final del path a mis binarios
 
-export PATH=$PATH:$BINDIR
+export PATH="$PATH:$BINDIR"
 Log "Se seteo la ruta: "$BINDIR" en la variable PATH"
 echo""
 
