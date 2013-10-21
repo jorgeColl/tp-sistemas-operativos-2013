@@ -181,7 +181,7 @@ ComprobarDisponibilidad () {
 
 #Main
 Log "Inicio de Reservar_B"
-Log "Cantidad de archivos: $(ls $ACEPDIR -1 | wc -l)"
+Log "Cantidad de archivos: $(ls "$ACEPDIR" -1 | wc -l)"
 ls "$ACEPDIR" -1 | while read nombreArchivo
 do
 	rutaArchivo="$ACEPDIR/$nombreArchivo"
