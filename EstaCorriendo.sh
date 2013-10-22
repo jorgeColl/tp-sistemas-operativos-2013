@@ -5,7 +5,7 @@
 # --------------------------------------- 
 #!/bin/bash
 
-function EstaCorriendo {
+EstaCorriendo (){
 	comandoSolicitante=`echo "${1##*/}"`
 	cantidadEjecuciones=`ps -e | grep "$comandoSolicitante$" | wc -l`
 	if [ $cantidadEjecuciones -ge $2 ]; then
