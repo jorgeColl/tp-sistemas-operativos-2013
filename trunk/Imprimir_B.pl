@@ -2,6 +2,12 @@
 
 use Switch;
 
+if ( ! system("bash ./EstaCorriendo.sh 'Imprimir_B.pl' 2 >> /dev/null") == 0) {
+	print "Se encuentra corriendo Imprimir_B_pl, esperar a que termine la ejecucion.\n";
+	exit;
+}
+
+
 if ( ! system("./EstaInicializado.sh >> /dev/null") == 0) {
 	print "No esta inicializado. Correr ./Iniciar_B.sh\nSaliendo\n";
 	exit;
