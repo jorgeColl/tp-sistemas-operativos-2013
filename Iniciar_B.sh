@@ -107,7 +107,7 @@ else
          if [ ! -x "$BINDIR/Imprimir_B.pl" ];
          then
          Log   "Imprimir_B.sh"
-		chmod +x "$BINDIR/Imprimir_B.sh"
+		chmod +x "$BINDIR/Imprimir_B.pl"
          fi
 
 	 if [ ! -x "$BINDIR/Stop_D.sh" ];
