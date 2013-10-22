@@ -200,7 +200,7 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
                        
                         if [ ! -f "$BINDIR/Imprimir_B.pl" ];
                         then
-                                 Log   "Imprimir_B.sh"
+                                 Log   "Imprimir_B.pl"
                         fi
 
                         if [ ! -f "$BINDIR/Stop_D.sh" ];
@@ -238,6 +238,8 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 		Log "Estado de la instalacion INCOMPLETO"
 		estado="mal"
 	fi
+	Log "Falta la carpeta completa de los archivos ejecutables"
+	estado="mal"
 fi #salgo de los ejecutables
 echo ""
 	Log "Viendo archivos Maestros:"
