@@ -235,12 +235,13 @@ if [ -f "$grupo/conf/Instalar_TP.conf" ]; then
 			
 			
 		
-		Log "Estado de la instalacion INCOMPLETO"
+			Log "Estado de la instalacion INCOMPLETO"
+			estado="mal"
+		fi
+	else
+		Log "Falta la carpeta completa de los archivos ejecutables"
 		estado="mal"
-	fi
-	Log "Falta la carpeta completa de los archivos ejecutables"
-	estado="mal"
-fi #salgo de los ejecutables
+	fi #salgo de los ejecutables
 echo ""
 	Log "Viendo archivos Maestros:"
 	if [ -d "$MAEDIR" ];
